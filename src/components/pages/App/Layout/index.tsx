@@ -10,15 +10,13 @@ const plusJakarta = Plus_Jakarta_Sans({
 })
 
 export const AppLayout = ({ children }: Readonly<IAppLayoutProps>) => (
-  <html lang="en" className={`${plusJakarta.variable} light`} style={{ colorScheme: 'light' }}>
+  <html lang='en' className={`${plusJakarta.variable} light`} style={{ colorScheme: 'light' }}>
     <head>
       <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        rel="stylesheet"
+        href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'
+        rel='stylesheet'
       />
     </head>
-    <body className={`${plusJakarta.className} antialiased bg-cream text-earth`}>
-      {children}
-    </body>
+    <body className={`${plusJakarta.className} antialiased bg-cream text-earth`}>{children}</body>
   </html>
 )
