@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Property Editor - Logistics Portal</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#5D6D4D",
+                        secondary: "#E29578",
+                        cream: "#FDFBF7",
+                        sage: "#8A9A5B",
+                        earth: "#4A3728",
+                        "earth-dark": "#3a2b20",
+                        "background-light": "#FDFBF7",
+                        "background-dark": "#1A1C14",
+                    },
+                    fontFamily: {
+                        display: ["Plus Jakarta Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                        '3xl': '2.5rem',
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .stepper-line {
+            background: repeating-linear-gradient(90deg, #E2E8F0 0, #E2E8F0 4px, transparent 4px, transparent 8px);
+        }
+        .step-active .stepper-icon {
+            background-color: #4A3728;
+            color: white;
+        }
+        .step-active .stepper-label {
+            color: #4A3728;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-background-dark text-slate-800 dark:text-slate-100 transition-colors duration-300">
+<div class="flex min-h-screen">
+<aside class="w-64 bg-earth text-white border-r border-earth-dark/20 flex flex-col fixed inset-y-0 z-50">
+<div class="p-6 border-b border-white/10">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-white/10 flex items-center justify-center rounded-lg rotate-3">
+<span class="material-symbols-outlined text-white text-xl -rotate-3">rocket_launch</span>
+</div>
+<div class="flex flex-col leading-none">
+<span class="font-extrabold text-sm tracking-tight text-white uppercase text-nowrap">Logistics Portal</span>
+<span class="text-[8px] font-bold text-secondary tracking-[0.2em] uppercase">Master Admin</span>
+</div>
+</div>
+</div>
+<nav class="flex-1 p-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+                Overview
+            </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-lg">group</span>
+                Partner Investors
+            </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-white bg-white/10 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-lg">domain</span>
+                Global Inventory
+            </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-lg">analytics</span>
+                Lead Insights
+            </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+                System Config
+            </a>
+</nav>
+<div class="p-4 border-t border-white/10">
+<div class="bg-white/5 rounded-2xl p-4">
+<p class="text-[9px] font-black uppercase tracking-widest text-secondary mb-2">Network Health</p>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-[10px] font-medium text-white/70">98.2% Operations</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 ml-64 flex flex-col">
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-8 py-6 sticky top-0 z-40">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<a class="text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-earth" href="#">Inventory</a>
+<span class="material-symbols-outlined text-xs text-slate-400">chevron_right</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-earth">New Property</span>
+</div>
+<h1 class="text-xl font-extrabold text-earth dark:text-white">Create New Property</h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 text-xs font-bold text-slate-500 hover:text-earth transition-colors">Save as Draft</button>
+<button class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-xs font-bold hover:bg-slate-200 transition-all">Cancel</button>
+</div>
+</div>
+</header>
+<div class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-8 py-6">
+<div class="max-w-4xl mx-auto">
+<div class="flex items-center justify-between relative">
+<div class="absolute top-5 left-0 w-full h-0.5 stepper-line -z-0"></div>
+<div class="relative z-10 flex flex-col items-center gap-2 step-active">
+<div class="stepper-icon w-10 h-10 rounded-full flex items-center justify-center bg-white border-2 border-earth text-earth transition-all">
+<span class="material-symbols-outlined text-lg">info</span>
+</div>
+<span class="stepper-label text-[10px] uppercase tracking-wider font-bold">Basic Info</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="stepper-icon w-10 h-10 rounded-full flex items-center justify-center bg-white border-2 border-slate-200 text-slate-300 transition-all">
+<span class="material-symbols-outlined text-lg">engineering</span>
+</div>
+<span class="stepper-label text-[10px] uppercase tracking-wider font-bold text-slate-400">Technical Specs</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="stepper-icon w-10 h-10 rounded-full flex items-center justify-center bg-white border-2 border-slate-200 text-slate-300 transition-all">
+<span class="material-symbols-outlined text-lg">photo_library</span>
+</div>
+<span class="stepper-label text-[10px] uppercase tracking-wider font-bold text-slate-400">Media &amp; Assets</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="stepper-icon w-10 h-10 rounded-full flex items-center justify-center bg-white border-2 border-slate-200 text-slate-300 transition-all">
+<span class="material-symbols-outlined text-lg">verified</span>
+</div>
+<span class="stepper-label text-[10px] uppercase tracking-wider font-bold text-slate-400">Review &amp; Publish</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-8 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 space-y-6">
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm p-8">
+<h2 class="text-sm font-extrabold text-earth dark:text-white uppercase tracking-widest mb-6 pb-4 border-b border-slate-100 dark:border-slate-800">Essential Details</h2>
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="block text-[10px] font-black uppercase tracking-widest text-slate-500">Property Title</label>
+<input class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-earth focus:border-earth" placeholder="e.g. Logistics Hub North" type="text" value="São Paulo Smart Node Alpha"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="block text-[10px] font-black uppercase tracking-widest text-slate-500">Property Type</label>
+<select class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-earth focus:border-earth">
+<option>Warehouse / Galpão</option>
+<option>Industrial Complex</option>
+<option>Distribution Center</option>
+<option>Cold Storage</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="block text-[10px] font-black uppercase tracking-widest text-slate-500">Category</label>
+<select class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-earth focus:border-earth">
+<option>Class A+</option>
+<option>Class A</option>
+<option>Class B</option>
+<option>Development Land</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-[10px] font-black uppercase tracking-widest text-slate-500">Description</label>
+<textarea class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-earth focus:border-earth" placeholder="Describe the strategic advantages, connectivity, and primary use cases..." rows="6"></textarea>
+</div>
+</form>
+</div>
+<div class="flex items-center justify-between pt-4">
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm text-slate-400 cursor-not-allowed border border-slate-200 bg-white opacity-50">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                        Previous Step
+                    </button>
+<button class="flex items-center gap-2 px-8 py-3 bg-earth hover:bg-earth-dark text-white rounded-xl font-bold text-sm shadow-lg shadow-earth/10 transition-all group">
+                        Next: Technical Specs
+                        <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="lg:col-span-1">
+<div class="sticky top-32 space-y-4">
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-4 bg-slate-50 dark:bg-slate-800 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<span class="text-[10px] font-black uppercase tracking-widest text-slate-500">Draft Preview</span>
+<span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-[9px] font-bold uppercase tracking-wider">Unsaved</span>
+</div>
+<div class="p-0">
+<div class="aspect-video w-full bg-slate-200 dark:bg-slate-700 relative overflow-hidden group">
+<img alt="Property Preview" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTcKR8hM-rllk9n4fDVAv1yZ0s2dCnqZmdgZvVqDvhARcCMehqe5vH6Y2_43yo92RdWGBXCGsMZkmqDHfXNIMtrkA5QZS6nwsXcn-bE7trWl7VuzuezBG-02nJWcoagBvUnfZ06_O__rUF5g2sckccAsGEv36SvQWeAO4KPtuvp1g-FOkNg6fc3O8PQ9QxEKKa0AThg1rtnTHzSlCGuJ0IQgihrGluBrtYUebb7N3tOufK1fzr6XUjDyNmSIl5--x1LCNjD9nEF18"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded-sm bg-primary text-white text-[8px] font-bold uppercase">Galpão</span>
+<span class="px-2 py-0.5 rounded-sm bg-white/20 backdrop-blur-md text-white text-[8px] font-bold uppercase">Class A+</span>
+</div>
+<h3 class="text-white font-bold text-sm leading-tight">São Paulo Smart Node Alpha</h3>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col">
+<span class="text-[9px] font-bold text-slate-400 uppercase">Internal ID</span>
+<span class="text-xs font-mono font-bold text-earth">LOG-SP-001</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[9px] font-bold text-slate-400 uppercase">Status</span>
+<span class="text-xs font-bold text-slate-700 dark:text-slate-300">Draft</span>
+</div>
+</div>
+<div class="h-[1px] bg-slate-100 dark:bg-slate-800"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-slate-400 text-sm">location_on</span>
+<span class="text-[10px] font-medium text-slate-500">Location pending...</span>
+</div>
+<button class="text-[10px] font-bold text-primary hover:underline uppercase">View Full Preview</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-earth/5 border border-earth/10 rounded-xl p-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-earth text-lg mt-0.5">lightbulb</span>
+<div class="space-y-1">
+<p class="text-[10px] font-bold text-earth uppercase tracking-wider">Expert Tip</p>
+<p class="text-[11px] leading-relaxed text-earth/70">Using precise industry categories (e.g. Class A+) significantly increases listing visibility for institutional investors.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="py-10 px-8 border-t border-slate-200 dark:border-slate-800 mt-auto bg-white dark:bg-slate-900">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 bg-earth flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-white text-base">rocket_launch</span>
+</div>
+<span class="font-extrabold text-[11px] tracking-tight text-earth dark:text-white uppercase">Logistics Portal Admin</span>
+</div>
+<p class="text-[9px] text-slate-400 font-bold uppercase tracking-[0.2em]">© 2025 Global Inventory Node. Property Management Interface.</p>
+<div class="flex items-center gap-6">
+<a class="text-[9px] font-black uppercase tracking-widest text-slate-400 hover:text-earth transition-colors" href="#">Support</a>
+<a class="text-[9px] font-black uppercase tracking-widest text-slate-400 hover:text-earth transition-colors" href="#">API Documentation</a>
+<div class="h-3 w-[1px] bg-slate-200 dark:bg-slate-700"></div>
+<span class="text-[9px] font-mono font-bold text-primary">v2.5.1-L</span>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<button class="fixed bottom-6 right-6 w-12 h-12 bg-earth text-white rounded-xl shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-50 group border border-white/10" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined dark:hidden text-xl">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block text-xl">light_mode</span>
+</button>
+
+</body></html>

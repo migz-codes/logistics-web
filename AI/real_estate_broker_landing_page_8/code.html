@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Master Admin Strategic Dashboard - Logistics Portal</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#5D6D4D",
+                        secondary: "#E29578",
+                        cream: "#FDFBF7",
+                        sage: "#8A9A5B",
+                        earth: "#4A3728",
+                        "earth-dark": "#3a2b20",
+                        "background-light": "#FDFBF7",
+                        "background-dark": "#1A1C14",
+                    },
+                    fontFamily: {
+                        display: ["Plus Jakarta Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem",
+                        'xl': '1.25rem',
+                        '2xl': '2rem',
+                        '3xl': '3.5rem',
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .custom-shadow {
+            box-shadow: 0 20px 50px rgba(74, 55, 40, 0.08);
+        }
+        .chart-placeholder {
+            background-image: radial-gradient(circle at 2px 2px, rgba(0,0,0,0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        .dark .chart-placeholder {
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-earth dark:text-slate-100 transition-colors duration-300">
+<div class="flex min-h-screen">
+<aside class="w-64 bg-earth text-white border-r border-earth-dark/20 flex flex-col fixed inset-y-0 z-50">
+<div class="p-6 border-b border-white/10">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-white/10 flex items-center justify-center rounded-lg rotate-3">
+<span class="material-symbols-outlined text-white text-xl -rotate-3">rocket_launch</span>
+</div>
+<div class="flex flex-col leading-none">
+<span class="font-extrabold text-sm tracking-tight text-white uppercase">Logistics Portal</span>
+<span class="text-[8px] font-bold text-secondary tracking-[0.2em] uppercase">Master Admin</span>
+</div>
+</div>
+</div>
+<nav class="flex-1 p-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-bold text-white bg-white/10 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+                Strategic Overview
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+                Partner Investors
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-xl">domain</span>
+                Global Portfolio
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-xl">verified_user</span>
+                Pending Approvals
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-xl">analytics</span>
+                Market Insights
+            </a>
+</nav>
+<div class="p-4 border-t border-white/10">
+<div class="bg-white/5 rounded-2xl p-4">
+<p class="text-[10px] font-black uppercase tracking-widest text-secondary mb-2">Network Health</p>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-xs font-medium text-white/70">All Systems Nominal</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 ml-64 min-h-screen">
+<header class="h-20 bg-white dark:bg-slate-900 border-b border-primary/10 flex items-center justify-between px-8 sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-slate-900/80">
+<div>
+<h1 class="text-xl font-bold text-earth dark:text-white">Strategic Dashboard</h1>
+<p class="text-xs text-earth/50 dark:text-white/50 font-medium">Enterprise Monitoring &amp; Governance</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-cream dark:bg-slate-800 text-earth/60 dark:text-white/60 border border-primary/10">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-primary/10"></div>
+<div class="flex items-center gap-3 px-2">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold">Admin Executive</p>
+<p class="text-[10px] text-primary font-bold">MASTER ACCESS</p>
+</div>
+<div class="w-10 h-10 rounded-xl bg-earth flex items-center justify-center text-white font-bold">AE</div>
+</div>
+</div>
+</header>
+<div class="p-8 max-w-[1600px] mx-auto space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-primary/5 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">domain</span>
+</div>
+<span class="text-[10px] font-black text-green-500 bg-green-500/10 px-2 py-1 rounded-full">+4.2%</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-earth/40 dark:text-white/40">Total Managed Assets</p>
+<h3 class="text-2xl font-black mt-1">1,245,000 <span class="text-sm font-medium text-earth/50">m²</span></h3>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-primary/5 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">public</span>
+</div>
+<span class="text-[10px] font-black text-secondary bg-secondary/10 px-2 py-1 rounded-full">Global</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-earth/40 dark:text-white/40">Active Leads</p>
+<h3 class="text-2xl font-black mt-1">8,492 <span class="text-sm font-medium text-earth/50">Units</span></h3>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-primary/5 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-2xl bg-sage/10 flex items-center justify-center text-sage">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<span class="text-[10px] font-black text-sage bg-sage/10 px-2 py-1 rounded-full">YTD Avg</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-earth/40 dark:text-white/40">Investor ROI Average</p>
+<h3 class="text-2xl font-black mt-1">14.85<span class="text-sm font-medium text-earth/50">%</span></h3>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-primary/5 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-2xl bg-earth/10 flex items-center justify-center text-earth dark:text-white">
+<span class="material-symbols-outlined">shield</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-[10px] font-black text-green-500 uppercase">Optimal</span>
+</div>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-earth/40 dark:text-white/40">System Health Status</p>
+<h3 class="text-2xl font-black mt-1 uppercase tracking-tight">Stable</h3>
+</div>
+</div>
+<div class="grid lg:grid-cols-12 gap-8">
+<div class="lg:col-span-8 space-y-8">
+<div class="grid md:grid-cols-2 gap-8">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-primary/5 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-bold text-sm uppercase tracking-wider text-earth/60 dark:text-white/60">Lead Growth Trends</h4>
+<span class="material-symbols-outlined text-earth/20 cursor-pointer">more_horiz</span>
+</div>
+<div class="h-64 chart-placeholder relative flex items-end justify-between px-2">
+<svg class="absolute inset-0 w-full h-full px-4" preserveAspectRatio="none" viewBox="0 0 100 100">
+<path d="M0 80 Q 20 60, 40 70 T 80 30 T 100 20" fill="none" stroke="#E29578" stroke-width="3"></path>
+<path d="M0 80 Q 20 60, 40 70 T 80 30 T 100 20 V 100 H 0 Z" fill="url(#gradient-line)" opacity="0.1"></path>
+<defs>
+<linearGradient id="gradient-line" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#E29578"></stop>
+<stop offset="100%" stop-color="#E29578" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+</svg>
+<div class="flex w-full justify-between text-[10px] font-bold text-earth/30 dark:text-white/20 mt-2 absolute bottom-[-20px]">
+<span>JAN</span><span>MAR</span><span>MAY</span><span>JUL</span><span>SEP</span><span>NOV</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-primary/5 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-bold text-sm uppercase tracking-wider text-earth/60 dark:text-white/60">Portfolio Categories</h4>
+<span class="material-symbols-outlined text-earth/20 cursor-pointer">more_horiz</span>
+</div>
+<div class="h-64 flex items-end justify-around gap-4 px-4 pb-2">
+<div class="w-full max-w-[40px] flex flex-col items-center gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative" style="height: 85%">
+<div class="absolute inset-x-0 bottom-0 bg-primary rounded-t-lg" style="height: 70%"></div>
+</div>
+<span class="text-[9px] font-bold text-earth/40 dark:text-white/40">Warehouse</span>
+</div>
+<div class="w-full max-w-[40px] flex flex-col items-center gap-2">
+<div class="w-full bg-secondary/20 rounded-t-lg relative" style="height: 60%">
+<div class="absolute inset-x-0 bottom-0 bg-secondary rounded-t-lg" style="height: 45%"></div>
+</div>
+<span class="text-[9px] font-bold text-earth/40 dark:text-white/40">Commercial</span>
+</div>
+<div class="w-full max-w-[40px] flex flex-col items-center gap-2">
+<div class="w-full bg-sage/20 rounded-t-lg relative" style="height: 40%">
+<div class="absolute inset-x-0 bottom-0 bg-sage rounded-t-lg" style="height: 25%"></div>
+</div>
+<span class="text-[9px] font-bold text-earth/40 dark:text-white/40">Cold Storage</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-3xl border border-primary/5 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-primary/5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-red-500">warning</span>
+<h3 class="font-bold text-earth dark:text-white">Critical Pending Approvals</h3>
+</div>
+<button class="text-[10px] font-black uppercase tracking-widest text-primary hover:underline">View All Pipeline</button>
+</div>
+<div class="divide-y divide-primary/5">
+<div class="p-6 hover:bg-cream/50 dark:hover:bg-slate-800/50 transition-colors flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl overflow-hidden">
+<img alt="Property" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTcKR8hM-rllk9n4fDVAv1yZ0s2dCnqZmdgZvVqDvhARcCMehqe5vH6Y2_43yo92RdWGBXCGsMZkmqDHfXNIMtrkA5QZS6nwsXcn-bE7trWl7VuzuezBG-02nJWcoagBvUnfZ06_O__rUF5g2sckccAsGEv36SvQWeAO4KPtuvp1g-FOkNg6fc3O8PQ9QxEKKa0AThg1rtnTHzSlCGuJ0IQgihrGluBrtYUebb7N3tOufK1fzr6XUjDyNmSIl5--x1LCNjD9nEF18"/>
+</div>
+<div>
+<p class="font-bold text-sm">Berlin Logistics Hub II - Expansion</p>
+<p class="text-[10px] text-earth/50 dark:text-white/50">Submitted by <span class="text-primary font-bold">NexGen Ventures</span> • 2 hours ago</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 bg-primary text-white text-[10px] font-bold rounded-lg uppercase tracking-widest">Approve</button>
+<button class="p-2 border border-primary/10 rounded-lg text-earth/40 hover:text-red-500">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+</div>
+<div class="p-6 hover:bg-cream/50 dark:hover:bg-slate-800/50 transition-colors flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl overflow-hidden">
+<img alt="Property" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvGyGFgcHLM3-ftoekoKy2glBv00OtBj2STSGiqZWZjtFesJpDQU30Z5OWMvQXUcLXsJoZE89Xt2Iob-YZBONI3OWH1n4OpJlXnMT-LRl71wJzcEgysiXMYHXMBZaMAzfcNEiaSLaTNwGeOJWg6buJ_dxpkFQQS8xEEPO3cxH_w7C_vfdIouuVLv_-rFzyxDenO3zBa17B3jLTKJRfYMm8fHzHEwQQg1dOBXjNFdoRFn-1UwLo4ANs7S_Cxo4pMpvdkBOlmT9ZmiE"/>
+</div>
+<div>
+<p class="font-bold text-sm">Madrid Tech Corridor - Phase 4</p>
+<p class="text-[10px] text-earth/50 dark:text-white/50">Submitted by <span class="text-secondary font-bold">Pioneer Infra</span> • 5 hours ago</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 bg-primary text-white text-[10px] font-bold rounded-lg uppercase tracking-widest">Approve</button>
+<button class="p-2 border border-primary/10 rounded-lg text-earth/40 hover:text-red-500">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4">
+<div class="bg-white dark:bg-slate-900 rounded-3xl border border-primary/5 shadow-sm p-6 sticky top-28">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-bold text-earth dark:text-white">Recent Activity</h3>
+<span class="text-[10px] font-black uppercase text-earth/40">Live Feed</span>
+</div>
+<div class="space-y-8 relative">
+<div class="absolute left-[15px] top-2 bottom-2 w-[1px] bg-primary/10"></div>
+<div class="relative flex gap-4">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center z-10 text-primary">
+<span class="material-symbols-outlined text-lg">edit_note</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold mb-1">Property Update</p>
+<p class="text-[11px] text-earth/60 dark:text-white/60 leading-relaxed">
+<span class="font-bold text-earth dark:text-white">James Wilson</span> edited "Singapore Terminal E" pricing data.
+                                    </p>
+<span class="text-[9px] text-earth/30 uppercase mt-2 block font-black">12 Minutes Ago</span>
+</div>
+</div>
+<div class="relative flex gap-4">
+<div class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center z-10 text-secondary">
+<span class="material-symbols-outlined text-lg">person_add</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold mb-1">New Lead Capture</p>
+<p class="text-[11px] text-earth/60 dark:text-white/60 leading-relaxed">
+                                        Enterprise inquiry from <span class="font-bold text-earth dark:text-white">Global Logistics Corp</span> for Paris West Hub.
+                                    </p>
+<span class="text-[9px] text-earth/30 uppercase mt-2 block font-black">45 Minutes Ago</span>
+</div>
+</div>
+<div class="relative flex gap-4">
+<div class="w-8 h-8 rounded-full bg-sage/20 flex items-center justify-center z-10 text-sage">
+<span class="material-symbols-outlined text-lg">upload_file</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold mb-1">New Property Listing</p>
+<p class="text-[11px] text-earth/60 dark:text-white/60 leading-relaxed">
+<span class="font-bold text-earth dark:text-white">Pioneer Infra</span> uploaded architectural renders for Curitiba site.
+                                    </p>
+<span class="text-[9px] text-earth/30 uppercase mt-2 block font-black">2 Hours Ago</span>
+</div>
+</div>
+<div class="relative flex gap-4">
+<div class="w-8 h-8 rounded-full bg-earth/20 flex items-center justify-center z-10 text-earth dark:text-white">
+<span class="material-symbols-outlined text-lg">verified</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold mb-1">Verification Success</p>
+<p class="text-[11px] text-earth/60 dark:text-white/60 leading-relaxed">
+                                        Annual compliance check passed for <span class="font-bold text-earth dark:text-white">NexGen Ventures</span> ecosystem.
+                                    </p>
+<span class="text-[9px] text-earth/30 uppercase mt-2 block font-black">5 Hours Ago</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-10 py-3 text-[10px] font-black uppercase tracking-widest text-earth/40 hover:text-primary border border-primary/5 rounded-xl transition-all">
+                            Download Activity Audit
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<footer class="py-12 bg-cream dark:bg-background-dark border-t border-primary/5 px-8">
+<div class="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-earth flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-white text-lg">rocket_launch</span>
+</div>
+<span class="font-extrabold text-sm tracking-tight text-earth dark:text-white uppercase">Logistics Portal Admin</span>
+</div>
+<p class="text-[10px] text-earth/40 font-bold uppercase tracking-[0.2em]">© 2025 Logistics Visionary Portal. Master Administration Node.</p>
+<div class="flex items-center gap-6">
+<a class="text-[10px] font-black uppercase tracking-widest text-earth/50 hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="text-[10px] font-black uppercase tracking-widest text-earth/50 hover:text-primary transition-colors" href="#">Security Protocol</a>
+<div class="h-4 w-[1px] bg-earth/10"></div>
+<span class="text-[10px] font-mono font-bold text-primary">v2.4.0-STABLE</span>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-earth text-white rounded-2xl shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 group border border-white/10" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined dark:hidden text-2xl">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block text-2xl">light_mode</span>
+</button>
+
+</body></html>

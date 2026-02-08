@@ -1,0 +1,160 @@
+/* Material Symbols - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@import 'tailwindcss';
+
+@import './themes/breakpoints.css';
+@import './themes/colors.css';
+@import './themes/fonts.css';
+@import './themes/base.css';
+
+/* Disable dark mode - force light mode always */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light;
+  }
+}
+
+/* Custom Theme Colors - matching HTML files */
+@theme {
+  /* Primary color palette from HTML */
+  --color-primary: #5D6D4D;
+  --color-secondary: #E29578;
+  --color-cream: #FDFBF7;
+  --color-sage: #8A9A5B;
+  --color-earth: #4A3728;
+  --color-earth-dark: #3a2b20;
+
+  /* Background colors */
+  --color-background-light: #FDFBF7;
+  --color-background-dark: #1A1C14;
+}
+
+/* Custom shadows */
+.custom-shadow {
+  box-shadow: 0 20px 50px rgba(74, 55, 40, 0.08);
+}
+
+.custom-shadow:hover {
+  box-shadow: 0 30px 60px rgba(74, 55, 40, 0.12);
+}
+
+/* Lifestyle gradient for hero sections */
+.lifestyle-gradient {
+  background: linear-gradient(to top,
+      rgba(253, 251, 247, 1) 0%,
+      rgba(253, 251, 247, 0.4) 50%,
+      rgba(253, 251, 247, 0) 100%);
+}
+
+/* Material Symbols configuration */
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+/* Base font family */
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(93, 109, 77, 0.2);
+  color: #4A3728;
+}
+
+/* Focus ring styles */
+*:focus-visible {
+  outline: 2px solid #5D6D4D;
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FDFBF7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(74, 55, 40, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(74, 55, 40, 0.5);
+}
+
+/* Animation utilities */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Stepper styles for property editor */
+.stepper-line {
+  background: repeating-linear-gradient(90deg,
+      #E2E8F0 0,
+      #E2E8F0 4px,
+      transparent 4px,
+      transparent 8px);
+}
+
+.step-active .stepper-icon {
+  background-color: #4A3728;
+  color: white;
+}
+
+.step-active .stepper-label {
+  color: #4A3728;
+  font-weight: 700;
+}
+
+/* Override dark mode styles - force light mode everywhere */
+.dark {
+  color-scheme: light !important;
+}
+
+/* Force light mode for all dark: prefixed utilities */
+@media (prefers-color-scheme: dark) {
+
+  .dark\:bg-slate-900,
+  .dark\:bg-slate-800,
+  .dark\:bg-slate-950,
+  .dark\:bg-background-dark {
+    background-color: inherit !important;
+  }
+
+  .dark\:text-white,
+  .dark\:text-slate-100,
+  .dark\:text-slate-300,
+  .dark\:text-slate-400,
+  .dark\:text-slate-500 {
+    color: inherit !important;
+  }
+}

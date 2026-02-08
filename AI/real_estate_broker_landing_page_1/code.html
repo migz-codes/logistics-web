@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Real Estate - Find Your Dream Home</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#5D6D4D", // Soft Green
+                        secondary: "#E29578", // Light Terracotta
+                        cream: "#FDFBF7",
+                        sage: "#8A9A5B",
+                        earth: "#4A3728",
+                        "earth-dark": "#3a2b20",
+                        "background-light": "#FDFBF7",
+                        "background-dark": "#1A1C14",
+                    },
+                    fontFamily: {
+                        display: ["Plus Jakarta Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem",
+                        'xl': '1.25rem',
+                        '2xl': '2rem',
+                        '3xl': '3.5rem',
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .custom-shadow {
+            box-shadow: 0 20px 50px rgba(74, 55, 40, 0.08);
+        }
+        .lifestyle-gradient {
+            background: linear-gradient(to top, rgba(253, 251, 247, 1) 0%, rgba(253, 251, 247, 0.4) 50%, rgba(253, 251, 247, 0) 100%);
+        }
+        .dark .lifestyle-gradient {
+            background: linear-gradient(to top, rgba(26, 28, 20, 1) 0%, rgba(26, 28, 20, 0.4) 50%, rgba(26, 28, 20, 0) 100%);
+        }
+        .horizontal-divider {
+            @apply border-r border-earth/10 dark:border-white/10;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-earth dark:text-slate-100 transition-colors duration-300">
+<nav class="fixed top-0 w-full z-50 px-6 py-6">
+<div class="max-w-7xl mx-auto flex items-center justify-between bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl px-8 py-4 rounded-3xl shadow-sm border border-primary/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded-xl rotate-3">
+<span class="material-symbols-outlined text-white text-2xl -rotate-3">home</span>
+</div>
+<span class="font-extrabold text-2xl tracking-tight text-earth dark:text-white">Real Estate</span>
+</div>
+<div class="hidden lg:flex items-center gap-10 text-sm font-bold uppercase tracking-wider">
+<a class="hover:text-primary transition-colors" href="#">Buy</a>
+<a class="hover:text-primary transition-colors" href="#">Rent</a>
+<a class="hover:text-primary transition-colors" href="#">Sell</a>
+<a class="hover:text-primary transition-colors" href="#">Home loan</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2.5 text-sm font-bold text-earth/70 dark:text-white/70 hover:text-primary transition-all">Log In</button>
+<button class="px-7 py-2.5 text-sm font-bold rounded-2xl bg-primary text-white hover:bg-sage transition-all shadow-lg shadow-primary/10">Sign In</button>
+</div>
+</div>
+</nav>
+<header class="relative h-[90vh] w-full overflow-hidden">
+<img alt="Vibrant neighborhood life" class="absolute inset-0 w-full h-full object-cover scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvGyGFgcHLM3-ftoekoKy2glBv00OtBj2STSGiqZWZjtFesJpDQU30Z5OWMvQXUcLXsJoZE89Xt2Iob-YZBONI3OWH1n4OpJlXnMT-LRl71wJzcEgysiXMYHXMBZaMAzfcNEiaSLaTNwGeOJWg6buJ_dxpkFQQS8xEEPO3cxH_w7C_vfdIouuVLv_-rFzyxDenO3zBa17B3jLTKJRfYMm8fHzHEwQQg1dOBXjNFdoRFn-1UwLo4ANs7S_Cxo4pMpvdkBOlmT9ZmiE"/>
+<div class="absolute inset-0 lifestyle-gradient"></div>
+<div class="relative z-10 h-full max-w-7xl mx-auto px-6 flex flex-col justify-center items-center text-center">
+<h1 class="text-6xl md:text-8xl font-extrabold text-earth dark:text-white leading-[1.05] mb-8 max-w-4xl">
+                DISCOVER YOUR IDEAL <br/>
+<span class="text-secondary italic font-light">PROPERTY</span>
+</h1>
+<p class="text-earth/80 dark:text-white/80 text-xl max-w-2xl mb-12 leading-relaxed font-medium">
+                We are dedicated to connecting buyers and sellers with the most desirable properties on the market. Our team of experienced real estate professionals.
+            </p>
+<div class="flex flex-wrap justify-center gap-5">
+<button class="px-10 py-4 rounded-2xl bg-earth text-white font-bold text-lg hover:bg-black transition-all shadow-2xl">Buy</button>
+<button class="px-10 py-4 rounded-2xl bg-white/90 backdrop-blur-md text-earth border border-earth/10 font-bold text-lg hover:bg-white transition-all shadow-xl">Sell</button>
+</div>
+</div>
+</header>
+<section class="relative z-40 -mt-16 px-6 max-w-6xl mx-auto">
+<div class="bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl p-4 flex flex-col lg:flex-row items-stretch gap-2 border border-primary/5">
+<div class="flex-1 grid grid-cols-1 md:grid-cols-3 items-center">
+<div class="px-8 py-4 horizontal-divider">
+<div class="flex items-center gap-3 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">apartment</span>
+<label class="block text-[11px] font-bold text-primary/60 uppercase tracking-widest">Property Type</label>
+</div>
+<select class="block w-full border-none bg-transparent p-0 text-lg font-bold focus:ring-0 cursor-pointer text-earth dark:text-white">
+<option>Show all</option>
+<option>Apartment</option>
+<option>Villa</option>
+<option>Office</option>
+</select>
+</div>
+<div class="px-8 py-4 horizontal-divider">
+<div class="flex items-center gap-3 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">king_bed</span>
+<label class="block text-[11px] font-bold text-primary/60 uppercase tracking-widest">BHK</label>
+</div>
+<select class="block w-full border-none bg-transparent p-0 text-lg font-bold focus:ring-0 cursor-pointer text-earth dark:text-white">
+<option>At-list 2</option>
+<option>1 BHK</option>
+<option>2 BHK</option>
+<option>3+ BHK</option>
+</select>
+</div>
+<div class="px-8 py-4">
+<div class="flex items-center gap-3 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">payments</span>
+<label class="block text-[11px] font-bold text-primary/60 uppercase tracking-widest">Price Range</label>
+</div>
+<select class="block w-full border-none bg-transparent p-0 text-lg font-bold focus:ring-0 cursor-pointer text-earth dark:text-white">
+<option>₹ 23 L - ₹ 5 Cr</option>
+<option>₹ 50 L - ₹ 1 Cr</option>
+<option>₹ 1 Cr - ₹ 10 Cr</option>
+</select>
+</div>
+</div>
+<button class="lg:w-48 py-6 bg-secondary text-white font-black uppercase tracking-widest rounded-[1.75rem] hover:bg-secondary/90 transition-all flex items-center justify-center gap-3 shadow-lg shadow-secondary/30">
+<span class="material-symbols-outlined text-2xl">search</span>
+                Search
+            </button>
+</div>
+</section>
+<section class="max-w-7xl mx-auto px-6 py-24">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<h2 class="text-4xl md:text-5xl font-extrabold text-earth dark:text-white mb-4">Latest <span class="text-secondary italic font-light">Properties</span></h2>
+<p class="text-earth/60 dark:text-slate-400 font-medium max-w-lg">Discover the newest additions to our curated portfolio of exceptional homes.</p>
+</div>
+<button class="px-6 py-3 rounded-xl border-2 border-primary/20 text-primary font-bold hover:bg-primary hover:text-white transition-all flex items-center gap-2 group">
+            View All Properties
+            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-white dark:bg-slate-900 rounded-[2rem] overflow-hidden custom-shadow border border-primary/5 flex flex-col group hover:-translate-y-2 transition-all duration-300">
+<div class="relative h-64 overflow-hidden">
+<img alt="Modern Family Home" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTcKR8hM-rllk9n4fDVAv1yZ0s2dCnqZmdgZvVqDvhARcCMehqe5vH6Y2_43yo92RdWGBXCGsMZkmqDHfXNIMtrkA5QZS6nwsXcn-bE7trWl7VuzuezBG-02nJWcoagBvUnfZ06_O__rUF5g2sckccAsGEv36SvQWeAO4KPtuvp1g-FOkNg6fc3O8PQ9QxEKKa0AThg1rtnTHzSlCGuJ0IQgihrGluBrtYUebb7N3tOufK1fzr6XUjDyNmSIl5--x1LCNjD9nEF18"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-white/95 backdrop-blur-md text-primary px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider shadow-sm">Featured</span>
+<span class="bg-secondary/95 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider shadow-sm">For Sale</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-xl font-bold text-earth dark:text-white mb-2">Parkview Residences</h3>
+<div class="flex items-start gap-2 mb-4">
+<span class="material-symbols-outlined text-secondary text-xl mt-0.5">location_on</span>
+<p class="text-sm text-earth/60 dark:text-slate-400 font-medium">124 Maple Avenue, Green District</p>
+</div>
+<div class="grid grid-cols-3 gap-2 py-4 border-t border-earth/5 dark:border-white/5 mb-4">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-primary/70 mb-1">bed</span>
+<span class="text-xs font-bold text-earth dark:text-slate-300">3 Beds</span>
+</div>
+<div class="flex flex-col items-center border-l border-earth/10 dark:border-white/10">
+<span class="material-symbols-outlined text-primary/70 mb-1">bathtub</span>
+<span class="text-xs font-bold text-earth dark:text-slate-300">2 Baths</span>
+</div>
+<div class="flex flex-col items-center border-l border-earth/10 dark:border-white/10">
+<span class="material-symbols-outlined text-primary/70 mb-1">square_foot</span>
+<span class="text-xs font-bold text-earth dark:text-slate-300">1,200 sqft</span>
+</div>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<p class="text-2xl font-black text-earth dark:text-white">₹ 2.3 Cr</p>
+<button class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">arrow_outward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-[2rem] overflow-hidden custom-shadow border border-primary/5 flex flex-col group hover:-translate-y-2 transition-all duration-300">
+<div class="relative h-64 overflow-hidden">
+<img alt="Luxury Apartment" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuYEXj-i7PhFEfcbTeHMM3JMmYpiLkoWs898M2vjfQ-FbDZlaxdiGM36O7FHKUvyGd7dgn9vtDDmMyX5fR0aVy075mfAqWPyC1TjCq8j0vdz6obAme6bfCZ68HDSc3BgNYScHu3i9ReR5DwC1wQCJ9cXUJs3llPLUkDt97o8G2wY4yY3cvc296_paXHS5GwQicdWAF1WWgKEVXNe1nLzspwzbHOhVBBDE2H5nqyAKYjo-Lq7ZlOrc3tzJnvVQ27lHMQSLVOXpvDDM"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-white/95 backdrop-blur-md text-primary px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider shadow-sm">New</span>
+<span class="bg-secondary/95 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider shadow-sm">For Sale</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-xl font-bold text-earth dark:text-white mb-2">Skyline Loft</h3>
+<div class="flex items-start gap-2 mb-4">
+<span class="material-symbols-outlined text-secondary text-xl mt-0.5">location_on</span>
+<p class="text-sm text-earth/60 dark:text-slate-400 font-medium">550 Central Plaza, Downtown</p>
+</div>
+<div class="grid grid-cols-3 gap-2 py-4 border-t border-earth/5 dark:border-white/5 mb-4">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-primary/70 mb-1">bed</span>
+<span class="text-xs font-bold text-earth dark:text-slate-300">2 Beds</span>
+</div>
+<div class="flex flex-col items-center border-l border-earth/10 dark:border-white/10">
+<span class="material-symbols-outlined text-primary/70 mb-1">bathtub</span>
+<span class="text-xs font-bold text-earth dark:text-slate-300">2 Baths</span>
+</div>
+<div class="flex flex-col items-center border-l border-earth/10 dark:border-white/10">
+<span class="material-symbols-outlined text-primary/70 mb-1">square_foot</span>
+<span class="text-xs font-bold text-earth dark:text-slate-300">950 sqft</span>
+</div>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<p class="text-2xl font-black text-earth dark:text-white">₹ 1.8 Cr</p>
+<button class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">arrow_outward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-[2rem] overflow-hidden custom-shadow border border-primary/5 flex flex-col group hover:-translate-y-2 transition-all duration-300">
+<div class="relative h-64 overflow-hidden">
+<img alt="Suburban Villa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOa8d7BN6OttSwmAPIztKImxQB8rgSgZYGotKIb-PTro-Y-N_Do7h_x2iWE_h0WLLHCppjDWHEsbRUVsHe3LWoX1ibEgUxO6e3BJmUcSIOUYE2HPeQjRqHpiE4pXoIKzksZNNJNiVy9X3GZpmgLKJOfR2zCjIM3YamZ0z8dDR1m5of0KB162a_iq82d296NGc08KsggmcsDm6ysjyybBSgm5wpA6awrhJegXswdR2V83AFjzVIpcUqdr_Co6viBSAL4TZUZWB7uzo"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-secondary/95 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider shadow-sm">Hot Deal</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-xl font-bold text-earth dark:text-white mb-2">Garden Villa Estate</h3>
+<div class="flex items-start gap-2 mb-4">
+<span class="material-symbols-outlined text-secondary text-xl mt-0.5">location_on</span>
+<p class="text-sm text-earth/60 dark:text-slate-400 font-medium">88 Oakwood Drive, Suburbs</p>
+</div>
+<div class="grid grid-cols-3 gap-2 py-4 border-t border-earth/5 dark:border-white/5 mb-4">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-primary/70 mb-1">bed</span>
+<span class="text-xs font-bold text-earth dark:text-slate-300">5 Beds</span>
+</div>
+<div class="flex flex-col items-center border-l border-earth/10 dark:border-white/10">
+<span class="material-symbols-outlined text-primary/70 mb-1">bathtub</span>
+<span class="text-xs font-bold text-earth dark:text-slate-300">4 Baths</span>
+</div>
+<div class="flex flex-col items-center border-l border-earth/10 dark:border-white/10">
+<span class="material-symbols-outlined text-primary/70 mb-1">square_foot</span>
+<span class="text-xs font-bold text-earth dark:text-slate-300">3,500 sqft</span>
+</div>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<p class="text-2xl font-black text-earth dark:text-white">₹ 4.5 Cr</p>
+<button class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">arrow_outward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-cream dark:bg-slate-900/50 py-24 border-y border-primary/5">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<h2 class="text-4xl md:text-5xl font-extrabold text-earth dark:text-white mb-6">Our <span class="text-primary italic font-light">Services</span></h2>
+<p class="text-earth/60 dark:text-slate-400 font-medium">We provide a comprehensive range of real estate services to meet all your needs under one roof.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-10">
+<div class="bg-white dark:bg-slate-900 p-10 rounded-[2.5rem] shadow-xl border border-primary/5 hover:border-primary/20 transition-all text-center group">
+<div class="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-primary text-4xl">home_work</span>
+</div>
+<h3 class="text-2xl font-bold text-earth dark:text-white mb-4">Buy a Home</h3>
+<p class="text-earth/60 dark:text-slate-400 leading-relaxed">Find your dream home with our immersive photo experience and the most listings, including things you won't find anywhere else.</p>
+<button class="mt-8 text-secondary font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 group-hover:gap-3 transition-all">
+                    Find a Home <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+<div class="bg-white dark:bg-slate-900 p-10 rounded-[2.5rem] shadow-xl border border-primary/5 hover:border-primary/20 transition-all text-center group">
+<div class="w-20 h-20 bg-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-secondary text-4xl">real_estate_agent</span>
+</div>
+<h3 class="text-2xl font-bold text-earth dark:text-white mb-4">Sell a Home</h3>
+<p class="text-earth/60 dark:text-slate-400 leading-relaxed">We sell your home at the best market price and very quickly as well. We have thousands of buyers waiting for a deal.</p>
+<button class="mt-8 text-secondary font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 group-hover:gap-3 transition-all">
+                    See Options <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+<div class="bg-white dark:bg-slate-900 p-10 rounded-[2.5rem] shadow-xl border border-primary/5 hover:border-primary/20 transition-all text-center group">
+<div class="w-20 h-20 bg-sage/10 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-sage text-4xl">manage_accounts</span>
+</div>
+<h3 class="text-2xl font-bold text-earth dark:text-white mb-4">Property Management</h3>
+<p class="text-earth/60 dark:text-slate-400 leading-relaxed">We take care of your property so you don't have to. From tenant screening to maintenance, we handle it all.</p>
+<button class="mt-8 text-secondary font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 group-hover:gap-3 transition-all">
+                    Learn More <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="max-w-7xl mx-auto px-6 py-24">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-extrabold text-earth dark:text-white mb-6">Contact <span class="text-secondary italic font-light">Us</span></h2>
+<p class="text-earth/60 dark:text-slate-400 font-medium max-w-lg mx-auto">Ready to start your real estate journey? Get in touch with our expert team today.</p>
+</div>
+<div class="grid lg:grid-cols-2 gap-12 bg-white dark:bg-slate-900 p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-primary/5">
+<div class="flex flex-col">
+<h3 class="text-2xl font-bold text-earth dark:text-white mb-6">Send us a Message</h3>
+<form class="space-y-6">
+<div>
+<label class="block text-sm font-bold text-earth/70 dark:text-slate-300 mb-2 uppercase tracking-wide">Name</label>
+<input class="w-full px-6 py-4 rounded-xl bg-cream dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary text-earth dark:text-white placeholder-earth/40 dark:placeholder-slate-500" placeholder="Your full name" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-bold text-earth/70 dark:text-slate-300 mb-2 uppercase tracking-wide">Email</label>
+<input class="w-full px-6 py-4 rounded-xl bg-cream dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary text-earth dark:text-white placeholder-earth/40 dark:placeholder-slate-500" placeholder="Your email address" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-bold text-earth/70 dark:text-slate-300 mb-2 uppercase tracking-wide">Message</label>
+<textarea class="w-full px-6 py-4 rounded-xl bg-cream dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary text-earth dark:text-white placeholder-earth/40 dark:placeholder-slate-500 h-32 resize-none" placeholder="Tell us about your property needs..."></textarea>
+</div>
+<button class="w-full py-4 rounded-xl bg-earth text-white font-bold text-lg hover:bg-black transition-all shadow-lg flex items-center justify-center gap-2 group">
+                        Send Message
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">send</span>
+</button>
+</form>
+</div>
+<div class="bg-cream dark:bg-slate-800/50 rounded-2xl p-8 md:p-12 flex flex-col justify-between h-full">
+<div>
+<h3 class="text-2xl font-bold text-earth dark:text-white mb-8">Contact Information</h3>
+<div class="space-y-8">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-2xl">location_on</span>
+</div>
+<div>
+<h4 class="font-bold text-earth dark:text-white mb-1">Our Office</h4>
+<p class="text-earth/70 dark:text-slate-400 text-sm leading-relaxed">123 Real Estate Boulevard,<br/>Financial District, NY 10005</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-2xl">phone</span>
+</div>
+<div>
+<h4 class="font-bold text-earth dark:text-white mb-1">Phone &amp; WhatsApp</h4>
+<p class="text-earth/70 dark:text-slate-400 text-sm mb-3">+1 (555) 123-4567</p>
+<button class="px-5 py-2 rounded-lg bg-[#25D366] text-white text-sm font-bold flex items-center gap-2 hover:bg-[#128C7E] transition-colors shadow-sm w-fit">
+<span class="material-symbols-outlined text-lg">chat</span>
+                                    Chat on WhatsApp
+                                </button>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-2xl">badge</span>
+</div>
+<div>
+<h4 class="font-bold text-earth dark:text-white mb-1">License Information</h4>
+<p class="text-earth/70 dark:text-slate-400 text-sm font-mono bg-white dark:bg-slate-900 px-3 py-1 rounded border border-earth/10 dark:border-white/10 inline-block">CRECI: 293146-F</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-earth/10 dark:border-white/10">
+<div class="flex items-center gap-2 text-earth/60 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span>Mon - Fri: 9:00 AM - 6:00 PM</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="py-24 bg-earth text-white border-t border-white/10">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-center gap-12">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-white/10 flex items-center justify-center rounded-2xl backdrop-blur-sm border border-white/20">
+<span class="material-symbols-outlined text-white text-3xl font-bold">home</span>
+</div>
+<h2 class="text-3xl font-black tracking-tight text-white">Real Estate</h2>
+</div>
+<p class="text-xs text-white/60 font-black uppercase tracking-[0.2em]">Professional Brokerage Services</p>
+</div>
+<div class="flex flex-wrap justify-center md:justify-end gap-x-12 gap-y-6 text-sm font-bold uppercase tracking-widest text-white/70">
+<a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-white transition-colors" href="#">Contact Us</a>
+</div>
+</div>
+<div class="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-[11px] text-white/40 font-bold uppercase tracking-widest">© 2024 Real Estate Brokerage. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/20 flex items-center justify-center transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined text-white/80 text-xl">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/20 flex items-center justify-center transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined text-white/80 text-xl">share</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/20 flex items-center justify-center transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined text-white/80 text-xl">mail</span>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<button class="fixed bottom-8 right-8 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-primary/10 flex items-center justify-center text-primary hover:scale-110 active:scale-95 transition-all z-50 group" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined dark:hidden text-3xl">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block text-3xl">light_mode</span>
+</button>
+</body></html>

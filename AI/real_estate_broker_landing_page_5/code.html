@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Investor &amp; Partner Management Dashboard - Logistics Portal</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#5D6D4D",
+                        secondary: "#E29578",
+                        cream: "#FDFBF7",
+                        sage: "#8A9A5B",
+                        earth: "#4A3728",
+                        "earth-dark": "#3a2b20",
+                        "background-light": "#FDFBF7",
+                        "background-dark": "#1A1C14",
+                    },
+                    fontFamily: {
+                        display: ["Plus Jakarta Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem",
+                        'xl': '1.25rem',
+                        '2xl': '2rem',
+                        '3xl': '3.5rem',
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .custom-shadow {
+            box-shadow: 0 20px 50px rgba(74, 55, 40, 0.08);
+        }
+        .lifestyle-gradient {
+            background: linear-gradient(to right, rgba(253, 251, 247, 1) 0%, rgba(253, 251, 247, 0.9) 40%, rgba(253, 251, 247, 0) 100%);
+        }
+        .dark .lifestyle-gradient {
+            background: linear-gradient(to right, rgba(26, 28, 20, 1) 0%, rgba(26, 28, 20, 0.9) 40%, rgba(26, 28, 20, 0) 100%);
+        }
+        .roadmap-line {
+            background: linear-gradient(to bottom, transparent, #E29578, transparent);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-earth dark:text-slate-100 transition-colors duration-300">
+<div class="flex min-h-screen">
+<aside class="w-64 bg-earth text-white border-r border-earth-dark/20 flex flex-col fixed inset-y-0 z-50">
+<div class="p-6 border-b border-white/10">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-white/10 flex items-center justify-center rounded-lg rotate-3">
+<span class="material-symbols-outlined text-white text-xl -rotate-3">rocket_launch</span>
+</div>
+<div class="flex flex-col leading-none">
+<span class="font-extrabold text-sm tracking-tight text-white uppercase">Logistics Portal</span>
+<span class="text-[8px] font-bold text-secondary tracking-[0.2em] uppercase">Master Admin</span>
+</div>
+</div>
+</div>
+<nav class="flex-1 p-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+                Overview
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-bold text-white bg-white/10 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+                Partner Investors
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-xl">domain</span>
+                Managed Properties
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-xl">analytics</span>
+                Lead Insights
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-xl">timeline</span>
+                Future Roadmap
+            </a>
+</nav>
+<div class="p-4 border-t border-white/10">
+<div class="bg-white/5 rounded-2xl p-4">
+<p class="text-[10px] font-black uppercase tracking-widest text-secondary mb-2">System Status</p>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-xs font-medium text-white/70">Nodes Active</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 ml-64">
+<header class="relative min-h-[500px] w-full overflow-hidden flex items-center bg-cream dark:bg-slate-900 border-b border-primary/5">
+<div class="relative z-10 w-full max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-12 items-center">
+<div class="max-w-xl">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-6">
+<span class="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Administrative Core</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-extrabold text-earth dark:text-white leading-[1.1] mb-6">
+                        Investor &amp; Partner <br/>
+<span class="text-primary italic font-light">Management Hub</span>
+</h1>
+<p class="text-earth/70 dark:text-white/70 text-lg mb-8 leading-relaxed font-medium">
+                        Strategically oversee your global logistics ecosystem. Monitor partner performance, onboard new visionaries, and manage the infrastructure of tomorrow.
+                    </p>
+<div class="flex gap-4">
+<button class="px-6 py-3 bg-earth text-white rounded-xl font-bold hover:shadow-xl transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">person_add</span>
+                            Invite New Investor
+                        </button>
+<button class="px-6 py-3 border border-earth/20 text-earth dark:text-white dark:border-white/20 rounded-xl font-bold hover:bg-earth/5 transition-all">
+                            Export Network Data
+                        </button>
+</div>
+</div>
+<div class="relative h-[400px] rounded-3xl overflow-hidden shadow-2xl">
+<img alt="Sustainable smart logistics hub conceptual 3D render" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTcKR8hM-rllk9n4fDVAv1yZ0s2dCnqZmdgZvVqDvhARcCMehqe5vH6Y2_43yo92RdWGBXCGsMZkmqDHfXNIMtrkA5QZS6nwsXcn-bE7trWl7VuzuezBG-02nJWcoagBvUnfZ06_O__rUF5g2sckccAsGEv36SvQWeAO4KPtuvp1g-FOkNg6fc3O8PQ9QxEKKa0AThg1rtnTHzSlCGuJ0IQgihrGluBrtYUebb7N3tOufK1fzr6XUjDyNmSIl5--x1LCNjD9nEF18"/>
+<div class="absolute inset-0 bg-gradient-to-t from-earth/60 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
+<p class="text-white font-bold text-sm">Conceptual Prototype: Sector 7 Smart Hub</p>
+<p class="text-white/60 text-[10px] uppercase tracking-widest font-black">Coming 2026</p>
+</div>
+</div>
+</div>
+</header>
+<section class="p-8 max-w-7xl mx-auto">
+<div class="bg-white dark:bg-slate-900 rounded-3xl shadow-sm border border-primary/10 overflow-hidden">
+<div class="p-6 border-b border-primary/5 flex items-center justify-between">
+<div>
+<h2 class="text-xl font-bold text-earth dark:text-white">Active Partner Investors</h2>
+<p class="text-sm text-earth/50 dark:text-white/50">Managing 14 Institutional Partnerships</p>
+</div>
+<div class="flex gap-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-earth/30 text-xl">search</span>
+<input class="pl-10 pr-4 py-2 bg-cream dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Filter partners..." type="text"/>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-cream/50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40">Investor Company</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40">Properties</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40">Active Leads</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40">Network Status</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr class="hover:bg-cream/20 dark:hover:bg-slate-800/20 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-bold">NV</div>
+<div>
+<p class="font-bold text-sm">NexGen Ventures</p>
+<p class="text-[10px] text-earth/50 dark:text-white/50 uppercase tracking-widest">Global Logistics Tier 1</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="font-bold text-sm">12 Facilities</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="font-bold text-sm">156</span>
+<span class="text-[10px] text-green-500 font-bold bg-green-500/10 px-1.5 py-0.5 rounded">+12%</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-earth/20 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+<span class="ml-3 text-xs font-bold text-primary">ACTIVE</span>
+</label>
+</td>
+<td class="px-6 py-5">
+<button class="text-earth/40 hover:text-earth dark:text-white/40 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">settings_suggest</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-cream/20 dark:hover:bg-slate-800/20 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary font-bold">PI</div>
+<div>
+<p class="font-bold text-sm">Pioneer Infra</p>
+<p class="text-[10px] text-earth/50 dark:text-white/50 uppercase tracking-widest">Sustainable REIT</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="font-bold text-sm">08 Facilities</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="font-bold text-sm">84</span>
+<span class="text-[10px] text-earth/50 font-bold bg-earth/10 px-1.5 py-0.5 rounded">STABLE</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-earth/20 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+<span class="ml-3 text-xs font-bold text-primary">ACTIVE</span>
+</label>
+</td>
+<td class="px-6 py-5">
+<button class="text-earth/40 hover:text-earth dark:text-white/40 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">settings_suggest</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section class="px-8 pb-32 max-w-7xl mx-auto">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-extrabold text-earth dark:text-white">Global Asset Oversight</h3>
+<div class="flex items-center gap-4 text-sm font-bold">
+<span class="text-earth/50">Viewing: All Investors</span>
+<span class="material-symbols-outlined text-earth/30">filter_list</span>
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="bg-white dark:bg-slate-900 rounded-[2.5rem] overflow-hidden shadow-sm border border-primary/5 flex">
+<div class="w-1/3 relative">
+<img alt="Advanced autonomous logistics node" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvGyGFgcHLM3-ftoekoKy2glBv00OtBj2STSGiqZWZjtFesJpDQU30Z5OWMvQXUcLXsJoZE89Xt2Iob-YZBONI3OWH1n4OpJlXnMT-LRl71wJzcEgysiXMYHXMBZaMAzfcNEiaSLaTNwGeOJWg6buJ_dxpkFQQS8xEEPO3cxH_w7C_vfdIouuVLv_-rFzyxDenO3zBa17B3jLTKJRfYMm8fHzHEwQQg1dOBXjNFdoRFn-1UwLo4ANs7S_Cxo4pMpvdkBOlmT9ZmiE"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest text-primary flex items-center gap-1 border border-primary/10">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                            Verified Hub
+                        </div>
+</div>
+<div class="w-2/3 p-6 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-extrabold text-lg">São Paulo Smart Node Alpha</h4>
+<span class="material-symbols-outlined text-earth/20 hover:text-primary transition-colors cursor-pointer">edit_square</span>
+</div>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<span class="text-xs text-earth/60 dark:text-white/60">Industrial Ring Road, SP</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[9px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40 mb-1">Managed By</span>
+<div class="flex items-center gap-2 bg-cream dark:bg-slate-800 px-3 py-1 rounded-lg border border-primary/5">
+<span class="w-4 h-4 rounded bg-primary/20 flex items-center justify-center text-[8px] font-bold text-primary">NV</span>
+<span class="text-[10px] font-bold">NexGen Ventures</span>
+</div>
+</div>
+<button class="p-2.5 rounded-xl bg-earth/5 hover:bg-earth/10 transition-colors">
+<span class="material-symbols-outlined text-xl">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-[2.5rem] overflow-hidden shadow-sm border border-primary/5 flex">
+<div class="w-1/3 relative">
+<img alt="Strategic technological vision" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTcKR8hM-rllk9n4fDVAv1yZ0s2dCnqZmdgZvVqDvhARcCMehqe5vH6Y2_43yo92RdWGBXCGsMZkmqDHfXNIMtrkA5QZS6nwsXcn-bE7trWl7VuzuezBG-02nJWcoagBvUnfZ06_O__rUF5g2sckccAsGEv36SvQWeAO4KPtuvp1g-FOkNg6fc3O8PQ9QxEKKa0AThg1rtnTHzSlCGuJ0IQgihrGluBrtYUebb7N3tOufK1fzr6XUjDyNmSIl5--x1LCNjD9nEF18"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest text-secondary flex items-center gap-1 border border-secondary/10">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                            Future Site
+                        </div>
+</div>
+<div class="w-2/3 p-6 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-extrabold text-lg">Curitiba Automation Corridor</h4>
+<span class="material-symbols-outlined text-earth/20 hover:text-primary transition-colors cursor-pointer">edit_square</span>
+</div>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<span class="text-xs text-earth/60 dark:text-white/60">Southern Tech Belt, PR</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[9px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40 mb-1">Managed By</span>
+<div class="flex items-center gap-2 bg-cream dark:bg-slate-800 px-3 py-1 rounded-lg border border-primary/5">
+<span class="w-4 h-4 rounded bg-secondary/20 flex items-center justify-center text-[8px] font-bold text-secondary">PI</span>
+<span class="text-[10px] font-bold">Pioneer Infra</span>
+</div>
+</div>
+<button class="p-2.5 rounded-xl bg-earth/5 hover:bg-earth/10 transition-colors">
+<span class="material-symbols-outlined text-xl">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-earth dark:bg-slate-900 py-32 overflow-hidden relative">
+<div class="absolute top-0 right-0 w-1/3 h-full bg-white/[0.02] -skew-x-12"></div>
+<div class="max-w-4xl mx-auto px-8 relative z-10">
+<div class="text-center mb-24">
+<h2 class="text-[11px] font-black uppercase tracking-[0.3em] text-secondary mb-4">Strategic Vision</h2>
+<h3 class="text-4xl md:text-5xl font-extrabold text-white">Future Milestones</h3>
+<p class="mt-6 text-white/60 text-lg">Pioneering the next decade of industry leadership through innovation and foresight.</p>
+</div>
+<div class="relative">
+<div class="absolute left-12 top-0 bottom-0 w-[2px] roadmap-line"></div>
+<div class="space-y-16">
+<div class="relative flex gap-12 group">
+<div class="flex-shrink-0 w-24 h-24 rounded-3xl bg-earth border-4 border-secondary flex items-center justify-center z-20 shadow-2xl group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-4xl">eco</span>
+</div>
+<div class="flex-grow pt-4">
+<div class="flex items-center gap-4 mb-2">
+<span class="text-3xl font-black text-secondary/30">2025</span>
+<h4 class="text-2xl font-extrabold text-white">Net-Zero Protocol</h4>
+</div>
+<div class="bg-white/5 backdrop-blur-sm p-6 rounded-3xl border border-white/10">
+<p class="text-sm font-bold uppercase tracking-widest text-secondary mb-3">Phase One: Energy Autonomy</p>
+<p class="text-white/70 leading-relaxed">Implementing proprietary solar-hydrogen hybrid systems across all portfolio nodes, achieving operational carbon neutrality for all master-managed facilities.</p>
+</div>
+</div>
+</div>
+<div class="relative flex gap-12 group">
+<div class="flex-shrink-0 w-24 h-24 rounded-3xl bg-earth border-4 border-secondary flex items-center justify-center z-20 shadow-2xl group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-4xl">smart_toy</span>
+</div>
+<div class="flex-grow pt-4">
+<div class="flex items-center gap-4 mb-2">
+<span class="text-3xl font-black text-secondary/30">2027</span>
+<h4 class="text-2xl font-extrabold text-white">Autonomous Core</h4>
+</div>
+<div class="bg-white/5 backdrop-blur-sm p-6 rounded-3xl border border-white/10">
+<p class="text-sm font-bold uppercase tracking-widest text-secondary mb-3">Phase Two: Robotics Ready</p>
+<p class="text-white/70 leading-relaxed">Full integration of end-to-end AI management. Every facility will support L5 autonomous docking and synchronized robotic sorting as a base infrastructure standard.</p>
+</div>
+</div>
+</div>
+<div class="relative flex gap-12 group">
+<div class="flex-shrink-0 w-24 h-24 rounded-3xl bg-earth border-4 border-secondary flex items-center justify-center z-20 shadow-2xl group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-4xl">public</span>
+</div>
+<div class="flex-grow pt-4">
+<div class="flex items-center gap-4 mb-2">
+<span class="text-3xl font-black text-secondary/30">2030</span>
+<h4 class="text-2xl font-extrabold text-white">Continental Mesh</h4>
+</div>
+<div class="bg-white/5 backdrop-blur-sm p-6 rounded-3xl border border-white/10">
+<p class="text-sm font-bold uppercase tracking-widest text-secondary mb-3">Phase Three: Global Connectivity</p>
+<p class="text-white/70 leading-relaxed">Establishment of the Pan-American Smart Corridor. A unified real estate network connecting 50+ hyper-hubs through a single proprietary digital twin interface.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="py-16 bg-cream dark:bg-background-dark border-t border-primary/5">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-earth flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-white text-lg">rocket_launch</span>
+</div>
+<span class="font-extrabold text-sm tracking-tight text-earth dark:text-white uppercase">Logistics Portal Admin</span>
+</div>
+<p class="text-[10px] text-earth/40 font-bold uppercase tracking-[0.2em]">© 2025 Logistics Visionary Portal. Master Administration Node.</p>
+<div class="flex items-center gap-6">
+<a class="text-[10px] font-black uppercase tracking-widest text-earth/50 hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="text-[10px] font-black uppercase tracking-widest text-earth/50 hover:text-primary transition-colors" href="#">Security Protocol</a>
+<div class="h-4 w-[1px] bg-earth/10"></div>
+<span class="text-[10px] font-mono font-bold text-primary">v2.4.0-STABLE</span>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-earth text-white rounded-2xl shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 group border border-white/10" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined dark:hidden text-2xl">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block text-2xl">light_mode</span>
+</button>
+
+</body></html>

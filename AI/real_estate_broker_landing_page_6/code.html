@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Global Property Management Inventory - Logistics Portal</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#5D6D4D",
+                        secondary: "#E29578",
+                        cream: "#FDFBF7",
+                        sage: "#8A9A5B",
+                        earth: "#4A3728",
+                        "earth-dark": "#3a2b20",
+                        "background-light": "#FDFBF7",
+                        "background-dark": "#1A1C14",
+                    },
+                    fontFamily: {
+                        display: ["Plus Jakarta Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                        '3xl': '2.5rem',
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .custom-shadow {
+            box-shadow: 0 10px 30px rgba(74, 55, 40, 0.05);
+        }
+        .table-row-hover:hover {
+            background-color: rgba(93, 109, 77, 0.04);
+        }
+        .dark .table-row-hover:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+        .data-density-compact td {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-[#F8F9FA] dark:bg-background-dark text-earth dark:text-slate-100 transition-colors duration-300">
+<div class="flex min-h-screen">
+<aside class="w-64 bg-earth text-white border-r border-earth-dark/20 flex flex-col fixed inset-y-0 z-50">
+<div class="p-6 border-b border-white/10">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-white/10 flex items-center justify-center rounded-lg rotate-3">
+<span class="material-symbols-outlined text-white text-xl -rotate-3">rocket_launch</span>
+</div>
+<div class="flex flex-col leading-none">
+<span class="font-extrabold text-sm tracking-tight text-white uppercase text-nowrap">Logistics Portal</span>
+<span class="text-[8px] font-bold text-secondary tracking-[0.2em] uppercase">Master Admin</span>
+</div>
+</div>
+</div>
+<nav class="flex-1 p-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+                Overview
+            </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-lg">group</span>
+                Partner Investors
+            </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-white bg-white/10 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-lg">domain</span>
+                Global Inventory
+            </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-lg">analytics</span>
+                Lead Insights
+            </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-white/50 hover:bg-white/5 hover:text-white rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+                System Config
+            </a>
+</nav>
+<div class="p-4 border-t border-white/10">
+<div class="bg-white/5 rounded-2xl p-4">
+<p class="text-[9px] font-black uppercase tracking-widest text-secondary mb-2">Network Health</p>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-[10px] font-medium text-white/70">98.2% Operations</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 ml-64">
+<header class="bg-white dark:bg-slate-900 border-b border-earth/5 px-8 py-8">
+<div class="max-w-full mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-primary/10 border border-primary/20 mb-2">
+<span class="text-[9px] font-black uppercase tracking-widest text-primary">Master Control</span>
+</div>
+<h1 class="text-2xl font-extrabold text-earth dark:text-white">Global Property Inventory</h1>
+<p class="text-earth/50 dark:text-white/50 text-xs mt-0.5">Manage and audit all listed assets across the B2B network.</p>
+</div>
+<button class="flex items-center justify-center gap-2 bg-earth hover:bg-earth-dark text-white px-5 py-2.5 rounded-lg font-bold shadow-lg shadow-earth/10 transition-all text-sm">
+<span class="material-symbols-outlined text-lg">add_business</span>
+                    Create New Property
+                </button>
+</div>
+</header>
+<section class="p-8 max-w-full mx-auto">
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-earth/5 shadow-sm p-4 mb-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="relative">
+<label class="block text-[9px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40 mb-1.5">Search Properties</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-earth/30 text-lg">search</span>
+<input class="w-full pl-9 pr-3 py-2 bg-background-light dark:bg-slate-800 border-none rounded-lg text-xs focus:ring-1 focus:ring-primary" placeholder="Name or ID..." type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-[9px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40 mb-1.5">Investor</label>
+<select class="w-full py-2 bg-background-light dark:bg-slate-800 border-none rounded-lg text-xs focus:ring-1 focus:ring-primary">
+<option>All Investors</option>
+<option>NexGen Ventures</option>
+<option>Pioneer Infra</option>
+</select>
+</div>
+<div>
+<label class="block text-[9px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40 mb-1.5">Status</label>
+<select class="w-full py-2 bg-background-light dark:bg-slate-800 border-none rounded-lg text-xs focus:ring-1 focus:ring-primary">
+<option>All Status</option>
+<option>Active</option>
+<option>Draft</option>
+<option>Sold</option>
+</select>
+</div>
+<div>
+<label class="block text-[9px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40 mb-1.5">Property Type</label>
+<select class="w-full py-2 bg-background-light dark:bg-slate-800 border-none rounded-lg text-xs focus:ring-1 focus:ring-primary">
+<option>All Types</option>
+<option>Warehouse</option>
+<option>Commercial</option>
+</select>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-earth/5 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left data-density-compact">
+<thead>
+<tr class="bg-background-light/50 dark:bg-slate-800/50 border-b border-earth/5">
+<th class="px-5 py-3 text-[9px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40 w-16">Image</th>
+<th class="px-5 py-3 text-[9px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40">Property Details</th>
+<th class="px-5 py-3 text-[9px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40">Location</th>
+<th class="px-5 py-3 text-[9px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40">Owner</th>
+<th class="px-5 py-3 text-[9px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40 w-28">Status</th>
+<th class="px-5 py-3 text-[9px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40 text-right w-32">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-earth/5">
+<tr class="table-row-hover transition-colors">
+<td class="px-5">
+<div class="w-12 h-9 rounded bg-earth/5 overflow-hidden border border-earth/5">
+<img alt="Property" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTcKR8hM-rllk9n4fDVAv1yZ0s2dCnqZmdgZvVqDvhARcCMehqe5vH6Y2_43yo92RdWGBXCGsMZkmqDHfXNIMtrkA5QZS6nwsXcn-bE7trWl7VuzuezBG-02nJWcoagBvUnfZ06_O__rUF5g2sckccAsGEv36SvQWeAO4KPtuvp1g-FOkNg6fc3O8PQ9QxEKKa0AThg1rtnTHzSlCGuJ0IQgihrGluBrtYUebb7N3tOufK1fzr6XUjDyNmSIl5--x1LCNjD9nEF18"/>
+</div>
+</td>
+<td class="px-5">
+<div class="flex flex-col">
+<span class="font-bold text-[13px] leading-tight text-earth dark:text-white">São Paulo Smart Node Alpha</span>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-[10px] font-semibold text-primary uppercase">Galpão</span>
+<span class="text-[10px] text-earth/30">|</span>
+<span class="text-[10px] font-mono text-earth/40 dark:text-white/40">LOG-SP-001</span>
+<span class="text-[10px] text-earth/30">|</span>
+<span class="text-[10px] font-bold text-earth/60 dark:text-white/70">R$ 14.5M</span>
+</div>
+</div>
+</td>
+<td class="px-5">
+<div class="flex flex-col leading-tight">
+<span class="text-xs font-medium">São Paulo</span>
+<span class="text-[9px] text-earth/40 font-bold uppercase tracking-wider">SP, Brazil</span>
+</div>
+</td>
+<td class="px-5">
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded bg-primary/20 flex items-center justify-center text-[7px] font-bold text-primary">NV</div>
+<span class="text-xs font-medium text-earth/80 dark:text-white/80">NexGen Ventures</span>
+</div>
+</td>
+<td class="px-5">
+<div class="flex items-center gap-1.5 text-green-600 dark:text-green-400">
+<span class="w-1 h-1 rounded-full bg-current"></span>
+<span class="text-[9px] font-black uppercase tracking-widest">Active</span>
+</div>
+</td>
+<td class="px-5 text-right">
+<div class="flex items-center justify-end bg-earth/5 rounded-md p-1 inline-flex">
+<button class="p-1 text-earth/40 hover:text-earth dark:hover:text-white transition-colors" title="View">
+<span class="material-symbols-outlined text-lg leading-none">visibility</span>
+</button>
+<button class="p-1 text-earth/40 hover:text-primary transition-colors" title="Edit">
+<span class="material-symbols-outlined text-lg leading-none">edit</span>
+</button>
+<button class="p-1 text-earth/40 hover:text-red-500 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-lg leading-none">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="table-row-hover transition-colors">
+<td class="px-5">
+<div class="w-12 h-9 rounded bg-earth/5 overflow-hidden border border-earth/5">
+<img alt="Property" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvGyGFgcHLM3-ftoekoKy2glBv00OtBj2STSGiqZWZjtFesJpDQU30Z5OWMvQXUcLXsJoZE89Xt2Iob-YZBONI3OWH1n4OpJlXnMT-LRl71wJzcEgysiXMYHXMBZaMAzfcNEiaSLaTNwGeOJWg6buJ_dxpkFQQS8xEEPO3cxH_w7C_vfdIouuVLv_-rFzyxDenO3zBa17B3jLTKJRfYMm8fHzHEwQQg1dOBXjNFdoRFn-1UwLo4ANs7S_Cxo4pMpvdkBOlmT9ZmiE"/>
+</div>
+</td>
+<td class="px-5">
+<div class="flex flex-col">
+<span class="font-bold text-[13px] leading-tight text-earth dark:text-white">Curitiba Tech Corridor</span>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-[10px] font-semibold text-secondary uppercase">Comercial</span>
+<span class="text-[10px] text-earth/30">|</span>
+<span class="text-[10px] font-mono text-earth/40 dark:text-white/40">LOG-PR-042</span>
+<span class="text-[10px] text-earth/30">|</span>
+<span class="text-[10px] font-bold text-earth/60 dark:text-white/70">R$ 8.2M</span>
+</div>
+</div>
+</td>
+<td class="px-5">
+<div class="flex flex-col leading-tight">
+<span class="text-xs font-medium">Curitiba</span>
+<span class="text-[9px] text-earth/40 font-bold uppercase tracking-wider">PR, Brazil</span>
+</div>
+</td>
+<td class="px-5">
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded bg-secondary/20 flex items-center justify-center text-[7px] font-bold text-secondary">PI</div>
+<span class="text-xs font-medium text-earth/80 dark:text-white/80">Pioneer Infra</span>
+</div>
+</td>
+<td class="px-5">
+<div class="flex items-center gap-1.5 text-amber-600 dark:text-amber-400">
+<span class="w-1 h-1 rounded-full bg-current"></span>
+<span class="text-[9px] font-black uppercase tracking-widest">Draft</span>
+</div>
+</td>
+<td class="px-5 text-right">
+<div class="flex items-center justify-end bg-earth/5 rounded-md p-1 inline-flex">
+<button class="p-1 text-earth/40 hover:text-earth dark:hover:text-white transition-colors" title="View">
+<span class="material-symbols-outlined text-lg leading-none">visibility</span>
+</button>
+<button class="p-1 text-earth/40 hover:text-primary transition-colors" title="Edit">
+<span class="material-symbols-outlined text-lg leading-none">edit</span>
+</button>
+<button class="p-1 text-earth/40 hover:text-red-500 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-lg leading-none">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="table-row-hover transition-colors">
+<td class="px-5">
+<div class="w-12 h-9 rounded bg-earth/5 overflow-hidden border border-earth/5 opacity-60">
+<img alt="Property" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTcKR8hM-rllk9n4fDVAv1yZ0s2dCnqZmdgZvVqDvhARcCMehqe5vH6Y2_43yo92RdWGBXCGsMZkmqDHfXNIMtrkA5QZS6nwsXcn-bE7trWl7VuzuezBG-02nJWcoagBvUnfZ06_O__rUF5g2sckccAsGEv36SvQWeAO4KPtuvp1g-FOkNg6fc3O8PQ9QxEKKa0AThg1rtnTHzSlCGuJ0IQgihrGluBrtYUebb7N3tOufK1fzr6XUjDyNmSIl5--x1LCNjD9nEF18"/>
+</div>
+</td>
+<td class="px-5">
+<div class="flex flex-col">
+<span class="font-bold text-[13px] leading-tight text-earth/60 dark:text-white/60">Recife Port Logistics Hub</span>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-[10px] font-semibold text-earth/30 uppercase">Galpão</span>
+<span class="text-[10px] text-earth/30">|</span>
+<span class="text-[10px] font-mono text-earth/40 dark:text-white/40">LOG-PE-012</span>
+<span class="text-[10px] text-earth/30">|</span>
+<span class="text-[10px] font-bold text-earth/60 dark:text-white/70">R$ 22.9M</span>
+</div>
+</div>
+</td>
+<td class="px-5">
+<div class="flex flex-col leading-tight text-earth/50">
+<span class="text-xs font-medium">Recife</span>
+<span class="text-[9px] text-earth/40 font-bold uppercase tracking-wider">PE, Brazil</span>
+</div>
+</td>
+<td class="px-5">
+<div class="flex items-center gap-1.5 opacity-60">
+<div class="w-5 h-5 rounded bg-primary/20 flex items-center justify-center text-[7px] font-bold text-primary">NV</div>
+<span class="text-xs font-medium text-earth/80 dark:text-white/80">NexGen Ventures</span>
+</div>
+</td>
+<td class="px-5">
+<div class="flex items-center gap-1.5 text-earth/40">
+<span class="w-1 h-1 rounded-full bg-current"></span>
+<span class="text-[9px] font-black uppercase tracking-widest">Sold</span>
+</div>
+</td>
+<td class="px-5 text-right">
+<div class="flex items-center justify-end bg-earth/5 rounded-md p-1 inline-flex">
+<button class="p-1 text-earth/40 hover:text-earth dark:hover:text-white transition-colors" title="View">
+<span class="material-symbols-outlined text-lg leading-none">visibility</span>
+</button>
+<button class="p-1 text-earth/40 hover:text-primary transition-colors" title="Edit">
+<span class="material-symbols-outlined text-lg leading-none">edit</span>
+</button>
+<button class="p-1 text-earth/40 hover:text-red-500 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-lg leading-none">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-5 py-3 bg-background-light/30 dark:bg-slate-800/30 border-t border-earth/5 flex items-center justify-between">
+<p class="text-[10px] font-bold text-earth/40 uppercase tracking-widest">Page 1 of 25 — 245 total</p>
+<div class="flex items-center gap-1.5">
+<button class="p-1.5 rounded border border-earth/10 hover:bg-earth/5 transition-all text-earth/60">
+<span class="material-symbols-outlined text-sm leading-none">chevron_left</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center rounded bg-earth text-white text-[10px] font-bold">1</button>
+<button class="w-7 h-7 flex items-center justify-center rounded border border-earth/10 hover:bg-earth/5 text-[10px] font-bold">2</button>
+<button class="p-1.5 rounded border border-earth/10 hover:bg-earth/5 transition-all text-earth/60">
+<span class="material-symbols-outlined text-sm leading-none">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<footer class="py-10 px-8 border-t border-earth/5 mt-auto">
+<div class="max-w-full mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 bg-earth flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-white text-base">rocket_launch</span>
+</div>
+<span class="font-extrabold text-[11px] tracking-tight text-earth dark:text-white uppercase">Logistics Portal Admin</span>
+</div>
+<p class="text-[9px] text-earth/40 font-bold uppercase tracking-[0.2em]">© 2025 Global Inventory Node. Multi-Tenant Infrastructure.</p>
+<div class="flex items-center gap-6">
+<a class="text-[9px] font-black uppercase tracking-widest text-earth/50 hover:text-primary transition-colors" href="#">Support</a>
+<a class="text-[9px] font-black uppercase tracking-widest text-earth/50 hover:text-primary transition-colors" href="#">API</a>
+<div class="h-3 w-[1px] bg-earth/10"></div>
+<span class="text-[9px] font-mono font-bold text-primary">v2.5.1-L</span>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<button class="fixed bottom-6 right-6 w-12 h-12 bg-earth text-white rounded-xl shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-50 group border border-white/10" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined dark:hidden text-xl">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block text-xl">light_mode</span>
+</button>
+
+</body></html>
