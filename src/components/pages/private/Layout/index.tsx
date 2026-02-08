@@ -1,20 +1,30 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { AdminSidebar } from '@/components/shared/layout/AdminSidebar'
-
-const sidebarLinks = [
-  { href: '/admin/dashboard', label: 'Dashboard', icon: 'analytics', active: true },
-  { href: '/admin/inventory', label: 'Inventory', icon: 'warehouse', active: false },
-  { href: '/admin/partners', label: 'Partners', icon: 'handshake', active: false },
-  { href: '/admin/properties', label: 'Properties', icon: 'domain', active: false },
-  { href: '/admin/settings', label: 'Settings', icon: 'settings', active: false }
-]
 
 interface AdminLayoutProps {
   children: React.ReactNode
 }
 
 export function AdminLayout({ children }: AdminLayoutProps) {
+  const pathname = usePathname()
+
+  const sidebarLinks = [
+    {
+      href: '/admin/dashboard',
+      label: 'Dashboard',
+      icon: 'analytics',
+      active: pathname.startsWith('/admin/dashboard/')
+    },
+    {
+      href: '/admin/properties',
+      label: 'Properties',
+      icon: 'warehouse',
+      active: pathname.startsWith('/admin/properties')
+    }
+  ]
+
   return (
     <div className='min-h-screen bg-cream flex'>
       <AdminSidebar

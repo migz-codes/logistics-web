@@ -62,7 +62,15 @@ export function AdminSidebar({
       </nav>
 
       {/* Logout Button */}
-      <div className='p-4 border-t border-white/10'>
+      <div className='p-4 border-t border-white/10 space-y-2'>
+        <Link
+          href='/'
+          className='w-full text-white/50 hover:text-white rounded-2xl p-4 flex items-center gap-3 transition-all'
+        >
+          <Icon name='arrow_back' size='md' />
+          <span className='text-sm font-medium'>Back to Site</span>
+        </Link>
+
         <Logout />
       </div>
     </aside>

@@ -10,16 +10,14 @@ import { getSupabaseClient } from '@/services/supabase/client'
 
 export default function AdminSigninPage() {
   const supabase = getSupabaseClient()
+
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
   const signInWithEmail = async ({ email, password }: { email: string; password: string }) => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    })
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
 
     if (!error) router.push('/admin/dashboard')
   }

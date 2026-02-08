@@ -45,7 +45,7 @@ export function PropertyEditorPage() {
   }
 
   return (
-    <main className='flex-1 ml-64 p-8'>
+    <main className='flex-1 p-8'>
       <header className='mb-10'>
         <h1 className='text-4xl font-extrabold text-earth flex items-center gap-3'>
           <span className='text-secondary'>{`//`}</span>
