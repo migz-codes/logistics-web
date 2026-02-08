@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { Badge } from '@/components/shared/ui/Badge'
 import { Button } from '@/components/shared/ui/Button'
 import { Icon } from '@/components/shared/ui/Icon'
+import { SearchBar } from './SearchBar'
 
 interface Property {
   id: string
@@ -69,7 +70,9 @@ export function PropertiesSection({ properties = defaultProperties }: Properties
   const t = useTranslations('home.properties')
 
   return (
-    <section className='py-32 px-6'>
+    <section className='py-32 px-6 relative z-10 bg-white'>
+      <SearchBar />
+
       <div className='max-w-7xl mx-auto'>
         <div className='flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6'>
           <div>

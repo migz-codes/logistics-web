@@ -8,7 +8,7 @@ export function SearchBar() {
   const t = useTranslations('home.searchBar')
 
   return (
-    <section className='relative z-40 -mt-16 px-6 max-w-6xl mx-auto'>
+    <div className='relative z-40 -mt-16 px-6 max-w-6xl mx-auto mb-16'>
       <div className='bg-white rounded-[2.5rem] shadow-2xl p-4 flex flex-col lg:flex-row items-stretch gap-2 border border-primary/5'>
         <div className='flex-1 grid grid-cols-1 md:grid-cols-3 items-center'>
           {/* Property Type */}
@@ -89,6 +89,6 @@ export function SearchBar() {
           {t('search')}
         </Button>
       </div>
-    </section>
+    </div>
   )
 }

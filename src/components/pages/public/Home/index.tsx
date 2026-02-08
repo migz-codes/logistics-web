@@ -5,7 +5,6 @@ import { Footer } from '@/components/shared/layout/Footer'
 import { ContactSection } from './ContactSection'
 import { HeroSection } from './HeroSection'
 import { PropertiesSection } from './PropertiesSection'
-import { SearchBar } from './SearchBar'
 import { ServicesSection } from './ServicesSection'
 
 export function Home() {
@@ -22,7 +21,7 @@ export function Home() {
       /> */}
 
       <HeroSection />
-      <SearchBar />
+
       <PropertiesSection />
       <ServicesSection />
       <ContactSection />
