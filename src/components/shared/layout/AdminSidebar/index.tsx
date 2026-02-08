@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Icon } from '@/components/shared/ui/Icon'
-import { cn } from '@/utils/cn'
+import { tw } from '@/utils/tailwind'
 
 interface SidebarLink {
   href: string
@@ -57,7 +57,7 @@ export function AdminSidebar({
           <Link
             key={link.href}
             href={link.href}
-            className={cn(
+            className={tw(
               'flex items-center gap-3 px-4 py-3 text-sm font-bold rounded-xl transition-all',
               link.active
                 ? 'text-white bg-white/10'
@@ -78,7 +78,7 @@ export function AdminSidebar({
           </p>
           <div className='flex items-center gap-2'>
             <span
-              className={cn(
+              className={tw(
                 'w-2 h-2 rounded-full animate-pulse',
                 statusColors[systemStatus as keyof typeof statusColors] || statusColors.operational
               )}

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { cn } from '@/utils/cn'
+import { tw } from '@/utils/tailwind'
 
 interface CardProps {
   children: ReactNode
@@ -25,7 +25,7 @@ export function Card({ children, className, variant = 'default', padding = 'lg' 
   }
 
   return (
-    <div className={cn(baseClasses, variants[variant], paddings[padding], className)}>
+    <div className={tw(baseClasses, variants[variant], paddings[padding], className)}>
       {children}
     </div>
   )

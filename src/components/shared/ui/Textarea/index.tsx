@@ -1,7 +1,7 @@
 'use client'
 
 import type { TextareaHTMLAttributes } from 'react'
-import { cn } from '@/utils/cn'
+import { tw } from '@/utils/tailwind'
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string
@@ -22,7 +22,7 @@ export function Textarea({ label, error, className, id, ...props }: TextareaProp
       )}
       <textarea
         id={id}
-        className={cn(
+        className={tw(
           'w-full px-6 py-4 rounded-xl bg-cream border-none focus:ring-2 focus:ring-primary text-earth font-medium placeholder-earth/40 resize-none',
           error && 'ring-2 ring-red-500',
           className

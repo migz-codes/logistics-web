@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { cn } from '@/utils/cn'
+import { tw } from '@/utils/tailwind'
 
 interface ContainerProps {
   children: ReactNode
@@ -16,5 +16,5 @@ export function Container({ children, className = '', size = 'lg' }: ContainerPr
     full: 'max-w-full'
   }
 
-  return <div className={cn('mx-auto px-6', sizes[size], className)}>{children}</div>
+  return <div className={tw('mx-auto px-6', sizes[size], className)}>{children}</div>
 }

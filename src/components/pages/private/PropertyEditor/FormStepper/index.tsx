@@ -1,7 +1,7 @@
 'use client'
 
 import { Icon } from '@/components/shared/ui/Icon'
-import { cn } from '@/utils/cn'
+import { tw } from '@/utils/tailwind'
 
 interface Step {
   label: string
@@ -35,7 +35,7 @@ export function FormStepper({ steps, currentStep }: FormStepperProps) {
               className='flex flex-col items-center relative z-10'
             >
               <div
-                className={cn(
+                className={tw(
                   'w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300',
                   isCompleted
                     ? 'bg-primary text-white'
@@ -47,7 +47,7 @@ export function FormStepper({ steps, currentStep }: FormStepperProps) {
                 {isCompleted ? <Icon name='check' /> : <Icon name={step.icon} />}
               </div>
               <span
-                className={cn(
+                className={tw(
                   'text-xs font-bold mt-3 uppercase tracking-widest transition-colors',
                   isActive || isCompleted
                     ? 'text-earth dark:text-white'

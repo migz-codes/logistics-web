@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { cn } from '@/utils/cn'
+import { tw } from '@/utils/tailwind'
 
 interface BadgeProps {
   children: ReactNode
@@ -27,6 +27,6 @@ export function Badge({ children, variant = 'primary', size = 'md', className }:
   }
 
   return (
-    <span className={cn(baseClasses, variants[variant], sizes[size], className)}>{children}</span>
+    <span className={tw(baseClasses, variants[variant], sizes[size], className)}>{children}</span>
   )
 }
