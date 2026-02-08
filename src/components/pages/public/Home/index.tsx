@@ -12,14 +12,6 @@ export function Home() {
 
   return (
     <div className='min-h-screen bg-background-light text-earth transition-colors duration-300'>
-      {/* <Navigation
-        brandName='Real Estate'
-        brandIcon='home'
-        links={navLinks}
-        showLogin={true}
-        showSignIn={true}
-      /> */}
-
       <HeroSection />
 
       <PropertiesSection />

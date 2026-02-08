@@ -103,7 +103,10 @@
     },
     "properties": {
       "featured": "Destaques",
-      "ourExclusive": "Nossos Exclusivos",
+      "ourExclusive": [
+        "Nossos Imóveis",
+        "Exclusivos"
+      ],
       "properties": "Imóveis",
       "viewAll": "Ver todos",
       "beds": "Quartos",

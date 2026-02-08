@@ -1,6 +1,9 @@
 'use client'
 
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useTranslations } from 'next-intl'
+import { useEffect, useRef } from 'react'
 import { Badge } from '@/components/shared/ui/Badge'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
@@ -8,48 +11,127 @@ import { Icon } from '@/components/shared/ui/Icon'
 import { Input } from '@/components/shared/ui/Input'
 import { Textarea } from '@/components/shared/ui/Textarea'
 
+gsap.registerPlugin(ScrollTrigger)
+
 export function ContactSection() {
   const t = useTranslations('home.contact')
 
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const formCardRef = useRef<HTMLDivElement>(null)
+  const contactInfoRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animate form card
+      gsap.from(formCardRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none none'
+        },
+        x: -50,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out'
+      })
+
+      // Animate contact info section
+      gsap.from(contactInfoRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none none'
+        },
+        x: 50,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        delay: 0.2
+      })
+
+      // Animate form elements with stagger
+      const formElements = formCardRef.current?.querySelectorAll('.space-y-6 > *') || []
+      gsap.from(formElements, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none none'
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        delay: 0.3,
+        ease: 'power3.out'
+      })
+
+      // Animate contact info items
+      const contactItems = contactInfoRef.current?.querySelectorAll('.space-y-6 > div') || []
+      gsap.from(contactItems, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none none'
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        delay: 0.5,
+        ease: 'power3.out'
+      })
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section className='py-32 px-6'>
+    <section ref={sectionRef} className='py-32 px-6 relative z-10'>
       <div className='max-w-7xl mx-auto'>
         <div className='grid lg:grid-cols-2 gap-16 items-start'>
           {/* Contact Form */}
-          <Card variant='elevated'>
-            <Badge variant='primary' className='mb-6'>
-              {t('badge')}
-            </Badge>
-            <h2 className='text-4xl font-extrabold text-earth mb-8'>
-              {t('title')}{' '}
-              <span className='text-secondary italic font-light'>{t('conversationHighlight')}</span>
-            </h2>
+          <div ref={formCardRef}>
+            <Card variant='elevated'>
+              <Badge variant='primary' className='mb-6'>
+                {t('badge')}
+              </Badge>
+              <h2 className='text-4xl font-extrabold text-earth mb-8'>
+                {t('title')}{' '}
+                <span className='text-secondary italic font-light'>
+                  {t('conversationHighlight')}
+                </span>
+              </h2>
 
-            <form className='space-y-6'>
-              <div className='grid md:grid-cols-2 gap-6'>
-                <Input label={t('form.firstName')} placeholder={t('form.firstNamePlaceholder')} />
-                <Input label={t('form.lastName')} placeholder={t('form.lastNamePlaceholder')} />
-              </div>
-              <Input
-                label={t('form.email')}
-                placeholder={t('form.emailPlaceholder')}
-                type='email'
-              />
-              <Input label={t('form.phone')} placeholder={t('form.phonePlaceholder')} type='tel' />
-              <Textarea
-                label={t('form.message')}
-                placeholder={t('form.messagePlaceholder')}
-                rows={4}
-              />
+              <form className='space-y-6'>
+                <div className='grid md:grid-cols-2 gap-6'>
+                  <Input label={t('form.firstName')} placeholder={t('form.firstNamePlaceholder')} />
+                  <Input label={t('form.lastName')} placeholder={t('form.lastNamePlaceholder')} />
+                </div>
+                <Input
+                  label={t('form.email')}
+                  placeholder={t('form.emailPlaceholder')}
+                  type='email'
+                />
+                <Input
+                  label={t('form.phone')}
+                  placeholder={t('form.phonePlaceholder')}
+                  type='tel'
+                />
+                <Textarea
+                  label={t('form.message')}
+                  placeholder={t('form.messagePlaceholder')}
+                  rows={4}
+                />
 
-              <Button variant='primary' size='lg' icon={<Icon name='send' />} className='w-full'>
-                {t('form.sendButton')}
-              </Button>
-            </form>
-          </Card>
+                <Button variant='primary' size='lg' icon={<Icon name='send' />} className='w-full'>
+                  {t('form.sendButton')}
+                </Button>
+              </form>
+            </Card>
+          </div>
 
           {/* Contact Info */}
-          <div className='space-y-8'>
+          <div ref={contactInfoRef} className='space-y-8'>
             <div>
               <h3 className='text-3xl font-bold text-earth mb-4'>{t('info.title')}</h3>
               <p className='text-earth/60 leading-relaxed'>{t('info.description')}</p>

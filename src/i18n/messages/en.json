@@ -103,7 +103,10 @@
     },
     "properties": {
       "featured": "Featured",
-      "ourExclusive": "Our Exclusive",
+      "ourExclusive": [
+        "Our Exclusive",
+        "Properties"
+      ],
       "properties": "Properties",
       "viewAll": "View All",
       "beds": "Beds",

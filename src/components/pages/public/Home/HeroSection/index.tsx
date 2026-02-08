@@ -28,19 +28,54 @@ export function HeroSection() {
       }
 
       setSpacerHeight()
-
       window.addEventListener('resize', setSpacerHeight)
 
+      // Content scroll animation
       gsap.to(contentRef.current, {
         opacity: 0,
-        y: -100,
+        duration: 20,
         scrollTrigger: {
           trigger: heroRef.current,
           start: 'top top',
-          end: 'bottom top',
-          scrub: 1
+          end: '+=400',
+          scrub: 2
         }
       })
+
+      gsap.to(contentRef.current, {
+        y: -90,
+        duration: 6,
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: '+=200',
+          scrub: 2
+        }
+      })
+
+      // Image parallax effect
+      if (imageRef.current) {
+        // Initial state - slightly offset
+        gsap.set(imageRef.current, { y: '-15%' })
+
+        // Parallax scroll effect
+        gsap.to(imageRef.current, {
+          y: '0%',
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.5
+          }
+        })
+
+        // Initial animation on load
+        gsap.from(imageRef.current, {
+          y: '0%',
+          duration: 2,
+          ease: 'power2.out'
+        })
+      }
 
       return () => {
         window.removeEventListener('resize', setSpacerHeight)
@@ -54,17 +89,18 @@ export function HeroSection() {
 
   return (
     <>
-      <header ref={heroRef} className='fixed top-0 left-0 w-full h-screen overflow-hidden z-0'>
+      <header ref={heroRef} className='fixed top-0 left-0 w-full h-[80vh] overflow-hidden z-0'>
         <div className='absolute inset-0 w-full h-full'>
-          <div className='absolute inset-0 bg-white/80 z-10' />
-          <div ref={imageRef} className='w-full h-full'>
+          <div className='absolute inset-0 bg-[#fdfbf7]/80 z-10' />
+          <div ref={imageRef} className='w-full h-[100vh]'>
             <Image
               priority
               fill
               src='/home/main.jpg'
               alt='Vibrant neighborhood life'
-              className='object-cover'
+              className='object-cover h-full border border-red-500'
               sizes='100vw'
+              style={{ objectPosition: 'center top' }}
             />
           </div>
         </div>

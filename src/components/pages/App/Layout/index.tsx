@@ -24,7 +24,7 @@ export const AppLayout = ({ children }: Readonly<IAppLayoutProps>) => (
       {children}
 
       {/* Page Links Footer */}
-      <div className='fixed bottom-4 right-4 z-50'>
+      {/* <div className='fixed bottom-4 right-4 z-50'>
         <div className='bg-white rounded-lg shadow-lg border border-primary/20 p-2'>
           <div className='text-xs font-bold text-primary/60 uppercase tracking-widest mb-2 px-2'>
             Quick Links
@@ -106,7 +106,7 @@ export const AppLayout = ({ children }: Readonly<IAppLayoutProps>) => (
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
     </body>
   </html>
 )

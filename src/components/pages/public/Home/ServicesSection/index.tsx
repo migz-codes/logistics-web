@@ -1,9 +1,14 @@
 'use client'
 
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useTranslations } from 'next-intl'
+import { useEffect, useRef } from 'react'
 import { Badge } from '@/components/shared/ui/Badge'
 import { Button } from '@/components/shared/ui/Button'
 import { Icon } from '@/components/shared/ui/Icon'
+
+gsap.registerPlugin(ScrollTrigger)
 
 interface Service {
   icon: string
@@ -32,10 +37,55 @@ interface ServicesSectionProps {
 export function ServicesSection({ services = defaultServices }: ServicesSectionProps) {
   const t = useTranslations('home.services')
 
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const headerRef = useRef<HTMLDivElement>(null)
+  const servicesGridRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Set initial states
+      gsap.set(headerRef.current, { y: 50, opacity: 0 })
+      gsap.set(servicesGridRef.current?.children || [], { y: 50, opacity: 0 })
+
+      // Animate header section
+      gsap.to(headerRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none none'
+        },
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: 'power3.out'
+      })
+
+      // Animate services grid with stagger
+      gsap.to(servicesGridRef.current?.children || [], {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none none'
+        },
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.2,
+        delay: 0.3,
+        ease: 'power3.out'
+      })
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section className='py-32 px-6 bg-white border-y border-primary/5'>
+    <section
+      ref={sectionRef}
+      className='py-32 px-6 bg-white border-y border-primary/5 relative z-10'
+    >
       <div className='max-w-7xl mx-auto'>
-        <div className='text-center mb-20'>
+        <div ref={headerRef} className='text-center mb-20'>
           <Badge variant='primary' className='mb-6'>
             {t('badge')}
           </Badge>
@@ -47,7 +97,7 @@ export function ServicesSection({ services = defaultServices }: ServicesSectionP
         </div>
 
         {/* Services Grid */}
-        <div className='grid md:grid-cols-3 gap-8'>
+        <div ref={servicesGridRef} className='grid md:grid-cols-3 gap-8'>
           {services.map((service) => (
             <div
               key={service.translationKey}
