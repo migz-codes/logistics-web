@@ -96,6 +96,14 @@ export const AppLayout = ({ children }: Readonly<IAppLayoutProps>) => (
                 Strategic
               </a>
             </li>
+            <li>
+              <a
+                href='/admin/signin'
+                className='block px-2 py-1 text-primary hover:text-primary transition-colors font-bold'
+              >
+                Admin Signin
+              </a>
+            </li>
           </ul>
         </div>
       </div>
