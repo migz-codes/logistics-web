@@ -68,7 +68,7 @@ export function Footer({
           <div className='flex gap-6'>
             {socialLinks.map((link, index) => (
               <a
-                key={index}
+                key={`${link.icon}-${index}`}
                 className='w-10 h-10 rounded-full bg-white/5 hover:bg-white/20 flex items-center justify-center transition-all cursor-pointer'
                 href={link.href}
               >

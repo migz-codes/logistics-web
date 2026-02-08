@@ -30,8 +30,7 @@ export function Navigation({
   showLogin = true,
   showSignIn = true,
   loginLabel = 'Log In',
-  signInLabel = 'Sign In',
-  variant = 'default'
+  signInLabel = 'Sign In'
 }: NavigationProps) {
   return (
     <nav className='fixed top-0 w-full z-50 px-6 py-6'>
@@ -71,7 +70,10 @@ export function Navigation({
         {/* Actions */}
         <div className='flex items-center gap-4'>
           {showLogin && (
-            <button className='px-6 py-2.5 text-sm font-bold text-earth/70 hover:text-primary transition-all'>
+            <button
+              type='button'
+              className='px-6 py-2.5 text-sm font-bold text-earth/70 hover:text-primary transition-all'
+            >
               {loginLabel}
             </button>
           )}
