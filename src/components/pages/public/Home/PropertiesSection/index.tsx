@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { Badge } from '@/components/shared/ui/Badge'
 import { Button } from '@/components/shared/ui/Button'
 import { Icon } from '@/components/shared/ui/Icon'
@@ -65,22 +66,26 @@ interface PropertiesSectionProps {
 }
 
 export function PropertiesSection({ properties = defaultProperties }: PropertiesSectionProps) {
+  const t = useTranslations('home.properties')
+
   return (
     <section className='py-32 px-6'>
       <div className='max-w-7xl mx-auto'>
         <div className='flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6'>
           <div>
             <Badge variant='primary' className='mb-6'>
-              Featured
+              {t('featured')}
             </Badge>
             <h2 className='text-5xl md:text-6xl font-extrabold text-earth'>
-              Our <span className='text-secondary italic font-light'>Exclusive</span>
+              {t('ourExclusive')}
               <br />
-              Properties
+              {t('properties')}
             </h2>
+            <br />
+            {t('properties')}
           </div>
           <Button variant='outline' icon={<Icon name='arrow_forward' />}>
-            View All
+            {t('viewAll')}
           </Button>
         </div>
 
@@ -100,7 +105,7 @@ export function PropertiesSection({ properties = defaultProperties }: Properties
                 />
                 <div className='absolute top-4 left-4 flex gap-2'>
                   <Badge variant='featured'>{property.type}</Badge>
-                  {property.featured && <Badge variant='secondary'>Featured</Badge>}
+                  {property.featured && <Badge variant='secondary'>{t('featured')}</Badge>}
                 </div>
                 <button
                   type='button'
@@ -118,10 +123,10 @@ export function PropertiesSection({ properties = defaultProperties }: Properties
                 <h3 className='text-xl font-bold text-earth mb-4'>{property.title}</h3>
                 <div className='flex items-center gap-6 text-sm text-earth/60 mb-6'>
                   <span className='flex items-center gap-1'>
-                    <Icon name='bed' size='sm' /> {property.beds} Beds
+                    <Icon name='bed' size='sm' /> {property.beds} {t('beds')}
                   </span>
                   <span className='flex items-center gap-1'>
-                    <Icon name='bathtub' size='sm' /> {property.baths} Baths
+                    <Icon name='bathtub' size='sm' /> {property.baths} {t('baths')}
                   </span>
                   <span className='flex items-center gap-1'>
                     <Icon name='square_foot' size='sm' /> {property.area}
@@ -130,7 +135,7 @@ export function PropertiesSection({ properties = defaultProperties }: Properties
                 <div className='flex items-center justify-between pt-4 border-t border-primary/5'>
                   <span className='text-2xl font-extrabold text-primary'>{property.price}</span>
                   <Button variant='ghost' size='sm' icon={<Icon name='arrow_forward' />}>
-                    Details
+                    {t('details')}
                   </Button>
                 </div>
               </div>

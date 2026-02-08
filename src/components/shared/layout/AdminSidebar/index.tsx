@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { Icon } from '@/components/shared/ui/Icon'
 import { tw } from '@/utils/tailwind'
 import { Logout } from './Logout'
@@ -23,6 +24,8 @@ export function AdminSidebar({
   brandSubtitle = 'Master Admin',
   links = []
 }: SidebarProps) {
+  const t = useTranslations('navigation')
+
   return (
     <aside className='w-64 bg-earth text-white border-r border-earth-dark/20 flex flex-col fixed inset-y-0 z-50'>
       {/* Brand */}
@@ -68,7 +71,7 @@ export function AdminSidebar({
           className='w-full text-white/50 hover:text-white rounded-2xl p-4 flex items-center gap-3 transition-all'
         >
           <Icon name='arrow_back' size='md' />
-          <span className='text-sm font-medium'>Back to Site</span>
+          <span className='text-sm font-medium'>{t('backToSite')}</span>
         </Link>
 
         <Logout />

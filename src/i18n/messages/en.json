@@ -1,0 +1,201 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "close": "Close"
+  },
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "inventory": "Inventory",
+    "properties": "Properties",
+    "admin": "Admin",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout",
+    "backToSite": "Back to Site"
+  },
+  "auth": {
+    "signin": "Sign In",
+    "signup": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "rememberMe": "Remember me",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "emailAddress": "Email Address",
+    "emailPlaceholder": "admin@example.com",
+    "passwordPlaceholder": "Enter your password",
+    "signingIn": "Signing in...",
+    "adminPortal": "Admin Portal",
+    "signinDescription": "Sign in to access your dashboard",
+    "backToWebsite": "Back to website",
+    "securityNotice": "This is a restricted area. Unauthorized access is prohibited."
+  },
+  "home": {
+    "brandName": "Real Estate",
+    "brandSubtitle": "Professional Brokerage Services",
+    "hero": {
+      "title": "Find Your Perfect Property",
+      "subtitle": "Discover premium properties and investment opportunities",
+      "searchPlaceholder": "Search by location, property type, or features...",
+      "buyButton": "Buy",
+      "sellButton": "Sell"
+    },
+    "searchBar": {
+      "propertyType": "Property Type",
+      "bhk": "BHK",
+      "priceRange": "Price Range",
+      "search": "Search",
+      "showAll": "Show all",
+      "apartment": "Apartment",
+      "villa": "Villa",
+      "office": "Office",
+      "atLeast2": "At least 2",
+      "oneBhk": "1 BHK",
+      "twoBhk": "2 BHK",
+      "threePlusBhk": "3+ BHK"
+    },
+    "services": {
+      "badge": "Our Services",
+      "title": "What We",
+      "offerHighlight": "Offer",
+      "description": "Comprehensive real estate services tailored to meet your unique needs.",
+      "buyProperty": {
+        "title": "Buy Property",
+        "description": "Find your perfect home from our extensive collection of premium properties.",
+        "features": [
+          "Expert guidance",
+          "Market analysis",
+          "Negotiation support"
+        ]
+      },
+      "sellProperty": {
+        "title": "Sell Property",
+        "description": "Get best value for your property with our comprehensive selling services.",
+        "features": [
+          "Free valuation",
+          "Marketing strategy",
+          "Professional staging"
+        ]
+      },
+      "propertyManagement": {
+        "title": "Property Management",
+        "description": "Let us handle your property while you enjoy hassle-free ownership.",
+        "features": [
+          "Tenant screening",
+          "Rent collection",
+          "Maintenance coordination"
+        ]
+      },
+      "learnMore": "Learn More"
+    },
+    "properties": {
+      "featured": "Featured",
+      "ourExclusive": "Our Exclusive",
+      "properties": "Properties",
+      "viewAll": "View All",
+      "beds": "Beds",
+      "baths": "Baths",
+      "details": "Details"
+    },
+    "contact": {
+      "badge": "Get In Touch",
+      "title": "Let's Start a",
+      "conversationHighlight": "Conversation",
+      "form": {
+        "firstName": "First Name",
+        "firstNamePlaceholder": "John",
+        "lastName": "Last Name",
+        "lastNamePlaceholder": "Doe",
+        "email": "Email",
+        "emailPlaceholder": "john@example.com",
+        "phone": "Phone",
+        "phonePlaceholder": "+1 (555) 000-0000",
+        "message": "Message",
+        "messagePlaceholder": "Tell us about your dream property...",
+        "sendButton": "Send Message"
+      },
+      "info": {
+        "title": "We're Here to Help",
+        "description": "Have questions about buying, selling, or renting? Our team of experts is ready to assist you every step of the way.",
+        "office": {
+          "label": "Office",
+          "value": "123 Real Estate Blvd, Suite 500",
+          "sublabel": "Miami, FL 33101"
+        },
+        "phone": {
+          "label": "Phone",
+          "value": "+1 (555) 123-4567",
+          "sublabel": "Mon-Fri 9AM-6PM"
+        },
+        "email": {
+          "label": "Email",
+          "value": "hello@realestate.com",
+          "sublabel": "We reply within 24hrs"
+        }
+      },
+      "whatsapp": {
+        "title": "Prefer WhatsApp?",
+        "description": "Get instant replies to your property questions via WhatsApp.",
+        "button": "Chat Now"
+      }
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back",
+    "overview": "Overview",
+    "recentActivity": "Recent Activity",
+    "partnerHubTitle": "Partner & Investor Hub",
+    "partnerHubSubtitle": "Centralized control for all investment and partnership activities.",
+    "strategicTitle": "Strategic Dashboard",
+    "strategicSubtitle": "Real-time overview of platform performance and key metrics.",
+    "stats": {
+      "totalProperties": "Total Properties",
+      "activeListings": "Active Listings",
+      "pendingApprovals": "Pending Approvals",
+      "totalRevenue": "Total Revenue",
+      "newLeads": "New Leads (MTD)",
+      "conversionRate": "Conv. Rate",
+      "revenueYTD": "Revenue (YTD)"
+    }
+  },
+  "inventory": {
+    "title": "Inventory",
+    "searchPlaceholder": "Search properties...",
+    "globalTitle": "Global Property Inventory",
+    "globalSubtitle": "Manage and monitor all assets across all regions.",
+    "filters": {
+      "status": "Status",
+      "type": "Type",
+      "priceRange": "Price Range",
+      "location": "Location"
+    },
+    "table": {
+      "name": "Name",
+      "type": "Type",
+      "status": "Status",
+      "price": "Price",
+      "location": "Location",
+      "actions": "Actions"
+    }
+  },
+  "errors": {
+    "notFound": "Page not found",
+    "serverError": "Server error",
+    "unauthorized": "Unauthorized access",
+    "networkError": "Network error"
+  }
+}

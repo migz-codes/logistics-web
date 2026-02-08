@@ -1,0 +1,201 @@
+{
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "search": "Buscar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "submit": "Enviar",
+    "close": "Fechar"
+  },
+  "navigation": {
+    "home": "Início",
+    "dashboard": "Painel",
+    "inventory": "Estoque",
+    "properties": "Imóveis",
+    "admin": "Admin",
+    "profile": "Perfil",
+    "settings": "Configurações",
+    "logout": "Sair",
+    "backToSite": "Voltar ao site"
+  },
+  "auth": {
+    "signin": "Entrar",
+    "signup": "Cadastrar-se",
+    "email": "E-mail",
+    "password": "Senha",
+    "forgotPassword": "Esqueceu a senha?",
+    "rememberMe": "Lembrar de mim",
+    "noAccount": "Não tem uma conta?",
+    "hasAccount": "Já tem uma conta?",
+    "emailAddress": "Endereço de e-mail",
+    "emailPlaceholder": "admin@exemplo.com",
+    "passwordPlaceholder": "Digite sua senha",
+    "signingIn": "Entrando...",
+    "adminPortal": "Portal Administrativo",
+    "signinDescription": "Entre para acessar seu painel",
+    "backToWebsite": "Voltar para o site",
+    "securityNotice": "Esta é uma área restrita. Acesso não autorizado é proibido."
+  },
+  "home": {
+    "brandName": "Imobiliária",
+    "brandSubtitle": "Serviços Profissionais de Corretagem",
+    "hero": {
+      "title": "Encontre o Imóvel Perfeito",
+      "subtitle": "Descubra imóveis premium e oportunidades de investimento",
+      "searchPlaceholder": "Busque por localização, tipo de imóvel ou características...",
+      "buyButton": "Comprar",
+      "sellButton": "Vender"
+    },
+    "searchBar": {
+      "propertyType": "Tipo de Imóvel",
+      "bhk": "Dormitórios",
+      "priceRange": "Faixa de Preço",
+      "search": "Buscar",
+      "showAll": "Mostrar todos",
+      "apartment": "Apartamento",
+      "villa": "Casa",
+      "office": "Sala Comercial",
+      "atLeast2": "No mínimo 2",
+      "oneBhk": "1 Dormitório",
+      "twoBhk": "2 Dormitórios",
+      "threePlusBhk": "3+ Dormitórios"
+    },
+    "services": {
+      "badge": "Nossos Serviços",
+      "title": "O Que Nós",
+      "offerHighlight": "Oferecemos",
+      "description": "Serviços imobiliários completos, personalizados para atender às suas necessidades.",
+      "buyProperty": {
+        "title": "Comprar Imóvel",
+        "description": "Encontre seu imóvel ideal em nossa ampla seleção de propriedades premium.",
+        "features": [
+          "Orientação especializada",
+          "Análise de mercado",
+          "Suporte em negociações"
+        ]
+      },
+      "sellProperty": {
+        "title": "Vender Imóvel",
+        "description": "Obtenha o melhor valor para seu imóvel com nossos serviços completos de venda.",
+        "features": [
+          "Avaliação gratuita",
+          "Estratégia de marketing",
+          "Preparação profissional"
+        ]
+      },
+      "propertyManagement": {
+        "title": "Administração de Imóveis",
+        "description": "Cuidamos do seu imóvel para que você tenha uma experiência tranquila.",
+        "features": [
+          "Seleção de inquilinos",
+          "Cobrança de aluguel",
+          "Coordenação de manutenção"
+        ]
+      },
+      "learnMore": "Saiba mais"
+    },
+    "properties": {
+      "featured": "Destaques",
+      "ourExclusive": "Nossos Exclusivos",
+      "properties": "Imóveis",
+      "viewAll": "Ver todos",
+      "beds": "Quartos",
+      "baths": "Banheiros",
+      "details": "Detalhes"
+    },
+    "contact": {
+      "badge": "Entre em Contato",
+      "title": "Vamos Iniciar uma",
+      "conversationHighlight": "Conversa",
+      "form": {
+        "firstName": "Nome",
+        "firstNamePlaceholder": "João",
+        "lastName": "Sobrenome",
+        "lastNamePlaceholder": "Silva",
+        "email": "E-mail",
+        "emailPlaceholder": "joao@exemplo.com",
+        "phone": "Telefone",
+        "phonePlaceholder": "+55 (11) 90000-0000",
+        "message": "Mensagem",
+        "messagePlaceholder": "Conte-nos sobre o imóvel dos seus sonhos...",
+        "sendButton": "Enviar Mensagem"
+      },
+      "info": {
+        "title": "Estamos Aqui para Ajudar",
+        "description": "Tem dúvidas sobre comprar, vender ou alugar? Nossa equipe está pronta para ajudar em cada etapa.",
+        "office": {
+          "label": "Escritório",
+          "value": "Av. Imobiliária 123, Sala 500",
+          "sublabel": "São Paulo, SP"
+        },
+        "phone": {
+          "label": "Telefone",
+          "value": "+55 (11) 1234-5678",
+          "sublabel": "Seg-Sex 9h às 18h"
+        },
+        "email": {
+          "label": "E-mail",
+          "value": "contato@imobiliaria.com",
+          "sublabel": "Respondemos em até 24h"
+        }
+      },
+      "whatsapp": {
+        "title": "Prefere WhatsApp?",
+        "description": "Receba respostas rápidas para suas dúvidas sobre imóveis pelo WhatsApp.",
+        "button": "Conversar Agora"
+      }
+    }
+  },
+  "dashboard": {
+    "title": "Painel",
+    "welcome": "Bem-vindo de volta",
+    "overview": "Visão Geral",
+    "recentActivity": "Atividade Recente",
+    "partnerHubTitle": "Central de Parceiros e Investidores",
+    "partnerHubSubtitle": "Controle centralizado para todas as atividades de investimento e parceria.",
+    "strategicTitle": "Painel Estratégico",
+    "strategicSubtitle": "Visão em tempo real do desempenho da plataforma e métricas-chave.",
+    "stats": {
+      "totalProperties": "Total de Imóveis",
+      "activeListings": "Anúncios Ativos",
+      "pendingApprovals": "Aprovações Pendentes",
+      "totalRevenue": "Receita Total",
+      "newLeads": "Novos Leads (Mês)",
+      "conversionRate": "Taxa de Conversão",
+      "revenueYTD": "Receita (Ano)"
+    }
+  },
+  "inventory": {
+    "title": "Estoque",
+    "searchPlaceholder": "Buscar imóveis...",
+    "globalTitle": "Estoque Global de Imóveis",
+    "globalSubtitle": "Gerencie e monitore todos os ativos em todas as regiões.",
+    "filters": {
+      "status": "Status",
+      "type": "Tipo",
+      "priceRange": "Faixa de Preço",
+      "location": "Localização"
+    },
+    "table": {
+      "name": "Nome",
+      "type": "Tipo",
+      "status": "Status",
+      "price": "Preço",
+      "location": "Localização",
+      "actions": "Ações"
+    }
+  },
+  "errors": {
+    "notFound": "Página não encontrada",
+    "serverError": "Erro no servidor",
+    "unauthorized": "Acesso não autorizado",
+    "networkError": "Erro de rede"
+  }
+}

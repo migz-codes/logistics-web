@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { ActivityFeed } from './ActivityFeed'
 import { AssetsOverview } from './AssetsOverview'
 import { Charts } from './Charts'
@@ -9,12 +10,11 @@ import { PartnersTable } from './PartnersTable'
 import { PendingApprovals } from './PendingApprovals'
 
 export function AdminDashboardPage() {
+  const t = useTranslations('dashboard')
+
   return (
     <>
-      <DashboardHeader
-        title='Partner & Investor Hub'
-        subtitle='Centralized control for all investment and partnership activities.'
-      />
+      <DashboardHeader title={t('partnerHubTitle')} subtitle={t('partnerHubSubtitle')} />
 
       <KpiCards />
 
@@ -30,36 +30,36 @@ export function AdminDashboardPage() {
 
       <DashboardHeader
         className='mt-8'
-        title='Strategic Dashboard'
-        subtitle='Real-time overview of platform performance and key metrics.'
+        title={t('strategicTitle')}
+        subtitle={t('strategicSubtitle')}
       />
 
       <KpiCards
         kpis={[
           {
             icon: 'visibility',
-            label: 'New Leads (MTD)',
+            label: t('stats.newLeads'),
             value: '287',
             change: '+18%',
             changeType: 'positive'
           },
           {
             icon: 'trending_up',
-            label: 'Conv. Rate',
+            label: t('stats.conversionRate'),
             value: '12.8%',
             change: '+2.4%',
             changeType: 'positive'
           },
           {
             icon: 'attach_money',
-            label: 'Revenue (YTD)',
+            label: t('stats.revenueYTD'),
             value: 'R$ 42.5M',
             change: '+24%',
             changeType: 'positive'
           },
           {
             icon: 'apartment',
-            label: 'Active Listings',
+            label: t('stats.activeListings'),
             value: '156',
             change: '+8',
             changeType: 'positive'

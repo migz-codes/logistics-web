@@ -1,7 +1,21 @@
 import type { NextRequest } from 'next/server'
+import createMiddleware from 'next-intl/middleware'
 import { proxy as supabaseProxy } from '@/services/supabase/proxy'
 
+// Create i18n middleware
+const intlMiddleware = createMiddleware({
+  locales: ['en', 'es', 'pt-BR'],
+  defaultLocale: 'en'
+})
+
 export async function proxy(request: NextRequest) {
+  // Handle i18n routing first
+  const intlResponse = intlMiddleware(request)
+  if (intlResponse) {
+    return intlResponse
+  }
+
+  // Handle Supabase proxy
   return await supabaseProxy(request)
 }
 

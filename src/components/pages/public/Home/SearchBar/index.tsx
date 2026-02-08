@@ -1,9 +1,12 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { Button } from '@/components/shared/ui/Button'
 import { Icon } from '@/components/shared/ui/Icon'
 
 export function SearchBar() {
+  const t = useTranslations('home.searchBar')
+
   return (
     <section className='relative z-40 -mt-16 px-6 max-w-6xl mx-auto'>
       <div className='bg-white rounded-[2.5rem] shadow-2xl p-4 flex flex-col lg:flex-row items-stretch gap-2 border border-primary/5'>
@@ -16,17 +19,17 @@ export function SearchBar() {
                 htmlFor='property-type'
                 className='block text-[11px] font-bold text-primary/60 uppercase tracking-widest'
               >
-                Property Type
+                {t('propertyType')}
               </label>
             </div>
             <select
               id='property-type'
               className='block w-full border-none bg-transparent p-0 text-lg font-bold focus:ring-0 cursor-pointer text-earth'
             >
-              <option>Show all</option>
-              <option>Apartment</option>
-              <option>Villa</option>
-              <option>Office</option>
+              <option>{t('showAll')}</option>
+              <option>{t('apartment')}</option>
+              <option>{t('villa')}</option>
+              <option>{t('office')}</option>
             </select>
           </div>
 
@@ -38,17 +41,17 @@ export function SearchBar() {
                 htmlFor='bhk'
                 className='block text-[11px] font-bold text-primary/60 uppercase tracking-widest'
               >
-                BHK
+                {t('bhk')}
               </label>
             </div>
             <select
               id='bhk'
               className='block w-full border-none bg-transparent p-0 text-lg font-bold focus:ring-0 cursor-pointer text-earth'
             >
-              <option>At-list 2</option>
-              <option>1 BHK</option>
-              <option>2 BHK</option>
-              <option>3+ BHK</option>
+              <option>{t('atLeast2')}</option>
+              <option>{t('oneBhk')}</option>
+              <option>{t('twoBhk')}</option>
+              <option>{t('threePlusBhk')}</option>
             </select>
           </div>
 
@@ -61,7 +64,7 @@ export function SearchBar() {
                 htmlFor='price-range'
                 className='block text-[11px] font-bold text-primary/60 uppercase tracking-widest'
               >
-                Price Range
+                {t('priceRange')}
               </label>
             </div>
 
@@ -83,7 +86,7 @@ export function SearchBar() {
           icon={<Icon name='search' size='lg' />}
           iconPosition='left'
         >
-          Search
+          {t('search')}
         </Button>
       </div>
     </section>
