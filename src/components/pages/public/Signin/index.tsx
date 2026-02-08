@@ -1,27 +1,40 @@
 'use client'
 
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
+import { getSupabaseClient } from '@/services/supabase/client'
 
 export default function AdminSigninPage() {
+  const supabase = getSupabaseClient()
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const signInWithEmail = async ({ email, password }: { email: string; password: string }) => {
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    })
+
+    if (!error) router.push('/admin/dashboard')
+  }
+
+  const onSubmit = async (event: any) => {
+    event.preventDefault()
     setIsLoading(true)
 
-    // TODO: Implement authentication logic
-    console.log('Login attempt:', { email, password })
+    console.log('Signing in with:', { email, password })
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 2000)
+    if (!email || !password) return setIsLoading(false)
+
+    await signInWithEmail({ email, password })
+
+    setIsLoading(false)
   }
 
   return (
@@ -38,7 +51,7 @@ export default function AdminSigninPage() {
 
         {/* Sign In Form */}
         <Card variant='elevated'>
-          <form onSubmit={handleSubmit} className='space-y-6'>
+          <form onSubmit={onSubmit} className='space-y-6'>
             {/* Email Field */}
             <div>
               <label htmlFor='email' className='block text-sm font-bold text-earth mb-2'>
@@ -105,7 +118,6 @@ export default function AdminSigninPage() {
               size='md'
               className='w-full'
               disabled={isLoading}
-              icon={isLoading ? 'hourglass_empty' : 'login'}
             >
               {isLoading ? 'Signing in...' : 'Sign In'}
             </Button>

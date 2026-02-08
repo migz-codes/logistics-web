@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Icon } from '@/components/shared/ui/Icon'
 import { tw } from '@/utils/tailwind'
+import { Logout } from './Logout'
 
 interface SidebarLink {
   href: string
@@ -15,23 +16,13 @@ interface SidebarProps {
   brandName?: string
   brandSubtitle?: string
   links?: SidebarLink[]
-  systemStatus?: string
-  systemStatusLabel?: string
 }
 
 export function AdminSidebar({
   brandName = 'Logistics Portal',
   brandSubtitle = 'Master Admin',
-  links = [],
-  systemStatus = 'operational',
-  systemStatusLabel = 'Nodes Active'
+  links = []
 }: SidebarProps) {
-  const statusColors = {
-    operational: 'bg-green-500',
-    warning: 'bg-amber-500',
-    error: 'bg-red-500'
-  }
-
   return (
     <aside className='w-64 bg-earth text-white border-r border-earth-dark/20 flex flex-col fixed inset-y-0 z-50'>
       {/* Brand */}
@@ -70,22 +61,9 @@ export function AdminSidebar({
         ))}
       </nav>
 
-      {/* System Status */}
+      {/* Logout Button */}
       <div className='p-4 border-t border-white/10'>
-        <div className='bg-white/5 rounded-2xl p-4'>
-          <p className='text-[10px] font-black uppercase tracking-widest text-secondary mb-2'>
-            System Status
-          </p>
-          <div className='flex items-center gap-2'>
-            <span
-              className={tw(
-                'w-2 h-2 rounded-full animate-pulse',
-                statusColors[systemStatus as keyof typeof statusColors] || statusColors.operational
-              )}
-            />
-            <span className='text-xs font-medium text-white/70'>{systemStatusLabel}</span>
-          </div>
-        </div>
+        <Logout />
       </div>
     </aside>
   )

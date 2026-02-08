@@ -1,35 +1,40 @@
 'use client'
 
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
+import { getSupabaseClient } from '@/services/supabase/client'
 
 export default function SignupPage() {
+  const supabase = getSupabaseClient()
+
+  const router = useRouter()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [confirmPassword, setConfirmPassword] = useState('')
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const signUpNewUser = async (email: string, password: string) => {
+    const { error } = await supabase.auth.signUp({ email, password })
 
-    if (password !== confirmPassword) {
-      alert('Passwords do not match')
-      return
-    }
+    if (!error) router.push('/admin/dashboard')
+  }
+
+  const onSubmit = async (event: any) => {
+    event.preventDefault()
+
+    if (password !== confirmPassword) return alert('Passwords do not match')
+    if (!email || !password || !confirmPassword) return alert('Please fill in all fields')
 
     setIsLoading(true)
 
-    // TODO: Implement registration logic
-    console.log('Signup attempt:', { name, email, password })
+    await signUpNewUser(email, password)
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 2000)
+    setIsLoading(false)
   }
 
   return (
@@ -46,7 +51,7 @@ export default function SignupPage() {
 
         {/* Sign Up Form */}
         <Card variant='elevated'>
-          <form onSubmit={handleSubmit} className='space-y-6'>
+          <form onSubmit={onSubmit} className='space-y-6'>
             {/* Name Field */}
             <div>
               <label htmlFor='name' className='block text-sm font-bold text-earth mb-2'>
@@ -157,7 +162,6 @@ export default function SignupPage() {
               size='md'
               className='w-full'
               disabled={isLoading}
-              icon={isLoading ? 'hourglass_empty' : 'person_add'}
             >
               {isLoading ? 'Creating account...' : 'Create Account'}
             </Button>
