@@ -71,7 +71,7 @@ export function InventoryTable({ properties = defaultProperties }: InventoryTabl
       <div className='overflow-x-auto'>
         <table className='w-full text-xs'>
           <thead>
-            <tr className='text-[10px] font-black uppercase tracking-widest text-earth/40 dark:text-slate-500 border-b border-primary/5'>
+            <tr className='text-[10px] font-black uppercase tracking-widest text-earth/40 border-b border-primary/5'>
               <th className='p-4 text-left'>Property</th>
               <th className='p-4 text-left'>Region</th>
               <th className='p-4 text-left'>Category</th>
@@ -98,19 +98,19 @@ export function InventoryTable({ properties = defaultProperties }: InventoryTabl
                     />
 
                     <div>
-                      <p className='font-bold text-earth dark:text-white text-sm'>
+                      <p className='font-bold text-earth text-sm'>
                         {property.name}
                       </p>
-                      <p className='text-earth/50 dark:text-slate-500 flex items-center gap-1'>
+                      <p className='text-earth/50 flex items-center gap-1'>
                         <Icon name='location_on' size='sm' />
                         {property.location}
                       </p>
                     </div>
                   </div>
                 </td>
-                <td className='p-4 text-earth/60 dark:text-slate-400'>{property.region}</td>
-                <td className='p-4 text-earth/60 dark:text-slate-400'>{property.category}</td>
-                <td className='p-4 text-right font-bold text-earth dark:text-white'>
+                <td className='p-4 text-earth/60'>{property.region}</td>
+                <td className='p-4 text-earth/60'>{property.category}</td>
+                <td className='p-4 text-right font-bold text-earth'>
                   {property.area}
                 </td>
                 <td className='p-4 text-center'>
@@ -120,7 +120,7 @@ export function InventoryTable({ properties = defaultProperties }: InventoryTabl
                     {property.status}
                   </span>
                 </td>
-                <td className='p-4 text-right font-bold text-earth dark:text-white'>
+                <td className='p-4 text-right font-bold text-earth'>
                   {property.price}
                 </td>
 
@@ -156,7 +156,7 @@ export function InventoryTable({ properties = defaultProperties }: InventoryTabl
 
       {/* Pagination */}
       <div className='p-4 border-t border-primary/5 flex items-center justify-between'>
-        <p className='text-xs text-earth/50 dark:text-slate-500'>Showing 1-3 of 42 properties</p>
+        <p className='text-xs text-earth/50'>Showing 1-3 of 42 properties</p>
         <div className='flex items-center gap-2'>
           <button
             type='button'

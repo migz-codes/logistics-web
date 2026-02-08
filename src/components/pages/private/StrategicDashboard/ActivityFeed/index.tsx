@@ -63,7 +63,7 @@ export function ActivityFeed({ activities = defaultActivities }: ActivityFeedPro
   return (
     <Card>
       <div className='flex items-center justify-between mb-6'>
-        <h3 className='text-lg font-bold text-earth dark:text-white flex items-center gap-2'>
+        <h3 className='text-lg font-bold text-earth flex items-center gap-2'>
           <Icon name='history' className='text-primary' />
           Recent Activity
         </h3>
@@ -78,7 +78,7 @@ export function ActivityFeed({ activities = defaultActivities }: ActivityFeedPro
             {/* Timeline */}
             <div className='flex flex-col items-center'>
               <div
-                className={`w-8 h-8 rounded-full bg-cream dark:bg-slate-800 flex items-center justify-center ${activity.color}`}
+                className={`w-8 h-8 rounded-full bg-cream flex items-center justify-center ${activity.color}`}
               >
                 <Icon name={activity.icon} size='sm' />
               </div>
@@ -86,11 +86,11 @@ export function ActivityFeed({ activities = defaultActivities }: ActivityFeedPro
             </div>
             {/* Content */}
             <div className='flex-1 pb-4'>
-              <p className='font-bold text-sm text-earth dark:text-white'>{activity.action}</p>
-              <p className='text-xs text-earth/60 dark:text-slate-400 mt-1'>
+              <p className='font-bold text-sm text-earth'>{activity.action}</p>
+              <p className='text-xs text-earth/60 mt-1'>
                 {activity.description}
               </p>
-              <p className='text-[10px] text-earth/40 dark:text-slate-500 mt-2'>
+              <p className='text-[10px] text-earth/40 mt-2'>
                 {activity.timestamp}
               </p>
             </div>

@@ -56,7 +56,7 @@ export function PendingApprovals({ approvals = defaultApprovals }: PendingApprov
   return (
     <Card>
       <div className='flex items-center justify-between mb-6'>
-        <h3 className='text-lg font-bold text-earth dark:text-white flex items-center gap-2'>
+        <h3 className='text-lg font-bold text-earth flex items-center gap-2'>
           <Icon name='pending_actions' className='text-secondary' />
           Pending Approvals
         </h3>
@@ -69,7 +69,7 @@ export function PendingApprovals({ approvals = defaultApprovals }: PendingApprov
         {approvals.map((approval) => (
           <div
             key={approval.id}
-            className='flex items-center gap-4 p-4 bg-cream dark:bg-slate-800 rounded-2xl hover:bg-primary/5 transition-colors group'
+            className='flex items-center gap-4 p-4 bg-cream rounded-2xl hover:bg-primary/5 transition-colors group'
           >
             <div
               className={`w-10 h-10 rounded-xl flex items-center justify-center ${typeColors[approval.type]}`}
@@ -77,8 +77,8 @@ export function PendingApprovals({ approvals = defaultApprovals }: PendingApprov
               <Icon name={typeIcons[approval.type]} />
             </div>
             <div className='flex-1'>
-              <p className='font-bold text-sm text-earth dark:text-white'>{approval.title}</p>
-              <p className='text-xs text-earth/50 dark:text-slate-500'>
+              <p className='font-bold text-sm text-earth'>{approval.title}</p>
+              <p className='text-xs text-earth/50'>
                 by {approval.submitter} • {approval.date}
               </p>
             </div>

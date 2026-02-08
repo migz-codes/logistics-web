@@ -66,7 +66,7 @@ export function PartnersTable({ partners = defaultPartners }: PartnersTableProps
   return (
     <Card padding='none'>
       <div className='p-6 border-b border-primary/5'>
-        <h3 className='text-lg font-bold text-earth dark:text-white flex items-center gap-2'>
+        <h3 className='text-lg font-bold text-earth flex items-center gap-2'>
           <Icon name='groups' className='text-primary' />
           Active Partners
         </h3>
@@ -74,7 +74,7 @@ export function PartnersTable({ partners = defaultPartners }: PartnersTableProps
       <div className='overflow-x-auto'>
         <table className='w-full text-xs'>
           <thead>
-            <tr className='text-[10px] font-black uppercase tracking-widest text-earth/40 dark:text-slate-500 border-b border-primary/5'>
+            <tr className='text-[10px] font-black uppercase tracking-widest text-earth/40 border-b border-primary/5'>
               <th className='p-4 text-left'>Partner</th>
               <th className='p-4 text-left'>Type</th>
               <th className='p-4 text-left'>Status</th>
@@ -91,9 +91,9 @@ export function PartnersTable({ partners = defaultPartners }: PartnersTableProps
                 className='border-b border-primary/5 last:border-b-0 hover:bg-primary/5 transition-colors'
               >
                 <td className='p-4'>
-                  <span className='font-bold text-earth dark:text-white'>{partner.name}</span>
+                  <span className='font-bold text-earth'>{partner.name}</span>
                 </td>
-                <td className='p-4 text-earth/60 dark:text-slate-400'>{partner.type}</td>
+                <td className='p-4 text-earth/60'>{partner.type}</td>
                 <td className='p-4'>
                   <span
                     className={`px-2 py-1 rounded-full text-[10px] font-black ${statusStyles[partner.status]}`}
@@ -101,13 +101,13 @@ export function PartnersTable({ partners = defaultPartners }: PartnersTableProps
                     {partner.status}
                   </span>
                 </td>
-                <td className='p-4 text-right font-bold text-earth dark:text-white'>
+                <td className='p-4 text-right font-bold text-earth'>
                   {partner.investedCapital}
                 </td>
-                <td className='p-4 text-right text-earth/60 dark:text-slate-400'>
+                <td className='p-4 text-right text-earth/60'>
                   {partner.properties}
                 </td>
-                <td className='p-4 text-right text-earth/60 dark:text-slate-400'>
+                <td className='p-4 text-right text-earth/60'>
                   {partner.lastInteraction}
                 </td>
                 <td className='p-4 text-center'>

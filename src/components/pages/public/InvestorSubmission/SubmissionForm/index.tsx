@@ -50,20 +50,20 @@ export function SubmissionForm() {
               className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
                 currentStep >= step.id
                   ? 'bg-primary text-white'
-                  : 'bg-cream dark:bg-slate-800 text-earth/40'
+                  : 'bg-cream text-earth/40'
               }`}
             >
               {step.id}
             </div>
             <span
               className={`ml-3 text-sm font-bold ${
-                currentStep >= step.id ? 'text-earth dark:text-white' : 'text-earth/40'
+                currentStep >= step.id ? 'text-earth' : 'text-earth/40'
               }`}
             >
               {step.label}
             </span>
             {index < steps.length - 1 && (
-              <div className='w-24 h-1 bg-cream dark:bg-slate-800 mx-6'>
+              <div className='w-24 h-1 bg-cream mx-6'>
                 <div
                   className={`h-full bg-primary transition-all ${
                     currentStep > step.id ? 'w-full' : 'w-0'
@@ -78,7 +78,7 @@ export function SubmissionForm() {
       <form className='space-y-6'>
         {currentStep === 1 && (
           <>
-            <h3 className='text-xl font-bold text-earth dark:text-white mb-6'>
+            <h3 className='text-xl font-bold text-earth mb-6'>
               Company Information
             </h3>
             <div className='grid md:grid-cols-2 gap-6'>
@@ -98,7 +98,7 @@ export function SubmissionForm() {
 
         {currentStep === 2 && (
           <>
-            <h3 className='text-xl font-bold text-earth dark:text-white mb-6'>Project Details</h3>
+            <h3 className='text-xl font-bold text-earth mb-6'>Project Details</h3>
             <Input label='Project Name' placeholder='Name or identifier for your project' />
             <div className='grid md:grid-cols-2 gap-6'>
               <Select label='Target Region' options={regionOptions} />
@@ -114,7 +114,7 @@ export function SubmissionForm() {
 
         {currentStep === 3 && (
           <>
-            <h3 className='text-xl font-bold text-earth dark:text-white mb-6'>Investment Scope</h3>
+            <h3 className='text-xl font-bold text-earth mb-6'>Investment Scope</h3>
             <div className='grid md:grid-cols-2 gap-6'>
               <Select label='Investment Range' options={investmentRangeOptions} />
               <Input label='Expected ROI (%)' placeholder='e.g., 12' type='number' />
@@ -130,10 +130,10 @@ export function SubmissionForm() {
                 className='w-5 h-5 rounded text-primary focus:ring-primary mt-0.5'
               />
               <div>
-                <p className='font-bold text-earth dark:text-white mb-1'>
+                <p className='font-bold text-earth mb-1'>
                   I agree to the terms and conditions
                 </p>
-                <p className='text-sm text-earth/60 dark:text-slate-400'>
+                <p className='text-sm text-earth/60'>
                   By submitting, you agree to our privacy policy and investment partnership terms.
                 </p>
               </div>

@@ -9,11 +9,11 @@ export function Charts() {
       {/* Lead Growth Chart */}
       <Card>
         <div className='flex items-center justify-between mb-6'>
-          <h3 className='text-lg font-bold text-earth dark:text-white flex items-center gap-2'>
+          <h3 className='text-lg font-bold text-earth flex items-center gap-2'>
             <Icon name='show_chart' className='text-primary' />
             Lead Growth Trend
           </h3>
-          <select className='text-xs font-bold bg-cream dark:bg-slate-800 rounded-lg px-3 py-2 border-none'>
+          <select className='text-xs font-bold bg-cream rounded-lg px-3 py-2 border-none'>
             <option>Last 6 Months</option>
             <option>Last 12 Months</option>
             <option>YTD</option>
@@ -29,7 +29,7 @@ export function Charts() {
             />
           ))}
         </div>
-        <div className='flex justify-between mt-4 text-xs text-earth/50 dark:text-slate-500 font-bold'>
+        <div className='flex justify-between mt-4 text-xs text-earth/50 font-bold'>
           <span>Jan</span>
           <span>Feb</span>
           <span>Mar</span>
@@ -42,7 +42,7 @@ export function Charts() {
       {/* Portfolio Distribution */}
       <Card>
         <div className='flex items-center justify-between mb-6'>
-          <h3 className='text-lg font-bold text-earth dark:text-white flex items-center gap-2'>
+          <h3 className='text-lg font-bold text-earth flex items-center gap-2'>
             <Icon name='pie_chart' className='text-primary' />
             Portfolio by Category
           </h3>
@@ -88,8 +88,8 @@ export function Charts() {
             </svg>
             <div className='absolute inset-0 flex items-center justify-center'>
               <div className='text-center'>
-                <span className='text-2xl font-black text-earth dark:text-white'>156</span>
-                <p className='text-[10px] text-earth/50 dark:text-slate-500 uppercase tracking-widest'>
+                <span className='text-2xl font-black text-earth'>156</span>
+                <p className='text-[10px] text-earth/50 uppercase tracking-widest'>
                   Properties
                 </p>
               </div>
@@ -106,8 +106,8 @@ export function Charts() {
           ].map((item) => (
             <div key={item.label} className='flex items-center gap-3'>
               <div className={`w-3 h-3 rounded-full ${item.color}`} />
-              <span className='text-xs text-earth/60 dark:text-slate-400 flex-1'>{item.label}</span>
-              <span className='text-xs font-bold text-earth dark:text-white'>{item.value}</span>
+              <span className='text-xs text-earth/60 flex-1'>{item.label}</span>
+              <span className='text-xs font-bold text-earth'>{item.value}</span>
             </div>
           ))}
         </div>

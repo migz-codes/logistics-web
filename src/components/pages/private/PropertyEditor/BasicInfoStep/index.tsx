@@ -31,7 +31,7 @@ export function BasicInfoStep({ onNext }: BasicInfoStepProps) {
 
   return (
     <Card variant='elevated'>
-      <h2 className='text-2xl font-bold text-earth dark:text-white mb-8 flex items-center gap-3'>
+      <h2 className='text-2xl font-bold text-earth mb-8 flex items-center gap-3'>
         <Icon name='info' className='text-primary' />
         Basic Information
       </h2>

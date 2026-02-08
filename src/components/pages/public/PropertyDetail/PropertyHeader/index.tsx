@@ -22,10 +22,10 @@ export function PropertyHeader({
         <Badge variant='primary'>{category}</Badge>
         <Badge variant='secondary'>{status}</Badge>
       </div>
-      <h1 className='text-4xl md:text-5xl font-extrabold text-earth dark:text-white mb-2'>
+      <h1 className='text-4xl md:text-5xl font-extrabold text-earth mb-2'>
         {title}
       </h1>
-      <div className='flex items-center gap-2 text-earth/60 dark:text-slate-400'>
+      <div className='flex items-center gap-2 text-earth/60'>
         <Icon name='location_on' className='text-secondary' />
         <span className='font-medium'>{location}</span>
       </div>

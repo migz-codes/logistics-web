@@ -6,10 +6,10 @@ import { Icon } from '@/components/shared/ui/Icon'
 export function SearchBar() {
   return (
     <section className='relative z-40 -mt-16 px-6 max-w-6xl mx-auto'>
-      <div className='bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl p-4 flex flex-col lg:flex-row items-stretch gap-2 border border-primary/5'>
+      <div className='bg-white rounded-[2.5rem] shadow-2xl p-4 flex flex-col lg:flex-row items-stretch gap-2 border border-primary/5'>
         <div className='flex-1 grid grid-cols-1 md:grid-cols-3 items-center'>
           {/* Property Type */}
-          <div className='px-8 py-4 border-r border-earth/10 dark:border-white/10'>
+          <div className='px-8 py-4 border-r border-earth/10'>
             <div className='flex items-center gap-3 mb-1'>
               <Icon name='apartment' className='text-primary' size='md' />
               <label
@@ -21,7 +21,7 @@ export function SearchBar() {
             </div>
             <select
               id='property-type'
-              className='block w-full border-none bg-transparent p-0 text-lg font-bold focus:ring-0 cursor-pointer text-earth dark:text-white'
+              className='block w-full border-none bg-transparent p-0 text-lg font-bold focus:ring-0 cursor-pointer text-earth'
             >
               <option>Show all</option>
               <option>Apartment</option>
@@ -31,7 +31,7 @@ export function SearchBar() {
           </div>
 
           {/* BHK */}
-          <div className='px-8 py-4 border-r border-earth/10 dark:border-white/10'>
+          <div className='px-8 py-4 border-r border-earth/10'>
             <div className='flex items-center gap-3 mb-1'>
               <Icon name='king_bed' className='text-primary' size='md' />
               <label
@@ -43,7 +43,7 @@ export function SearchBar() {
             </div>
             <select
               id='bhk'
-              className='block w-full border-none bg-transparent p-0 text-lg font-bold focus:ring-0 cursor-pointer text-earth dark:text-white'
+              className='block w-full border-none bg-transparent p-0 text-lg font-bold focus:ring-0 cursor-pointer text-earth'
             >
               <option>At-list 2</option>
               <option>1 BHK</option>
@@ -67,7 +67,7 @@ export function SearchBar() {
 
             <select
               id='price-range'
-              className='block w-full border-none bg-transparent p-0 text-lg font-bold focus:ring-0 cursor-pointer text-earth dark:text-white'
+              className='block w-full border-none bg-transparent p-0 text-lg font-bold focus:ring-0 cursor-pointer text-earth'
             >
               <option>₹ 23 L - ₹ 5 Cr</option>
               <option>₹ 50 L - ₹ 1 Cr</option>

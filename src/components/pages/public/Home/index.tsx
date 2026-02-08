@@ -9,7 +9,7 @@ import { ServicesSection } from './ServicesSection'
 
 export function Home() {
   return (
-    <div className='min-h-screen bg-background-light dark:bg-background-dark text-earth dark:text-slate-100 transition-colors duration-300'>
+    <div className='min-h-screen bg-background-light text-earth transition-colors duration-300'>
       {/* <Navigation
         brandName='Real Estate'
         brandIcon='home'

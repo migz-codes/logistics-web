@@ -8,13 +8,13 @@ import { Textarea } from '@/components/shared/ui/Textarea'
 
 export function ContactSection() {
   return (
-    <section className='bg-cream dark:bg-slate-900 py-24 border-t border-primary/5' id='contact'>
+    <section className='bg-cream py-24 border-t border-primary/5' id='contact'>
       <div className='max-w-7xl mx-auto px-6'>
         <div className='grid lg:grid-cols-2 gap-12 items-start'>
           {/* Contact Form */}
           <Card variant='elevated' padding='lg'>
-            <h2 className='text-3xl font-bold text-earth dark:text-white mb-2'>Get in Touch</h2>
-            <p className='text-earth/60 dark:text-slate-400 mb-8'>
+            <h2 className='text-3xl font-bold text-earth mb-2'>Get in Touch</h2>
+            <p className='text-earth/60 mb-8'>
               Our specialized logistics team is ready to assist you with your property requirements.
             </p>
             <form className='space-y-6'>
@@ -30,7 +30,7 @@ export function ContactSection() {
           {/* Contact Info */}
           <div className='lg:pl-12 space-y-10 py-4'>
             <div>
-              <h3 className='text-2xl font-bold text-earth dark:text-white mb-6'>
+              <h3 className='text-2xl font-bold text-earth mb-6'>
                 Contact Information
               </h3>
               <div className='space-y-8'>
@@ -40,8 +40,8 @@ export function ContactSection() {
                     <Icon name='location_on' />
                   </div>
                   <div>
-                    <h4 className='font-bold text-earth dark:text-white'>Headquarters</h4>
-                    <p className='text-earth/60 dark:text-slate-400 text-sm leading-relaxed'>
+                    <h4 className='font-bold text-earth'>Headquarters</h4>
+                    <p className='text-earth/60 text-sm leading-relaxed'>
                       Av. Brigadeiro Faria Lima, 4500 - 15th Floor
                       <br />
                       Itaim Bibi, São Paulo - SP, 04538-132
@@ -55,8 +55,8 @@ export function ContactSection() {
                     <Icon name='badge' />
                   </div>
                   <div>
-                    <h4 className='font-bold text-earth dark:text-white'>Broker Certification</h4>
-                    <p className='text-earth/60 dark:text-slate-400 text-sm'>
+                    <h4 className='font-bold text-earth'>Broker Certification</h4>
+                    <p className='text-earth/60 text-sm'>
                       Official Commercial Real Estate License
                     </p>
                     <p className='text-primary font-mono text-sm font-bold bg-primary/5 px-3 py-1 rounded inline-block mt-2 border border-primary/10'>

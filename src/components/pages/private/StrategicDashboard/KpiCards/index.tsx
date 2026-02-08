@@ -53,7 +53,7 @@ export function KpiCards({ kpis = defaultKpis }: KpiCardsProps) {
       {kpis.map((kpi) => (
         <div
           key={kpi.label}
-          className='bg-white dark:bg-slate-900 p-6 rounded-3xl border border-primary/5 shadow-sm hover:shadow-lg transition-shadow'
+          className='bg-white p-6 rounded-3xl border border-primary/5 shadow-sm hover:shadow-lg transition-shadow'
         >
           <div className='flex items-center justify-between mb-4'>
             <div className='w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary'>
@@ -65,10 +65,10 @@ export function KpiCards({ kpis = defaultKpis }: KpiCardsProps) {
               </Badge>
             )}
           </div>
-          <p className='text-[10px] font-black uppercase tracking-widest text-earth/40 dark:text-white/40'>
+          <p className='text-[10px] font-black uppercase tracking-widest text-earth/40'>
             {kpi.label}
           </p>
-          <h3 className='text-2xl font-black mt-1 text-earth dark:text-white'>
+          <h3 className='text-2xl font-black mt-1 text-earth'>
             {kpi.value}
             {kpi.unit && <span className='text-sm font-medium text-earth/50 ml-1'>{kpi.unit}</span>}
           </h3>

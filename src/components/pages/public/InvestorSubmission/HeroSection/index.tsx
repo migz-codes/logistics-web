@@ -11,11 +11,11 @@ export function HeroSection() {
           <Icon name='trending_up' size='sm' className='mr-1' />
           Investment Opportunities
         </Badge>
-        <h1 className='text-5xl md:text-7xl font-extrabold text-earth dark:text-white mb-6'>
+        <h1 className='text-5xl md:text-7xl font-extrabold text-earth mb-6'>
           Submit Your <br />
           <span className='text-secondary italic font-light'>Project</span>
         </h1>
-        <p className='text-xl text-earth/70 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed'>
+        <p className='text-xl text-earth/70 max-w-2xl mx-auto leading-relaxed'>
           Partner with us to expand your logistics real estate portfolio. We connect investors with
           premium warehouse properties across Brazil.
         </p>

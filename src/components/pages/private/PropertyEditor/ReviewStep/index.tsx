@@ -12,16 +12,16 @@ interface ReviewStepProps {
 export function ReviewStep({ onPrevious }: ReviewStepProps) {
   return (
     <Card variant='elevated'>
-      <h2 className='text-2xl font-bold text-earth dark:text-white mb-8 flex items-center gap-3'>
+      <h2 className='text-2xl font-bold text-earth mb-8 flex items-center gap-3'>
         <Icon name='check_circle' className='text-primary' />
         Review & Submit
       </h2>
 
       <div className='space-y-8'>
         {/* Property Preview */}
-        <div className='bg-cream dark:bg-slate-800 rounded-2xl p-6'>
+        <div className='bg-cream rounded-2xl p-6'>
           <div className='flex items-start gap-6'>
-            <div className='w-32 h-24 bg-slate-300 dark:bg-slate-700 rounded-xl flex items-center justify-center'>
+            <div className='w-32 h-24 bg-slate-300 rounded-xl flex items-center justify-center'>
               <Icon name='image' className='text-slate-400' size='xl' />
             </div>
             <div className='flex-1'>
@@ -29,15 +29,15 @@ export function ReviewStep({ onPrevious }: ReviewStepProps) {
                 <Badge variant='primary'>Class A Warehouse</Badge>
                 <Badge variant='success'>Draft</Badge>
               </div>
-              <h3 className='text-xl font-bold text-earth dark:text-white'>[Property Name]</h3>
-              <p className='text-sm text-earth/60 dark:text-slate-400 flex items-center gap-1 mt-1'>
+              <h3 className='text-xl font-bold text-earth'>[Property Name]</h3>
+              <p className='text-sm text-earth/60 flex items-center gap-1 mt-1'>
                 <Icon name='location_on' size='sm' />
                 [Address will appear here]
               </p>
             </div>
             <div className='text-right'>
-              <p className='text-2xl font-black text-earth dark:text-white'>R$ --/m²</p>
-              <p className='text-sm text-earth/50 dark:text-slate-500'>-- m² total</p>
+              <p className='text-2xl font-black text-earth'>R$ --/m²</p>
+              <p className='text-sm text-earth/50'>-- m² total</p>
             </div>
           </div>
         </div>
@@ -45,9 +45,9 @@ export function ReviewStep({ onPrevious }: ReviewStepProps) {
         {/* Section Summaries */}
         <div className='grid md:grid-cols-3 gap-6'>
           {/* Basic Info */}
-          <div className='bg-white dark:bg-slate-900 rounded-2xl p-6 border border-primary/5'>
+          <div className='bg-white rounded-2xl p-6 border border-primary/5'>
             <div className='flex items-center justify-between mb-4'>
-              <h4 className='font-bold text-earth dark:text-white flex items-center gap-2'>
+              <h4 className='font-bold text-earth flex items-center gap-2'>
                 <Icon name='info' className='text-primary' size='sm' />
                 Basic Info
               </h4>
@@ -55,7 +55,7 @@ export function ReviewStep({ onPrevious }: ReviewStepProps) {
                 Edit
               </button>
             </div>
-            <div className='space-y-2 text-xs text-earth/60 dark:text-slate-400'>
+            <div className='space-y-2 text-xs text-earth/60'>
               <p>• Category: --</p>
               <p>• Region: --</p>
               <p>• Available from: --</p>
@@ -63,9 +63,9 @@ export function ReviewStep({ onPrevious }: ReviewStepProps) {
           </div>
 
           {/* Technical Specs */}
-          <div className='bg-white dark:bg-slate-900 rounded-2xl p-6 border border-primary/5'>
+          <div className='bg-white rounded-2xl p-6 border border-primary/5'>
             <div className='flex items-center justify-between mb-4'>
-              <h4 className='font-bold text-earth dark:text-white flex items-center gap-2'>
+              <h4 className='font-bold text-earth flex items-center gap-2'>
                 <Icon name='analytics' className='text-primary' size='sm' />
                 Technical
               </h4>
@@ -73,7 +73,7 @@ export function ReviewStep({ onPrevious }: ReviewStepProps) {
                 Edit
               </button>
             </div>
-            <div className='space-y-2 text-xs text-earth/60 dark:text-slate-400'>
+            <div className='space-y-2 text-xs text-earth/60'>
               <p>• Ceiling: -- m</p>
               <p>• Docks: --</p>
               <p>• Power: -- kVA</p>
@@ -81,9 +81,9 @@ export function ReviewStep({ onPrevious }: ReviewStepProps) {
           </div>
 
           {/* Media */}
-          <div className='bg-white dark:bg-slate-900 rounded-2xl p-6 border border-primary/5'>
+          <div className='bg-white rounded-2xl p-6 border border-primary/5'>
             <div className='flex items-center justify-between mb-4'>
-              <h4 className='font-bold text-earth dark:text-white flex items-center gap-2'>
+              <h4 className='font-bold text-earth flex items-center gap-2'>
                 <Icon name='image' className='text-primary' size='sm' />
                 Media
               </h4>
@@ -91,7 +91,7 @@ export function ReviewStep({ onPrevious }: ReviewStepProps) {
                 Edit
               </button>
             </div>
-            <div className='space-y-2 text-xs text-earth/60 dark:text-slate-400'>
+            <div className='space-y-2 text-xs text-earth/60'>
               <p>• Photos: 0/20</p>
               <p>• Floor plan: Not uploaded</p>
               <p>• Video: Not linked</p>
@@ -106,10 +106,8 @@ export function ReviewStep({ onPrevious }: ReviewStepProps) {
             className='w-5 h-5 rounded text-primary focus:ring-primary mt-0.5'
           />
           <div>
-            <p className='font-bold text-earth dark:text-white mb-1'>
-              I confirm all information is accurate
-            </p>
-            <p className='text-sm text-earth/60 dark:text-slate-400'>
+            <p className='font-bold text-earth mb-1'>I confirm all information is accurate</p>
+            <p className='text-sm text-earth/60'>
               By submitting, I agree that the property details are correct and can be published on
               the platform.
             </p>

@@ -25,14 +25,14 @@ export function Footer({
   creci = 'CRECI: 293146-F',
   copyrightText = '© 2024 Real Estate Brokerage. All rights reserved.',
   links = [
-    { href: '#', label: 'Privacy Policy' },
-    { href: '#', label: 'Terms of Service' },
-    { href: '#', label: 'Contact Us' }
+    { href: '/privacy', label: 'Privacy Policy' },
+    { href: '/terms', label: 'Terms of Service' },
+    { href: '/contact', label: 'Contact Us' }
   ],
   socialLinks = [
-    { icon: 'public', href: '#' },
-    { icon: 'share', href: '#' },
-    { icon: 'mail', href: '#' }
+    { icon: 'thumb_up', href: 'https://facebook.com' },
+    { icon: 'alternate_email', href: 'https://twitter.com' },
+    { icon: 'photo_camera', href: 'https://instagram.com' }
   ]
 }: FooterProps) {
   return (
@@ -46,9 +46,11 @@ export function Footer({
               </div>
               <h2 className='text-3xl font-black tracking-tight text-white'>{brandName}</h2>
             </div>
+
             <p className='text-xs text-white/60 font-black uppercase tracking-[0.2em]'>
               {brandSubtitle}
             </p>
+
             {creci && <p className='text-xs text-white/40 font-mono'>{creci}</p>}
           </div>
 
@@ -65,6 +67,7 @@ export function Footer({
           <p className='text-[11px] text-white/40 font-bold uppercase tracking-widest'>
             {copyrightText}
           </p>
+
           <div className='flex gap-6'>
             {socialLinks.map((link, index) => (
               <a

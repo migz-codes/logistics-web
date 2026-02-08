@@ -17,7 +17,7 @@ const sidebarLinks = [
 
 export function StrategicDashboardPage() {
   return (
-    <div className='min-h-screen bg-cream dark:bg-background-dark flex'>
+    <div className='min-h-screen bg-cream flex'>
       <AdminSidebar
         brandName='Logistics Portal'
         brandSubtitle='Master Admin'

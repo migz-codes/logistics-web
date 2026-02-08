@@ -15,11 +15,11 @@ export function HeroSection() {
       />
       <div className='absolute inset-0 lifestyle-gradient' />
       <div className='relative z-10 h-full max-w-7xl mx-auto px-6 flex flex-col justify-center items-center text-center'>
-        <h1 className='text-6xl md:text-8xl font-extrabold text-earth dark:text-white leading-[1.05] mb-8 max-w-4xl'>
+        <h1 className='text-6xl md:text-8xl font-extrabold text-earth leading-[1.05] mb-8 max-w-4xl'>
           DISCOVER YOUR IDEAL <br />
           <span className='text-secondary italic font-light'>PROPERTY</span>
         </h1>
-        <p className='text-earth/80 dark:text-white/80 text-xl max-w-2xl mb-12 leading-relaxed font-medium'>
+        <p className='text-earth/80 text-xl max-w-2xl mb-12 leading-relaxed font-medium'>
           We are dedicated to connecting buyers and sellers with the most desirable properties on
           the market. Our team of experienced real estate professionals.
         </p>

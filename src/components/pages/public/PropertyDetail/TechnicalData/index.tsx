@@ -29,7 +29,7 @@ export function TechnicalData({
 }: TechnicalDataProps) {
   return (
     <Card variant='elevated' padding='lg'>
-      <h3 className='text-2xl font-bold text-earth dark:text-white mb-8 flex items-center gap-3'>
+      <h3 className='text-2xl font-bold text-earth mb-8 flex items-center gap-3'>
         <Icon name='analytics' className='text-primary' />
         {title}
       </h3>
@@ -39,8 +39,8 @@ export function TechnicalData({
             <p className='text-[11px] font-bold text-primary/60 uppercase tracking-widest'>
               {item.label}
             </p>
-            <p className='text-xl font-extrabold text-earth dark:text-white'>{item.value}</p>
-            <p className='text-xs text-earth/40 dark:text-slate-500'>{item.description}</p>
+            <p className='text-xl font-extrabold text-earth'>{item.value}</p>
+            <p className='text-xs text-earth/40'>{item.description}</p>
           </div>
         ))}
       </div>

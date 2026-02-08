@@ -57,20 +57,20 @@ export function RoadmapSection() {
   const statusStyles = {
     completed: 'bg-green-500 text-white',
     current: 'bg-secondary text-white ring-4 ring-secondary/30',
-    upcoming: 'bg-cream dark:bg-slate-800 text-earth/40 dark:text-slate-500'
+    upcoming: 'bg-cream text-earth/40'
   }
 
   return (
-    <section className='py-32 bg-cream dark:bg-slate-900/50 border-y border-primary/5'>
+    <section className='py-32 bg-cream border-y border-primary/5'>
       <div className='max-w-7xl mx-auto px-6'>
         <div className='text-center mb-20'>
           <Badge variant='primary' className='mb-6'>
             Roadmap
           </Badge>
-          <h2 className='text-4xl md:text-6xl font-extrabold text-earth dark:text-white mb-6'>
+          <h2 className='text-4xl md:text-6xl font-extrabold text-earth mb-6'>
             Our Journey to the <span className='text-secondary italic font-light'>Future</span>
           </h2>
-          <p className='text-earth/60 dark:text-slate-400 max-w-2xl mx-auto text-lg'>
+          <p className='text-earth/60 max-w-2xl mx-auto text-lg'>
             Strategic milestones driving the transformation of logistics infrastructure.
           </p>
         </div>
@@ -92,7 +92,7 @@ export function RoadmapSection() {
                 <div
                   className={`hidden md:flex w-5/12 ${index % 2 === 0 ? 'justify-end' : 'justify-start'}`}
                 >
-                  <span className='text-6xl font-black text-earth/10 dark:text-white/10'>
+                  <span className='text-6xl font-black text-earth/10'>
                     {milestone.year}
                   </span>
                 </div>
@@ -108,14 +108,14 @@ export function RoadmapSection() {
 
                 {/* Content */}
                 <div className='flex-1 md:w-5/12'>
-                  <div className='bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-xl border border-primary/5 hover:border-primary/20 transition-all hover:-translate-y-1'>
+                  <div className='bg-white rounded-3xl p-8 shadow-xl border border-primary/5 hover:border-primary/20 transition-all hover:-translate-y-1'>
                     <span className='text-sm font-bold text-secondary md:hidden'>
                       {milestone.year}
                     </span>
-                    <h3 className='text-xl font-bold text-earth dark:text-white mb-3'>
+                    <h3 className='text-xl font-bold text-earth mb-3'>
                       {milestone.title}
                     </h3>
-                    <p className='text-earth/60 dark:text-slate-400 leading-relaxed'>
+                    <p className='text-earth/60 leading-relaxed'>
                       {milestone.description}
                     </p>
                   </div>

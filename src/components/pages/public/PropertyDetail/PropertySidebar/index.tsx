@@ -41,8 +41,8 @@ export function PropertySidebar({
             Lease Price
           </p>
           <div className='flex items-baseline gap-2'>
-            <span className='text-4xl font-black text-earth dark:text-white'>{price}</span>
-            <span className='text-earth/40 dark:text-slate-500 text-sm font-medium'>
+            <span className='text-4xl font-black text-earth'>{price}</span>
+            <span className='text-earth/40 text-sm font-medium'>
               {priceUnit}
             </span>
           </div>
@@ -58,8 +58,8 @@ export function PropertySidebar({
             Contact via WhatsApp
           </Button>
 
-          <div className='pt-6 border-t border-earth/5 dark:border-white/5'>
-            <h4 className='font-bold text-earth dark:text-white mb-4'>Request More Info</h4>
+          <div className='pt-6 border-t border-earth/5'>
+            <h4 className='font-bold text-earth mb-4'>Request More Info</h4>
             <form className='space-y-4'>
               <Input placeholder='Full Name' type='text' />
               <Input placeholder='Work Email' type='email' />
@@ -91,8 +91,8 @@ export function PropertySidebar({
           />
 
           <div>
-            <p className='text-xs font-bold text-earth dark:text-white'>Licensed Broker</p>
-            <p className='text-[10px] text-earth/60 dark:text-slate-400'>{brokerCreci}</p>
+            <p className='text-xs font-bold text-earth'>Licensed Broker</p>
+            <p className='text-[10px] text-earth/60'>{brokerCreci}</p>
           </div>
         </div>
       </Card>
@@ -104,7 +104,7 @@ export function PropertySidebar({
           {highlights.map((highlight, index) => (
             <li
               key={`${highlight.icon}-${index}`}
-              className='flex items-center gap-2 text-xs text-earth/70 dark:text-slate-400'
+              className='flex items-center gap-2 text-xs text-earth/70'
             >
               <Icon name={highlight.icon} className='text-primary text-base' />
               {highlight.label}

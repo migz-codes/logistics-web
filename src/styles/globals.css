@@ -9,26 +9,18 @@
 @import './themes/fonts.css';
 @import './themes/base.css';
 
-/* Disable dark mode - force light mode always */
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: light;
-  }
-}
-
 /* Custom Theme Colors - matching HTML files */
 @theme {
   /* Primary color palette from HTML */
-  --color-primary: #5D6D4D;
-  --color-secondary: #E29578;
-  --color-cream: #FDFBF7;
-  --color-sage: #8A9A5B;
-  --color-earth: #4A3728;
+  --color-primary: #5d6d4d;
+  --color-secondary: #e29578;
+  --color-cream: #fdfbf7;
+  --color-sage: #8a9a5b;
+  --color-earth: #4a3728;
   --color-earth-dark: #3a2b20;
 
   /* Background colors */
-  --color-background-light: #FDFBF7;
-  --color-background-dark: #1A1C14;
+  --color-background: #fdfbf7;
 }
 
 /* Custom shadows */
@@ -42,19 +34,17 @@
 
 /* Lifestyle gradient for hero sections */
 .lifestyle-gradient {
-  background: linear-gradient(to top,
-      rgba(253, 251, 247, 1) 0%,
-      rgba(253, 251, 247, 0.4) 50%,
-      rgba(253, 251, 247, 0) 100%);
+  background: linear-gradient(
+    to top,
+    rgba(253, 251, 247, 1) 0%,
+    rgba(253, 251, 247, 0.4) 50%,
+    rgba(253, 251, 247, 0) 100%
+  );
 }
 
 /* Material Symbols configuration */
 .material-symbols-outlined {
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
 /* Base font family */
@@ -71,12 +61,12 @@ html {
 /* Selection color */
 ::selection {
   background-color: rgba(93, 109, 77, 0.2);
-  color: #4A3728;
+  color: #4a3728;
 }
 
 /* Focus ring styles */
 *:focus-visible {
-  outline: 2px solid #5D6D4D;
+  outline: 2px solid #5d6d4d;
   outline-offset: 2px;
 }
 
@@ -87,7 +77,7 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #FDFBF7;
+  background: #fdfbf7;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -101,7 +91,6 @@ html {
 
 /* Animation utilities */
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0px);
@@ -118,43 +107,21 @@ html {
 
 /* Stepper styles for property editor */
 .stepper-line {
-  background: repeating-linear-gradient(90deg,
-      #E2E8F0 0,
-      #E2E8F0 4px,
-      transparent 4px,
-      transparent 8px);
+  background: repeating-linear-gradient(
+    90deg,
+    #e2e8f0 0,
+    #e2e8f0 4px,
+    transparent 4px,
+    transparent 8px
+  );
 }
 
 .step-active .stepper-icon {
-  background-color: #4A3728;
+  background-color: #4a3728;
   color: white;
 }
 
 .step-active .stepper-label {
-  color: #4A3728;
+  color: #4a3728;
   font-weight: 700;
-}
-
-/* Override dark mode styles - force light mode everywhere */
-.dark {
-  color-scheme: light !important;
-}
-
-/* Force light mode for all dark: prefixed utilities */
-@media (prefers-color-scheme: dark) {
-
-  .dark\:bg-slate-900,
-  .dark\:bg-slate-800,
-  .dark\:bg-slate-950,
-  .dark\:bg-background-dark {
-    background-color: inherit !important;
-  }
-
-  .dark\:text-white,
-  .dark\:text-slate-100,
-  .dark\:text-slate-300,
-  .dark\:text-slate-400,
-  .dark\:text-slate-500 {
-    color: inherit !important;
-  }
 }

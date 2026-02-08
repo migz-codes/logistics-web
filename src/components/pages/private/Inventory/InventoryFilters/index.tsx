@@ -26,7 +26,7 @@ export function InventoryFilters() {
   ]
 
   return (
-    <div className='bg-white dark:bg-slate-900 rounded-2xl p-6 mb-6 border border-primary/5'>
+    <div className='bg-white rounded-2xl p-6 mb-6 border border-primary/5'>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
         {/* Search */}
         <div className='relative'>
@@ -34,7 +34,7 @@ export function InventoryFilters() {
           <input
             type='text'
             placeholder='Search properties...'
-            className='w-full pl-12 pr-4 py-3 rounded-xl bg-cream dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary text-sm font-medium'
+            className='w-full pl-12 pr-4 py-3 rounded-xl bg-cream border-none focus:ring-2 focus:ring-primary text-sm font-medium'
           />
         </div>
 

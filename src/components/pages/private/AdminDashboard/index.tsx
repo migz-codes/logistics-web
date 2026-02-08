@@ -16,7 +16,7 @@ const sidebarLinks = [
 
 export function AdminDashboardPage() {
   return (
-    <div className='min-h-screen bg-cream dark:bg-background-dark flex'>
+    <div className='min-h-screen bg-cream flex'>
       <AdminSidebar
         brandName='Logistics Portal'
         brandSubtitle='Admin Console'

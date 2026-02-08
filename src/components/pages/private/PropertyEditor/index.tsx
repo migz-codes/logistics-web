@@ -54,7 +54,7 @@ export function PropertyEditorPage() {
   }
 
   return (
-    <div className='min-h-screen bg-cream dark:bg-background-dark flex'>
+    <div className='min-h-screen bg-cream flex'>
       <AdminSidebar
         brandName='Logistics Portal'
         brandSubtitle='Property Editor'
@@ -63,11 +63,11 @@ export function PropertyEditorPage() {
 
       <main className='flex-1 ml-64 p-8'>
         <header className='mb-10'>
-          <h1 className='text-4xl font-extrabold text-earth dark:text-white flex items-center gap-3'>
+          <h1 className='text-4xl font-extrabold text-earth flex items-center gap-3'>
             <span className='text-secondary'>{`//`}</span>
             Create New Property
           </h1>
-          <p className='text-earth/50 dark:text-slate-400 font-medium mt-2'>
+          <p className='text-earth/50 font-medium mt-2'>
             Fill in all required information to add a new property to the inventory.
           </p>
         </header>

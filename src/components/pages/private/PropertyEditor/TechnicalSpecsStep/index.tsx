@@ -28,7 +28,7 @@ export function TechnicalSpecsStep({ onNext, onPrevious }: TechnicalSpecsStepPro
 
   return (
     <Card variant='elevated'>
-      <h2 className='text-2xl font-bold text-earth dark:text-white mb-8 flex items-center gap-3'>
+      <h2 className='text-2xl font-bold text-earth mb-8 flex items-center gap-3'>
         <Icon name='analytics' className='text-primary' />
         Technical Specifications
       </h2>
@@ -89,13 +89,13 @@ export function TechnicalSpecsStep({ onNext, onPrevious }: TechnicalSpecsStepPro
             ].map((amenity) => (
               <label
                 key={amenity}
-                className='flex items-center gap-3 p-3 bg-cream dark:bg-slate-800 rounded-xl cursor-pointer hover:bg-primary/10 transition-colors'
+                className='flex items-center gap-3 p-3 bg-cream rounded-xl cursor-pointer hover:bg-primary/10 transition-colors'
               >
                 <input
                   type='checkbox'
                   className='w-4 h-4 rounded text-primary focus:ring-primary'
                 />
-                <span className='text-sm text-earth dark:text-white'>{amenity}</span>
+                <span className='text-sm text-earth'>{amenity}</span>
               </label>
             ))}
           </div>

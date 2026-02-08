@@ -21,12 +21,12 @@ export function DashboardHeader({
   return (
     <header className='mb-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6'>
       <div>
-        <h1 className='text-4xl font-extrabold text-earth dark:text-white flex items-center gap-3'>
+        <h1 className='text-4xl font-extrabold text-earth flex items-center gap-3'>
           <span className='text-secondary'>{`//`}</span>
           {title}
         </h1>
         {subtitle && (
-          <p className='text-earth/50 dark:text-slate-400 font-medium mt-2'>{subtitle}</p>
+          <p className='text-earth/50 font-medium mt-2'>{subtitle}</p>
         )}
       </div>
       {showAddButton && (
