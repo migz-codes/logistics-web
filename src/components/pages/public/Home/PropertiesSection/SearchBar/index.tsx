@@ -1,60 +1,13 @@
-'use client'
-
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useTranslations } from 'next-intl'
-import { useEffect, useRef } from 'react'
+import { getTranslations } from 'next-intl/server'
 import { Button } from '@/components/shared/ui/Button'
 import { Icon } from '@/components/shared/ui/Icon'
+import { AnimatedContainer } from './AnimatedContainer'
 
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger)
-
-export function SearchBar() {
-  const t = useTranslations('home.searchBar')
-  const searchBarRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (!searchBarRef.current) return
-
-    const ctx = gsap.context(() => {
-      // Initial state (hidden and slightly above)
-      gsap.set(searchBarRef.current, {
-        y: 50,
-        opacity: 0
-      })
-
-      // Create a timeline for more control
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: searchBarRef.current,
-          start: 'top 90%',
-          end: 'top 60%',
-          scrub: 1,
-          markers: false,
-          onEnter: () => {
-            gsap.to(searchBarRef.current, {
-              opacity: 1,
-              y: 0,
-              duration: 0.5,
-              ease: 'power2.out'
-            })
-          }
-        }
-      })
-
-      tl.to(searchBarRef.current, {
-        y: 0,
-        opacity: 1,
-        ease: 'power2.out'
-      })
-    }, searchBarRef)
-
-    return () => ctx.revert()
-  }, [])
+export async function SearchBar() {
+  const t = await getTranslations('home.searchBar')
 
   return (
-    <div ref={searchBarRef} className='relative z-40 mt-16 px-6 max-w-6xl mx-auto mb-16 opacity-0'>
+    <AnimatedContainer className='relative z-40 mt-16 px-6 max-w-6xl mx-auto mb-16 opacity-0'>
       <div className='bg-white rounded-[2.5rem] shadow-2xl p-4 flex flex-col lg:flex-row items-stretch gap-2 border border-primary/5'>
         <div className='flex-1 grid grid-cols-1 md:grid-cols-3 items-center'>
           {/* Property Type */}
@@ -124,15 +77,15 @@ export function SearchBar() {
         </div>
 
         <Button
-          variant='secondary'
           size='lg'
-          className='lg:w-48 py-6 font-black uppercase tracking-widest rounded-[1.75rem]'
-          icon={<Icon name='search' size='lg' />}
           iconPosition='left'
+          variant='secondary'
+          icon={<Icon name='search' size='lg' />}
+          className='lg:w-48 py-6 font-black uppercase tracking-widest rounded-[1.75rem]'
         >
           {t('search')}
         </Button>
       </div>
-    </div>
+    </AnimatedContainer>
   )
 }

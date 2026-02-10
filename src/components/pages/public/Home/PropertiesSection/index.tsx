@@ -1,9 +1,7 @@
-'use client'
-
-import gsap from 'gsap'
-import { useTranslations } from 'next-intl'
-import { useEffect, useRef } from 'react'
-import { Button, Icon } from '@/components/shared'
+import { getTranslations } from 'next-intl/server'
+import { Button } from '@/components/shared/ui/Button'
+import { Icon } from '@/components/shared/ui/Icon'
+import { AnimatedSection } from './AnimatedSection'
 import { PropertiesContent } from './Content'
 import { Properties } from './Properties'
 import { SearchBar } from './SearchBar'
@@ -106,39 +104,13 @@ interface PropertiesSectionProps {
   properties?: Property[]
 }
 
-export function PropertiesSection({ properties = defaultProperties }: PropertiesSectionProps) {
-  const t = useTranslations('home.properties')
-
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    if (!sectionRef.current) return
-
-    const ctx = gsap.context(() => {
-      // Initial state
-      gsap.set(sectionRef.current, { backgroundColor: 'rgba(255, 255, 255, 0)' })
-
-      // Create scroll-based animation with matching hero section timing
-      gsap.to(sectionRef.current, {
-        backgroundColor: 'rgba(253, 251, 247, 1)',
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          end: 'top 30%',
-          scrub: 0.8,
-          markers: false
-        },
-        duration: 0.8
-      })
-    }, sectionRef)
-
-    return () => ctx.revert()
-  }, [])
+export async function PropertiesSection({
+  properties = defaultProperties
+}: PropertiesSectionProps) {
+  const t = await getTranslations('home.properties')
 
   return (
-    <section
-      ref={sectionRef}
+    <AnimatedSection
       className='py-32 px-6 relative z-10'
       style={{ backgroundColor: 'rgba(255, 255, 255, 0)' }}
     >
@@ -155,6 +127,6 @@ export function PropertiesSection({ properties = defaultProperties }: Properties
           </Button>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   )
 }

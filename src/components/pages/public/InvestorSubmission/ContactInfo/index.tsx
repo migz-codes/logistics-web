@@ -1,5 +1,3 @@
-'use client'
-
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
@@ -14,9 +12,7 @@ export function ContactInfo() {
             <Icon name='mail' className='text-primary' />
           </div>
           <div>
-            <p className='text-xs text-earth/50 uppercase tracking-widest'>
-              Email
-            </p>
+            <p className='text-xs text-earth/50 uppercase tracking-widest'>Email</p>
             <p className='text-sm font-bold text-earth'>investors@logistics.com</p>
           </div>
         </div>
@@ -25,9 +21,7 @@ export function ContactInfo() {
             <Icon name='phone' className='text-primary' />
           </div>
           <div>
-            <p className='text-xs text-earth/50 uppercase tracking-widest'>
-              Phone
-            </p>
+            <p className='text-xs text-earth/50 uppercase tracking-widest'>Phone</p>
             <p className='text-sm font-bold text-earth'>+55 (11) 3000-0000</p>
           </div>
         </div>

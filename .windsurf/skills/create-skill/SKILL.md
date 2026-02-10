@@ -8,32 +8,38 @@ description: Guides you through creating a new Windsurf skill with proper struct
 This skill helps you create new Windsurf skills with the correct structure and documentation.
 
 ## Prerequisites
+
 - Basic understanding of Markdown
 - Knowledge of what the skill should do
 
 ## Skill Creation Steps
 
 ### 1. Define Skill Purpose
+
 // turbo
 Let's start by defining what your skill will do. Please provide a brief description of the skill's purpose.
 
 ### 2. Create Skill Directory
+
 // turbo
-Create a new directory for your skill in the appropriate location:
+Create a new directory for your skill with the following structure:
 
 ```bash
 # For workspace-specific skill
-mkdir -p .windsurf/skills/your-skill-name
+mkdir -p .windsurf/skills/your-skill-name/SKILL.md
 
 # For global skill (available in all projects)
-# mkdir -p ~/.codeium/windsurf/skills/your-skill-name
+# mkdir -p ~/.codeium/windsurf/skills/your-skill-name/SKILL.md
 ```
 
-### 3. Create SKILL.md
-// turbo
-Create a `SKILL.md` file with the following structure:
+**Important**: Each skill must be in its own directory under `.windsurf/skills/` and must include a `SKILL.md` file at its root. The directory name should be in kebab-case and describe the skill's function.
 
-```markdown
+### 3. Create SKILL.md
+
+// turbo
+In your skill directory, create a `SKILL.md` file with the following structure. This file must be named exactly `SKILL.md` (uppercase) and placed in the root of your skill directory:
+
+````markdown
 ---
 name: your-skill-name
 description: Brief description of what your skill does
@@ -44,22 +50,29 @@ description: Brief description of what your skill does
 Detailed description of the skill, its purpose, and when to use it.
 
 ## Prerequisites
+
 - Any requirements or dependencies
 
 ## How to Use
+
 Step-by-step instructions on how to use the skill
 
 ## Examples
+
 ```typescript
 // Example code or usage
 ```
+````
 
 ## Best Practices
+
 - Tips for getting the most out of this skill
 
 ## Troubleshooting
+
 Common issues and how to resolve them
-```
+
+````
 
 ### 4. Add Supporting Files (Optional)
 // turbo
@@ -93,15 +106,18 @@ description: Brief description of what your skill does
 ### Example
 ```typescript
 // Example usage
-```
+````
 
 ## Best Practices
+
 - [Best practice 1]
 - [Best practice 2]
 
 ## Common Issues
+
 - [Issue 1]: [Solution]
 - [Issue 2]: [Solution]
+
 ```
 
 ## Best Practices for Skill Creation
@@ -151,3 +167,4 @@ If you need assistance creating your skill, you can:
 2. Review Windsurf's documentation
 3. Ask your team for feedback
 4. Test with simple examples first
+```

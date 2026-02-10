@@ -1,5 +1,3 @@
-'use client'
-
 import { Icon } from '@/components/shared/ui/Icon'
 
 interface Value {
@@ -64,9 +62,7 @@ export function CoreValues() {
                 <Icon name={value.icon} size='xl' />
               </div>
               <h3 className='text-xl font-bold text-earth mb-3'>{value.title}</h3>
-              <p className='text-earth/60 leading-relaxed'>
-                {value.description}
-              </p>
+              <p className='text-earth/60 leading-relaxed'>{value.description}</p>
             </div>
           ))}
         </div>

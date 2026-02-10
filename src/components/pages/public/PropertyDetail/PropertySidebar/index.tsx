@@ -1,5 +1,3 @@
-'use client'
-
 import Image from 'next/image'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
@@ -42,9 +40,7 @@ export function PropertySidebar({
           </p>
           <div className='flex items-baseline gap-2'>
             <span className='text-4xl font-black text-earth'>{price}</span>
-            <span className='text-earth/40 text-sm font-medium'>
-              {priceUnit}
-            </span>
+            <span className='text-earth/40 text-sm font-medium'>{priceUnit}</span>
           </div>
         </div>
 

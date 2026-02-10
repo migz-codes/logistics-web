@@ -1,5 +1,3 @@
-'use client'
-
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
 

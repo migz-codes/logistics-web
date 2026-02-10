@@ -1,5 +1,3 @@
-'use client'
-
 import { Badge } from '@/components/shared/ui/Badge'
 import { Icon } from '@/components/shared/ui/Icon'
 
@@ -92,9 +90,7 @@ export function RoadmapSection() {
                 <div
                   className={`hidden md:flex w-5/12 ${index % 2 === 0 ? 'justify-end' : 'justify-start'}`}
                 >
-                  <span className='text-6xl font-black text-earth/10'>
-                    {milestone.year}
-                  </span>
+                  <span className='text-6xl font-black text-earth/10'>{milestone.year}</span>
                 </div>
 
                 {/* Icon */}
@@ -112,12 +108,8 @@ export function RoadmapSection() {
                     <span className='text-sm font-bold text-secondary md:hidden'>
                       {milestone.year}
                     </span>
-                    <h3 className='text-xl font-bold text-earth mb-3'>
-                      {milestone.title}
-                    </h3>
-                    <p className='text-earth/60 leading-relaxed'>
-                      {milestone.description}
-                    </p>
+                    <h3 className='text-xl font-bold text-earth mb-3'>{milestone.title}</h3>
+                    <p className='text-earth/60 leading-relaxed'>{milestone.description}</p>
                   </div>
                 </div>
               </div>

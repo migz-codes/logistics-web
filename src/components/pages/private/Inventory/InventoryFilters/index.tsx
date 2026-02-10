@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { Button } from '@/components/shared'
+import { Button } from '@/components/shared/ui/Button'
 import { Icon } from '@/components/shared/ui/Icon'
 import { Select } from '@/components/shared/ui/Select'
 
@@ -36,9 +36,9 @@ export function InventoryFilters() {
   return (
     <div className='bg-white rounded-2xl p-6 mb-6 border border-primary/5'>
       <div className='grid grid-cols-1 md:grid-cols-5 gap-4'>
-        {/* Search */}
         <div className='relative'>
           <Icon name='search' className='absolute left-4 top-1/2 -translate-y-1/2 text-earth/40' />
+
           <input
             type='text'
             placeholder='Search properties...'

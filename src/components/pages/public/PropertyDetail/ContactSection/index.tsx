@@ -1,5 +1,3 @@
-'use client'
-
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
@@ -30,9 +28,7 @@ export function ContactSection() {
           {/* Contact Info */}
           <div className='lg:pl-12 space-y-10 py-4'>
             <div>
-              <h3 className='text-2xl font-bold text-earth mb-6'>
-                Contact Information
-              </h3>
+              <h3 className='text-2xl font-bold text-earth mb-6'>Contact Information</h3>
               <div className='space-y-8'>
                 {/* Location */}
                 <div className='flex items-start gap-4'>
@@ -56,9 +52,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h4 className='font-bold text-earth'>Broker Certification</h4>
-                    <p className='text-earth/60 text-sm'>
-                      Official Commercial Real Estate License
-                    </p>
+                    <p className='text-earth/60 text-sm'>Official Commercial Real Estate License</p>
                     <p className='text-primary font-mono text-sm font-bold bg-primary/5 px-3 py-1 rounded inline-block mt-2 border border-primary/10'>
                       CRECI: 293146-F
                     </p>

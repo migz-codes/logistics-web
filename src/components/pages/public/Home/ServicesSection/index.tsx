@@ -1,103 +1,50 @@
-'use client'
-
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useTranslations } from 'next-intl'
-import { useEffect, useRef } from 'react'
+import { getTranslations } from 'next-intl/server'
 import { Badge } from '@/components/shared/ui/Badge'
 import { Button } from '@/components/shared/ui/Button'
 import { Icon } from '@/components/shared/ui/Icon'
-
-gsap.registerPlugin(ScrollTrigger)
+import { AnimatedHeader } from './AnimatedHeader'
+import { AnimatedSection } from './AnimatedSection'
+import { ServicesGrid } from './ServicesGrid'
 
 interface Service {
   icon: string
   translationKey: 'buyProperty' | 'sellProperty' | 'propertyManagement'
 }
 
-const defaultServices: Service[] = [
-  {
-    icon: 'home_work',
-    translationKey: 'buyProperty'
-  },
-  {
-    icon: 'sell',
-    translationKey: 'sellProperty'
-  },
-  {
-    icon: 'real_estate_agent',
-    translationKey: 'propertyManagement'
-  }
-]
-
 interface ServicesSectionProps {
   services?: Service[]
 }
 
-export function ServicesSection({ services = defaultServices }: ServicesSectionProps) {
-  const t = useTranslations('home.services')
+gsap.registerPlugin(ScrollTrigger)
 
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const headerRef = useRef<HTMLDivElement>(null)
-  const servicesGridRef = useRef<HTMLDivElement>(null)
+const defaultServices: Service[] = [
+  { icon: 'home_work', translationKey: 'buyProperty' },
+  { icon: 'sell', translationKey: 'sellProperty' },
+  { icon: 'real_estate_agent', translationKey: 'propertyManagement' }
+]
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Set initial states
-      gsap.set(headerRef.current, { y: 50, opacity: 0 })
-      gsap.set(servicesGridRef.current?.children || [], { y: 50, opacity: 0 })
-
-      // Animate header section
-      gsap.to(headerRef.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none none'
-        },
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: 'power3.out'
-      })
-
-      // Animate services grid with stagger
-      gsap.to(servicesGridRef.current?.children || [], {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none none'
-        },
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.2,
-        delay: 0.3,
-        ease: 'power3.out'
-      })
-    }, sectionRef)
-
-    return () => ctx.revert()
-  }, [])
+export async function ServicesSection({ services = defaultServices }: ServicesSectionProps) {
+  const t = await getTranslations('home.services')
 
   return (
-    <section
-      ref={sectionRef}
-      className='py-32 px-6 bg-white border-y border-primary/5 relative z-10'
-    >
+    <AnimatedSection className='py-32 px-6 bg-white border-y border-primary/5 relative z-10'>
       <div className='max-w-7xl mx-auto'>
-        <div ref={headerRef} className='text-center mb-20'>
+        <AnimatedHeader className='text-center mb-20'>
           <Badge variant='primary' className='mb-6'>
             {t('badge')}
           </Badge>
+
           <h2 className='text-5xl md:text-6xl font-extrabold text-earth mb-6'>
             {t('title')}{' '}
             <span className='text-secondary italic font-light'>{t('offerHighlight')}</span>
           </h2>
-          <p className='text-earth/60 max-w-2xl mx-auto text-lg'>{t('description')}</p>
-        </div>
 
-        {/* Services Grid */}
-        <div ref={servicesGridRef} className='grid md:grid-cols-3 gap-8'>
+          <p className='text-earth/60 max-w-2xl mx-auto text-lg'>{t('description')}</p>
+        </AnimatedHeader>
+
+        <ServicesGrid className='grid md:grid-cols-3 gap-8'>
           {services.map((service) => (
             <div
               key={service.translationKey}
@@ -136,8 +83,8 @@ export function ServicesSection({ services = defaultServices }: ServicesSectionP
               </Button>
             </div>
           ))}
-        </div>
+        </ServicesGrid>
       </div>
-    </section>
+    </AnimatedSection>
   )
 }

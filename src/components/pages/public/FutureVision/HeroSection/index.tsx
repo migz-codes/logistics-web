@@ -1,5 +1,3 @@
-'use client'
-
 import { Badge } from '@/components/shared/ui/Badge'
 import { Icon } from '@/components/shared/ui/Icon'
 

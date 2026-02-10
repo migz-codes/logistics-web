@@ -1,8 +1,0 @@
-export { Badge } from './Badge'
-export { Button } from './Button'
-export { Card } from './Card'
-export { Container } from './Container'
-export { Icon } from './Icon'
-export { Input } from './Input'
-export { Select } from './Select'
-export { Textarea } from './Textarea'

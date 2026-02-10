@@ -1,5 +1,3 @@
-'use client'
-
 import Image from 'next/image'
 import { Icon } from '@/components/shared/ui/Icon'
 

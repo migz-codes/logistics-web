@@ -1,5 +1,3 @@
-'use client'
-
 import { useState } from 'react'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
@@ -48,9 +46,7 @@ export function SubmissionForm() {
           <div key={step.id} className='flex items-center'>
             <div
               className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
-                currentStep >= step.id
-                  ? 'bg-primary text-white'
-                  : 'bg-cream text-earth/40'
+                currentStep >= step.id ? 'bg-primary text-white' : 'bg-cream text-earth/40'
               }`}
             >
               {step.id}
@@ -78,9 +74,7 @@ export function SubmissionForm() {
       <form className='space-y-6'>
         {currentStep === 1 && (
           <>
-            <h3 className='text-xl font-bold text-earth mb-6'>
-              Company Information
-            </h3>
+            <h3 className='text-xl font-bold text-earth mb-6'>Company Information</h3>
             <div className='grid md:grid-cols-2 gap-6'>
               <Input label='Company Name' placeholder='Your company legal name' />
               <Select label='Company Type' options={companyTypeOptions} />
@@ -130,9 +124,7 @@ export function SubmissionForm() {
                 className='w-5 h-5 rounded text-primary focus:ring-primary mt-0.5'
               />
               <div>
-                <p className='font-bold text-earth mb-1'>
-                  I agree to the terms and conditions
-                </p>
+                <p className='font-bold text-earth mb-1'>I agree to the terms and conditions</p>
                 <p className='text-sm text-earth/60'>
                   By submitting, you agree to our privacy policy and investment partnership terms.
                 </p>

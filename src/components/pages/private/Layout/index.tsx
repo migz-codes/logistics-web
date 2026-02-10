@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { AdminSidebar } from '@/components/shared/layout/AdminSidebar'
+import { AdminSidebar } from '@/components/pages/private/Layout/AdminSidebar'
 
 interface AdminLayoutProps {
   children: React.ReactNode
@@ -12,15 +12,15 @@ export function AdminLayout({ children }: AdminLayoutProps) {
 
   const sidebarLinks = [
     {
-      href: '/admin/dashboard',
-      label: 'Dashboard',
       icon: 'analytics',
+      label: 'Dashboard',
+      href: '/admin/dashboard',
       active: pathname.startsWith('/admin/dashboard/')
     },
     {
-      href: '/admin/properties',
-      label: 'Properties',
       icon: 'warehouse',
+      label: 'Properties',
+      href: '/admin/properties',
       active: pathname.startsWith('/admin/properties')
     }
   ]

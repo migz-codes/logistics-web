@@ -1,58 +1,20 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useTranslations } from 'next-intl'
-import { useEffect, useRef } from 'react'
-import { Badge, Button, Icon } from '@/components/shared'
+import { getTranslations } from 'next-intl/server'
+import { Badge } from '@/components/shared/ui/Badge'
+import { Button } from '@/components/shared/ui/Button'
+import { Icon } from '@/components/shared/ui/Icon'
+import { AnimatedContainer } from './AnimatedContainer'
+import { AnimatedContent } from './AnimatedContent'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export function PropertiesContent() {
-  const t = useTranslations('home.properties')
-
-  const containerRef = useRef<HTMLDivElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(contentRef.current, {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none none'
-        },
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        stagger: 0.2
-      })
-
-      // Animate children with a slight delay
-      const children = contentRef.current?.children || []
-      gsap.from(children, {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none none'
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        delay: 0.2,
-        ease: 'power3.out'
-      })
-    }, containerRef)
-
-    return () => ctx.revert()
-  }, [])
+export async function PropertiesContent() {
+  const t = await getTranslations('home.properties')
 
   return (
-    <div
-      ref={containerRef}
-      className='flex flex-wrap md:flex-row justify-between items-center md:items-end gap-6 mb-24 overflow-hidden'
-    >
-      <div ref={contentRef}>
+    <AnimatedContainer className='flex flex-wrap md:flex-row justify-between items-center md:items-end gap-6 mb-24 overflow-hidden'>
+      <AnimatedContent>
         <Badge variant='primary' className='mb-6'>
           {t('featured')}
         </Badge>
@@ -68,13 +30,13 @@ export function PropertiesContent() {
           consequatur eos debitis sapiente nihil cumque odit error minus alias, atque iste, porro
           dolorem, dignissimos facere provident vel.
         </p>
-      </div>
+      </AnimatedContent>
 
       <div className='mt-4 md:mt-0'>
         <Button variant='outline' icon={<Icon name='arrow_forward' />}>
           {t('viewAll')}
         </Button>
       </div>
-    </div>
+    </AnimatedContainer>
   )
 }

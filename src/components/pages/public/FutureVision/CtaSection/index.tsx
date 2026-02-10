@@ -1,5 +1,3 @@
-'use client'
-
 import { Button } from '@/components/shared/ui/Button'
 import { Icon } from '@/components/shared/ui/Icon'
 

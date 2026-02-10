@@ -1,5 +1,3 @@
-'use client'
-
 import { Footer } from '@/components/shared/layout/Footer'
 import { ContactInfo } from './ContactInfo'
 import { HeroSection } from './HeroSection'
@@ -32,11 +30,7 @@ export function InvestorSubmissionPage() {
         </div>
       </section>
 
-      <Footer
-        brandName='Logistics Portal'
-        brandIcon='warehouse'
-        brandSubtitle='Investment Platform'
-      />
+      <Footer />
     </div>
   )
 }

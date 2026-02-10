@@ -1,5 +1,3 @@
-'use client'
-
 import Image from 'next/image'
 import { Badge } from '@/components/shared/ui/Badge'
 import { Button } from '@/components/shared/ui/Button'

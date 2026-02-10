@@ -1,5 +1,3 @@
-'use client'
-
 import { Footer } from '@/components/shared/layout/Footer'
 import { ContactSection } from './ContactSection'
 import { LocationSection } from './LocationSection'
@@ -37,11 +35,7 @@ export function PropertyDetailPage() {
 
       <ContactSection />
 
-      <Footer
-        brandName='Logistics Portal'
-        brandIcon='warehouse'
-        brandSubtitle='B2B Marketplace for Logistics'
-      />
+      <Footer />
     </div>
   )
 }
