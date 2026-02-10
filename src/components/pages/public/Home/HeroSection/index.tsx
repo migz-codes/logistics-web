@@ -11,7 +11,7 @@ export async function HeroSection() {
 
   return (
     <>
-      <AnimatedHero className='fixed top-0 left-0 w-full h-[80vh] overflow-hidden z-0'>
+      <AnimatedHero className='w-full h-[80vh] overflow-hidden z-0 relative'>
         <div className='absolute inset-0 w-full h-full'>
           <div className='absolute inset-0 bg-[#fdfbf7]/80 z-10' />
 
