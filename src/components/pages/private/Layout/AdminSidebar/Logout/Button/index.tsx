@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { getSupabaseClient } from '@/services/supabase/client'
 import type { IChildrenProps } from '@/types/react.types'
 

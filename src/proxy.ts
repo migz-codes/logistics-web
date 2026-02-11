@@ -9,13 +9,11 @@ const intlMiddleware = createMiddleware({
 })
 
 export async function proxy(request: NextRequest) {
-  // Handle i18n routing first
   const intlResponse = intlMiddleware(request)
   if (intlResponse) {
     return intlResponse
   }
 
-  // Handle Supabase proxy
   return await supabaseProxy(request)
 }
 

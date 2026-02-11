@@ -7,7 +7,9 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "biome lint && tsc --noEmit",
-    "format": "biome check --fix"
+    "format": "biome check --fix",
+    "deploy:ef": "supabase functions deploy",
+    "deploy:db": "supabase db push"
   },
   "dependencies": {
     "@supabase/ssr": "0.8.0",
@@ -19,6 +21,7 @@
     "next-intl": "4.8.2",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "supabase": "2.76.7",
     "tailwind-merge": "3.3.1",
     "tailwindcss": "4.1.12"
   },
