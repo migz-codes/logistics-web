@@ -5,11 +5,9 @@ import { BasicInfoStep } from './BasicInfoStep'
 import { FormStepper } from './FormStepper'
 import { MediaStep } from './MediaStep'
 import { ReviewStep } from './ReviewStep'
-import { TechnicalSpecsStep } from './TechnicalSpecsStep'
 
 const steps = [
   { label: 'Basic Info', icon: 'info' },
-  { label: 'Technical Specs', icon: 'analytics' },
   { label: 'Media', icon: 'image' },
   { label: 'Review', icon: 'check_circle' }
 ]
@@ -34,13 +32,9 @@ export function PropertyEditorPage() {
       case 0:
         return <BasicInfoStep onNext={handleNext} />
       case 1:
-        return <TechnicalSpecsStep onNext={handleNext} onPrevious={handlePrevious} />
-      case 2:
         return <MediaStep onNext={handleNext} onPrevious={handlePrevious} />
-      case 3:
+      case 2:
         return <ReviewStep onPrevious={handlePrevious} />
-      default:
-        return null
     }
   }
 
