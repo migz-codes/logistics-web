@@ -49,9 +49,7 @@ export function FormStepper({ steps, currentStep }: FormStepperProps) {
               <span
                 className={tw(
                   'text-xs font-bold mt-3 uppercase tracking-widest transition-colors',
-                  isActive || isCompleted
-                    ? 'text-earth'
-                    : 'text-earth/40'
+                  isActive || isCompleted ? 'text-earth' : 'text-earth/40'
                 )}
               >
                 {step.label}

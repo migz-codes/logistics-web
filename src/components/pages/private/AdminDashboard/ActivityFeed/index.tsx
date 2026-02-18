@@ -87,12 +87,8 @@ export function ActivityFeed({ activities = defaultActivities }: ActivityFeedPro
             {/* Content */}
             <div className='flex-1 pb-4'>
               <p className='font-bold text-sm text-earth'>{activity.action}</p>
-              <p className='text-xs text-earth/60 mt-1'>
-                {activity.description}
-              </p>
-              <p className='text-[10px] text-earth/40 mt-2'>
-                {activity.timestamp}
-              </p>
+              <p className='text-xs text-earth/60 mt-1'>{activity.description}</p>
+              <p className='text-[10px] text-earth/40 mt-2'>{activity.timestamp}</p>
             </div>
           </div>
         ))}

@@ -101,15 +101,9 @@ export function PartnersTable({ partners = defaultPartners }: PartnersTableProps
                     {partner.status}
                   </span>
                 </td>
-                <td className='p-4 text-right font-bold text-earth'>
-                  {partner.investedCapital}
-                </td>
-                <td className='p-4 text-right text-earth/60'>
-                  {partner.properties}
-                </td>
-                <td className='p-4 text-right text-earth/60'>
-                  {partner.lastInteraction}
-                </td>
+                <td className='p-4 text-right font-bold text-earth'>{partner.investedCapital}</td>
+                <td className='p-4 text-right text-earth/60'>{partner.properties}</td>
+                <td className='p-4 text-right text-earth/60'>{partner.lastInteraction}</td>
                 <td className='p-4 text-center'>
                   <button
                     type='button'

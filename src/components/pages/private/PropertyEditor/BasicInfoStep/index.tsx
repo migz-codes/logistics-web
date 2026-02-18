@@ -9,7 +9,7 @@ import { Icon } from '@/components/shared/ui/Icon'
 import { Input } from '@/components/shared/ui/Input'
 import { Select } from '@/components/shared/ui/Select'
 import { Textarea } from '@/components/shared/ui/Textarea'
-import { TTranslation, useTranslation } from '@/hooks/useTranslation'
+import { type TTranslation, useTranslation } from '@/hooks/useTranslation'
 import { onCurrencyChange, onNumberChange } from '@/utils/inputs'
 
 export interface IFormData {
@@ -55,7 +55,7 @@ const categoryOptions = [
   { value: 'last-mile', label: 'Last-Mile Center' }
 ]
 
-export function BasicInfoStep({}: BasicInfoStepProps) {
+export function BasicInfoStep(_props: BasicInfoStepProps) {
   const { t } = useTranslation()
 
   const { setValue, register, handleSubmit, formState } = useForm<IFormData>({
@@ -63,7 +63,7 @@ export function BasicInfoStep({}: BasicInfoStepProps) {
     resolver: zodResolver(getBasicInfoSchema(t))
   })
 
-  const onSubmit = (data: IFormData) => {}
+  const onSubmit = (_data: IFormData) => {}
 
   return (
     <Card variant='elevated'>
