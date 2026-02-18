@@ -1,126 +1,143 @@
 'use client'
 
+import { useState } from 'react'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
 import { Input } from '@/components/shared/ui/Input'
-import { Select } from '@/components/shared/ui/Select'
+import { Textarea } from '@/components/shared/ui/Textarea'
+
+interface CEPData {
+  cep: string
+  logradouro: string
+  complemento: string
+  bairro: string
+  localidade: string
+  uf: string
+  ibge: string
+  gia: string
+  ddd: string
+  siafi: string
+}
 
 interface TechnicalSpecsStepProps {
   onNext: () => void
   onPrevious: () => void
 }
 
-export function TechnicalSpecsStep({ onNext, onPrevious }: TechnicalSpecsStepProps) {
-  const floorTypeOptions = [
-    { value: '', label: 'Select Floor Type' },
-    { value: 'laser', label: 'Laser Leveled' },
-    { value: 'polished', label: 'Polished Concrete' },
-    { value: 'epoxy', label: 'Epoxy Coated' }
-  ]
+export function AddressStep({ onNext, onPrevious }: TechnicalSpecsStepProps) {
+  const [formData, setFormData] = useState<FormData>({
+    propertyName: '',
+    category: '',
+    cep: '',
+    country: 'Brazil',
+    state: '',
+    city: '',
+    address: '',
+    totalArea: '',
+    leasePrice: '',
+    description: ''
+  })
 
-  const fireSystemOptions = [
-    { value: '', label: 'Select Fire System' },
-    { value: 'esfr', label: 'ESFR Sprinklers' },
-    { value: 'j4', label: 'J4 Classification' },
-    { value: 'k13', label: 'K13 Classification' }
-  ]
+  const handleCEPChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value
+    setFormData((prev: FormData) => ({ ...prev, cep: value }))
+
+    // Brazilian CEP lookup (only works for Brazilian CEPs)
+    if (value.length >= 8) {
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${value}/json/`)
+        const data: CEPData = await response.json()
+
+        console.log({ data })
+
+        if (!data.erro) {
+          setFormData((prev: FormData) => ({
+            ...prev,
+            address: data.logradouro || '',
+            city: data.localidade || '',
+            state: data.uf || ''
+          }))
+        }
+      } catch (error) {
+        console.error('Error looking up CEP:', error)
+      }
+    }
+  }
+
+  console.log('formData', formData)
+
+  const handleInputChange =
+    (field: keyof FormData) =>
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+      const value = event.target.value
+      setFormData((prev: FormData) => ({ ...prev, [field]: value }))
+    }
 
   return (
     <Card variant='elevated'>
       <h2 className='text-2xl font-bold text-earth mb-8 flex items-center gap-3'>
         <Icon name='analytics' className='text-primary' />
-        Technical Specifications
+        Address
       </h2>
 
-      <form className='space-y-8'>
-        {/* Structure */}
-        <div>
-          <h3 className='text-sm font-bold text-primary uppercase tracking-widest mb-4'>
-            Structure
-          </h3>
-          <div className='grid md:grid-cols-3 gap-6'>
-            <Input label='Ceiling Height (m)' placeholder='e.g., 12.5' type='number' />
-            <Input label='Floor Loading (t/m²)' placeholder='e.g., 6' type='number' />
-            <Select label='Floor Type' options={floorTypeOptions} />
-          </div>
-        </div>
+      <form className='space-y-6'>
+        <Input
+          label='CEP Code'
+          placeholder='e.g., 01310-100'
+          value={formData.cep}
+          onChange={handleCEPChange}
+        />
 
-        {/* Loading */}
-        <div>
-          <h3 className='text-sm font-bold text-primary uppercase tracking-widest mb-4'>
-            Loading Infrastructure
-          </h3>
-          <div className='grid md:grid-cols-3 gap-6'>
-            <Input label='Loading Docks' placeholder='e.g., 18' type='number' />
-            <Input label='Ground-Level Doors' placeholder='e.g., 4' type='number' />
-            <Input label='Yard Depth (m)' placeholder='e.g., 35' type='number' />
-          </div>
-        </div>
+        <Input
+          label='Country'
+          placeholder='e.g., Brazil'
+          value={formData.country}
+          onChange={handleInputChange('country')}
+        />
 
-        {/* Utilities */}
-        <div>
-          <h3 className='text-sm font-bold text-primary uppercase tracking-widest mb-4'>
-            Utilities & Safety
-          </h3>
-          <div className='grid md:grid-cols-3 gap-6'>
-            <Input label='Power Capacity (kVA)' placeholder='e.g., 750' type='number' />
-            <Select label='Fire Safety System' options={fireSystemOptions} />
-            <Input label='Office Area (m²)' placeholder='e.g., 500' type='number' />
-          </div>
-        </div>
+        <Input
+          label='State'
+          placeholder='e.g., SP'
+          value={formData.state}
+          onChange={handleInputChange('state')}
+        />
 
-        {/* Amenities Checkboxes */}
-        <div>
-          <h3 className='text-sm font-bold text-primary uppercase tracking-widest mb-4'>
-            Amenities
-          </h3>
-          <div className='grid md:grid-cols-3 gap-4'>
-            {[
-              '24/7 Security',
-              'CCTV System',
-              'Natural Lighting',
-              'Mezzanine Office',
-              'Restaurant',
-              'Parking Lot',
-              'Truck Parking',
-              'Fuel Station',
-              'Maintenance Shop'
-            ].map((amenity) => (
-              <label
-                key={amenity}
-                className='flex items-center gap-3 p-3 bg-cream rounded-xl cursor-pointer hover:bg-primary/10 transition-colors'
-              >
-                <input
-                  type='checkbox'
-                  className='w-4 h-4 rounded text-primary focus:ring-primary'
-                />
-                <span className='text-sm text-earth'>{amenity}</span>
-              </label>
-            ))}
-          </div>
-        </div>
+        <Input
+          label='City'
+          placeholder='e.g., São Paulo'
+          value={formData.city}
+          onChange={handleInputChange('city')}
+        />
 
-        <div className='flex justify-between pt-6 border-t border-primary/5'>
-          <Button
-            variant='outline'
-            icon={<Icon name='arrow_back' />}
-            iconPosition='left'
-            onClick={onPrevious}
-            type='button'
-          >
-            Previous
-          </Button>
-          <Button
-            variant='primary'
-            icon={<Icon name='arrow_forward' />}
-            onClick={onNext}
-            type='button'
-          >
-            Next: Media
-          </Button>
-        </div>
+        <Textarea
+          label='Address'
+          placeholder='Full property address including street, number'
+          rows={1}
+          value={formData.address}
+          onChange={handleInputChange('address')}
+        />
       </form>
+
+      <div className='flex justify-between pt-6 border-t border-primary/5'>
+        <Button
+          variant='outline'
+          icon={<Icon name='arrow_back' />}
+          iconPosition='left'
+          onClick={onPrevious}
+          type='button'
+        >
+          Previous
+        </Button>
+        <Button
+          variant='primary'
+          icon={<Icon name='arrow_forward' />}
+          onClick={onNext}
+          type='button'
+        >
+          Next: Media
+        </Button>
+      </div>
     </Card>
   )
 }

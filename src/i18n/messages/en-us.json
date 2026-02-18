@@ -201,5 +201,45 @@
     "serverError": "Server error",
     "unauthorized": "Unauthorized access",
     "networkError": "Network error"
+  },
+  "property": {
+    "name": {
+      "min": "Property name must be at least 3 characters",
+      "max": "Property name must not exceed 100 characters"
+    },
+    "category": {
+      "required": "Please select a category"
+    },
+    "totalArea": {
+      "required": "Total area is required",
+      "range": "Total area must be between 1 and 1,000,000 m²"
+    },
+    "leasePrice": {
+      "required": "Lease price is required",
+      "range": "Lease price must be between 0.01 and 1,000 R$/m²"
+    },
+    "description": {
+      "min": "Description must be at least 10 characters",
+      "max": "Description must not exceed 1000 characters"
+    }
+  },
+  "basicInfo": {
+    "title": "Basic Information",
+    "propertyName": {
+      "label": "Property Name",
+      "placeholder": "e.g., Prologis Industrial Park - Section 4"
+    },
+    "category": {
+      "label": "Category"
+    },
+    "leasePrice": {
+      "label": "Lease Price (R$/m²)",
+      "placeholder": "e.g., 22.50"
+    },
+    "description": {
+      "label": "Description",
+      "placeholder": "Describe property features, highlights, and unique selling points..."
+    },
+    "nextButton": "Next: Technical Specs"
   }
 }

@@ -201,5 +201,45 @@
     "serverError": "Erro no servidor",
     "unauthorized": "Acesso não autorizado",
     "networkError": "Erro de rede"
+  },
+  "property": {
+    "name": {
+      "min": "Nome do imóvel deve ter pelo menos 3 caracteres",
+      "max": "Nome do imóvel não deve exceder 100 caracteres"
+    },
+    "category": {
+      "required": "Por favor, selecione uma categoria"
+    },
+    "totalArea": {
+      "required": "Área total é obrigatória",
+      "range": "Área total deve estar entre 1 e 1.000.000 m²"
+    },
+    "leasePrice": {
+      "required": "Preço de aluguel é obrigatório",
+      "range": "Preço de aluguel deve estar entre 0,01 e 1.000 R$/m²"
+    },
+    "description": {
+      "min": "Descrição deve ter pelo menos 10 caracteres",
+      "max": "Descrição não deve exceder 1000 caracteres"
+    }
+  },
+  "basicInfo": {
+    "title": "Informações Básicas",
+    "propertyName": {
+      "label": "Nome do Imóvel",
+      "placeholder": "ex., Prologis Industrial Park - Seção 4"
+    },
+    "category": {
+      "label": "Categoria"
+    },
+    "leasePrice": {
+      "label": "Preço de Aluguel (R$/m²)",
+      "placeholder": "ex., 22,50"
+    },
+    "description": {
+      "label": "Descrição",
+      "placeholder": "Descreva características do imóvel, destaques e pontos de venda exclusivos..."
+    },
+    "nextButton": "Próximo: Especificações Técnicas"
   }
 }

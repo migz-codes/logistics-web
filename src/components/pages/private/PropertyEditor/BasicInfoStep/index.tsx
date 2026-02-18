@@ -1,14 +1,50 @@
 'use client'
 
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import z from 'zod'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
 import { Input } from '@/components/shared/ui/Input'
 import { Select } from '@/components/shared/ui/Select'
 import { Textarea } from '@/components/shared/ui/Textarea'
+import { TTranslation, useTranslation } from '@/hooks/useTranslation'
+import { onCurrencyChange, onNumberChange } from '@/utils/inputs'
+
+export interface IFormData {
+  cep?: string
+  city?: string
+  state?: string
+  country?: string
+  category: string
+  address?: string
+  totalArea: string
+  leasePrice: string
+  description: string
+  propertyName: string
+}
 
 interface BasicInfoStepProps {
-  onNext: () => void
+  onNext: (data: IFormData) => void
+}
+
+const getBasicInfoSchema = (t: TTranslation) => {
+  return z.object({
+    cep: z.string().optional(),
+    state: z.string().optional(),
+    city: z.string().optional(),
+    address: z.string().optional(),
+    country: z.string().optional(),
+    category: z.string().min(1, t('property.category.required')),
+    totalArea: z.string().min(1, t('property.totalArea.required')),
+    leasePrice: z.string().min(1, t('property.leasePrice.required')),
+    propertyName: z.string().min(3, t('property.name.min')).max(100, t('property.name.max')),
+    description: z
+      .string()
+      .min(10, t('property.description.min'))
+      .max(1000, t('property.description.max'))
+  })
 }
 
 const categoryOptions = [
@@ -19,56 +55,72 @@ const categoryOptions = [
   { value: 'last-mile', label: 'Last-Mile Center' }
 ]
 
-export function BasicInfoStep({ onNext }: BasicInfoStepProps) {
+export function BasicInfoStep({}: BasicInfoStepProps) {
+  const { t } = useTranslation()
+
+  const { setValue, register, handleSubmit, formState } = useForm<IFormData>({
+    mode: 'onChange',
+    resolver: zodResolver(getBasicInfoSchema(t))
+  })
+
+  const onSubmit = (data: IFormData) => {}
+
   return (
     <Card variant='elevated'>
       <h2 className='text-2xl font-bold text-earth mb-8 flex items-center gap-3'>
         <Icon name='info' className='text-primary' />
-        Basic Information
+        {t('basicInfo.title')}
       </h2>
 
-      <form className='space-y-6'>
-        <Input label='Property Name' placeholder='e.g., Prologis Industrial Park - Section 4' />
-
-        <div className='grid md:grid-cols-2 gap-6'>
-          <Select label='Category' options={categoryOptions} />
-          <Input label='ZIP Code' placeholder='e.g., 01310-100' />
-        </div>
-
-        <div className='grid md:grid-cols-3 gap-6'>
-          <Input label='Country' placeholder='e.g., Brazil' />
-          <Input label='State' placeholder='e.g., SP' />
-          <Input label='City' placeholder='e.g., São Paulo' />
-        </div>
-
-        <Textarea
-          label='Address'
-          placeholder='Full property address including street, number'
-          rows={1}
+      <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
+        <Input
+          label={t('basicInfo.propertyName.label')}
+          placeholder={t('basicInfo.propertyName.placeholder')}
+          {...register('propertyName')}
+          error={formState.errors.propertyName?.message}
         />
 
-        <div className='grid md:grid-cols-2 gap-6'>
-          <Input label='Total Area (m²)' placeholder='e.g., 12500' type='number' />
-          <Input label='Lease Price (R$/m²)' placeholder='e.g., 22.50' type='number' />
-        </div>
+        <Select
+          label={t('basicInfo.category.label')}
+          options={categoryOptions}
+          {...register('category')}
+          error={formState.errors.category?.message}
+        />
+
+        <Input
+          label='Total Area (m²)'
+          placeholder='e.g., 4.000'
+          {...register('totalArea')}
+          error={formState.errors.totalArea?.message}
+          onChange={(e) => setValue('totalArea', onNumberChange(e))}
+        />
+        <Input
+          label={t('basicInfo.leasePrice.label')}
+          placeholder={t('basicInfo.leasePrice.placeholder')}
+          {...register('leasePrice')}
+          onChange={(e) => setValue('leasePrice', onCurrencyChange(e))}
+          error={formState.errors.leasePrice?.message}
+        />
 
         <Textarea
-          label='Description'
-          placeholder='Describe the property features, highlights, and unique selling points...'
           rows={4}
+          label={t('basicInfo.description.label')}
+          placeholder={t('basicInfo.description.placeholder')}
+          {...register('description')}
+          error={formState.errors.description?.message}
         />
-
-        <div className='flex justify-end pt-6 border-t border-primary/5'>
-          <Button
-            variant='primary'
-            icon={<Icon name='arrow_forward' />}
-            onClick={onNext}
-            type='button'
-          >
-            Next: Technical Specs
-          </Button>
-        </div>
       </form>
+
+      <div className='flex justify-end pt-6 border-t border-primary/5'>
+        <Button
+          type='button'
+          variant='primary'
+          onClick={handleSubmit(onSubmit)}
+          icon={<Icon name='arrow_forward' />}
+        >
+          {t('basicInfo.nextButton')}
+        </Button>
+      </div>
     </Card>
   )
 }

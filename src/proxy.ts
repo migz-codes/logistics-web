@@ -36,11 +36,9 @@ export async function proxy(request: NextRequest) {
   const { data } = await supabase.auth.getClaims()
 
   const user = data?.claims
-
   const isAuthenticated = !!user
   const pathname = request.nextUrl.pathname
   const pathSegments = pathname.split('/').filter(Boolean)
-
   const locale = pathSegments.find((seg) => validLocales.includes(seg)) || defaultLocale
 
   const isAuthRoute =
