@@ -17,17 +17,17 @@ export function LocationSection({
   return (
     <section className='space-y-6'>
       <div className='flex justify-between items-end'>
-        <h3 className='text-2xl font-bold text-earth flex items-center gap-3'>
-          <Icon name='map' className='text-primary' />
+        <h3 className='text-2xl font-bold text-neutral-600 flex items-center gap-3'>
+          <Icon name='map' className='text-primary-500' />
           {title}
         </h3>
 
-        <a className='text-sm font-bold text-primary hover:underline' href={mapLink}>
+        <a className='text-sm font-bold text-primary-500 hover:underline' href={mapLink}>
           Open in Google Maps
         </a>
       </div>
 
-      <div className='w-full h-[400px] rounded-[2.5rem] bg-cream overflow-hidden relative border border-primary/10'>
+      <div className='w-full h-[400px] rounded-[2.5rem] bg-surface-200 overflow-hidden relative border border-primary-500/10'>
         <Image
           alt='Map visualization'
           className='w-full h-full object-cover grayscale opacity-50'
@@ -36,13 +36,13 @@ export function LocationSection({
           height={400}
         />
         <div className='absolute inset-0 flex items-center justify-center'>
-          <div className='bg-white p-4 rounded-2xl shadow-2xl border border-primary/20 flex items-center gap-4'>
-            <div className='w-12 h-12 bg-primary flex items-center justify-center rounded-xl'>
+          <div className='bg-white p-4 rounded-2xl shadow-2xl border border-primary-500/20 flex items-center gap-4'>
+            <div className='w-12 h-12 bg-primary-500 flex items-center justify-center rounded-xl'>
               <Icon name='warehouse' className='text-white' />
             </div>
             <div>
               <p className='font-bold text-sm'>{markerLabel}</p>
-              <p className='text-xs text-earth/60'>{markerDescription}</p>
+              <p className='text-xs text-neutral-600/60'>{markerDescription}</p>
             </div>
           </div>
         </div>

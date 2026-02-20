@@ -35,12 +35,12 @@ export function PropertySidebar({
       {/* Pricing Card */}
       <Card variant='elevated' padding='lg'>
         <div className='mb-8'>
-          <p className='text-sm font-bold text-primary/60 uppercase tracking-widest mb-1'>
+          <p className='text-sm font-bold text-primary-500/60 uppercase tracking-widest mb-1'>
             Lease Price
           </p>
           <div className='flex items-baseline gap-2'>
-            <span className='text-4xl font-black text-earth'>{price}</span>
-            <span className='text-earth/40 text-sm font-medium'>{priceUnit}</span>
+            <span className='text-4xl font-black text-neutral-600'>{price}</span>
+            <span className='text-neutral-600/40 text-sm font-medium'>{priceUnit}</span>
           </div>
         </div>
 
@@ -54,8 +54,8 @@ export function PropertySidebar({
             Contact via WhatsApp
           </Button>
 
-          <div className='pt-6 border-t border-earth/5'>
-            <h4 className='font-bold text-earth mb-4'>Request More Info</h4>
+          <div className='pt-6 border-t border-neutral-600/5'>
+            <h4 className='font-bold text-neutral-600 mb-4'>Request More Info</h4>
             <form className='space-y-4'>
               <Input placeholder='Full Name' type='text' />
               <Input placeholder='Work Email' type='email' />
@@ -87,22 +87,22 @@ export function PropertySidebar({
           />
 
           <div>
-            <p className='text-xs font-bold text-earth'>Licensed Broker</p>
-            <p className='text-[10px] text-earth/60'>{brokerCreci}</p>
+            <p className='text-xs font-bold text-neutral-600'>Licensed Broker</p>
+            <p className='text-[10px] text-neutral-600/60'>{brokerCreci}</p>
           </div>
         </div>
       </Card>
 
       {/* Highlights Card */}
-      <div className='bg-primary/5 rounded-[2rem] p-6 border border-primary/10'>
+      <div className='bg-primary-500/5 rounded-[2rem] p-6 border border-primary-500/10'>
         <h5 className='font-bold text-sm mb-3'>Key Highlights</h5>
         <ul className='space-y-2'>
           {highlights.map((highlight, index) => (
             <li
               key={`${highlight.icon}-${index}`}
-              className='flex items-center gap-2 text-xs text-earth/70'
+              className='flex items-center gap-2 text-xs text-neutral-600/70'
             >
-              <Icon name={highlight.icon} className='text-primary text-base' />
+              <Icon name={highlight.icon} className='text-primary-500 text-base' />
               {highlight.label}
             </li>
           ))}

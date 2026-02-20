@@ -27,18 +27,18 @@ export function TechnicalData({
 }: TechnicalDataProps) {
   return (
     <Card variant='elevated' padding='lg'>
-      <h3 className='text-2xl font-bold text-earth mb-8 flex items-center gap-3'>
-        <Icon name='analytics' className='text-primary' />
+      <h3 className='text-2xl font-bold text-neutral-600 mb-8 flex items-center gap-3'>
+        <Icon name='analytics' className='text-primary-500' />
         {title}
       </h3>
       <div className='grid grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-8'>
         {data.map((item, index) => (
           <div key={`${item.label}-${index}`} className='space-y-1'>
-            <p className='text-[11px] font-bold text-primary/60 uppercase tracking-widest'>
+            <p className='text-[11px] font-bold text-primary-500/60 uppercase tracking-widest'>
               {item.label}
             </p>
-            <p className='text-xl font-extrabold text-earth'>{item.value}</p>
-            <p className='text-xs text-earth/40'>{item.description}</p>
+            <p className='text-xl font-extrabold text-neutral-600'>{item.value}</p>
+            <p className='text-xs text-neutral-600/40'>{item.description}</p>
           </div>
         ))}
       </div>

@@ -20,7 +20,7 @@ export async function Footer() {
   const t = await getTranslations('home')
 
   return (
-    <footer className='py-24 bg-earth text-white border-t border-white/10 relative z-10'>
+    <footer className='py-24 bg-neutral-600 text-white border-t border-white/10 relative z-10'>
       <div className='max-w-7xl mx-auto px-6'>
         <div className='flex flex-col md:flex-row justify-between items-center gap-12'>
           <div className='flex flex-col items-center md:items-start gap-4'>

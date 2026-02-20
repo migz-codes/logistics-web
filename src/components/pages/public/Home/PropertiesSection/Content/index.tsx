@@ -20,9 +20,9 @@ export async function PropertiesContent() {
         </Badge>
 
         <h2 className='text-5xl md:text-6xl font-extrabold'>
-          <span className='text-earth'>{t('ourExclusive.0')}</span>
+          <span className='text-neutral-600'>{t('ourExclusive.0')}</span>
           <br />
-          <span className='text-secondary italic font-light'>{t('ourExclusive.1')}</span>
+          <span className='text-secondary-500 italic font-light'>{t('ourExclusive.1')}</span>
         </h2>
 
         <p className='text-gray-600 mt-4 max-w-2xl'>

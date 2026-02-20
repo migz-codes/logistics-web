@@ -17,11 +17,11 @@ export function DashboardHeader({ title, subtitle, className }: DashboardHeaderP
       )}
     >
       <div>
-        <h1 className='text-4xl font-extrabold text-earth flex items-center gap-3'>
-          <span className='text-secondary'>{`//`}</span>
+        <h1 className='text-4xl font-extrabold text-neutral-600 flex items-center gap-3'>
+          <span className='text-secondary-500'>{`//`}</span>
           {title}
         </h1>
-        {subtitle && <p className='text-earth/50 font-medium mt-2'>{subtitle}</p>}
+        {subtitle && <p className='text-neutral-600/50 font-medium mt-2'>{subtitle}</p>}
       </div>
     </header>
   )

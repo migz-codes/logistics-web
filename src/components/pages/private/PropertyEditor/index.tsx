@@ -41,11 +41,11 @@ export function PropertyEditorPage() {
   return (
     <main className='flex-1 p-8'>
       <header className='mb-10'>
-        <h1 className='text-4xl font-extrabold text-earth flex items-center gap-3'>
-          <span className='text-secondary'>{`//`}</span>
+        <h1 className='text-4xl font-extrabold text-neutral-600 flex items-center gap-3'>
+          <span className='text-secondary-500'>{`//`}</span>
           Create New Property
         </h1>
-        <p className='text-earth/50 font-medium mt-2'>
+        <p className='text-neutral-600/50 font-medium mt-2'>
           Fill in all required information to add a new property to the inventory.
         </p>
       </header>

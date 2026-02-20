@@ -12,9 +12,9 @@ export function Card({ children, className, variant = 'default', padding = 'lg' 
   const baseClasses = 'bg-white rounded-[2rem] transition-all'
 
   const variants = {
-    default: 'border border-primary/5',
-    elevated: 'shadow-2xl border border-primary/5',
-    outlined: 'border-2 border-primary/10'
+    default: 'border border-primary-500/5',
+    elevated: 'shadow-2xl border border-primary-500/5',
+    outlined: 'border-2 border-primary-500/10'
   }
 
   const paddings = {

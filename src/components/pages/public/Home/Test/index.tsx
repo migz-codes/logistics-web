@@ -158,7 +158,7 @@ export const Test = () => {
           type='button'
           onClick={onClick}
           disabled={loading}
-          className='px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 border-red-500'
+          className='px-4 py-2 bg-success-500 text-white rounded hover:bg-success-600 border-error-500'
         >
           {loading ? 'Loading...' : 'Test Edge Function'}
         </button>
@@ -215,7 +215,7 @@ export const Test = () => {
                       <button
                         type='button'
                         onClick={updateProperty}
-                        className='px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 text-sm'
+                        className='px-3 py-1 bg-success-500 text-white rounded hover:bg-success-600 text-sm'
                       >
                         Save
                       </button>
@@ -246,7 +246,7 @@ export const Test = () => {
                         <button
                           type='button'
                           onClick={() => deleteProperty(property.id)}
-                          className='px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-sm'
+                          className='px-3 py-1 bg-error-500 text-white rounded hover:bg-error-600 text-sm'
                         >
                           Delete
                         </button>

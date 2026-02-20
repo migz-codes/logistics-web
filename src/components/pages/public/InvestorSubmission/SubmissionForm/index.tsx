@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
@@ -45,25 +47,22 @@ export function SubmissionForm() {
         {steps.map((step, index) => (
           <div key={step.id} className='flex items-center'>
             <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
-                currentStep >= step.id ? 'bg-primary text-white' : 'bg-cream text-earth/40'
-              }`}
+              className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${currentStep >= step.id ? 'bg-primary-500 text-white' : 'bg-surface-200 text-neutral-600/40'
+                }`}
             >
               {step.id}
             </div>
             <span
-              className={`ml-3 text-sm font-bold ${
-                currentStep >= step.id ? 'text-earth' : 'text-earth/40'
-              }`}
+              className={`ml-3 text-sm font-bold ${currentStep >= step.id ? 'text-neutral-600' : 'text-neutral-600/40'
+                }`}
             >
               {step.label}
             </span>
             {index < steps.length - 1 && (
-              <div className='w-24 h-1 bg-cream mx-6'>
+              <div className='w-24 h-1 bg-surface-200 mx-6'>
                 <div
-                  className={`h-full bg-primary transition-all ${
-                    currentStep > step.id ? 'w-full' : 'w-0'
-                  }`}
+                  className={`h-full bg-primary-500 transition-all ${currentStep > step.id ? 'w-full' : 'w-0'
+                    }`}
                 />
               </div>
             )}
@@ -74,7 +73,7 @@ export function SubmissionForm() {
       <form className='space-y-6'>
         {currentStep === 1 && (
           <>
-            <h3 className='text-xl font-bold text-earth mb-6'>Company Information</h3>
+            <h3 className='text-xl font-bold text-neutral-600 mb-6'>Company Information</h3>
             <div className='grid md:grid-cols-2 gap-6'>
               <Input label='Company Name' placeholder='Your company legal name' />
               <Select label='Company Type' options={companyTypeOptions} />
@@ -92,7 +91,7 @@ export function SubmissionForm() {
 
         {currentStep === 2 && (
           <>
-            <h3 className='text-xl font-bold text-earth mb-6'>Project Details</h3>
+            <h3 className='text-xl font-bold text-neutral-600 mb-6'>Project Details</h3>
             <Input label='Project Name' placeholder='Name or identifier for your project' />
             <div className='grid md:grid-cols-2 gap-6'>
               <Select label='Target Region' options={regionOptions} />
@@ -108,7 +107,7 @@ export function SubmissionForm() {
 
         {currentStep === 3 && (
           <>
-            <h3 className='text-xl font-bold text-earth mb-6'>Investment Scope</h3>
+            <h3 className='text-xl font-bold text-neutral-600 mb-6'>Investment Scope</h3>
             <div className='grid md:grid-cols-2 gap-6'>
               <Select label='Investment Range' options={investmentRangeOptions} />
               <Input label='Expected ROI (%)' placeholder='e.g., 12' type='number' />
@@ -118,14 +117,14 @@ export function SubmissionForm() {
               placeholder="Any other details you'd like to share about your investment goals..."
               rows={4}
             />
-            <label className='flex items-start gap-4 p-6 bg-primary/5 rounded-2xl border border-primary/10 cursor-pointer'>
+            <label className='flex items-start gap-4 p-6 bg-primary-500/5 rounded-2xl border border-primary-500/10 cursor-pointer'>
               <input
                 type='checkbox'
-                className='w-5 h-5 rounded text-primary focus:ring-primary mt-0.5'
+                className='w-5 h-5 rounded text-primary-500 focus:ring-primary-500 mt-0.5'
               />
               <div>
-                <p className='font-bold text-earth mb-1'>I agree to the terms and conditions</p>
-                <p className='text-sm text-earth/60'>
+                <p className='font-bold text-neutral-600 mb-1'>I agree to the terms and conditions</p>
+                <p className='text-sm text-neutral-600/60'>
                   By submitting, you agree to our privacy policy and investment partnership terms.
                 </p>
               </div>
@@ -133,7 +132,7 @@ export function SubmissionForm() {
           </>
         )}
 
-        <div className='flex justify-between pt-6 border-t border-primary/5'>
+        <div className='flex justify-between pt-6 border-t border-primary-500/5'>
           {currentStep > 1 ? (
             <Button
               variant='outline'

@@ -54,10 +54,10 @@ export function KpiCards({ kpis = defaultKpis }: KpiCardsProps) {
       {kpis.map((kpi, index) => (
         <div
           key={`kpi-${index}-${kpi.label}`}
-          className='bg-white p-6 rounded-3xl border border-primary/5 shadow-sm hover:shadow-lg transition-shadow'
+          className='bg-white p-6 rounded-3xl border border-primary-500/5 shadow-sm hover:shadow-lg transition-shadow'
         >
           <div className='flex items-center justify-between mb-4'>
-            <div className='w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary'>
+            <div className='w-12 h-12 rounded-2xl bg-primary-500/10 flex items-center justify-center text-primary-500'>
               <Icon name={kpi.icon} size='lg' />
             </div>
             {kpi.change && (
@@ -66,12 +66,12 @@ export function KpiCards({ kpis = defaultKpis }: KpiCardsProps) {
               </Badge>
             )}
           </div>
-          <p className='text-[10px] font-black uppercase tracking-widest text-earth/40'>
+          <p className='text-[10px] font-black uppercase tracking-widest text-neutral-600/40'>
             {kpi.label}
           </p>
-          <h3 className='text-2xl font-black mt-1 text-earth'>
+          <h3 className='text-2xl font-black mt-1 text-neutral-600'>
             {kpi.value}
-            {kpi.unit && <span className='text-sm font-medium text-earth/50 ml-1'>{kpi.unit}</span>}
+            {kpi.unit && <span className='text-sm font-medium text-neutral-600/50 ml-1'>{kpi.unit}</span>}
           </h3>
         </div>
       ))}

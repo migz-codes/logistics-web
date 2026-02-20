@@ -4,25 +4,25 @@ import { Icon } from '@/components/shared/ui/Icon'
 
 export function ContactInfo() {
   return (
-    <Card className='bg-gradient-to-br from-primary/5 to-secondary/5 border-primary/10'>
-      <h3 className='text-lg font-bold text-earth mb-6'>Need Assistance?</h3>
+    <Card className='bg-gradient-to-br from-primary/5 to-secondary/5 border-primary-500/10'>
+      <h3 className='text-lg font-bold text-neutral-600 mb-6'>Need Assistance?</h3>
       <div className='space-y-4'>
         <div className='flex items-center gap-4'>
-          <div className='w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center'>
-            <Icon name='mail' className='text-primary' />
+          <div className='w-10 h-10 bg-primary-500/10 rounded-xl flex items-center justify-center'>
+            <Icon name='mail' className='text-primary-500' />
           </div>
           <div>
-            <p className='text-xs text-earth/50 uppercase tracking-widest'>Email</p>
-            <p className='text-sm font-bold text-earth'>investors@logistics.com</p>
+            <p className='text-xs text-neutral-600/50 uppercase tracking-widest'>Email</p>
+            <p className='text-sm font-bold text-neutral-600'>investors@logistics.com</p>
           </div>
         </div>
         <div className='flex items-center gap-4'>
-          <div className='w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center'>
-            <Icon name='phone' className='text-primary' />
+          <div className='w-10 h-10 bg-primary-500/10 rounded-xl flex items-center justify-center'>
+            <Icon name='phone' className='text-primary-500' />
           </div>
           <div>
-            <p className='text-xs text-earth/50 uppercase tracking-widest'>Phone</p>
-            <p className='text-sm font-bold text-earth'>+55 (11) 3000-0000</p>
+            <p className='text-xs text-neutral-600/50 uppercase tracking-widest'>Phone</p>
+            <p className='text-sm font-bold text-neutral-600'>+55 (11) 3000-0000</p>
           </div>
         </div>
       </div>

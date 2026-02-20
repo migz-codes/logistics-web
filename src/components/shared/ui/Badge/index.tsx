@@ -13,12 +13,12 @@ export function Badge({ children, variant = 'primary', size = 'md', className }:
     'font-black uppercase tracking-widest rounded-full inline-flex items-center justify-center'
 
   const variants = {
-    primary: 'bg-primary/10 text-primary',
-    secondary: 'bg-secondary/10 text-secondary',
-    success: 'bg-sage/10 text-sage',
-    warning: 'bg-amber-500/10 text-amber-600',
-    featured: 'bg-white/95 backdrop-blur-md text-primary shadow-sm',
-    outline: 'border border-primary/20 text-primary bg-transparent'
+    primary: 'bg-primary-500/10 text-primary-500',
+    secondary: 'bg-secondary-500/10 text-secondary-500',
+    success: 'bg-sage-500/10 text-sage-500',
+    warning: 'bg-warning-500/10 text-warning-600',
+    featured: 'bg-white/95 backdrop-blur-md text-primary-500 shadow-sm',
+    outline: 'border border-primary-500/20 text-primary-500 bg-transparent'
   }
 
   const sizes = {

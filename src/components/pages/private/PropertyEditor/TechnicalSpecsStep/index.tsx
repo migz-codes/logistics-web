@@ -76,8 +76,8 @@ export function AddressStep({ onNext, onPrevious }: TechnicalSpecsStepProps) {
 
   return (
     <Card variant='elevated'>
-      <h2 className='text-2xl font-bold text-earth mb-8 flex items-center gap-3'>
-        <Icon name='analytics' className='text-primary' />
+      <h2 className='text-2xl font-bold text-neutral-600 mb-8 flex items-center gap-3'>
+        <Icon name='analytics' className='text-primary-500' />
         Address
       </h2>
 
@@ -119,7 +119,7 @@ export function AddressStep({ onNext, onPrevious }: TechnicalSpecsStepProps) {
         />
       </form>
 
-      <div className='flex justify-between pt-6 border-t border-primary/5'>
+      <div className='flex justify-between pt-6 border-t border-primary-500/5'>
         <Button
           variant='outline'
           icon={<Icon name='arrow_back' />}

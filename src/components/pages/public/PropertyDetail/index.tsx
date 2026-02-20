@@ -8,7 +8,7 @@ import { TechnicalData } from './TechnicalData'
 
 export function PropertyDetailPage() {
   return (
-    <div className='min-h-screen bg-background-light text-earth transition-colors duration-300'>
+    <div className='min-h-screen bg-background-light text-neutral-600 transition-colors duration-300'>
       {/* <Navigation
         brandName='Logistics Portal'
         brandIcon='warehouse'

@@ -5,7 +5,8 @@
   --color-primary-200: rgb(219 233 198);
   --color-primary-300: rgb(201 222 169);
   --color-primary-400: rgb(183 211 141);
-  --color-primary-500: rgb(93 109 77); /* Main brand color */
+  --color-primary-500: rgb(93 109 77);
+  /* Main brand color */
   --color-primary-600: rgb(74 87 62);
   --color-primary-700: rgb(55 65 46);
   --color-primary-800: rgb(37 44 31);
@@ -17,37 +18,14 @@
   --color-secondary-200: rgb(248 209 196);
   --color-secondary-300: rgb(244 184 165);
   --color-secondary-400: rgb(240 158 133);
-  --color-secondary-500: rgb(226 149 120); /* Main accent color */
+  --color-secondary-500: rgb(226 149 120);
+  /* Main accent color */
   --color-secondary-600: rgb(198 119 84);
   --color-secondary-700: rgb(170 89 48);
   --color-secondary-800: rgb(142 59 12);
   --color-secondary-900: rgb(114 29 0);
 
-  /* Cream - Primary Background */
-  --color-cream-50: rgb(255 255 255);
-  --color-cream-100: rgb(254 253 252);
-  --color-cream-200: rgb(253 251 247); /* Main background */
-  --color-cream-300: rgb(252 249 242);
-  --color-cream-400: rgb(251 247 237);
-  --color-cream-500: rgb(250 245 232);
-  --color-cream-600: rgb(248 243 227);
-  --color-cream-700: rgb(246 241 222);
-  --color-cream-800: rgb(244 239 217);
-  --color-cream-900: rgb(242 237 212);
-
-  /* Earth - Primary Text */
-  --color-earth-50: rgb(248 245 242);
-  --color-earth-100: rgb(237 230 223);
-  --color-earth-200: rgb(215 201 188);
-  --color-earth-300: rgb(193 172 153);
-  --color-earth-400: rgb(171 143 118);
-  --color-earth-500: rgb(149 114 83);
-  --color-earth-600: rgb(74 55 40); /* Main text color */
-  --color-earth-700: rgb(58 43 31);
-  --color-earth-800: rgb(42 31 22);
-  --color-earth-900: rgb(26 15 8);
-
-  /* Tertiary */
+  /* Tertiary - Purple */
   --color-tertiary-50: rgb(230 204 255);
   --color-tertiary-100: rgb(220 183 255);
   --color-tertiary-200: rgb(201 142 255);
@@ -60,7 +38,7 @@
   --color-tertiary-900: rgb(26 0 51);
   --color-tertiary-950: rgb(12 0 23);
 
-  /* Quaternary */
+  /* Quaternary - Amber/Gold */
   --color-quaternary-50: rgb(255 247 229);
   --color-quaternary-100: rgb(255 225 163);
   --color-quaternary-200: rgb(255 212 122);
@@ -73,7 +51,7 @@
   --color-quaternary-900: rgb(31 21 0);
   --color-quaternary-950: rgb(3 2 0);
 
-  /* Quinary */
+  /* Quinary - Warm Brown */
   --color-quinary-50: rgb(233 223 217);
   --color-quinary-100: rgb(226 211 204);
   --color-quinary-200: rgb(211 189 178);
@@ -86,7 +64,7 @@
   --color-quinary-900: rgb(56 40 32);
   --color-quinary-950: rgb(38 27 22);
 
-  /* Senary */
+  /* Senary - Vivid Green */
   --color-senary-50: rgb(197 237 187);
   --color-senary-100: rgb(183 233 171);
   --color-senary-200: rgb(155 225 138);
@@ -99,19 +77,60 @@
   --color-senary-900: rgb(10 25 6);
   --color-senary-950: rgb(1 3 1);
 
-  /* Success - Green tones matching sage */
-  --color-success-50: rgb(246 249 242);
-  --color-success-100: rgb(237 244 226);
-  --color-success-200: rgb(219 233 198);
-  --color-success-300: rgb(201 222 169);
-  --color-success-400: rgb(183 211 141);
-  --color-success-500: rgb(93 109 77);
-  --color-success-600: rgb(74 87 62);
-  --color-success-700: rgb(55 65 46);
-  --color-success-800: rgb(37 44 31);
-  --color-success-900: rgb(18 22 15);
+  /* Sage - Lighter green accent (used for hover states, success badges) */
+  --color-sage-50: rgb(245 249 240);
+  --color-sage-100: rgb(232 242 220);
+  --color-sage-200: rgb(210 228 186);
+  --color-sage-300: rgb(187 214 152);
+  --color-sage-400: rgb(164 200 118);
+  --color-sage-500: rgb(138 154 91);
+  /* Main sage color */
+  --color-sage-600: rgb(110 123 73);
+  --color-sage-700: rgb(83 92 54);
+  --color-sage-800: rgb(55 62 36);
+  --color-sage-900: rgb(28 31 18);
 
-  /* Error - Red tones that work with earth palette */
+  /* Surface - Light background tones (replaces cream) */
+  --color-surface-50: rgb(255 255 255);
+  --color-surface-100: rgb(254 253 252);
+  --color-surface-200: rgb(253 251 247);
+  /* Main background */
+  --color-surface-300: rgb(252 249 242);
+  --color-surface-400: rgb(251 247 237);
+  --color-surface-500: rgb(250 245 232);
+  --color-surface-600: rgb(248 243 227);
+  --color-surface-700: rgb(246 241 222);
+  --color-surface-800: rgb(244 239 217);
+  --color-surface-900: rgb(242 237 212);
+  --color-surface-dark: rgb(58 43 31);
+  /* Dark surface variant (sidebar, footer) */
+
+  /* Neutral - Text & dark UI tones (replaces earth) */
+  --color-neutral-50: rgb(248 245 242);
+  --color-neutral-100: rgb(237 230 223);
+  --color-neutral-200: rgb(215 201 188);
+  --color-neutral-300: rgb(193 172 153);
+  --color-neutral-400: rgb(171 143 118);
+  --color-neutral-500: rgb(149 114 83);
+  --color-neutral-600: rgb(74 55 40);
+  /* Main text color */
+  --color-neutral-700: rgb(58 43 31);
+  --color-neutral-800: rgb(42 31 22);
+  --color-neutral-900: rgb(26 15 8);
+
+  /* Success - Distinct green (not a copy of primary) */
+  --color-success-50: rgb(240 253 244);
+  --color-success-100: rgb(220 252 231);
+  --color-success-200: rgb(187 247 208);
+  --color-success-300: rgb(134 239 172);
+  --color-success-400: rgb(74 222 128);
+  --color-success-500: rgb(34 197 94);
+  --color-success-600: rgb(22 163 74);
+  --color-success-700: rgb(21 128 61);
+  --color-success-800: rgb(22 101 52);
+  --color-success-900: rgb(20 83 45);
+
+  /* Error - Red tones */
   --color-error-50: rgb(254 242 242);
   --color-error-100: rgb(252 229 229);
   --color-error-200: rgb(248 203 203);
@@ -123,7 +142,7 @@
   --color-error-800: rgb(127 29 29);
   --color-error-900: rgb(69 10 10);
 
-  /* Info - Blue tones that complement earth colors */
+  /* Info - Blue tones */
   --color-info-50: rgb(240 249 255);
   --color-info-100: rgb(224 242 254);
   --color-info-200: rgb(186 230 253);
@@ -135,17 +154,17 @@
   --color-info-800: rgb(7 64 133);
   --color-info-900: rgb(12 27 84);
 
-  /* Warning - Warm tones matching coral secondary */
-  --color-warning-50: rgb(254 252 247);
-  --color-warning-100: rgb(254 249 239);
-  --color-warning-200: rgb(251 241 215);
-  --color-warning-300: rgb(249 233 191);
-  --color-warning-400: rgb(245 216 142);
-  --color-warning-500: rgb(226 149 120);
-  --color-warning-600: rgb(198 119 84);
-  --color-warning-700: rgb(170 89 48);
-  --color-warning-800: rgb(142 59 12);
-  --color-warning-900: rgb(114 29 0);
+  /* Warning - Amber tones (distinct from secondary) */
+  --color-warning-50: rgb(255 251 235);
+  --color-warning-100: rgb(254 243 199);
+  --color-warning-200: rgb(253 230 138);
+  --color-warning-300: rgb(252 211 77);
+  --color-warning-400: rgb(250 204 21);
+  --color-warning-500: rgb(234 179 8);
+  --color-warning-600: rgb(202 138 4);
+  --color-warning-700: rgb(161 98 7);
+  --color-warning-800: rgb(133 77 14);
+  --color-warning-900: rgb(113 63 18);
 
   /* Gray */
   --color-gray-50: rgb(255 255 255);

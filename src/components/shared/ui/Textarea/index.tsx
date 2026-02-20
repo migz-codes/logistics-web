@@ -14,7 +14,7 @@ export function Textarea({ label, error, className, id, ...props }: TextareaProp
     <div className='space-y-2'>
       {label && (
         <label
-          className='block text-xs font-black text-earth/50 uppercase tracking-widest'
+          className='block text-xs font-black text-neutral-600/50 uppercase tracking-widest'
           htmlFor={id}
         >
           {label}
@@ -23,13 +23,13 @@ export function Textarea({ label, error, className, id, ...props }: TextareaProp
       <textarea
         id={id}
         className={tw(
-          'w-full px-6 py-4 rounded-xl bg-cream border-none focus:ring-2 focus:ring-primary text-earth font-medium placeholder-earth/40 resize-none',
-          error && 'ring-2 ring-red-500',
+          'w-full px-6 py-4 rounded-xl bg-surface-200 border-none focus:ring-2 focus:ring-primary-500 text-neutral-600 font-medium placeholder-neutral-600/40 resize-none',
+          error && 'ring-2 ring-error-500',
           className
         )}
         {...props}
       />
-      {error && <p className='text-xs text-red-500 font-medium'>{error}</p>}
+      {error && <p className='text-xs text-error-500 font-medium'>{error}</p>}
     </div>
   )
 }

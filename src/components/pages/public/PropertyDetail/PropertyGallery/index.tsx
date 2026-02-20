@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import { useState } from 'react'
 
@@ -52,9 +54,8 @@ export function PropertyGallery({ images = defaultImages, moreCount = 12 }: Prop
           <button
             type='button'
             key={`${image.alt}-${index}`}
-            className={`h-32 rounded-2xl overflow-hidden cursor-pointer transition-all ${
-              selectedImage === index ? 'ring-4 ring-primary' : 'hover:opacity-80'
-            }`}
+            className={`h-32 rounded-2xl overflow-hidden cursor-pointer transition-all ${selectedImage === index ? 'ring-4 ring-primary-500' : 'hover:opacity-80'
+              }`}
             onClick={() => setSelectedImage(index)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {

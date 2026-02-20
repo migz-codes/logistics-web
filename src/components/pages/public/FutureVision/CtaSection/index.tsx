@@ -17,7 +17,7 @@ export function CtaSection() {
 
       <div className='relative z-10 max-w-4xl mx-auto px-6 text-center'>
         <h2 className='text-4xl md:text-6xl font-extrabold text-white mb-8'>
-          Ready to Join the <span className='text-secondary'>Future</span>?
+          Ready to Join the <span className='text-secondary-500'>Future</span>?
         </h2>
         <p className='text-xl text-white/80 mb-12 leading-relaxed'>
           Partner with us to build the next generation of logistics infrastructure. Whether you're
@@ -36,7 +36,7 @@ export function CtaSection() {
           <Button
             variant='outline'
             size='lg'
-            className='bg-white/10 text-white border-white/30 hover:bg-white hover:text-earth'
+            className='bg-white/10 text-white border-white/30 hover:bg-white hover:text-neutral-600'
             icon={<Icon name='calendar_month' />}
             iconPosition='left'
           >

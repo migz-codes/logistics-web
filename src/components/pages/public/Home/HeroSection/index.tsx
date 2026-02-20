@@ -21,7 +21,7 @@ export async function HeroSection() {
               fill
               src='/home/main.jpg'
               alt='Vibrant neighborhood life'
-              className='object-cover h-full border border-red-500'
+              className='object-cover h-full border border-error-500'
               sizes='100vw'
               style={{ objectPosition: 'center top' }}
             />
@@ -31,11 +31,11 @@ export async function HeroSection() {
         <div className='absolute inset-0 lifestyle-gradient' />
 
         <AnimatedContent className='relative z-10 h-full max-w-7xl mx-auto px-6 flex flex-col justify-center items-center text-center'>
-          <h1 className='text-6xl md:text-8xl font-extrabold text-earth leading-[1.05] mb-8 max-w-4xl'>
+          <h1 className='text-6xl md:text-8xl font-extrabold text-neutral-600 leading-[1.05] mb-8 max-w-4xl'>
             {t('title')}
           </h1>
 
-          <p className='text-earth/80 text-xl max-w-2xl mb-12 leading-relaxed font-medium'>
+          <p className='text-neutral-600/80 text-xl max-w-2xl mb-12 leading-relaxed font-medium'>
             {t('subtitle')}
           </p>
 
@@ -46,7 +46,7 @@ export async function HeroSection() {
             <Button
               variant='outline'
               size='lg'
-              className='bg-white/90 backdrop-blur-md text-earth border border-earth/10 hover:bg-white shadow-xl'
+              className='bg-white/90 backdrop-blur-md text-neutral-600 border border-neutral-600/10 hover:bg-white shadow-xl'
             >
               {t('sellButton')}
             </Button>

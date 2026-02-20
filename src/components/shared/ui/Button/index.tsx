@@ -4,7 +4,7 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react'
 import { tw } from '@/utils/tailwind'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'earth' | 'whatsapp' | 'ghost'
+  variant?: 'primary' | 'secondary' | 'outline' | 'neutral' | 'whatsapp' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   children: ReactNode
   icon?: ReactNode
@@ -12,12 +12,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variants = {
-  primary: 'bg-primary text-white hover:bg-sage shadow-lg shadow-primary/10',
-  secondary: 'bg-secondary text-white hover:bg-secondary/90 shadow-lg shadow-secondary/20',
-  outline: 'border-2 border-primary/20 text-primary hover:bg-primary hover:text-white',
-  earth: 'bg-earth text-white hover:bg-earth-dark shadow-lg shadow-earth/10',
+  primary: 'bg-primary-500 text-white hover:bg-sage-500 shadow-lg shadow-primary-500/10',
+  secondary: 'bg-secondary-500 text-white hover:bg-secondary-500/90 shadow-lg shadow-secondary-500/20',
+  outline: 'border-2 border-primary-500/20 text-primary-500 hover:bg-primary-500 hover:text-white',
+  neutral: 'bg-neutral-600 text-white hover:bg-neutral-dark shadow-lg shadow-neutral-600/10',
   whatsapp: 'bg-[#25D366] text-white hover:bg-[#1fb356] shadow-lg shadow-[#25D366]/20',
-  ghost: 'text-earth/70 hover:text-primary'
+  ghost: 'text-neutral-600/70 hover:text-primary-500'
 }
 
 const sizes = {

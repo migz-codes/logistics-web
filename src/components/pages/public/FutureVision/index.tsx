@@ -6,7 +6,7 @@ import { RoadmapSection } from './RoadmapSection'
 
 export function FutureVisionPage() {
   return (
-    <div className='min-h-screen bg-background-light text-earth transition-colors duration-300'>
+    <div className='min-h-screen bg-background-light text-neutral-600 transition-colors duration-300'>
       <HeroSection />
       <RoadmapSection />
       <CoreValues />

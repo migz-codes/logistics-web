@@ -9,18 +9,20 @@
 @import './themes/fonts.css';
 @import './themes/base.css';
 
-/* Custom Theme Colors - matching HTML files */
+/* Shortcut aliases - pointing to design system scales */
 @theme {
-  /* Primary color palette from HTML */
-  --color-primary: #5d6d4d;
-  --color-secondary: #e29578;
-  --color-cream: #fdfbf7;
-  --color-sage: #8a9a5b;
-  --color-earth: #4a3728;
-  --color-earth-dark: #3a2b20;
+  --color-primary: rgb(93 109 77);
+  --color-secondary: rgb(226 149 120);
+  --color-sage: rgb(138 154 91);
 
-  /* Background colors */
-  --color-background: #fdfbf7;
+  /* Semantic surface / neutral shortcuts */
+  --color-surface: rgb(253 251 247);
+  --color-neutral: rgb(74 55 40);
+  --color-neutral-dark: rgb(58 43 31);
+
+  /* Background alias */
+  --color-background: rgb(253 251 247);
+  --color-background-light: rgb(253 251 247);
 }
 
 /* Custom shadows */
@@ -34,12 +36,10 @@
 
 /* Lifestyle gradient for hero sections */
 .lifestyle-gradient {
-  background: linear-gradient(
-    to top,
-    rgba(253, 251, 247, 1) 0%,
-    rgba(253, 251, 247, 0.4) 50%,
-    rgba(253, 251, 247, 0) 100%
-  );
+  background: linear-gradient(to top,
+      rgba(253, 251, 247, 1) 0%,
+      rgba(253, 251, 247, 0.4) 50%,
+      rgba(253, 251, 247, 0) 100%);
 }
 
 /* Material Symbols configuration */
@@ -91,6 +91,7 @@ html {
 
 /* Animation utilities */
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0px);
@@ -107,13 +108,11 @@ html {
 
 /* Stepper styles for property editor */
 .stepper-line {
-  background: repeating-linear-gradient(
-    90deg,
-    #e2e8f0 0,
-    #e2e8f0 4px,
-    transparent 4px,
-    transparent 8px
-  );
+  background: repeating-linear-gradient(90deg,
+      #e2e8f0 0,
+      #e2e8f0 4px,
+      transparent 4px,
+      transparent 8px);
 }
 
 .step-active .stepper-icon {

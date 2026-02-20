@@ -28,9 +28,9 @@ export async function ContactSection() {
                   {t('badge')}
                 </Badge>
 
-                <h2 className='text-4xl font-extrabold text-earth mb-8'>
+                <h2 className='text-4xl font-extrabold text-neutral-600 mb-8'>
                   {t('title')}{' '}
-                  <span className='text-secondary italic font-light'>
+                  <span className='text-secondary-500 italic font-light'>
                     {t('conversationHighlight')}
                   </span>
                 </h2>
@@ -73,8 +73,8 @@ export async function ContactSection() {
 
             <AnimatedContactInfo className='space-y-8'>
               <div>
-                <h3 className='text-3xl font-bold text-earth mb-4'>{t('info.title')}</h3>
-                <p className='text-earth/60 leading-relaxed'>{t('info.description')}</p>
+                <h3 className='text-3xl font-bold text-neutral-600 mb-4'>{t('info.title')}</h3>
+                <p className='text-neutral-600/60 leading-relaxed'>{t('info.description')}</p>
               </div>
 
               <div className='space-y-6'>
@@ -99,15 +99,15 @@ export async function ContactSection() {
                   }
                 ].map((item, index) => (
                   <div key={`${item.icon}-${index}`} className='flex items-start gap-5'>
-                    <div className='w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center flex-shrink-0'>
-                      <Icon name={item.icon} className='text-primary' size='lg' />
+                    <div className='w-14 h-14 bg-primary-500/10 rounded-2xl flex items-center justify-center flex-shrink-0'>
+                      <Icon name={item.icon} className='text-primary-500' size='lg' />
                     </div>
                     <div>
-                      <p className='text-xs font-black text-earth/40 uppercase tracking-widest mb-1'>
+                      <p className='text-xs font-black text-neutral-600/40 uppercase tracking-widest mb-1'>
                         {item.label}
                       </p>
-                      <p className='text-lg font-bold text-earth'>{item.value}</p>
-                      <p className='text-sm text-earth/50'>{item.sublabel}</p>
+                      <p className='text-lg font-bold text-neutral-600'>{item.value}</p>
+                      <p className='text-sm text-neutral-600/50'>{item.sublabel}</p>
                     </div>
                   </div>
                 ))}
@@ -116,9 +116,9 @@ export async function ContactSection() {
               <div className='bg-[#25D366]/10 rounded-3xl p-8'>
                 <div className='flex items-center gap-4 mb-4'>
                   <Icon name='chat' className='text-[#25D366]' size='lg' />
-                  <h4 className='text-xl font-bold text-earth'>{t('whatsapp.title')}</h4>
+                  <h4 className='text-xl font-bold text-neutral-600'>{t('whatsapp.title')}</h4>
                 </div>
-                <p className='text-earth/60 mb-6'>{t('whatsapp.description')}</p>
+                <p className='text-neutral-600/60 mb-6'>{t('whatsapp.description')}</p>
                 <Button variant='whatsapp' icon={<Icon name='arrow_forward' />}>
                   {t('whatsapp.button')}
                 </Button>

@@ -34,15 +34,15 @@ export function InventoryFilters() {
   }
 
   return (
-    <div className='bg-white rounded-2xl p-6 mb-6 border border-primary/5'>
+    <div className='bg-white rounded-2xl p-6 mb-6 border border-primary-500/5'>
       <div className='grid grid-cols-1 md:grid-cols-5 gap-4'>
         <div className='relative'>
-          <Icon name='search' className='absolute left-4 top-1/2 -translate-y-1/2 text-earth/40' />
+          <Icon name='search' className='absolute left-4 top-1/2 -translate-y-1/2 text-neutral-600/40' />
 
           <input
             type='text'
             placeholder='Search properties...'
-            className='w-full pl-12 pr-4 py-3 rounded-xl bg-cream border-none focus:ring-2 focus:ring-primary text-sm font-medium'
+            className='w-full pl-12 pr-4 py-3 rounded-xl bg-surface-200 border-none focus:ring-2 focus:ring-primary-500 text-sm font-medium'
           />
         </div>
 

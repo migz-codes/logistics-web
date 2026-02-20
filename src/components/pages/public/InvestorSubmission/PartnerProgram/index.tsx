@@ -10,13 +10,13 @@ const benefits = [
 
 export function PartnerProgram() {
   return (
-    <Card variant='elevated' className='bg-earth text-white'>
+    <Card variant='elevated' className='bg-neutral-600 text-white'>
       <h3 className='text-xl font-bold mb-6'>Why Partner With Us?</h3>
       <div className='space-y-4'>
         {benefits.map((benefit) => (
           <div key={benefit.icon} className='flex items-center gap-4'>
             <div className='w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center'>
-              <Icon name={benefit.icon} className='text-secondary' />
+              <Icon name={benefit.icon} className='text-secondary-500' />
             </div>
             <span className='font-medium'>{benefit.label}</span>
           </div>

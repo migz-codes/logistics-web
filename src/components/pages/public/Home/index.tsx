@@ -5,7 +5,7 @@ import { PropertiesSection } from './PropertiesSection'
 import { ServicesSection } from './ServicesSection'
 
 export const Home = () => (
-  <div className='min-h-screen bg-background-light text-earth transition-colors duration-300 relative'>
+  <div className='min-h-screen bg-background-light text-neutral-600 transition-colors duration-300 relative'>
     <HeroSection />
     <PropertiesSection />
     <ServicesSection />

@@ -27,7 +27,7 @@ export function AdminSidebar({
   const t = useTranslations('navigation')
 
   return (
-    <aside className='w-64 bg-earth text-white border-r border-earth-dark/20 flex flex-col fixed inset-y-0 z-50'>
+    <aside className='w-64 bg-neutral-600 text-white border-r border-neutral-dark/20 flex flex-col fixed inset-y-0 z-50'>
       {/* Brand */}
       <div className='p-6 border-b border-white/10'>
         <div className='flex items-center gap-3'>
@@ -38,7 +38,7 @@ export function AdminSidebar({
             <span className='font-extrabold text-sm tracking-tight text-white uppercase'>
               {brandName}
             </span>
-            <span className='text-[8px] font-bold text-secondary tracking-[0.2em] uppercase'>
+            <span className='text-[8px] font-bold text-secondary-500 tracking-[0.2em] uppercase'>
               {brandSubtitle}
             </span>
           </div>

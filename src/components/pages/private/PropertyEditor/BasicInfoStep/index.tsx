@@ -67,8 +67,8 @@ export function BasicInfoStep(_props: BasicInfoStepProps) {
 
   return (
     <Card variant='elevated'>
-      <h2 className='text-2xl font-bold text-earth mb-8 flex items-center gap-3'>
-        <Icon name='info' className='text-primary' />
+      <h2 className='text-2xl font-bold text-neutral-600 mb-8 flex items-center gap-3'>
+        <Icon name='info' className='text-primary-500' />
         {t('basicInfo.title')}
       </h2>
 
@@ -114,7 +114,7 @@ export function BasicInfoStep(_props: BasicInfoStepProps) {
         />
       </form>
 
-      <div className='flex justify-end pt-6 border-t border-primary/5'>
+      <div className='flex justify-end pt-6 border-t border-primary-500/5'>
         <Button
           type='button'
           variant='primary'

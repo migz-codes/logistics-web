@@ -27,7 +27,7 @@ export const Properties = () => {
     return (
       <tbody>
         <tr>
-          <td colSpan={7} className='p-8 text-center text-earth/50'>
+          <td colSpan={7} className='p-8 text-center text-neutral-600/50'>
             Loading properties...
           </td>
         </tr>
@@ -39,7 +39,7 @@ export const Properties = () => {
     return (
       <tbody>
         <tr>
-          <td colSpan={7} className='p-8 text-center text-red-500'>
+          <td colSpan={7} className='p-8 text-center text-error-500'>
             Error: {error}
           </td>
         </tr>
@@ -52,7 +52,7 @@ export const Properties = () => {
       {properties.map((property) => (
         <tr
           key={property.id}
-          className='border-b border-primary/5 last:border-b-0 hover:bg-primary/5 transition-colors'
+          className='border-b border-primary-500/5 last:border-b-0 hover:bg-primary-500/5 transition-colors'
         >
           <td className='p-4'>
             <div className='flex items-center gap-3'>
@@ -65,9 +65,9 @@ export const Properties = () => {
               />
 
               <div>
-                <p className='font-bold text-earth text-sm'>{property.title}</p>
+                <p className='font-bold text-neutral-600 text-sm'>{property.title}</p>
 
-                <p className='text-earth/50 flex items-center gap-1'>
+                <p className='text-neutral-600/50 flex items-center gap-1'>
                   <Icon name='location_on' size='sm' />
 
                   <span>{`${property.address}`}</span>
@@ -75,41 +75,41 @@ export const Properties = () => {
               </div>
             </div>
           </td>
-          <td className='p-4 text-earth/60'>{property.country}</td>
+          <td className='p-4 text-neutral-600/60'>{property.country}</td>
 
-          <td className='p-4 text-earth/60'>
+          <td className='p-4 text-neutral-600/60'>
             {property.state}/{property.city}
           </td>
 
-          <td className='p-4 text-right font-bold text-earth'>{property.area}</td>
+          <td className='p-4 text-right font-bold text-neutral-600'>{property.area}</td>
 
           <td className='p-4 text-center'>
             <span
               className={`px-3 py-1 rounded-full text-[10px] font-black ${
                 property.status === 'Available'
-                  ? 'bg-green-500/10 text-green-500'
+                  ? 'bg-success-500/10 text-success-500'
                   : property.status === 'Leased'
-                    ? 'bg-secondary/10 text-secondary'
+                    ? 'bg-secondary-500/10 text-secondary-500'
                     : 'bg-amber-500/10 text-amber-500'
               }`}
             >
               {property.status}
             </span>
           </td>
-          <td className='p-4 text-right font-bold text-earth'>{property.price}</td>
+          <td className='p-4 text-right font-bold text-neutral-600'>{property.price}</td>
 
           <td className='p-4 text-center'>
             <div className='flex items-center justify-center gap-2'>
               <button
                 type='button'
-                className='p-2 rounded-lg hover:bg-primary/10 text-earth/40 hover:text-primary transition-colors'
+                className='p-2 rounded-lg hover:bg-primary-500/10 text-neutral-600/40 hover:text-primary-500 transition-colors'
               >
                 <Icon name='visibility' />
               </button>
 
               <button
                 type='button'
-                className='p-2 rounded-lg hover:bg-primary/10 text-earth/40 hover:text-primary transition-colors'
+                className='p-2 rounded-lg hover:bg-primary-500/10 text-neutral-600/40 hover:text-primary-500 transition-colors'
               >
                 <Icon name='edit' />
               </button>
@@ -117,7 +117,7 @@ export const Properties = () => {
               <button
                 type='button'
                 onClick={() => deleteProperty(property.id)}
-                className='p-2 rounded-lg hover:bg-red-500/10 text-earth/40 hover:text-red-500 transition-colors'
+                className='p-2 rounded-lg hover:bg-error-500/10 text-neutral-600/40 hover:text-error-500 transition-colors'
               >
                 <Icon name='delete' />
               </button>

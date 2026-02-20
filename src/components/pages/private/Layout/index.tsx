@@ -26,7 +26,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
   ]
 
   return (
-    <div className='min-h-screen bg-cream flex'>
+    <div className='min-h-screen bg-surface-200 flex'>
       <AdminSidebar
         links={sidebarLinks}
         brandName='Logistics Portal'

@@ -14,7 +14,7 @@ export function Properties({ properties, t }: PropertiesProps) {
       {properties.map((property: any) => (
         <div
           key={property.id}
-          className='bg-white rounded-3xl overflow-hidden shadow-xl border border-primary/5 hover:-translate-y-2 transition-all group'
+          className='bg-white rounded-3xl overflow-hidden shadow-xl border border-primary-500/5 hover:-translate-y-2 transition-all group'
         >
           <div className='relative aspect-[4/3] overflow-hidden'>
             <Image
@@ -32,19 +32,19 @@ export function Properties({ properties, t }: PropertiesProps) {
               type='button'
               className='absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors'
             >
-              <Icon name='favorite_border' className='text-secondary' size='sm' />
+              <Icon name='favorite_border' className='text-secondary-500' size='sm' />
             </button>
           </div>
 
           <div className='p-6'>
-            <div className='flex items-center gap-2 text-earth/50 text-sm mb-2'>
-              <Icon name='location_on' size='sm' className='text-primary' />
+            <div className='flex items-center gap-2 text-neutral-600/50 text-sm mb-2'>
+              <Icon name='location_on' size='sm' className='text-primary-500' />
               {property.location}
             </div>
 
-            <h3 className='text-xl font-bold text-earth mb-4'>{property.title}</h3>
+            <h3 className='text-xl font-bold text-neutral-600 mb-4'>{property.title}</h3>
 
-            <div className='flex items-center gap-6 text-sm text-earth/60 mb-6'>
+            <div className='flex items-center gap-6 text-sm text-neutral-600/60 mb-6'>
               <span className='flex items-center gap-1'>
                 <Icon name='bed' size='sm' /> {property.beds} {t('beds')}
               </span>
@@ -55,8 +55,8 @@ export function Properties({ properties, t }: PropertiesProps) {
                 <Icon name='square_foot' size='sm' /> {property.area}
               </span>
             </div>
-            <div className='flex items-center justify-between pt-4 border-t border-primary/5'>
-              <span className='text-2xl font-extrabold text-primary'>{property.price}</span>
+            <div className='flex items-center justify-between pt-4 border-t border-primary-500/5'>
+              <span className='text-2xl font-extrabold text-primary-500'>{property.price}</span>
               <Button variant='ghost' size='sm' icon={<Icon name='arrow_forward' />}>
                 {t('details')}
               </Button>

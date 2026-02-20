@@ -15,12 +15,12 @@ interface FormStepperProps {
 
 export function FormStepper({ steps, currentStep }: FormStepperProps) {
   return (
-    <div className='bg-white rounded-3xl p-8 border border-primary/5'>
+    <div className='bg-white rounded-3xl p-8 border border-primary-500/5'>
       <div className='flex items-center justify-between relative'>
         {/* Progress Line */}
         <div className='absolute top-6 left-0 right-0 h-1 bg-slate-200 mx-12 z-0'>
           <div
-            className='h-full bg-primary transition-all duration-500'
+            className='h-full bg-primary-500 transition-all duration-500'
             style={{ width: `${(currentStep / (steps.length - 1)) * 100}%` }}
           />
         </div>
@@ -38,10 +38,10 @@ export function FormStepper({ steps, currentStep }: FormStepperProps) {
                 className={tw(
                   'w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300',
                   isCompleted
-                    ? 'bg-primary text-white'
+                    ? 'bg-primary-500 text-white'
                     : isActive
-                      ? 'bg-earth text-white'
-                      : 'bg-slate-200 text-earth/40'
+                      ? 'bg-neutral-600 text-white'
+                      : 'bg-slate-200 text-neutral-600/40'
                 )}
               >
                 {isCompleted ? <Icon name='check' /> : <Icon name={step.icon} />}
@@ -49,7 +49,7 @@ export function FormStepper({ steps, currentStep }: FormStepperProps) {
               <span
                 className={tw(
                   'text-xs font-bold mt-3 uppercase tracking-widest transition-colors',
-                  isActive || isCompleted ? 'text-earth' : 'text-earth/40'
+                  isActive || isCompleted ? 'text-neutral-600' : 'text-neutral-600/40'
                 )}
               >
                 {step.label}

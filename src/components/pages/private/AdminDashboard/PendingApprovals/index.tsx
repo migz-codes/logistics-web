@@ -48,19 +48,19 @@ export function PendingApprovals({ approvals = defaultApprovals }: PendingApprov
   }
 
   const typeColors = {
-    property: 'bg-primary/10 text-primary',
-    partner: 'bg-secondary/10 text-secondary',
-    investment: 'bg-sage/10 text-sage'
+    property: 'bg-primary-500/10 text-primary-500',
+    partner: 'bg-secondary-500/10 text-secondary-500',
+    investment: 'bg-sage-500/10 text-sage-500'
   }
 
   return (
     <Card>
       <div className='flex items-center justify-between mb-6'>
-        <h3 className='text-lg font-bold text-earth flex items-center gap-2'>
-          <Icon name='pending_actions' className='text-secondary' />
+        <h3 className='text-lg font-bold text-neutral-600 flex items-center gap-2'>
+          <Icon name='pending_actions' className='text-secondary-500' />
           Pending Approvals
         </h3>
-        <span className='text-xs font-black text-secondary bg-secondary/10 px-3 py-1 rounded-full'>
+        <span className='text-xs font-black text-secondary-500 bg-secondary-500/10 px-3 py-1 rounded-full'>
           {approvals.length} pending
         </span>
       </div>
@@ -69,7 +69,7 @@ export function PendingApprovals({ approvals = defaultApprovals }: PendingApprov
         {approvals.map((approval) => (
           <div
             key={approval.id}
-            className='flex items-center gap-4 p-4 bg-cream rounded-2xl hover:bg-primary/5 transition-colors group'
+            className='flex items-center gap-4 p-4 bg-surface-200 rounded-2xl hover:bg-primary-500/5 transition-colors group'
           >
             <div
               className={`w-10 h-10 rounded-xl flex items-center justify-center ${typeColors[approval.type]}`}
@@ -77,21 +77,21 @@ export function PendingApprovals({ approvals = defaultApprovals }: PendingApprov
               <Icon name={typeIcons[approval.type]} />
             </div>
             <div className='flex-1'>
-              <p className='font-bold text-sm text-earth'>{approval.title}</p>
-              <p className='text-xs text-earth/50'>
+              <p className='font-bold text-sm text-neutral-600'>{approval.title}</p>
+              <p className='text-xs text-neutral-600/50'>
                 by {approval.submitter} • {approval.date}
               </p>
             </div>
             <div className='flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity'>
               <button
                 type='button'
-                className='p-2 rounded-lg bg-green-500/10 text-green-500 hover:bg-green-500/20'
+                className='p-2 rounded-lg bg-success-500/10 text-success-500 hover:bg-success-500/20'
               >
                 <Icon name='check' size='sm' />
               </button>
               <button
                 type='button'
-                className='p-2 rounded-lg bg-red-500/10 text-red-500 hover:bg-red-500/20'
+                className='p-2 rounded-lg bg-error-500/10 text-error-500 hover:bg-error-500/20'
               >
                 <Icon name='close' size='sm' />
               </button>
@@ -100,7 +100,7 @@ export function PendingApprovals({ approvals = defaultApprovals }: PendingApprov
         ))}
       </div>
 
-      <Button variant='ghost' className='w-full mt-6 text-primary hover:bg-primary/5' size='sm'>
+      <Button variant='ghost' className='w-full mt-6 text-primary-500 hover:bg-primary-500/5' size='sm'>
         View All Pending Items
       </Button>
     </Card>

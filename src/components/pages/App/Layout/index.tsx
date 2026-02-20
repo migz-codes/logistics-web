@@ -20,6 +20,6 @@ export const AppLayout = ({ children }: Readonly<IAppLayoutProps>) => (
       />
     </head>
 
-    <body className={`${plusJakarta.className} antialiased bg-cream text-earth`}>{children}</body>
+    <body className={`${plusJakarta.className} antialiased bg-surface-200 text-neutral-600`}>{children}</body>
   </html>
 )

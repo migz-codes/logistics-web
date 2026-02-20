@@ -34,16 +34,16 @@ export function Navigation({
 }: NavigationProps) {
   return (
     <nav className='fixed top-0 w-full z-50 px-6 py-6'>
-      <div className='max-w-7xl mx-auto flex items-center justify-between bg-white/80 backdrop-blur-xl px-8 py-4 rounded-3xl shadow-sm border border-primary/5'>
+      <div className='max-w-7xl mx-auto flex items-center justify-between bg-white/80 backdrop-blur-xl px-8 py-4 rounded-3xl shadow-sm border border-primary-500/5'>
         {/* Brand */}
         <div className='flex items-center gap-3'>
-          <div className='w-10 h-10 bg-primary flex items-center justify-center rounded-xl rotate-3'>
+          <div className='w-10 h-10 bg-primary-500 flex items-center justify-center rounded-xl rotate-3'>
             <Icon name={brandIcon} className='text-white -rotate-3' size='lg' />
           </div>
           <div className='flex flex-col leading-none'>
-            <span className='font-extrabold text-2xl tracking-tight text-earth'>{brandName}</span>
+            <span className='font-extrabold text-2xl tracking-tight text-neutral-600'>{brandName}</span>
             {brandSubtitle && (
-              <span className='text-[10px] font-bold text-primary tracking-[0.2em] uppercase'>
+              <span className='text-[10px] font-bold text-primary-500 tracking-[0.2em] uppercase'>
                 {brandSubtitle}
               </span>
             )}
@@ -57,9 +57,8 @@ export function Navigation({
               <Link
                 key={link.href}
                 href={link.href}
-                className={`transition-colors ${
-                  link.active ? 'text-primary' : 'text-earth hover:text-primary'
-                }`}
+                className={`transition-colors ${link.active ? 'text-primary-500' : 'text-neutral-600 hover:text-primary-500'
+                  }`}
               >
                 {link.label}
               </Link>
@@ -72,7 +71,7 @@ export function Navigation({
           {showLogin && (
             <button
               type='button'
-              className='px-6 py-2.5 text-sm font-bold text-earth/70 hover:text-primary transition-all'
+              className='px-6 py-2.5 text-sm font-bold text-neutral-600/70 hover:text-primary-500 transition-all'
             >
               {loginLabel}
             </button>
