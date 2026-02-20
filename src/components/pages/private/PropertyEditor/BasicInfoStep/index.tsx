@@ -5,9 +5,9 @@ import { useForm } from 'react-hook-form'
 import z from 'zod'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
+import { Select } from '@/components/shared/ui/Form/Select'
 import { Icon } from '@/components/shared/ui/Icon'
 import { Input } from '@/components/shared/ui/Input'
-import { Select } from '@/components/shared/ui/Select'
 import { Textarea } from '@/components/shared/ui/Textarea'
 import { type TTranslation, useTranslation } from '@/hooks/useTranslation'
 import { onCurrencyChange, onNumberChange } from '@/utils/inputs'
@@ -32,8 +32,8 @@ interface BasicInfoStepProps {
 const getBasicInfoSchema = (t: TTranslation) => {
   return z.object({
     cep: z.string().optional(),
-    state: z.string().optional(),
     city: z.string().optional(),
+    state: z.string().optional(),
     address: z.string().optional(),
     country: z.string().optional(),
     category: z.string().min(1, t('property.category.required')),
@@ -80,12 +80,14 @@ export function BasicInfoStep(_props: BasicInfoStepProps) {
           error={formState.errors.propertyName?.message}
         />
 
-        <Select
-          label={t('basicInfo.category.label')}
+        {/* <Select
           options={categoryOptions}
+          label={t('basicInfo.category.label')}
           {...register('category')}
           error={formState.errors.category?.message}
-        />
+        /> */}
+
+        <Select options={categoryOptions} custom={{ icon: <Icon name='info' /> }} />
 
         <Input
           label='Total Area (m²)'
@@ -94,6 +96,7 @@ export function BasicInfoStep(_props: BasicInfoStepProps) {
           error={formState.errors.totalArea?.message}
           onChange={(e) => setValue('totalArea', onNumberChange(e))}
         />
+
         <Input
           label={t('basicInfo.leasePrice.label')}
           placeholder={t('basicInfo.leasePrice.placeholder')}

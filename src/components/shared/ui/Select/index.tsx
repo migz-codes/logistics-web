@@ -26,6 +26,7 @@ export function Select({ label, icon, options, error, className, ...props }: Sel
           {label}
         </label>
       )}
+
       <div className='relative'>
         {icon && (
           <span className='absolute left-4 top-1/2 -translate-y-1/2 text-primary pointer-events-none'>
