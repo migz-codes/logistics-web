@@ -1,12 +1,14 @@
 'use client'
 
-import ReactSelect, {
-  type ControlProps,
-  components,
-  type MenuProps,
-  type Props
+import type {
+  ControlProps,
+  MenuListProps,
+  MenuProps,
+  OptionProps,
+  PlaceholderProps,
+  Props
 } from 'react-select'
-import { colors } from '@/styles/themes/colors'
+import ReactSelect, { components } from 'react-select'
 import { tw } from '@/utils/tailwind'
 import { type ISelectContext, SelectProvider, useSelectContext } from './context'
 
@@ -14,22 +16,62 @@ export interface ISelectProps extends Props {
   custom?: ISelectContext
 }
 
+const SingleValue = (props: any) => {
+  const { tws } = useSelectContext()
+
+  return (
+    <components.SingleValue
+      {...props}
+      className={tw('text-neutral-600 p-0 font-medium', tws?.singleValue)}
+    />
+  )
+}
+
+const Placeholder = (props: PlaceholderProps) => {
+  const { tws } = useSelectContext()
+
+  return (
+    <components.Placeholder
+      {...props}
+      className={tw('p-0 font-medium text-neutral-600/40', tws?.placeholder)}
+    >
+      {props.children}
+    </components.Placeholder>
+  )
+}
+
+const Option = (props: OptionProps) => {
+  const { tws } = useSelectContext()
+
+  return (
+    <components.Option
+      {...props}
+      className={tw('p-4 hover:bg-surface-500 cursor-pointer', tws?.option)}
+    >
+      {props.children}
+    </components.Option>
+  )
+}
+
+const MenuList = (props: MenuListProps) => {
+  return (
+    <components.MenuList {...props} className={tw('p-0')}>
+      {props.children}
+    </components.MenuList>
+  )
+}
+
 const Menu = (props: MenuProps) => {
-  const { icon, tws } = useSelectContext()
+  const { tws } = useSelectContext()
 
   return (
     <components.Menu
       {...props}
       className={tw(
-        'text-neutral-600 font-medium placeholder-neutral-600/40',
-        icon && 'pl-12',
-        tws?.control
+        'w-full rounded-xl overflow-hidden bg-surface-200 text-neutral-600 font-medium placeholder-neutral-600/40 border-none mt-4 shadow-lg',
+        tws?.menu
       )}
     >
-      {icon && (
-        <span className='absolute left-4 top-1/2 -translate-y-1/2 text-primary-500'>{icon}</span>
-      )}
-
       {props.children}
     </components.Menu>
   )
@@ -42,7 +84,7 @@ const Control = (props: ControlProps) => {
     <components.Control
       {...props}
       className={tw(
-        'text-neutral-600 font-medium placeholder-neutral-600/40',
+        'w-full h-[56px] px-4 rounded-xl bg-surface-200 text-neutral-600 border-none shadow-none focus:ring-2 focus:ring-primary-500',
         icon && 'pl-12',
         tws?.control
       )}
@@ -56,57 +98,12 @@ const Control = (props: ControlProps) => {
   )
 }
 
-export const Select = ({ custom, ...props }: ISelectProps) => {
-  const { error } = custom || {}
-
-  return (
-    <SelectProvider {...custom}>
-      <ReactSelect
-        {...props}
-        components={{ Control, Menu }}
-        styles={{
-          input: (base) => ({
-            ...base,
-            padding: '0'
-          }),
-          placeholder: (base) => ({
-            ...base,
-            padding: '0',
-            color: 'var(--color-primary-600)',
-            opacity: 0.4
-          }),
-          valueContainer: (base) => ({
-            ...base,
-            padding: '0'
-          }),
-          control: (base) => ({
-            ...base,
-            width: '100%',
-            height: '56px',
-            paddingLeft: '16px',
-            paddingRight: '16px',
-            borderRadius: '12px',
-            backgroundColor: colors.surface[200],
-            color: colors.neutral[600],
-            border: 'none',
-            boxShadow: error ? '0 0 0 2px rgb(239, 68, 68)' : 'none',
-            '&:focus': {
-              ring: '2px',
-              ringColor: colors.primary[500]
-            }
-          }),
-          menu: (base) => ({
-            ...base,
-            width: '100%',
-            border: 'none',
-            padding: '16px 24px',
-            borderRadius: '12px',
-            backgroundColor: colors.surface[200],
-            boxShadow: error ? '0 0 0 2px rgb(239, 68, 68)' : 'none',
-            '&:focus': { ring: '2px', ringColor: colors.primary[500] }
-          })
-        }}
-      />
-    </SelectProvider>
-  )
-}
+export const Select = ({ custom, ...props }: ISelectProps) => (
+  <SelectProvider {...custom}>
+    <ReactSelect
+      {...props}
+      unstyled
+      components={{ Control, Menu, MenuList, Option, Placeholder, SingleValue }}
+    />
+  </SelectProvider>
+)

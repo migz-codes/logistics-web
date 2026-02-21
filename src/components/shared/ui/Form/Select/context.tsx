@@ -3,7 +3,13 @@ import type { IChildrenProps } from '@/types/react.types'
 
 export interface ISelectContext {
   error?: string | null
-  tws?: { control?: string }
+  tws?: {
+    control?: string
+    option?: string
+    menu?: string
+    singleValue?: string
+    placeholder?: string
+  }
   icon?: IChildrenProps['children']
 }
 
