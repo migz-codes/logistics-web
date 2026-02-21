@@ -87,7 +87,7 @@ export function BasicInfoStep(_props: BasicInfoStepProps) {
           error={formState.errors.category?.message}
         /> */}
 
-        <Select options={categoryOptions} custom={{ icon: <Icon name='info' /> }} />
+        <Select options={categoryOptions} />
 
         <Input
           label='Total Area (m²)'

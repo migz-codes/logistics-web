@@ -15,7 +15,7 @@ export interface ISelectProps extends Props {
 }
 
 const Menu = (props: MenuProps) => {
-  const { icon, error, tws } = useSelectContext()
+  const { icon, tws } = useSelectContext()
 
   return (
     <components.Menu
@@ -36,7 +36,7 @@ const Menu = (props: MenuProps) => {
 }
 
 const Control = (props: ControlProps) => {
-  const { icon, error, tws } = useSelectContext()
+  const { icon, tws } = useSelectContext()
 
   return (
     <components.Control
@@ -65,10 +65,26 @@ export const Select = ({ custom, ...props }: ISelectProps) => {
         {...props}
         components={{ Control, Menu }}
         styles={{
+          input: (base) => ({
+            ...base,
+            padding: '0'
+          }),
+          placeholder: (base) => ({
+            ...base,
+            padding: '0',
+            color: 'var(--color-primary-600)',
+            opacity: 0.4
+          }),
+          valueContainer: (base) => ({
+            ...base,
+            padding: '0'
+          }),
           control: (base) => ({
             ...base,
             width: '100%',
-            padding: '16px 24px',
+            height: '56px',
+            paddingLeft: '16px',
+            paddingRight: '16px',
             borderRadius: '12px',
             backgroundColor: colors.surface[200],
             color: colors.neutral[600],

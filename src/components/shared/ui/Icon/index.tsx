@@ -1,3 +1,5 @@
+import { tw } from '@/utils/tailwind'
+
 interface IconProps {
   name: string
   className?: string
@@ -12,5 +14,5 @@ const sizes = {
 }
 
 export function Icon({ name, className = '', size = 'md' }: IconProps) {
-  return <span className={`material-symbols-outlined ${sizes[size]} ${className}`}>{name}</span>
+  return <span className={tw(`material-symbols-outlined`, className)}>{name}</span>
 }

@@ -21,10 +21,12 @@ export function Input({ id, label, icon, error, className, ...props }: InputProp
           {label}
         </label>
       )}
+
       <div className='relative'>
         {icon && (
           <span className='absolute left-4 top-1/2 -translate-y-1/2 text-primary-500'>{icon}</span>
         )}
+
         <input
           id={id}
           className={tw(
