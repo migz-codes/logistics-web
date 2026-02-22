@@ -3,14 +3,15 @@ import type { IChildrenProps } from '@/types/react.types'
 
 export interface ISelectContext {
   error?: string | null
+  icon?: IChildrenProps['children']
   tws?: {
-    control?: string
-    option?: string
     menu?: string
+    option?: string
+    control?: string
     singleValue?: string
     placeholder?: string
+    dropdownIndicator?: string
   }
-  icon?: IChildrenProps['children']
 }
 
 export const SelectContext = createContext({} as ISelectContext)

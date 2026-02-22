@@ -11,25 +11,16 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 
 export function Textarea({ label, error, className, id, ...props }: TextareaProps) {
   return (
-    <div className='space-y-2'>
-      {label && (
-        <label
-          className='block text-xs font-black text-neutral-600/50 uppercase tracking-widest'
-          htmlFor={id}
-        >
-          {label}
-        </label>
+    <textarea
+      id={id}
+      className={tw(
+        'w-full px-6 py-4 rounded-xl bg-surface-200 text-neutral-600 font-medium placeholder-neutral-600/40 resize-none border-2 !outline-none !ring-none',
+        error
+          ? 'border-error-500 focus:border-error-500'
+          : 'border-transparent focus:border-primary-500',
+        className
       )}
-      <textarea
-        id={id}
-        className={tw(
-          'w-full px-6 py-4 rounded-xl bg-surface-200 border-none focus:ring-2 focus:ring-primary-500 text-neutral-600 font-medium placeholder-neutral-600/40 resize-none',
-          error && 'ring-2 ring-error-500',
-          className
-        )}
-        {...props}
-      />
-      {error && <p className='text-xs text-error-500 font-medium'>{error}</p>}
-    </div>
+      {...props}
+    />
   )
 }

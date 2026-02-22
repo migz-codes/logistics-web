@@ -2,6 +2,7 @@
 
 import type {
   ControlProps,
+  DropdownIndicatorProps,
   MenuListProps,
   MenuProps,
   OptionProps,
@@ -80,11 +81,14 @@ const Menu = (props: MenuProps) => {
 const Control = (props: ControlProps) => {
   const { icon, tws } = useSelectContext()
 
+  console.log(props.isFocused)
+
   return (
     <components.Control
       {...props}
       className={tw(
-        'w-full h-[56px] px-4 rounded-xl bg-surface-200 text-neutral-600 border-none shadow-none focus:ring-2 focus:ring-primary-500',
+        'w-full h-[56px] px-4 rounded-xl bg-surface-200 text-neutral-600 shadow-none',
+        props.isFocused ? 'border-2 border-primary-500' : 'border-2 border-transparent',
         icon && 'pl-12',
         tws?.control
       )}
@@ -98,12 +102,27 @@ const Control = (props: ControlProps) => {
   )
 }
 
+const DropdownIndicator = (props: DropdownIndicatorProps) => {
+  const { tws } = useSelectContext()
+
+  return (
+    <components.DropdownIndicator
+      {...props}
+      className={tw(
+        'text-neutral-600/40',
+        props.isFocused && 'text-primary-500',
+        tws?.dropdownIndicator
+      )}
+    />
+  )
+}
+
 export const Select = ({ custom, ...props }: ISelectProps) => (
   <SelectProvider {...custom}>
     <ReactSelect
       {...props}
       unstyled
-      components={{ Control, Menu, MenuList, Option, Placeholder, SingleValue }}
+      components={{ Control, Menu, MenuList, Option, Placeholder, SingleValue, DropdownIndicator }}
     />
   </SelectProvider>
 )

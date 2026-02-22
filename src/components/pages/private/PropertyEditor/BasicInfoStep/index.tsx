@@ -8,6 +8,7 @@ import { Card } from '@/components/shared/ui/Card'
 import { Select } from '@/components/shared/ui/Form/Select'
 import { Icon } from '@/components/shared/ui/Icon'
 import { Input } from '@/components/shared/ui/Input'
+import { Label } from '@/components/shared/ui/Label'
 import { Textarea } from '@/components/shared/ui/Textarea'
 import { type TTranslation, useTranslation } from '@/hooks/useTranslation'
 import { onCurrencyChange, onNumberChange } from '@/utils/inputs'
@@ -73,41 +74,41 @@ export function BasicInfoStep(_props: BasicInfoStepProps) {
       </h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
-        <Input
-          label={t('basicInfo.propertyName.label')}
-          placeholder={t('basicInfo.propertyName.placeholder')}
-          {...register('propertyName')}
+        <Label
           error={formState.errors.propertyName?.message}
-        />
+          label={t('basicInfo.propertyName.label')}
+        >
+          <Input
+            placeholder={t('basicInfo.propertyName.placeholder')}
+            {...register('propertyName')}
+            error={formState.errors.propertyName?.message}
+          />
+        </Label>
 
-        {/* <Select
-          options={categoryOptions}
-          label={t('basicInfo.category.label')}
-          {...register('category')}
-          error={formState.errors.category?.message}
-        /> */}
+        <Label label={t('basicInfo.category.label')} id='category'>
+          <Select options={categoryOptions} id='category' />
+        </Label>
 
-        <Select options={categoryOptions} />
+        <Label label={t('basicInfo.totalArea.label')} error={formState.errors.totalArea?.message}>
+          <Input
+            placeholder='e.g., 4.000'
+            {...register('totalArea')}
+            error={formState.errors.totalArea?.message}
+            onChange={(e) => setValue('totalArea', onNumberChange(e))}
+          />
+        </Label>
 
-        <Input
-          label='Total Area (m²)'
-          placeholder='e.g., 4.000'
-          {...register('totalArea')}
-          error={formState.errors.totalArea?.message}
-          onChange={(e) => setValue('totalArea', onNumberChange(e))}
-        />
-
-        <Input
-          label={t('basicInfo.leasePrice.label')}
-          placeholder={t('basicInfo.leasePrice.placeholder')}
-          {...register('leasePrice')}
-          onChange={(e) => setValue('leasePrice', onCurrencyChange(e))}
-          error={formState.errors.leasePrice?.message}
-        />
+        <Label label={t('basicInfo.leasePrice.label')} error={formState.errors.leasePrice?.message}>
+          <Input
+            placeholder={t('basicInfo.leasePrice.placeholder')}
+            {...register('leasePrice')}
+            error={formState.errors.leasePrice?.message}
+            onChange={(e) => setValue('leasePrice', onCurrencyChange(e))}
+          />
+        </Label>
 
         <Textarea
           rows={4}
-          label={t('basicInfo.description.label')}
           placeholder={t('basicInfo.description.placeholder')}
           {...register('description')}
           error={formState.errors.description?.message}

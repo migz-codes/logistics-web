@@ -104,7 +104,10 @@
     },
     "properties": {
       "featured": "Featured",
-      "ourExclusive": ["Our Exclusive", "Properties"],
+      "ourExclusive": [
+        "Our Exclusive",
+        "Properties"
+      ],
       "properties": "Properties",
       "viewAll": "View All",
       "beds": "Beds",
@@ -227,7 +230,11 @@
       "placeholder": "e.g., Prologis Industrial Park - Section 4"
     },
     "category": {
-      "label": "Category"
+      "label": "Category",
+      "type": "Type"
+    },
+    "totalArea": {
+      "label": "Total Area (m²)"
     },
     "leasePrice": {
       "label": "Lease Price (R$/m²)",
