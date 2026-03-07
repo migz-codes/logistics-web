@@ -37,7 +37,10 @@ export function InventoryFilters() {
     <div className='bg-white rounded-2xl p-6 mb-6 border border-primary-500/5'>
       <div className='grid grid-cols-1 md:grid-cols-5 gap-4'>
         <div className='relative'>
-          <Icon name='search' className='absolute left-4 top-1/2 -translate-y-1/2 text-neutral-600/40' />
+          <Icon
+            name='search'
+            className='absolute left-4 top-1/2 -translate-y-1/2 text-neutral-600/40'
+          />
 
           <input
             type='text'

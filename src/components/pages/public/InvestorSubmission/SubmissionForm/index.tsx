@@ -47,22 +47,27 @@ export function SubmissionForm() {
         {steps.map((step, index) => (
           <div key={step.id} className='flex items-center'>
             <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${currentStep >= step.id ? 'bg-primary-500 text-white' : 'bg-surface-200 text-neutral-600/40'
-                }`}
+              className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
+                currentStep >= step.id
+                  ? 'bg-primary-500 text-white'
+                  : 'bg-surface-200 text-neutral-600/40'
+              }`}
             >
               {step.id}
             </div>
             <span
-              className={`ml-3 text-sm font-bold ${currentStep >= step.id ? 'text-neutral-600' : 'text-neutral-600/40'
-                }`}
+              className={`ml-3 text-sm font-bold ${
+                currentStep >= step.id ? 'text-neutral-600' : 'text-neutral-600/40'
+              }`}
             >
               {step.label}
             </span>
             {index < steps.length - 1 && (
               <div className='w-24 h-1 bg-surface-200 mx-6'>
                 <div
-                  className={`h-full bg-primary-500 transition-all ${currentStep > step.id ? 'w-full' : 'w-0'
-                    }`}
+                  className={`h-full bg-primary-500 transition-all ${
+                    currentStep > step.id ? 'w-full' : 'w-0'
+                  }`}
                 />
               </div>
             )}
@@ -123,7 +128,9 @@ export function SubmissionForm() {
                 className='w-5 h-5 rounded text-primary-500 focus:ring-primary-500 mt-0.5'
               />
               <div>
-                <p className='font-bold text-neutral-600 mb-1'>I agree to the terms and conditions</p>
+                <p className='font-bold text-neutral-600 mb-1'>
+                  I agree to the terms and conditions
+                </p>
                 <p className='text-sm text-neutral-600/60'>
                   By submitting, you agree to our privacy policy and investment partnership terms.
                 </p>

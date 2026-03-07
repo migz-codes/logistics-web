@@ -52,7 +52,9 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h4 className='font-bold text-neutral-600'>Broker Certification</h4>
-                    <p className='text-neutral-600/60 text-sm'>Official Commercial Real Estate License</p>
+                    <p className='text-neutral-600/60 text-sm'>
+                      Official Commercial Real Estate License
+                    </p>
                     <p className='text-primary-500 font-mono text-sm font-bold bg-primary-500/5 px-3 py-1 rounded inline-block mt-2 border border-primary-500/10'>
                       CRECI: 293146-F
                     </p>

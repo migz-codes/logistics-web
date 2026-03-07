@@ -41,7 +41,9 @@ export function Navigation({
             <Icon name={brandIcon} className='text-white -rotate-3' size='lg' />
           </div>
           <div className='flex flex-col leading-none'>
-            <span className='font-extrabold text-2xl tracking-tight text-neutral-600'>{brandName}</span>
+            <span className='font-extrabold text-2xl tracking-tight text-neutral-600'>
+              {brandName}
+            </span>
             {brandSubtitle && (
               <span className='text-[10px] font-bold text-primary-500 tracking-[0.2em] uppercase'>
                 {brandSubtitle}
@@ -57,8 +59,9 @@ export function Navigation({
               <Link
                 key={link.href}
                 href={link.href}
-                className={`transition-colors ${link.active ? 'text-primary-500' : 'text-neutral-600 hover:text-primary-500'
-                  }`}
+                className={`transition-colors ${
+                  link.active ? 'text-primary-500' : 'text-neutral-600 hover:text-primary-500'
+                }`}
               >
                 {link.label}
               </Link>

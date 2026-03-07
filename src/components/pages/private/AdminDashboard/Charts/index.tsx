@@ -89,7 +89,9 @@ export function Charts() {
             <div className='absolute inset-0 flex items-center justify-center'>
               <div className='text-center'>
                 <span className='text-2xl font-black text-neutral-600'>156</span>
-                <p className='text-[10px] text-neutral-600/50 uppercase tracking-widest'>Properties</p>
+                <p className='text-[10px] text-neutral-600/50 uppercase tracking-widest'>
+                  Properties
+                </p>
               </div>
             </div>
           </div>

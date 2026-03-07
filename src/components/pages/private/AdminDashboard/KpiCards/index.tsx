@@ -71,7 +71,9 @@ export function KpiCards({ kpis = defaultKpis }: KpiCardsProps) {
           </p>
           <h3 className='text-2xl font-black mt-1 text-neutral-600'>
             {kpi.value}
-            {kpi.unit && <span className='text-sm font-medium text-neutral-600/50 ml-1'>{kpi.unit}</span>}
+            {kpi.unit && (
+              <span className='text-sm font-medium text-neutral-600/50 ml-1'>{kpi.unit}</span>
+            )}
           </h3>
         </div>
       ))}

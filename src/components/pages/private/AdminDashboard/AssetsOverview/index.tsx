@@ -40,7 +40,9 @@ export function AssetsOverview({
           <div className='w-40 h-40 rounded-full border-[16px] border-primary-500/20 flex items-center justify-center'>
             <div className='text-center'>
               <span className='text-2xl font-black text-neutral-600'>{totalValue}</span>
-              <p className='text-[10px] text-neutral-600/40 uppercase tracking-widest'>Total Value</p>
+              <p className='text-[10px] text-neutral-600/40 uppercase tracking-widest'>
+                Total Value
+              </p>
             </div>
           </div>
         </div>

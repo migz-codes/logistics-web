@@ -82,7 +82,9 @@ export function ActivityFeed({ activities = defaultActivities }: ActivityFeedPro
               >
                 <Icon name={activity.icon} size='sm' />
               </div>
-              {index < activities.length - 1 && <div className='w-px h-full bg-primary-500/10 mt-2' />}
+              {index < activities.length - 1 && (
+                <div className='w-px h-full bg-primary-500/10 mt-2' />
+              )}
             </div>
             {/* Content */}
             <div className='flex-1 pb-4'>

@@ -100,7 +100,11 @@ export function PendingApprovals({ approvals = defaultApprovals }: PendingApprov
         ))}
       </div>
 
-      <Button variant='ghost' className='w-full mt-6 text-primary-500 hover:bg-primary-500/5' size='sm'>
+      <Button
+        variant='ghost'
+        className='w-full mt-6 text-primary-500 hover:bg-primary-500/5'
+        size='sm'
+      >
         View All Pending Items
       </Button>
     </Card>
