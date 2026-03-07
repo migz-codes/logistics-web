@@ -7,14 +7,10 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "biome lint && tsc --noEmit",
-    "format": "biome check --fix",
-    "deploy:ef": "supabase functions deploy",
-    "deploy:db": "supabase db push"
+    "format": "biome check --fix"
   },
   "dependencies": {
     "@hookform/resolvers": "5.2.2",
-    "@supabase/ssr": "0.8.0",
-    "@supabase/supabase-js": "2.95.3",
     "babel-plugin-react-compiler": "19.1.0-rc.3",
     "clsx": "2.1.1",
     "gsap": "3.14.2",
@@ -24,7 +20,6 @@
     "react-dom": "19.2.4",
     "react-hook-form": "7.71.1",
     "react-select": "5.10.2",
-    "supabase": "2.76.7",
     "tailwind-merge": "3.3.1",
     "tailwindcss": "4.1.12",
     "zipcodes": "8.0.0",

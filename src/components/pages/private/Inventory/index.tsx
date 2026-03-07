@@ -3,8 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useState } from 'react'
 import { usePagination } from '@/hooks/usePagination'
-import { getSupabaseClient } from '@/services/supabase/client'
-import type { IProperty } from '@/types/supabase.types'
+import type { IProperty } from '@/types/property.types'
 import { DashboardHeader } from '../AdminDashboard/DashboardHeader'
 import { PropertiesProvider } from './context'
 import { InventoryFilters } from './InventoryFilters'
@@ -25,30 +24,24 @@ export function InventoryPage() {
       setLoading(true)
       setError(undefined)
 
-      const supabase = getSupabaseClient()
+      // TODO: Implement fetch from custom backend API
+      // Example: GET /api/properties?page=${pagination.currentPage}&limit=10
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/properties?skip=${pagination.startIndex}&take=10`
+      )
 
-      const { count, error: countError } = await supabase
-        .from('properties')
-        .select('*', { count: 'exact', head: true })
-
-      if (countError) {
-        throw countError
+      if (!response.ok) {
+        throw new Error('Failed to fetch properties')
       }
 
-      setTotalCount(count || 0)
+      const result = await response.json()
+      const data = result.data || []
+      const count = result.total || 0
 
-      const { data, error } = await supabase
-        .from('properties')
-        .select('*')
-        .order('created_at', { ascending: false })
-        .range(pagination.startIndex, pagination.endIndex - 1)
-
-      if (error) {
-        throw error
-      }
+      setTotalCount(count)
 
       const formattedProperties =
-        data?.map((property) => ({
+        data?.map((property: IProperty) => ({
           ...property,
           name: property.title,
           location: property.address || `${property.city || ''}, ${property.state || ''}`.trim(),
@@ -66,7 +59,7 @@ export function InventoryPage() {
     } finally {
       setLoading(false)
     }
-  }, [pagination.startIndex, pagination.endIndex])
+  }, [pagination.startIndex])
 
   useEffect(() => {
     getProperties()

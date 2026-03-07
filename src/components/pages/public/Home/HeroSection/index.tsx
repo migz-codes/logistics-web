@@ -40,9 +40,10 @@ export async function HeroSection() {
           </p>
 
           <div className='flex flex-wrap justify-center gap-5'>
-            <Button variant='earth' size='lg' className='shadow-2xl'>
+            <Button variant='primary' size='lg' className='shadow-2xl'>
               {t('buyButton')}
             </Button>
+
             <Button
               variant='outline'
               size='lg'

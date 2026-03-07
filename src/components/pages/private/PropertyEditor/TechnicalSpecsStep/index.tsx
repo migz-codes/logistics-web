@@ -26,7 +26,7 @@ interface TechnicalSpecsStepProps {
 }
 
 export function AddressStep({ onNext, onPrevious }: TechnicalSpecsStepProps) {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<any>({
     propertyName: '',
     category: '',
     cep: '',
@@ -41,7 +41,7 @@ export function AddressStep({ onNext, onPrevious }: TechnicalSpecsStepProps) {
 
   const handleCEPChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value
-    setFormData((prev: FormData) => ({ ...prev, cep: value }))
+    setFormData((prev: any) => ({ ...prev, cep: value }))
 
     // Brazilian CEP lookup (only works for Brazilian CEPs)
     if (value.length >= 8) {
@@ -49,16 +49,12 @@ export function AddressStep({ onNext, onPrevious }: TechnicalSpecsStepProps) {
         const response = await fetch(`https://viacep.com.br/ws/${value}/json/`)
         const data: CEPData = await response.json()
 
-        console.log({ data })
-
-        if (!data.erro) {
-          setFormData((prev: FormData) => ({
-            ...prev,
-            address: data.logradouro || '',
-            city: data.localidade || '',
-            state: data.uf || ''
-          }))
-        }
+        setFormData((prev: any) => ({
+          ...prev,
+          address: data.logradouro || '',
+          city: data.localidade || '',
+          state: data.uf || ''
+        }))
       } catch (error) {
         console.error('Error looking up CEP:', error)
       }
@@ -68,10 +64,10 @@ export function AddressStep({ onNext, onPrevious }: TechnicalSpecsStepProps) {
   console.log('formData', formData)
 
   const handleInputChange =
-    (field: keyof FormData) =>
+    (field: keyof any) =>
     (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
       const value = event.target.value
-      setFormData((prev: FormData) => ({ ...prev, [field]: value }))
+      setFormData((prev: any) => ({ ...prev, [field]: value }))
     }
 
   return (

@@ -7,11 +7,9 @@ import { useState } from 'react'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
-import { getSupabaseClient } from '@/services/supabase/client'
 
 export default function AdminSigninPage() {
   const t = useTranslations('auth')
-  const supabase = getSupabaseClient()
 
   const router = useRouter()
   const [email, setEmail] = useState('')
@@ -19,9 +17,11 @@ export default function AdminSigninPage() {
   const [isLoading, setIsLoading] = useState(false)
 
   const signInWithEmail = async ({ email, password }: { email: string; password: string }) => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
-
-    if (!error) router.push('/admin/dashboard')
+    // TODO: Implement login with custom backend API
+    // Example: POST to /api/auth/login with { email, password }
+    // Store accessToken and refreshToken in cookies
+    console.log('Login with:', { email, password })
+    router.push('/admin/dashboard')
   }
 
   const onSubmit = async (event: any) => {

@@ -1,15 +1,16 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { getSupabaseClient } from '@/services/supabase/client'
 import type { IChildrenProps } from '@/types/react.types'
 
 export const Button = ({ children }: IChildrenProps) => {
-  const supabase = getSupabaseClient()
   const router = useRouter()
 
   const onLogoutClick = async () => {
-    await supabase.auth.signOut()
+    // TODO: Implement logout with custom backend API
+    // Clear accessToken and refreshToken cookies
+    document.cookie = 'accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
+    document.cookie = 'refreshToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
     router.replace('/signin')
   }
 

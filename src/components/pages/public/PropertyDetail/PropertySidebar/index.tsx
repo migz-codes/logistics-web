@@ -60,7 +60,7 @@ export function PropertySidebar({
               <Input placeholder='Full Name' type='text' />
               <Input placeholder='Work Email' type='email' />
               <Input placeholder='Company Name' type='text' />
-              <Button variant='earth' className='w-full py-3 text-sm'>
+              <Button variant='primary' className='w-full py-3 text-sm'>
                 Submit Request
               </Button>
             </form>

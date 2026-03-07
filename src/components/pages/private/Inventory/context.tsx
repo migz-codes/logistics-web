@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 import type { PaginationActions, PaginationState } from '@/hooks/usePagination'
-import type { IProperty } from '@/types/supabase.types'
+import type { IProperty } from '@/types/property.types'
 
 export interface IPropertiesContext {
   properties: IProperty[]

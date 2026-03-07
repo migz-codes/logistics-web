@@ -6,13 +6,6 @@ interface IconProps {
   size?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
-const sizes = {
-  sm: 'text-lg',
-  md: 'text-xl',
-  lg: 'text-2xl',
-  xl: 'text-4xl'
-}
-
-export function Icon({ name, className = '', size = 'md' }: IconProps) {
+export function Icon({ name, className = '' }: IconProps) {
   return <span className={tw(`material-symbols-outlined`, className)}>{name}</span>
 }

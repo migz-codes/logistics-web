@@ -6,11 +6,8 @@ import { useState } from 'react'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
-import { getSupabaseClient } from '@/services/supabase/client'
 
 export default function SignupPage() {
-  const supabase = getSupabaseClient()
-
   const router = useRouter()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -19,9 +16,11 @@ export default function SignupPage() {
   const [confirmPassword, setConfirmPassword] = useState('')
 
   const signUpNewUser = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signUp({ email, password })
-
-    if (!error) router.push('/admin/dashboard')
+    // TODO: Implement signup with custom backend API
+    // Example: POST to /api/auth/register with { name, email, password }
+    // Store accessToken and refreshToken in cookies
+    console.log('Signup with:', { name, email, password })
+    router.push('/admin/dashboard')
   }
 
   const onSubmit = async (event: any) => {
@@ -117,7 +116,10 @@ export default function SignupPage() {
 
             {/* Confirm Password Field */}
             <div>
-              <label htmlFor='confirmPassword' className='block text-sm font-bold text-neutral-600 mb-2'>
+              <label
+                htmlFor='confirmPassword'
+                className='block text-sm font-bold text-neutral-600 mb-2'
+              >
                 Confirm Password
               </label>
               <div className='relative'>

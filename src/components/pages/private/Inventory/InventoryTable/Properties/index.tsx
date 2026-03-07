@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import { Icon } from '@/components/shared/ui/Icon'
-import { getSupabaseClient } from '@/services/supabase/client'
 import { usePropertiesContext } from '../../context'
 
 export const Properties = () => {
@@ -10,12 +9,13 @@ export const Properties = () => {
 
   const deleteProperty = async (id: string) => {
     try {
-      const supabase = getSupabaseClient()
+      // TODO: Implement delete with custom backend API
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/properties/${id}`, {
+        method: 'DELETE'
+      })
 
-      const { error } = await supabase.from('properties').delete().eq('id', id)
-
-      if (error) {
-        throw error
+      if (!response.ok) {
+        throw new Error('Failed to delete property')
       }
     } catch (err) {
       console.error('Error deleting property:', err)

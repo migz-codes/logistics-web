@@ -13,7 +13,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variants = {
   primary: 'bg-primary-500 text-white hover:bg-sage-500 shadow-lg shadow-primary-500/10',
-  secondary: 'bg-secondary-500 text-white hover:bg-secondary-500/90 shadow-lg shadow-secondary-500/20',
+  secondary:
+    'bg-secondary-500 text-white hover:bg-secondary-500/90 shadow-lg shadow-secondary-500/20',
   outline: 'border-2 border-primary-500/20 text-primary-500 hover:bg-primary-500 hover:text-white',
   neutral: 'bg-neutral-600 text-white hover:bg-neutral-dark shadow-lg shadow-neutral-600/10',
   whatsapp: 'bg-[#25D366] text-white hover:bg-[#1fb356] shadow-lg shadow-[#25D366]/20',
