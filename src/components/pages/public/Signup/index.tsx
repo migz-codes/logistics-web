@@ -1,39 +1,60 @@
 'use client'
 
+import { useMutation } from '@apollo/client/react'
+import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
+import { Tooltip } from '@/components/shared/ui/Tooltip'
+import { REGISTER_MUTATION, type RegisterResponse } from '@/lib/apollo'
+import { setAuthCookies } from '@/lib/auth'
+import { toast } from '@/lib/toast'
+import { type SignupFormData, signupSchema } from './schema'
 
 export default function SignupPage() {
+  const t = useTranslations('auth')
   const router = useRouter()
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
-  const signUpNewUser = async (email: string, password: string) => {
-    // TODO: Implement signup with custom backend API
-    // Example: POST to /api/auth/register with { name, email, password }
-    // Store accessToken and refreshToken in cookies
-    console.log('Signup with:', { name, email, password })
-    router.push('/admin/dashboard')
-  }
+  const {
+    register: registerField,
+    handleSubmit,
+    formState: { errors, isSubmitting }
+  } = useForm<SignupFormData>({
+    resolver: zodResolver(signupSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      acceptTerms: false
+    }
+  })
 
-  const onSubmit = async (event: any) => {
-    event.preventDefault()
+  const [registerMutation] = useMutation<RegisterResponse>(REGISTER_MUTATION)
 
-    if (password !== confirmPassword) return alert('Passwords do not match')
-    if (!email || !password || !confirmPassword) return alert('Please fill in all fields')
+  const onSubmit = async (data: SignupFormData) => {
+    try {
+      const { data: response } = await registerMutation({
+        variables: { input: { name: data.name, email: data.email, password: data.password } }
+      })
 
-    setIsLoading(true)
-
-    await signUpNewUser(email, password)
-
-    setIsLoading(false)
+      if (response?.register) {
+        await setAuthCookies({
+          accessToken: response.register.accessToken,
+          refreshToken: response.register.refreshToken
+        })
+        router.push('/admin/dashboard')
+      }
+    } catch {
+      toast.error(t('signupError'))
+    }
   }
 
   return (
@@ -44,30 +65,38 @@ export default function SignupPage() {
           <div className='w-16 h-16 bg-primary-500 rounded-2xl flex items-center justify-center mx-auto mb-4'>
             <Icon name='person_add' className='text-white' size='xl' />
           </div>
-          <h1 className='text-2xl font-black text-neutral-600 mb-2'>Create Account</h1>
-          <p className='text-sm text-neutral-600/60'>Join our real estate platform</p>
+          <h1 className='text-2xl font-black text-neutral-600 mb-2'>{t('createAccount')}</h1>
+          <p className='text-sm text-neutral-600/60'>{t('joinPlatform')}</p>
         </div>
 
         {/* Sign Up Form */}
         <Card variant='elevated'>
-          <form onSubmit={onSubmit} className='space-y-6'>
+          <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
             {/* Name Field */}
             <div>
               <label htmlFor='name' className='block text-sm font-bold text-neutral-600 mb-2'>
-                Full Name
+                {t('fullName')}
               </label>
+
               <div className='relative'>
-                <div className='absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none'>
-                  <Icon name='person' className='text-neutral-600/40' size='sm' />
+                <div className='absolute inset-y-0 left-0 pl-4 flex items-center'>
+                  {errors.name ? (
+                    <Tooltip content={t(errors.name.message as string)} side='top'>
+                      <span>
+                        <Icon name='warning' className='text-red-500 cursor-pointer' size='sm' />
+                      </span>
+                    </Tooltip>
+                  ) : (
+                    <Icon name='person' className='text-neutral-600/40' size='sm' />
+                  )}
                 </div>
+
                 <input
                   id='name'
                   type='text'
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className='w-full pl-12 pr-4 py-3 rounded-xl bg-white border border-primary-500/10 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-sm'
-                  placeholder='John Doe'
-                  required
+                  {...registerField('name')}
+                  className={`w-full pl-12 pr-4 py-3 rounded-xl bg-white border transition-all text-sm ${errors.name ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-primary-500/10 focus:ring-2 focus:ring-primary-500 focus:border-primary-500'}`}
+                  placeholder={t('fullNamePlaceholder')}
                 />
               </div>
             </div>
@@ -75,20 +104,26 @@ export default function SignupPage() {
             {/* Email Field */}
             <div>
               <label htmlFor='email' className='block text-sm font-bold text-neutral-600 mb-2'>
-                Email Address
+                {t('emailAddress')}
               </label>
               <div className='relative'>
-                <div className='absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none'>
-                  <Icon name='email' className='text-neutral-600/40' size='sm' />
+                <div className='absolute inset-y-0 left-0 pl-4 flex items-center'>
+                  {errors.email ? (
+                    <Tooltip content={t(errors.email.message as string)} side='top'>
+                      <span>
+                        <Icon name='warning' className='text-red-500 cursor-pointer' size='sm' />
+                      </span>
+                    </Tooltip>
+                  ) : (
+                    <Icon name='email' className='text-neutral-600/40' size='sm' />
+                  )}
                 </div>
                 <input
                   id='email'
                   type='email'
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className='w-full pl-12 pr-4 py-3 rounded-xl bg-white border border-primary-500/10 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-sm'
-                  placeholder='john@example.com'
-                  required
+                  {...registerField('email')}
+                  className={`w-full pl-12 pr-4 py-3 rounded-xl bg-white border transition-all text-sm ${errors.email ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-primary-500/10 focus:ring-2 focus:ring-primary-500 focus:border-primary-500'}`}
+                  placeholder={t('emailPlaceholder')}
                 />
               </div>
             </div>
@@ -96,21 +131,38 @@ export default function SignupPage() {
             {/* Password Field */}
             <div>
               <label htmlFor='password' className='block text-sm font-bold text-neutral-600 mb-2'>
-                Password
+                {t('password')}
               </label>
               <div className='relative'>
-                <div className='absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none'>
-                  <Icon name='lock' className='text-neutral-600/40' size='sm' />
+                <div className='absolute inset-y-0 left-0 pl-4 flex items-center'>
+                  {errors.password ? (
+                    <Tooltip content={t(errors.password.message as string)} side='top'>
+                      <span>
+                        <Icon name='warning' className='text-red-500 cursor-pointer' size='sm' />
+                      </span>
+                    </Tooltip>
+                  ) : (
+                    <Icon name='lock' className='text-neutral-600/40' size='sm' />
+                  )}
                 </div>
                 <input
                   id='password'
-                  type='password'
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className='w-full pl-12 pr-4 py-3 rounded-xl bg-white border border-primary-500/10 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-sm'
-                  placeholder='Create a strong password'
-                  required
+                  type={showPassword ? 'text' : 'password'}
+                  {...registerField('password')}
+                  className={`w-full pl-12 pr-12 py-3 rounded-xl bg-white border transition-all text-sm ${errors.password ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-primary-500/10 focus:ring-2 focus:ring-primary-500 focus:border-primary-500'}`}
+                  placeholder={t('createPasswordPlaceholder')}
                 />
+                <button
+                  type='button'
+                  onClick={() => setShowPassword(!showPassword)}
+                  className='absolute inset-y-0 right-0 pr-4 flex items-center'
+                >
+                  <Icon
+                    name={showPassword ? 'visibility_off' : 'visibility'}
+                    className='text-neutral-600/40 hover:text-neutral-600'
+                    size='sm'
+                  />
+                </button>
               </div>
             </div>
 
@@ -120,21 +172,38 @@ export default function SignupPage() {
                 htmlFor='confirmPassword'
                 className='block text-sm font-bold text-neutral-600 mb-2'
               >
-                Confirm Password
+                {t('confirmPassword')}
               </label>
               <div className='relative'>
-                <div className='absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none'>
-                  <Icon name='lock' className='text-neutral-600/40' size='sm' />
+                <div className='absolute inset-y-0 left-0 pl-4 flex items-center'>
+                  {errors.confirmPassword ? (
+                    <Tooltip content={t(errors.confirmPassword.message as string)} side='top'>
+                      <span>
+                        <Icon name='warning' className='text-red-500 cursor-pointer' size='sm' />
+                      </span>
+                    </Tooltip>
+                  ) : (
+                    <Icon name='lock' className='text-neutral-600/40' size='sm' />
+                  )}
                 </div>
                 <input
                   id='confirmPassword'
-                  type='password'
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  className='w-full pl-12 pr-4 py-3 rounded-xl bg-white border border-primary-500/10 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-sm'
-                  placeholder='Confirm your password'
-                  required
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  {...registerField('confirmPassword')}
+                  className={`w-full pl-12 pr-12 py-3 rounded-xl bg-white border transition-all text-sm ${errors.confirmPassword ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-primary-500/10 focus:ring-2 focus:ring-primary-500 focus:border-primary-500'}`}
+                  placeholder={t('confirmPasswordPlaceholder')}
                 />
+                <button
+                  type='button'
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className='absolute inset-y-0 right-0 pr-4 flex items-center'
+                >
+                  <Icon
+                    name={showConfirmPassword ? 'visibility_off' : 'visibility'}
+                    className='text-neutral-600/40 hover:text-neutral-600'
+                    size='sm'
+                  />
+                </button>
               </div>
             </div>
 
@@ -142,17 +211,17 @@ export default function SignupPage() {
             <div className='flex items-start gap-2'>
               <input
                 type='checkbox'
+                {...registerField('acceptTerms')}
                 className='w-4 h-4 rounded text-primary-500 focus:ring-primary-500 border-primary-500/20 mt-1'
-                required
               />
               <span className='text-sm text-neutral-600/60'>
-                I agree to the{' '}
+                {t('termsAgreement')}{' '}
                 <Link href='/terms' className='text-primary-500 hover:underline font-bold'>
-                  Terms of Service
+                  {t('termsOfService')}
                 </Link>{' '}
-                and{' '}
+                {t('and')}{' '}
                 <Link href='/privacy' className='text-primary-500 hover:underline font-bold'>
-                  Privacy Policy
+                  {t('privacyPolicy')}
                 </Link>
               </span>
             </div>
@@ -163,18 +232,18 @@ export default function SignupPage() {
               variant='primary'
               size='md'
               className='w-full'
-              disabled={isLoading}
+              disabled={isSubmitting}
             >
-              {isLoading ? 'Creating account...' : 'Create Account'}
+              {isSubmitting ? t('creatingAccount') : t('createAccount')}
             </Button>
           </form>
 
           {/* Sign In Link */}
           <div className='mt-6 text-center'>
             <p className='text-sm text-neutral-600/60'>
-              Already have an account?{' '}
+              {t('hasAccount')}{' '}
               <Link href='/signin' className='text-primary-500 hover:underline font-bold'>
-                Sign in
+                {t('signin')}
               </Link>
             </p>
           </div>
@@ -186,16 +255,14 @@ export default function SignupPage() {
               className='text-sm text-neutral-600/60 hover:text-primary-500 transition-colors inline-flex items-center gap-2'
             >
               <Icon name='arrow_back' size='sm' />
-              Back to website
+              {t('backToWebsite')}
             </Link>
           </div>
         </Card>
 
         {/* Security Notice */}
         <div className='mt-8 text-center'>
-          <p className='text-xs text-neutral-600/40'>
-            Your information is secure and will never be shared with third parties.
-          </p>
+          <p className='text-xs text-neutral-600/40'>{t('secureInfo')}</p>
         </div>
       </div>
     </div>

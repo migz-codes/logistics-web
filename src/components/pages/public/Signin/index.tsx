@@ -124,28 +124,11 @@ export default function AdminSigninPage() {
               </div>
             </div>
 
-            {/* Remember Me & Forgot Password */}
-            <div className='flex items-center justify-between'>
-              <label className='flex items-center gap-2 cursor-pointer'>
-                <input
-                  type='checkbox'
-                  className='w-4 h-4 rounded text-primary-500 focus:ring-primary-500 border-primary-500/20'
-                />
-                <span className='text-sm text-neutral-600/60'>{t('rememberMe')}</span>
-              </label>
-              <Link
-                href='/admin/forgot-password'
-                className='text-sm font-bold text-primary-500 hover:underline'
-              >
-                {t('forgotPassword')}
-              </Link>
-            </div>
-
             {/* Submit Button */}
             <Button
+              size='md'
               type='submit'
               variant='primary'
-              size='md'
               className='w-full'
               disabled={isLoading}
             >
@@ -153,8 +136,17 @@ export default function AdminSigninPage() {
             </Button>
           </form>
 
+          <div className='flex items-center justify-center mt-4'>
+            <Link
+              href='/admin/forgot-password'
+              className='text-sm font-bold text-primary-500 hover:underline'
+            >
+              {t('forgotPassword')}
+            </Link>
+          </div>
+
           {/* Sign Up Link */}
-          <div className='mt-6 text-center'>
+          <div className='mt-2 text-center'>
             <p className='text-sm text-neutral-600/60'>
               {t('noAccount')}{' '}
               <Link href='/signup' className='text-primary-500 hover:underline font-bold'>
@@ -164,7 +156,7 @@ export default function AdminSigninPage() {
           </div>
 
           {/* Back to Home */}
-          <div className='mt-4 text-center'>
+          <div className='mt-6 text-center'>
             <Link
               href='/'
               className='text-sm text-neutral-600/60 hover:text-primary-500 transition-colors inline-flex items-center gap-2'
