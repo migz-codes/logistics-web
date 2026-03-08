@@ -22,8 +22,11 @@
     "admin": "Admin",
     "profile": "Profile",
     "settings": "Settings",
+    "account": "Account",
     "logout": "Logout",
-    "backToSite": "Back to Site"
+    "backToSite": "Back to Site",
+    "brandName": "Logistics Portal",
+    "brandSubtitle": "Admin Console"
   },
   "auth": {
     "signin": "Sign In",
