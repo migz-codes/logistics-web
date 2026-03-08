@@ -266,5 +266,41 @@
       "placeholder": "Describe property features, highlights, and unique selling points..."
     },
     "nextButton": "Next: Technical Specs"
+  },
+  "account": {
+    "title": "My Account",
+    "subtitle": "Manage your profile and account settings",
+    "saving": "Saving...",
+    "saveProfile": "Save Profile",
+    "updatePassword": "Update Password",
+    "profileUpdated": "Profile updated successfully",
+    "profileUpdateError": "Failed to update profile",
+    "passwordUpdated": "Password updated successfully",
+    "passwordUpdateError": "Failed to update password",
+    "profile": {
+      "title": "Profile Information",
+      "subtitle": "Your personal details",
+      "name": "Full Name",
+      "email": "Email Address",
+      "role": "Role"
+    },
+    "security": {
+      "title": "Security Settings",
+      "subtitle": "Manage your account security",
+      "password": "Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "twoFactor": "Two-Factor Authentication",
+      "disabled": "Disabled",
+      "enabled": "Enabled"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "subtitle": "Manage your preferences",
+      "email": "Email Notifications",
+      "push": "Push Notifications",
+      "enabled": "Enabled",
+      "disabled": "Disabled"
+    }
   }
 }

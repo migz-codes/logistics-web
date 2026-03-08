@@ -1,14 +1,31 @@
 'use client'
 
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
+import { ApolloClient, ApolloLink, HttpLink, InMemoryCache } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
 
 const httpLink = new HttpLink({
-  uri: process.env.NEXT_PUBLIC_GRAPHQL_URL || 'http://localhost:3001/graphql',
+  uri: process.env.NEXT_PUBLIC_API_URL
+    ? `${process.env.NEXT_PUBLIC_API_URL}/graphql`
+    : 'http://localhost:3001/graphql',
   credentials: 'include'
 })
 
+const authLink = setContext((_, { headers }) => {
+  const accessToken = document.cookie
+    .split('; ')
+    .find((row) => row.startsWith('accessToken='))
+    ?.split('=')[1]
+
+  return {
+    headers: {
+      ...headers,
+      authorization: accessToken ? `Bearer ${accessToken}` : ''
+    }
+  }
+})
+
 export const apolloClient = new ApolloClient({
-  link: httpLink,
+  link: ApolloLink.from([authLink, httpLink]),
   cache: new InMemoryCache(),
   defaultOptions: {
     watchQuery: {

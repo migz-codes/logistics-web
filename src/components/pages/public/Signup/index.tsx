@@ -2,6 +2,7 @@
 
 import { useMutation } from '@apollo/client/react'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useSetAtom } from 'jotai'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
@@ -13,6 +14,7 @@ import { Field } from '@/components/shared/ui/Field'
 import { Icon } from '@/components/shared/ui/Icon'
 import { REGISTER_MUTATION, type RegisterResponse } from '@/lib/apollo'
 import { setAuthCookies } from '@/lib/auth'
+import { userAtoms } from '@/lib/store/user'
 import { toast } from '@/lib/toast'
 import { type SignupFormData, signupSchema } from './schema'
 
@@ -22,6 +24,7 @@ export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [registerMutation] = useMutation<RegisterResponse>(REGISTER_MUTATION)
+  const setUser = useSetAtom(userAtoms.user)
 
   const {
     register: registerField,
@@ -42,6 +45,12 @@ export default function SignupPage() {
         await setAuthCookies({
           accessToken: response.register.accessToken,
           refreshToken: response.register.refreshToken
+        })
+
+        setUser({
+          id: response.register.user.id,
+          name: response.register.user.name,
+          email: response.register.user.email
         })
 
         router.push('/admin/dashboard')

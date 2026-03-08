@@ -266,5 +266,33 @@
       "placeholder": "Descreva características do imóvel, destaques e pontos de venda exclusivos..."
     },
     "nextButton": "Próximo: Especificações Técnicas"
+  },
+  "account": {
+    "title": "Minha Conta",
+    "subtitle": "Gerencie seu perfil e configurações da conta",
+    "saving": "Salvando...",
+    "saveProfile": "Salvar Perfil",
+    "updatePassword": "Atualizar Senha",
+    "profileUpdated": "Perfil atualizado com sucesso",
+    "profileUpdateError": "Falha ao atualizar perfil",
+    "passwordUpdated": "Senha atualizada com sucesso",
+    "passwordUpdateError": "Falha ao atualizar senha",
+    "profile": {
+      "title": "Informações do Perfil",
+      "subtitle": "Seus dados pessoais",
+      "name": "Nome Completo",
+      "email": "Endereço de Email",
+      "role": "Função"
+    },
+    "security": {
+      "title": "Configurações de Segurança",
+      "subtitle": "Gerencie a segurança da sua conta",
+      "password": "Senha",
+      "currentPassword": "Senha Atual",
+      "newPassword": "Nova Senha",
+      "twoFactor": "Autenticação de Dois Fatores",
+      "disabled": "Desativado",
+      "enabled": "Ativado"
+    }
   }
 }

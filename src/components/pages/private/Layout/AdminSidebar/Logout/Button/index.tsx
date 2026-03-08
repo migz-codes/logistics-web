@@ -1,14 +1,17 @@
 'use client'
 
 import { useMutation } from '@apollo/client/react'
+import { useSetAtom } from 'jotai'
 import { useRouter } from 'next/navigation'
 import { LOGOUT_MUTATION, type LogoutResponse } from '@/lib/apollo'
 import { clearAuthCookies, getRefreshToken } from '@/lib/auth'
+import { userAtoms } from '@/lib/store/user'
 import type { IChildrenProps } from '@/types/react.types'
 
 export const Button = ({ children }: IChildrenProps) => {
   const router = useRouter()
   const [logout] = useMutation<LogoutResponse>(LOGOUT_MUTATION)
+  const setUser = useSetAtom(userAtoms.user)
 
   const onLogoutClick = async () => {
     const refreshToken = await getRefreshToken()
@@ -16,6 +19,7 @@ export const Button = ({ children }: IChildrenProps) => {
     if (refreshToken) await logout({ variables: { refreshToken } })
 
     await clearAuthCookies()
+    setUser(null)
 
     router.replace('/admin')
   }

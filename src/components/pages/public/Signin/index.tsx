@@ -2,6 +2,7 @@
 
 import { useMutation } from '@apollo/client/react'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useSetAtom } from 'jotai'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
@@ -13,6 +14,7 @@ import { Field } from '@/components/shared/ui/Field'
 import { Icon } from '@/components/shared/ui/Icon'
 import { LOGIN_MUTATION, type LoginResponse } from '@/lib/apollo'
 import { setAuthCookies } from '@/lib/auth'
+import { userAtoms } from '@/lib/store/user'
 import { toast } from '@/lib/toast'
 import { type SigninFormData, signinSchema } from './schema'
 
@@ -21,6 +23,7 @@ export default function AdminSigninPage() {
   const t = useTranslations('auth')
   const [showPassword, setShowPassword] = useState(false)
   const [login] = useMutation<LoginResponse>(LOGIN_MUTATION)
+  const setUser = useSetAtom(userAtoms.user)
 
   const {
     register: registerField,
@@ -41,6 +44,12 @@ export default function AdminSigninPage() {
         await setAuthCookies({
           accessToken: response.login.accessToken,
           refreshToken: response.login.refreshToken
+        })
+
+        setUser({
+          id: response.login.user.id,
+          name: response.login.user.name,
+          email: response.login.user.email
         })
 
         router.push('/admin/dashboard')

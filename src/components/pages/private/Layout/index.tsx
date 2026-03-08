@@ -22,6 +22,12 @@ export function AdminLayout({ children }: AdminLayoutProps) {
       label: 'Properties',
       href: '/admin/properties',
       active: pathname.startsWith('/admin/properties')
+    },
+    {
+      icon: 'person',
+      label: 'Account',
+      href: '/admin/account',
+      active: pathname.startsWith('/admin/account')
     }
   ]
 
