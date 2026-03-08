@@ -41,7 +41,8 @@
     "adminPortal": "Admin Portal",
     "signinDescription": "Sign in to access your dashboard",
     "backToWebsite": "Back to website",
-    "securityNotice": "This is a restricted area. Unauthorized access is prohibited."
+    "securityNotice": "This is a restricted area. Unauthorized access is prohibited.",
+    "loginError": "Login failed. Please try again."
   },
   "home": {
     "brandName": "Real Estate",
@@ -104,7 +105,10 @@
     },
     "properties": {
       "featured": "Featured",
-      "ourExclusive": ["Our Exclusive", "Properties"],
+      "ourExclusive": [
+        "Our Exclusive",
+        "Properties"
+      ],
       "properties": "Properties",
       "viewAll": "View All",
       "beds": "Beds",

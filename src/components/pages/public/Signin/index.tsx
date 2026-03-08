@@ -1,5 +1,6 @@
 'use client'
 
+import { useMutation } from '@apollo/client/react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
@@ -7,6 +8,9 @@ import { useState } from 'react'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
+import { LOGIN_MUTATION, type LoginResponse } from '@/lib/apollo'
+import { setAuthCookies } from '@/lib/auth'
+import { toast } from '@/lib/toast'
 
 export default function AdminSigninPage() {
   const t = useTranslations('auth')
@@ -15,13 +19,26 @@ export default function AdminSigninPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+
+  const [login] = useMutation<LoginResponse>(LOGIN_MUTATION)
 
   const signInWithEmail = async ({ email, password }: { email: string; password: string }) => {
-    // TODO: Implement login with custom backend API
-    // Example: POST to /api/auth/login with { email, password }
-    // Store accessToken and refreshToken in cookies
-    console.log('Login with:', { email, password })
-    router.push('/admin/dashboard')
+    try {
+      const { data } = await login({
+        variables: { input: { email, password } }
+      })
+
+      if (data?.login) {
+        await setAuthCookies({
+          accessToken: data.login.accessToken,
+          refreshToken: data.login.refreshToken
+        })
+        router.push('/admin/dashboard')
+      }
+    } catch {
+      toast.error(t('loginError'))
+    }
   }
 
   const onSubmit = async (event: any) => {
@@ -57,10 +74,12 @@ export default function AdminSigninPage() {
               <label htmlFor='email' className='block text-sm font-bold text-neutral-600 mb-2'>
                 {t('emailAddress')}
               </label>
+
               <div className='relative'>
                 <div className='absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none'>
                   <Icon name='email' className='text-neutral-600/40' size='sm' />
                 </div>
+
                 <input
                   id='email'
                   type='email'
@@ -84,13 +103,24 @@ export default function AdminSigninPage() {
                 </div>
                 <input
                   id='password'
-                  type='password'
+                  type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className='w-full pl-12 pr-4 py-3 rounded-xl bg-white border border-primary-500/10 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-sm'
+                  className='w-full pl-12 pr-12 py-3 rounded-xl bg-white border border-primary-500/10 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-sm'
                   placeholder={t('passwordPlaceholder')}
                   required
                 />
+                <button
+                  type='button'
+                  onClick={() => setShowPassword(!showPassword)}
+                  className='absolute inset-y-0 right-0 pr-4 flex items-center'
+                >
+                  <Icon
+                    name={showPassword ? 'visibility_off' : 'visibility'}
+                    className='text-neutral-600/40 hover:text-neutral-600'
+                    size='sm'
+                  />
+                </button>
               </div>
             </div>
 

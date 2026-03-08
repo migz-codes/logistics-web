@@ -2,6 +2,8 @@
 /** biome-ignore-all lint/suspicious/useGoogleFontDisplay: main root */
 import '@/styles/globals.css'
 import { Plus_Jakarta_Sans } from 'next/font/google'
+import { ApolloProviderWrapper } from '@/lib/apollo'
+import { ToastProvider } from '@/lib/toast'
 import type { IAppLayoutProps } from './types'
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -21,7 +23,9 @@ export const AppLayout = ({ children }: Readonly<IAppLayoutProps>) => (
     </head>
 
     <body className={`${plusJakarta.className} antialiased bg-surface-200 text-neutral-600`}>
-      {children}
+      <ApolloProviderWrapper>
+        <ToastProvider>{children}</ToastProvider>
+      </ApolloProviderWrapper>
     </body>
   </html>
 )

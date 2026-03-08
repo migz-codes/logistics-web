@@ -41,7 +41,8 @@
     "adminPortal": "Portal Administrativo",
     "signinDescription": "Entre para acessar seu painel",
     "backToWebsite": "Voltar para o site",
-    "securityNotice": "Esta é uma área restrita. Acesso não autorizado é proibido."
+    "securityNotice": "Esta é uma área restrita. Acesso não autorizado é proibido.",
+    "loginError": "Falha no login. Por favor, tente novamente."
   },
   "home": {
     "brandName": "Imobiliária",
@@ -104,7 +105,10 @@
     },
     "properties": {
       "featured": "Destaques",
-      "ourExclusive": ["Nossos Imóveis", "Exclusivos"],
+      "ourExclusive": [
+        "Nossos Imóveis",
+        "Exclusivos"
+      ],
       "properties": "Imóveis",
       "viewAll": "Ver todos",
       "beds": "Quartos",

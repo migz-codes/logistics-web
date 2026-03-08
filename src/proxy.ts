@@ -9,8 +9,6 @@ export async function proxy(request: NextRequest) {
   const pathSegments = pathname.split('/').filter(Boolean)
   const locale = pathSegments.find((seg) => validLocales.includes(seg)) || defaultLocale
 
-  // TODO: Implement authentication check with custom backend
-  // For now, check for access token in cookies
   const accessToken = request.cookies.get('accessToken')?.value
   const isAuthenticated = !!accessToken
 

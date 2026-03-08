@@ -1,17 +1,23 @@
 'use client'
 
+import { useMutation } from '@apollo/client/react'
 import { useRouter } from 'next/navigation'
+import { LOGOUT_MUTATION, type LogoutResponse } from '@/lib/apollo'
+import { clearAuthCookies, getRefreshToken } from '@/lib/auth'
 import type { IChildrenProps } from '@/types/react.types'
 
 export const Button = ({ children }: IChildrenProps) => {
   const router = useRouter()
+  const [logout] = useMutation<LogoutResponse>(LOGOUT_MUTATION)
 
   const onLogoutClick = async () => {
-    // TODO: Implement logout with custom backend API
-    // Clear accessToken and refreshToken cookies
-    document.cookie = 'accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
-    document.cookie = 'refreshToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
-    router.replace('/signin')
+    const refreshToken = await getRefreshToken()
+
+    if (refreshToken) await logout({ variables: { refreshToken } })
+
+    await clearAuthCookies()
+
+    router.replace('/admin')
   }
 
   return (
