@@ -45,7 +45,6 @@ export function SecurityCard() {
     try {
       await updatePassword({
         variables: {
-          userId: userData.getMe.id,
           input: { currentPassword: data.currentPassword, newPassword: data.newPassword }
         }
       })

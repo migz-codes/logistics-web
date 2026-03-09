@@ -81,8 +81,6 @@ const Menu = (props: MenuProps) => {
 const Control = (props: ControlProps) => {
   const { icon, tws } = useSelectContext()
 
-  console.log(props.isFocused)
-
   return (
     <components.Control
       {...props}

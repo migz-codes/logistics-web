@@ -35,7 +35,7 @@ export function ProfileCard() {
 
     try {
       const { data: response } = await updateProfile({
-        variables: { userId: userData.getMe.id, input: { name: data.name, email: data.email } }
+        variables: { input: { name: data.name, email: data.email } }
       })
 
       const user = userData?.getMe

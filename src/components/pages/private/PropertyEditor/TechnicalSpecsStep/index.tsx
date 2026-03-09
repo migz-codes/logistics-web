@@ -61,8 +61,6 @@ export function AddressStep({ onNext, onPrevious }: TechnicalSpecsStepProps) {
     }
   }
 
-  console.log('formData', formData)
-
   const handleInputChange =
     (field: keyof any) =>
     (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {

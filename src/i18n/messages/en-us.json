@@ -129,10 +129,7 @@
     },
     "properties": {
       "featured": "Featured",
-      "ourExclusive": [
-        "Our Exclusive",
-        "Properties"
-      ],
+      "ourExclusive": ["Our Exclusive", "Properties"],
       "properties": "Properties",
       "viewAll": "View All",
       "beds": "Beds",

@@ -66,3 +66,19 @@ export interface RegisterResponse {
     user: { id: string; name: string; email: string }
   }
 }
+
+export const REFRESH_TOKEN_MUTATION = gql`
+  mutation RefreshToken($refreshToken: String!) {
+    refreshToken(refreshToken: $refreshToken) {
+      accessToken
+      refreshToken
+    }
+  }
+`
+
+export interface RefreshTokenResponse {
+  refreshToken: {
+    accessToken: string
+    refreshToken: string
+  }
+}

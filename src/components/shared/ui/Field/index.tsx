@@ -57,8 +57,6 @@ export function Field<T extends FieldValues = FieldValues>({
 }: FieldProps<T>) {
   const inputType = type === 'password' && showPassword ? 'text' : type
 
-  console.log('errorMessage', errorMessage)
-
   return (
     <div className={tw('flex flex-col', tws?.wrapper)}>
       <label

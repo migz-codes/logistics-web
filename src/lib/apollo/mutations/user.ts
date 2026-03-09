@@ -23,8 +23,8 @@ export interface GetMeResponse {
 }
 
 export const UPDATE_PROFILE_MUTATION = gql`
-  mutation UpdateProfile($userId: String!, $input: UpdateProfileInput!) {
-    updateProfile(userId: $userId, input: $input) {
+  mutation UpdateProfile($input: UpdateProfileInput!) {
+    updateProfile(input: $input) {
       id
       name
       email
@@ -46,8 +46,8 @@ export interface UpdateProfileResponse {
 }
 
 export const UPDATE_PASSWORD_MUTATION = gql`
-  mutation UpdatePassword($userId: String!, $input: UpdatePasswordInput!) {
-    updatePassword(userId: $userId, input: $input) {
+  mutation UpdatePassword($input: UpdatePasswordInput!) {
+    updatePassword(input: $input) {
       id
     }
   }
