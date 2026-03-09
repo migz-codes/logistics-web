@@ -1,6 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
-import { AppLayout } from '@/components/pages/App/Layout'
 
 export default async function LocaleLayout({
   children,
@@ -15,7 +14,7 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
-      <AppLayout>{children}</AppLayout>
+      {children}
     </NextIntlClientProvider>
   )
 }

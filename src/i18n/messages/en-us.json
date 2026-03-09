@@ -23,6 +23,7 @@
     "profile": "Profile",
     "settings": "Settings",
     "account": "Account",
+    "allUsers": "All Users",
     "logout": "Logout",
     "backToSite": "Back to Site",
     "brandName": "Logistics Portal",
@@ -269,6 +270,24 @@
       "placeholder": "Describe property features, highlights, and unique selling points..."
     },
     "nextButton": "Next: Technical Specs"
+  },
+  "users": {
+    "title": "All Users",
+    "subtitle": "Manage all system users",
+    "listTitle": "User List",
+    "listSubtitle": "View and manage user permissions",
+    "roleUpdated": "Role updated successfully",
+    "roleUpdateError": "Failed to update role",
+    "table": {
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "actions": "Actions"
+    },
+    "roles": {
+      "admin": "Admin",
+      "superadmin": "Super Admin"
+    }
   },
   "account": {
     "title": "My Account",

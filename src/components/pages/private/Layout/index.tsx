@@ -1,8 +1,10 @@
 'use client'
 
+import { useAtomValue } from 'jotai'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { AdminSidebar } from '@/components/pages/private/Layout/AdminSidebar'
+import { userAtoms } from '@/lib/store/user'
 
 interface AdminLayoutProps {
   children: React.ReactNode
@@ -11,6 +13,7 @@ interface AdminLayoutProps {
 export function AdminLayout({ children }: AdminLayoutProps) {
   const pathname = usePathname()
   const t = useTranslations('navigation')
+  const isSuperAdmin = useAtomValue(userAtoms.isSuperAdmin)
 
   const sidebarLinks = [
     {
@@ -25,6 +28,16 @@ export function AdminLayout({ children }: AdminLayoutProps) {
       href: '/admin/properties',
       active: pathname.startsWith('/admin/properties')
     },
+    ...(isSuperAdmin
+      ? [
+          {
+            icon: 'group',
+            label: t('allUsers'),
+            href: '/admin/users',
+            active: pathname.startsWith('/admin/users')
+          }
+        ]
+      : []),
     {
       icon: 'person',
       label: t('account'),

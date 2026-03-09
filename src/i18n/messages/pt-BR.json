@@ -23,6 +23,7 @@
     "profile": "Perfil",
     "settings": "Configurações",
     "account": "Conta",
+    "allUsers": "Todos os Usuários",
     "logout": "Sair",
     "backToSite": "Voltar ao site",
     "brandName": "Portal Logístico",
@@ -269,6 +270,24 @@
       "placeholder": "Descreva características do imóvel, destaques e pontos de venda exclusivos..."
     },
     "nextButton": "Próximo: Especificações Técnicas"
+  },
+  "users": {
+    "title": "Todos os Usuários",
+    "subtitle": "Gerencie todos os usuários do sistema",
+    "listTitle": "Lista de Usuários",
+    "listSubtitle": "Visualize e gerencie as permissões de cada usuário",
+    "roleUpdated": "Função atualizada com sucesso",
+    "roleUpdateError": "Falha ao atualizar função",
+    "table": {
+      "name": "Nome",
+      "email": "E-mail",
+      "role": "Função",
+      "actions": "Ações"
+    },
+    "roles": {
+      "admin": "Administrador",
+      "superadmin": "Super Admin"
+    }
   },
   "account": {
     "title": "Minha Conta",

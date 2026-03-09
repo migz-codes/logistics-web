@@ -1,11 +1,14 @@
 import { gql } from '@apollo/client'
 
+export type Role = 'ADMIN' | 'SUPERADMIN'
+
 export const GET_ME_QUERY = gql`
   query GetMe {
     getMe {
       id
       name
       email
+      role
     }
   }
 `
@@ -15,6 +18,7 @@ export interface GetMeResponse {
     id: string
     name: string
     email: string
+    role: Role
   }
 }
 
@@ -75,5 +79,43 @@ export interface GetCurrentUserResponse {
     id: string
     name: string
     email: string
+  }
+}
+
+export const GET_ALL_USERS_QUERY = gql`
+  query GetAllUsers {
+    getAllUsers {
+      id
+      name
+      email
+      role
+    }
+  }
+`
+
+export interface UserWithRole {
+  id: string
+  name: string
+  email: string
+  role: Role
+}
+
+export interface GetAllUsersResponse {
+  getAllUsers: UserWithRole[]
+}
+
+export const UPDATE_USER_ROLE_MUTATION = gql`
+  mutation UpdateUserRole($input: UpdateUserRoleInput!) {
+    updateUserRole(input: $input) {
+      id
+      role
+    }
+  }
+`
+
+export interface UpdateUserRoleResponse {
+  updateUserRole: {
+    id: string
+    role: Role
   }
 }
