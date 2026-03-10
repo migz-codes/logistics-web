@@ -8,10 +8,10 @@ import z from 'zod'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Field, type FieldProps } from '@/components/shared/ui/Field'
+import { FieldTextarea } from '@/components/shared/ui/FieldTextarea'
 import { Select } from '@/components/shared/ui/Form/Select'
 import { Icon } from '@/components/shared/ui/Icon'
 import { Label } from '@/components/shared/ui/Label'
-import { Textarea } from '@/components/shared/ui/Textarea'
 import { tw } from '@/utils/tailwind'
 import type { IWarehouseFormData } from '../index'
 
@@ -32,7 +32,7 @@ const basicInfoSchema = z.object({
   area: z.string().min(1, 'Area is required'),
   price: z.string().min(1, 'Price is required'),
   title: z.string().min(3, 'Title must be at least 3 characters').max(100),
-  description: z.string().min(10, 'Description must be at least 10 characters').max(1000)
+  description: z.string().min(400, 'Description must be at least 400 characters').max(1000)
 })
 
 type FormData = z.infer<typeof basicInfoSchema>
@@ -103,14 +103,13 @@ export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
           </Label>
         </div>
 
-        <Label label={t('form.description')} error={errors.description?.message}>
-          <Textarea
-            rows={3}
-            placeholder={t('form.descriptionPlaceholder')}
-            {...register('description')}
-            error={errors.description?.message}
-          />
-        </Label>
+        <FieldTextarea
+          rows={3}
+          name='description'
+          register={register}
+          label={t('form.description')}
+          errorMessage={errors.description?.message}
+        />
 
         <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
           <Field
