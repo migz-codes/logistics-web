@@ -130,7 +130,10 @@
     },
     "properties": {
       "featured": "Destaques",
-      "ourExclusive": ["Nossos Imóveis", "Exclusivos"],
+      "ourExclusive": [
+        "Nossos Imóveis",
+        "Exclusivos"
+      ],
       "properties": "Imóveis",
       "viewAll": "Ver todos",
       "beds": "Quartos",
@@ -266,8 +269,20 @@
   "warehouseEditor": {
     "title": "Criar Novo Armazém",
     "subtitle": "Preencha todas as informações necessárias para adicionar um novo armazém ao inventário.",
+    "steps": {
+      "basicInfo": "Informações\nBásicas",
+      "address": "Endereço",
+      "review": "Revisar"
+    },
+    "addressStep": {
+      "description": "Informe a localização completa do armazém"
+    },
     "basicInfo": {
       "title": "Informações Básicas"
+    },
+    "common": {
+      "back": "Voltar",
+      "next": "Próximo"
     },
     "form": {
       "title": "Nome do Armazém",
@@ -298,7 +313,7 @@
       "city": "Cidade",
       "address": "Endereço",
       "addressPlaceholder": "Endereço completo incluindo rua e número",
-      "nextButton": "Próximo: Revisão",
+      "nextButton": "Próximo",
       "previousButton": "Anterior"
     },
     "review": {

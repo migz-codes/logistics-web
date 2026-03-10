@@ -17,7 +17,6 @@ export function FormStepper({ steps, currentStep }: FormStepperProps) {
   return (
     <div className='bg-white rounded-3xl p-8 border border-primary-500/5'>
       <div className='flex items-center justify-between relative'>
-        {/* Progress Line */}
         <div className='absolute top-6 left-0 right-0 h-1 bg-slate-200 mx-12 z-0'>
           <div
             className='h-full bg-primary-500 transition-all duration-500'
@@ -46,9 +45,10 @@ export function FormStepper({ steps, currentStep }: FormStepperProps) {
               >
                 {isCompleted ? <Icon name='check' /> : <Icon name={step.icon} />}
               </div>
+
               <span
                 className={tw(
-                  'text-xs font-bold mt-3 uppercase tracking-widest transition-colors',
+                  'text-xs font-bold mt-3 uppercase tracking-widest transition-colors whitespace-pre-line text-center',
                   isActive || isCompleted ? 'text-neutral-600' : 'text-neutral-600/40'
                 )}
               >

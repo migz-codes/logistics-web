@@ -130,7 +130,10 @@
     },
     "properties": {
       "featured": "Featured",
-      "ourExclusive": ["Our Exclusive", "Properties"],
+      "ourExclusive": [
+        "Our Exclusive",
+        "Properties"
+      ],
       "properties": "Properties",
       "viewAll": "View All",
       "beds": "Beds",
@@ -266,8 +269,20 @@
   "warehouseEditor": {
     "title": "Create New Warehouse",
     "subtitle": "Fill in all required information to add a new warehouse to the inventory.",
+    "steps": {
+      "basicInfo": "Basic Info",
+      "address": "Address",
+      "review": "Review"
+    },
+    "addressStep": {
+      "description": "Provide the complete location of the warehouse"
+    },
     "basicInfo": {
       "title": "Basic Information"
+    },
+    "common": {
+      "back": "Back",
+      "next": "Next"
     },
     "form": {
       "title": "Warehouse Name",
@@ -298,7 +313,7 @@
       "city": "City",
       "address": "Address",
       "addressPlaceholder": "Full address including street and number",
-      "nextButton": "Next: Review",
+      "nextButton": "Next",
       "previousButton": "Previous"
     },
     "review": {

@@ -2,15 +2,16 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import z from 'zod'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Field, type FieldProps } from '@/components/shared/ui/Field'
+import { Select } from '@/components/shared/ui/Form/Select'
 import { Icon } from '@/components/shared/ui/Icon'
 import { Input } from '@/components/shared/ui/Input'
 import { Label } from '@/components/shared/ui/Label'
-import { Select } from '@/components/shared/ui/Select'
 import { Textarea } from '@/components/shared/ui/Textarea'
 import { tw } from '@/utils/tailwind'
 import type { IWarehouseFormData } from '../index'
@@ -29,33 +30,21 @@ interface BasicInfoStepProps {
 }
 
 const basicInfoSchema = z.object({
-  zip_code: z.string().optional(),
   area: z.string().min(1, 'Area is required'),
-  city: z.string().min(1, 'City is required'),
-  state: z.string().min(1, 'State is required'),
   price: z.string().min(1, 'Price is required'),
-  status: z.string().min(1, 'Status is required'),
-  address: z.string().min(1, 'Address is required'),
-  country: z.string().min(1, 'Country is required'),
-  category: z.string().min(1, 'Category is required'),
   title: z.string().min(3, 'Title must be at least 3 characters').max(100),
   description: z.string().min(10, 'Description must be at least 10 characters').max(1000)
 })
 
 type FormData = z.infer<typeof basicInfoSchema>
 
-interface CEPData {
-  logradouro: string
-  localidade: string
-  uf: string
-}
-
 export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
   const t = useTranslations('warehouseEditor')
 
+  const [categoryValue, setCategoryValue] = useState(formData.category || '')
+  const [statusValue, setStatusValue] = useState(formData.status || 'available')
+
   const {
-    watch,
-    setValue,
     register,
     handleSubmit,
     formState: { errors }
@@ -64,15 +53,8 @@ export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
     resolver: zodResolver(basicInfoSchema),
     defaultValues: {
       area: formData.area,
-      city: formData.city,
-      state: formData.state,
       title: formData.title,
       price: formData.price,
-      status: formData.status,
-      address: formData.address,
-      country: formData.country,
-      zip_code: formData.zip_code,
-      category: formData.category,
       description: formData.description
     }
   })
@@ -92,30 +74,12 @@ export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
     { value: 'maintenance', label: t('form.status.maintenance') }
   ]
 
-  const handleCEPChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
-
-    setValue('zip_code', value)
-
-    if (value.length >= 8) {
-      try {
-        const response = await fetch(`https://viacep.com.br/ws/${value}/json/`)
-        const data: CEPData = await response.json()
-
-        if (data.logradouro) {
-          setValue('address', data.logradouro)
-          setValue('city', data.localidade)
-          setValue('state', data.uf)
-          setValue('country', 'Brazil')
-        }
-      } catch (error) {
-        console.error('Error looking up CEP:', error)
-      }
-    }
-  }
-
   const onSubmit = (data: FormData) => {
-    onNext(data)
+    onNext({
+      ...data,
+      category: categoryValue,
+      status: statusValue
+    })
   }
 
   return (
@@ -135,12 +99,11 @@ export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
             tws={fieldTw(!!errors.title?.message)}
           />
 
-          <Label label={t('form.category')} error={errors.category?.message}>
+          <Label label={t('form.category')}>
             <Select
               options={categoryOptions}
-              value={watch('category')}
-              {...register('category')}
-              error={errors.category?.message}
+              value={categoryValue}
+              onChange={(value) => setCategoryValue(value as string)}
             />
           </Label>
         </div>
@@ -163,61 +126,13 @@ export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
             <Input placeholder='e.g., 25.00' {...register('price')} error={errors.price?.message} />
           </Label>
 
-          <Label label={t('form.statusLabel')} error={errors.status?.message}>
+          <Label label={t('form.statusLabel')}>
             <Select
               options={statusOptions}
-              value={watch('status')}
-              {...register('status')}
-              error={errors.status?.message}
+              value={statusValue}
+              onChange={(value) => setStatusValue(value as string)}
             />
           </Label>
-        </div>
-
-        <div className='border-t border-primary-500/5 pt-6'>
-          <h3 className='text-lg font-bold text-neutral-600 mb-4 flex items-center gap-2'>
-            <Icon name='location_on' className='text-primary-500' />
-            {t('form.addressSection')}
-          </h3>
-
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-            <Label label={t('form.zipCode')}>
-              <Input
-                placeholder='e.g., 01310-100'
-                value={watch('zip_code')}
-                onChange={handleCEPChange}
-              />
-            </Label>
-
-            <Label label={t('form.country')} error={errors.country?.message}>
-              <Input
-                placeholder='e.g., Brazil'
-                {...register('country')}
-                error={errors.country?.message}
-              />
-            </Label>
-
-            <Label label={t('form.state')} error={errors.state?.message}>
-              <Input placeholder='e.g., SP' {...register('state')} error={errors.state?.message} />
-            </Label>
-          </div>
-
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
-            <Label label={t('form.city')} error={errors.city?.message}>
-              <Input
-                placeholder='e.g., São Paulo'
-                {...register('city')}
-                error={errors.city?.message}
-              />
-            </Label>
-
-            <Label label={t('form.address')} error={errors.address?.message}>
-              <Input
-                placeholder={t('form.addressPlaceholder')}
-                {...register('address')}
-                error={errors.address?.message}
-              />
-            </Label>
-          </div>
         </div>
       </form>
 

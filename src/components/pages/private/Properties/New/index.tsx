@@ -5,6 +5,7 @@ import { useMutation } from '@apollo/client/react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { AddressStep } from './AddressStep'
 import { BasicInfoStep } from './BasicInfoStep'
 import { FormStepper } from './FormStepper'
 import { ReviewStep } from './ReviewStep'
@@ -46,14 +47,15 @@ const initialFormData: IWarehouseFormData = {
   zip_code: ''
 }
 
-const steps = [
-  { label: 'Basic Info', icon: 'info' },
-  { label: 'Review', icon: 'check_circle' }
-]
-
 export function NewProperty() {
   const t = useTranslations('warehouseEditor')
   const router = useRouter()
+
+  const steps = [
+    { label: t('steps.basicInfo'), icon: 'info' },
+    { label: t('steps.address'), icon: 'location_on' },
+    { label: t('steps.review'), icon: 'check_circle' }
+  ]
 
   const [currentStep, setCurrentStep] = useState(0)
   const [formData, setFormData] = useState<IWarehouseFormData>(initialFormData)
@@ -106,6 +108,9 @@ export function NewProperty() {
         return <BasicInfoStep formData={formData} onNext={handleNext} />
 
       case 1:
+        return <AddressStep formData={formData} onNext={handleNext} onBack={handlePrevious} />
+
+      case 2:
         return (
           <ReviewStep
             formData={formData}
