@@ -10,11 +10,15 @@ import type {
   Props
 } from 'react-select'
 import ReactSelect, { components } from 'react-select'
+import { Icon } from '@/components/shared/ui/Icon'
+import { Tooltip } from '@/components/shared/ui/Tooltip'
 import { tw } from '@/utils/tailwind'
 import { type ISelectContext, SelectProvider, useSelectContext } from './context'
 
 export interface ISelectProps extends Props {
   custom?: ISelectContext
+  label?: string
+  errorMessage?: string
 }
 
 const SingleValue = (props: any) => {
@@ -79,18 +83,28 @@ const Menu = (props: MenuProps) => {
 }
 
 const Control = (props: ControlProps) => {
-  const { icon, tws } = useSelectContext()
+  const { icon, tws, error } = useSelectContext()
 
   return (
     <components.Control
       {...props}
       className={tw(
-        'w-full h-[56px] px-4 rounded-xl bg-surface-200 text-neutral-600 shadow-none',
-        props.isFocused ? 'border-2 border-primary-500' : 'border-2 border-transparent',
-        icon && 'pl-12',
+        'w-full h-[54px] px-4 rounded-xl bg-surface-200 text-neutral-600 font-medium placeholder-neutral-600/40 shadow-none outline-none focus:outline-none border border-transparent',
+        error
+          ? 'ring-2 ring-red-500'
+          : 'ring-0 focus:ring-2 focus:ring-primary-500 focus:border-primary-500',
+        error ? 'pl-12' : icon ? 'pl-12' : 'pl-4',
         tws?.control
       )}
     >
+      {error && (
+        <Tooltip content={error} side='top'>
+          <div className={tw('absolute top-3 left-3 flex items-center justify-center z-10')}>
+            <Icon name='warning' className={tw('text-red-500 cursor-pointer')} size='sm' />
+          </div>
+        </Tooltip>
+      )}
+
       {icon && (
         <span className='absolute left-4 top-1/2 -translate-y-1/2 text-primary-500'>{icon}</span>
       )}
@@ -115,12 +129,37 @@ const DropdownIndicator = (props: DropdownIndicatorProps) => {
   )
 }
 
-export const Select = ({ custom, ...props }: ISelectProps) => (
-  <SelectProvider {...custom}>
-    <ReactSelect
-      {...props}
-      unstyled
-      components={{ Control, Menu, MenuList, Option, Placeholder, SingleValue, DropdownIndicator }}
-    />
-  </SelectProvider>
-)
+export const Select = ({ custom, label, errorMessage, ...props }: ISelectProps) => {
+  const contextData = { ...custom, error: errorMessage }
+  const selectId = props.id || `select-${Math.random().toString(36).substr(2, 9)}`
+
+  return (
+    <div className='flex flex-col'>
+      {label && (
+        <label
+          htmlFor={selectId}
+          className='block text-xs font-black text-neutral-600/50 mb-2 uppercase tracking-widest'
+        >
+          {label}
+        </label>
+      )}
+
+      <SelectProvider {...contextData}>
+        <ReactSelect
+          {...props}
+          id={selectId}
+          unstyled
+          components={{
+            Control,
+            Menu,
+            MenuList,
+            Option,
+            Placeholder,
+            SingleValue,
+            DropdownIndicator
+          }}
+        />
+      </SelectProvider>
+    </div>
+  )
+}

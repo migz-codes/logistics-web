@@ -94,13 +94,13 @@ export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
             tws={fieldTw(!!errors.title?.message)}
           />
 
-          <Label label={t('form.category')}>
-            <Select
-              options={categoryOptions}
-              value={categoryValue}
-              onChange={(value) => setCategoryValue(value as string)}
-            />
-          </Label>
+          <Select
+            label={t('form.category')}
+            options={categoryOptions}
+            errorMessage='true'
+            value={categoryValue}
+            onChange={(value) => setCategoryValue(value as string)}
+          />
         </div>
 
         <FieldTextarea
