@@ -36,10 +36,12 @@
 
 /* Lifestyle gradient for hero sections */
 .lifestyle-gradient {
-  background: linear-gradient(to top,
-      rgba(253, 251, 247, 1) 0%,
-      rgba(253, 251, 247, 0.4) 50%,
-      rgba(253, 251, 247, 0) 100%);
+  background: linear-gradient(
+    to top,
+    rgba(253, 251, 247, 1) 0%,
+    rgba(253, 251, 247, 0.4) 50%,
+    rgba(253, 251, 247, 0) 100%
+  );
 }
 
 /* Material Symbols configuration */
@@ -91,7 +93,6 @@ html {
 
 /* Animation utilities */
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0px);
@@ -102,17 +103,47 @@ html {
   }
 }
 
+@keyframes fade-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-left-delayed {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@theme {
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-fade-in-left: fade-in-left 0.3s ease-out 0.1s both;
+  --animate-fade-in-left-delayed: fade-in-left-delayed 0.3s ease-out 0.3s both;
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
 
 /* Stepper styles for property editor */
 .stepper-line {
-  background: repeating-linear-gradient(90deg,
-      #e2e8f0 0,
-      #e2e8f0 4px,
-      transparent 4px,
-      transparent 8px);
+  background: repeating-linear-gradient(
+    90deg,
+    #e2e8f0 0,
+    #e2e8f0 4px,
+    transparent 4px,
+    transparent 8px
+  );
 }
 
 .step-active .stepper-icon {

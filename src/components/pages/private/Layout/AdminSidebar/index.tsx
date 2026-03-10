@@ -65,7 +65,7 @@ export function AdminSidebar() {
         isCollapsed ? 'w-16' : 'w-64'
       )}
     >
-      <div className='p-4 border-b border-white/10'>
+      <div className='p-4 border-b border-white/10 h-20 flex items-center'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-3'>
             {!isCollapsed && (
@@ -78,7 +78,7 @@ export function AdminSidebar() {
               </button>
             )}
 
-            <div className={tw('flex items-center gap-3', isCollapsed && 'justify-center w-full')}>
+            <div className='flex items-center gap-3'>
               {isCollapsed && (
                 <button
                   type='button'
@@ -90,7 +90,7 @@ export function AdminSidebar() {
               )}
 
               {!isCollapsed && (
-                <div className='flex items-center gap-3'>
+                <div className='flex items-center gap-3 animate-fade-in-left-delayed'>
                   <div className='w-8 h-8 bg-white/10 flex items-center justify-center rounded-lg rotate-3'>
                     <Icon name='rocket_launch' className='text-white -rotate-3' size='md' />
                   </div>
@@ -117,16 +117,15 @@ export function AdminSidebar() {
             key={link.href}
             href={link.href}
             className={tw(
-              'flex items-center gap-3 px-3 py-3 text-sm font-bold rounded-xl transition-all',
+              'flex items-center gap-3 px-3 py-3 text-sm font-bold rounded-xl transition-all h-12',
               link.active
                 ? 'text-white bg-white/5'
-                : 'text-white/50 hover:bg-white/5 hover:text-white',
-              isCollapsed ? 'justify-center' : ''
+                : 'text-white/50 hover:bg-white/5 hover:text-white'
             )}
             title={isCollapsed ? link.label : undefined}
           >
             <Icon name={link.icon} size='md' />
-            {!isCollapsed && <span>{link.label}</span>}
+            {!isCollapsed && <span className='animate-fade-in-left'>{link.label}</span>}
           </Link>
         ))}
       </nav>
@@ -135,16 +134,15 @@ export function AdminSidebar() {
         <Link
           href='/'
           className={tw(
-            'flex items-center gap-3 px-3 py-3 text-sm font-bold rounded-xl transition-all w-full text-white/50 hover:bg-white/5 hover:text-white',
-            isCollapsed ? 'justify-center' : ''
+            'flex items-center gap-3 px-3 py-3 text-sm font-bold rounded-xl transition-all w-full text-white/50 hover:bg-white/5 hover:text-white h-12'
           )}
           title={isCollapsed ? t('backToSite') : undefined}
         >
           <Icon name='home' size='md' />
-          {!isCollapsed && <span>{t('backToSite')}</span>}
+          {!isCollapsed && <span className='animate-fade-in-left'>{t('backToSite')}</span>}
         </Link>
 
-        <div className={isCollapsed ? 'flex justify-center' : ''}>
+        <div>
           <Logout />
         </div>
       </div>

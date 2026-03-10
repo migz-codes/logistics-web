@@ -11,7 +11,9 @@ export function Logout() {
     <Button>
       <Icon name='logout' size='md' />
 
-      {!isCollapsed && <span className='text-sm font-medium'>{t('logout')}</span>}
+      {!isCollapsed && (
+        <span className='text-sm font-medium animate-fade-in-left'>{t('logout')}</span>
+      )}
     </Button>
   )
 }
