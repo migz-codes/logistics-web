@@ -135,13 +135,13 @@ export function AdminSidebar() {
         <Link
           href='/'
           className={tw(
-            'text-white/50 hover:text-white rounded-2xl p-3 flex items-center gap-3 transition-all',
+            'flex items-center gap-3 px-3 py-3 text-sm font-bold rounded-xl transition-all w-full text-white/50 hover:bg-white/5 hover:text-white',
             isCollapsed ? 'justify-center' : ''
           )}
           title={isCollapsed ? t('backToSite') : undefined}
         >
-          <Icon name='arrow_back' size='md' />
-          {!isCollapsed && <span className='text-sm font-medium'>{t('backToSite')}</span>}
+          <Icon name='home' size='md' />
+          {!isCollapsed && <span>{t('backToSite')}</span>}
         </Link>
 
         <div className={isCollapsed ? 'flex justify-center' : ''}>
