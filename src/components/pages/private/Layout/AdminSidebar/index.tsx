@@ -32,13 +32,13 @@ export function AdminSidebar() {
       icon: 'analytics',
       label: t('dashboard'),
       href: '/admin/dashboard',
-      active: pathname.startsWith('/admin/dashboard/')
+      active: pathname.includes('/admin/dashboard')
     },
     {
       icon: 'warehouse',
       label: t('properties'),
       href: '/admin/properties',
-      active: pathname.startsWith('/admin/properties')
+      active: pathname.includes('/admin/properties')
     },
     ...(isSuperAdmin
       ? [
@@ -46,7 +46,7 @@ export function AdminSidebar() {
             icon: 'group',
             label: t('allUsers'),
             href: '/admin/users',
-            active: pathname.startsWith('/admin/users')
+            active: pathname.includes('/admin/users')
           }
         ]
       : []),
@@ -54,7 +54,7 @@ export function AdminSidebar() {
       icon: 'person',
       label: t('account'),
       href: '/admin/account',
-      active: pathname.startsWith('/admin/account')
+      active: pathname.includes('/admin/account')
     }
   ]
 
@@ -119,7 +119,7 @@ export function AdminSidebar() {
             className={tw(
               'flex items-center gap-3 px-3 py-3 text-sm font-bold rounded-xl transition-all',
               link.active
-                ? 'text-white bg-white/10'
+                ? 'text-white bg-white/5'
                 : 'text-white/50 hover:bg-white/5 hover:text-white',
               isCollapsed ? 'justify-center' : ''
             )}

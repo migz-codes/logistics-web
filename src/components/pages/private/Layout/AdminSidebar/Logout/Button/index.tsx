@@ -28,7 +28,7 @@ export const Button = ({ children }: IChildrenProps) => {
     <button
       type='button'
       onClick={onLogoutClick}
-      className='w-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white rounded-2xl p-4 flex items-center gap-3 transition-all'
+      className='flex items-center gap-3 px-3 py-3 text-sm font-bold rounded-xl transition-all w-full text-white/50 hover:bg-white/5 hover:text-white'
     >
       {children}
     </button>
