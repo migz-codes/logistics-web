@@ -18,7 +18,7 @@ export function PageTransition({ children, pageKey }: PageTransitionProps) {
       gsap.set(containerRef.current, {
         opacity: 0,
         x: 0,
-        y: -30,
+        y: 0,
         scale: 0.98
       })
 

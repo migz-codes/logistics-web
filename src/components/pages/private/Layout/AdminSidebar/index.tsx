@@ -35,6 +35,12 @@ export function AdminSidebar() {
       active: pathname.includes('/admin/dashboard')
     },
     {
+      icon: 'handshake',
+      label: t('partnerHub'),
+      href: '/admin/partner-hub',
+      active: pathname.includes('/admin/partner-hub')
+    },
+    {
       icon: 'warehouse',
       label: t('properties'),
       href: '/admin/properties',

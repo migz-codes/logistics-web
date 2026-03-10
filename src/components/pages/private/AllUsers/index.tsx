@@ -5,6 +5,7 @@ import { useAtomValue } from 'jotai'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
+import { PageHeader } from '@/components/pages/private/shared/PageHeader'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
 import {
@@ -53,10 +54,7 @@ export function AllUsersPage() {
 
   return (
     <>
-      <div className='mb-8'>
-        <h1 className='text-2xl font-black text-neutral-600'>{t('title')}</h1>
-        <p className='text-sm text-neutral-600/60 mt-1'>{t('subtitle')}</p>
-      </div>
+      <PageHeader title={t('title')} description={t('subtitle')} />
 
       <Card variant='elevated'>
         <div className='flex items-center gap-4 mb-6'>

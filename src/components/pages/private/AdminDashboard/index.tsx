@@ -2,11 +2,9 @@
 
 import { useTranslations } from 'next-intl'
 import { ActivityFeed } from './ActivityFeed'
-import { AssetsOverview } from './AssetsOverview'
 import { Charts } from './Charts'
 import { DashboardHeader } from './DashboardHeader'
 import { KpiCards } from './KpiCards'
-import { PartnersTable } from './PartnersTable'
 import { PendingApprovals } from './PendingApprovals'
 
 export function AdminDashboardPage() {
@@ -14,25 +12,7 @@ export function AdminDashboardPage() {
 
   return (
     <>
-      <DashboardHeader title={t('partnerHubTitle')} subtitle={t('partnerHubSubtitle')} />
-
-      <KpiCards />
-
-      <div className='grid lg:grid-cols-3 gap-8 mt-8'>
-        <div className='lg:col-span-2'>
-          <PartnersTable />
-        </div>
-
-        <div>
-          <AssetsOverview />
-        </div>
-      </div>
-
-      <DashboardHeader
-        className='mt-8'
-        title={t('strategicTitle')}
-        subtitle={t('strategicSubtitle')}
-      />
+      <DashboardHeader title={t('strategicTitle')} subtitle={t('strategicSubtitle')} />
 
       <KpiCards
         kpis={[
