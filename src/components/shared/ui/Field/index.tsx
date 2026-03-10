@@ -4,7 +4,6 @@ import type { ReactNode } from 'react'
 import type { FieldValues, Path, UseFormRegister } from 'react-hook-form'
 import { Icon } from '@/components/shared/ui/Icon'
 import { Tooltip } from '@/components/shared/ui/Tooltip'
-import { TInputProps } from '@/types/react.types'
 import { tw } from '@/utils/tailwind'
 
 interface FieldTws {
@@ -37,7 +36,6 @@ export interface FieldProps<T extends FieldValues = FieldValues> {
   showPassword?: boolean
   register?: UseFormRegister<T>
   onTogglePassword?: () => void
-  onChange?: TInputProps['onChange']
   type?: 'text' | 'email' | 'password'
 }
 
@@ -46,7 +44,6 @@ export function Field<T extends FieldValues = FieldValues>({
   name,
   label,
   register,
-  onChange,
   leftIcon,
   rightIcon,
   id = name,
