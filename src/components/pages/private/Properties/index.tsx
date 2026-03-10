@@ -111,13 +111,11 @@ export function Properties() {
       setFilters={handleFiltersChange}
       refetch={refetch}
     >
-      <main className='flex-1 p-8'>
-        <DashboardHeader title={t('globalTitle')} subtitle={t('globalSubtitle')} />
+      <DashboardHeader title={t('globalTitle')} subtitle={t('globalSubtitle')} />
 
-        <InventoryFilters />
+      <InventoryFilters />
 
-        <InventoryTable />
-      </main>
+      <InventoryTable />
     </PropertiesProvider>
   )
 }
