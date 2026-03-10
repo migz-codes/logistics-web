@@ -11,6 +11,7 @@ export interface ISelectContext {
     singleValue?: string
     placeholder?: string
     dropdownIndicator?: string
+    input?: string
   }
 }
 

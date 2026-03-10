@@ -14,6 +14,11 @@
     "submit": "Enviar",
     "close": "Fechar"
   },
+  "components": {
+    "select": {
+      "noOptions": "Sem opções"
+    }
+  },
   "navigation": {
     "home": "Início",
     "dashboard": "Painel",
@@ -282,7 +287,8 @@
     },
     "common": {
       "back": "Voltar",
-      "next": "Próximo"
+      "next": "Próximo",
+      "noOptions": "Sem opções"
     },
     "form": {
       "title": "Nome do Armazém",

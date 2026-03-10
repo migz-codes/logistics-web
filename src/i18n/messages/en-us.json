@@ -14,6 +14,11 @@
     "submit": "Submit",
     "close": "Close"
   },
+  "components": {
+    "select": {
+      "noOptions": "No options"
+    }
+  },
   "navigation": {
     "home": "Home",
     "dashboard": "Dashboard",
@@ -282,7 +287,8 @@
     },
     "common": {
       "back": "Back",
-      "next": "Next"
+      "next": "Next",
+      "noOptions": "No options"
     },
     "form": {
       "title": "Warehouse Name",

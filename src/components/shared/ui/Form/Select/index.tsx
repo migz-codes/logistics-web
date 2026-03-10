@@ -1,8 +1,10 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import type {
   ControlProps,
   DropdownIndicatorProps,
+  InputProps,
   MenuListProps,
   MenuProps,
   OptionProps,
@@ -27,7 +29,7 @@ const SingleValue = (props: any) => {
   return (
     <components.SingleValue
       {...props}
-      className={tw('text-neutral-600 p-0 font-medium', tws?.singleValue)}
+      className={tw('text-neutral-600 p-0 font-medium focus:outline-none', tws?.singleValue)}
     />
   )
 }
@@ -38,7 +40,7 @@ const Placeholder = (props: PlaceholderProps) => {
   return (
     <components.Placeholder
       {...props}
-      className={tw('p-0 font-medium text-neutral-600/40', tws?.placeholder)}
+      className={tw('p-0 font-medium text-neutral-600/40 focus:outline-none', tws?.placeholder)}
     >
       {props.children}
     </components.Placeholder>
@@ -92,7 +94,9 @@ const Control = (props: ControlProps) => {
         'w-full h-[54px] px-4 rounded-xl bg-surface-200 text-neutral-600 font-medium placeholder-neutral-600/40 shadow-none outline-none focus:outline-none border border-transparent',
         error
           ? 'ring-2 ring-red-500'
-          : 'ring-0 focus:ring-2 focus:ring-primary-500 focus:border-primary-500',
+          : props.isFocused
+            ? 'ring-2 focus:ring-primary-500 focus:border-primary-500'
+            : '',
         error ? 'pl-12' : icon ? 'pl-12' : 'pl-4',
         tws?.control
       )}
@@ -129,6 +133,23 @@ const DropdownIndicator = (props: DropdownIndicatorProps) => {
   )
 }
 
+const Input = (props: InputProps) => {
+  const { tws } = useSelectContext()
+
+  return (
+    <components.Input
+      {...props}
+      className={tw('text-neutral-600 font-medium focus:outline-none', tws?.input)}
+    />
+  )
+}
+
+const NoOptionsMessage = () => {
+  const t = useTranslations('components.select')
+
+  return <div className='p-4 text-neutral-600/60 font-medium'>{t('noOptions')}</div>
+}
+
 export const Select = ({ custom, label, errorMessage, ...props }: ISelectProps) => {
   const contextData = { ...custom, error: errorMessage }
   const selectId = props.id || `select-${Math.random().toString(36).substr(2, 9)}`
@@ -152,10 +173,12 @@ export const Select = ({ custom, label, errorMessage, ...props }: ISelectProps) 
           components={{
             Control,
             Menu,
+            Input,
             MenuList,
             Option,
             Placeholder,
             SingleValue,
+            NoOptionsMessage,
             DropdownIndicator
           }}
         />

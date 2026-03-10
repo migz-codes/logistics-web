@@ -85,10 +85,10 @@ export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
           />
 
           <Select
-            label={t('form.category')}
-            options={categoryOptions}
-            errorMessage='true'
+            // errorMessage='true'
             value={categoryValue}
+            options={categoryOptions}
+            label={t('form.category')}
             onChange={(value) => setCategoryValue(value as string)}
           />
         </div>
