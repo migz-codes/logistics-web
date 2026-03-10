@@ -1,76 +1,115 @@
 'use client'
 
+import { gql } from '@apollo/client'
+import { useQuery } from '@apollo/client/react'
 import { useTranslations } from 'next-intl'
-import { useCallback, useEffect, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { usePagination } from '@/hooks/usePagination'
-import type { IProperty } from '@/types/property.types'
+import type { IWarehouse } from '@/types/property.types'
 import { DashboardHeader } from '../AdminDashboard/DashboardHeader'
-import { PropertiesProvider } from './context'
+import { type IFilters, PropertiesProvider } from './context'
 import { InventoryFilters } from './InventoryFilters'
 import { InventoryTable } from './InventoryTable'
 
+const GET_WAREHOUSES = gql`
+  query GetWarehouses($filters: WarehouseFiltersInput) {
+    warehouses(filters: $filters) {
+      id
+      accountable_id
+      title
+      description
+      city
+      state
+      category
+      area
+      status
+      price
+      address
+      zip_code
+      country
+      created_at
+      updated_at
+    }
+    warehousesCount(filters: $filters)
+  }
+`
+
+interface WarehousesQueryResult {
+  warehouses: IWarehouse[]
+  warehousesCount: number
+}
+
+interface WarehouseFiltersInput {
+  search?: string
+  region?: string
+  category?: string
+  status?: string
+  skip?: number
+  take?: number
+}
+
 export function InventoryPage() {
   const t = useTranslations('inventory')
+  const itemsPerPage = 10
 
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string>()
-  const [totalCount, setTotalCount] = useState(0)
-  const [properties, setProperties] = useState<IProperty[]>([])
+  const [filters, setFilters] = useState<IFilters>({
+    search: '',
+    region: '',
+    category: '',
+    status: ''
+  })
 
-  const pagination = usePagination(totalCount, 10)
+  const [currentPage, setCurrentPage] = useState(1)
 
-  const getProperties = useCallback(async () => {
-    try {
-      setLoading(true)
-      setError(undefined)
-
-      // TODO: Implement fetch from custom backend API
-      // Example: GET /api/properties?page=${pagination.currentPage}&limit=10
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/properties?skip=${pagination.startIndex}&take=10`
-      )
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch properties')
-      }
-
-      const result = await response.json()
-      const data = result.data || []
-      const count = result.total || 0
-
-      setTotalCount(count)
-
-      const formattedProperties =
-        data?.map((property: IProperty) => ({
-          ...property,
-          name: property.title,
-          location: property.address || `${property.city || ''}, ${property.state || ''}`.trim(),
-          region: property.state,
-          area: property.area ? `${property.area} m²` : 'N/A',
-          price: property.price ? `$${property.price.toLocaleString()}` : 'N/A',
-          status: property.status || 'Available',
-          image: property.image || '/placeholder-property.jpg'
-        })) || []
-
-      setProperties(formattedProperties)
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to fetch properties')
-      console.error('Error fetching properties:', err)
-    } finally {
-      setLoading(false)
+  const queryFilters = useMemo<WarehouseFiltersInput>(() => {
+    const result: WarehouseFiltersInput = {
+      skip: (currentPage - 1) * itemsPerPage,
+      take: itemsPerPage
     }
-  }, [pagination.startIndex])
 
-  useEffect(() => {
-    getProperties()
-  }, [getProperties])
+    if (filters.search) result.search = filters.search
+    if (filters.region) result.region = filters.region
+    if (filters.category) result.category = filters.category
+    if (filters.status) result.status = filters.status
+
+    return result
+  }, [filters, currentPage])
+
+  const { data, loading, error, refetch } = useQuery<WarehousesQueryResult>(GET_WAREHOUSES, {
+    variables: { filters: queryFilters }
+  })
+
+  const warehouses = data?.warehouses || []
+  const totalCount = data?.warehousesCount || 0
+
+  const pagination = usePagination(totalCount, itemsPerPage)
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+  }
+
+  const handleFiltersChange: typeof setFilters = (newFilters) => {
+    setFilters(newFilters)
+    setCurrentPage(1)
+  }
+
+  const paginationWithHandlers = {
+    ...pagination,
+    currentPage,
+    goToPage: handlePageChange,
+    nextPage: () => handlePageChange(currentPage + 1),
+    prevPage: () => handlePageChange(currentPage - 1)
+  }
 
   return (
     <PropertiesProvider
-      error={error}
+      error={error?.message}
       loading={loading}
-      properties={properties}
-      pagination={pagination}
+      warehouses={warehouses}
+      pagination={paginationWithHandlers}
+      filters={filters}
+      setFilters={handleFiltersChange}
+      refetch={refetch}
     >
       <main className='flex-1 p-8'>
         <DashboardHeader title={t('globalTitle')} subtitle={t('globalSubtitle')} />

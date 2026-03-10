@@ -1,21 +1,74 @@
 'use client'
 
+import { gql } from '@apollo/client'
+import { useMutation } from '@apollo/client/react'
+import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { BasicInfoStep } from './BasicInfoStep'
 import { FormStepper } from './FormStepper'
-import { MediaStep } from './MediaStep'
 import { ReviewStep } from './ReviewStep'
+
+const CREATE_WAREHOUSE = gql`
+  mutation CreateWarehouse($input: CreateWarehouseInput!) {
+    createWarehouse(input: $input) {
+      id
+      title
+    }
+  }
+`
+
+export interface IWarehouseFormData {
+  title: string
+  description: string
+  category: string
+  area: string
+  price: string
+  status: string
+  address: string
+  city: string
+  state: string
+  country: string
+  zip_code: string
+}
+
+const initialFormData: IWarehouseFormData = {
+  title: '',
+  description: '',
+  category: '',
+  area: '',
+  price: '',
+  status: 'available',
+  address: '',
+  city: '',
+  state: '',
+  country: '',
+  zip_code: ''
+}
 
 const steps = [
   { label: 'Basic Info', icon: 'info' },
-  { label: 'Media', icon: 'image' },
   { label: 'Review', icon: 'check_circle' }
 ]
 
 export function PropertyEditorPage() {
-  const [currentStep, setCurrentStep] = useState(0)
+  const t = useTranslations('warehouseEditor')
+  const router = useRouter()
 
-  const handleNext = () => {
+  const [currentStep, setCurrentStep] = useState(0)
+  const [formData, setFormData] = useState<IWarehouseFormData>(initialFormData)
+
+  const [createWarehouse, { loading }] = useMutation(CREATE_WAREHOUSE, {
+    onCompleted: () => {
+      router.push('/admin/inventory')
+    },
+    onError: (error) => {
+      console.error('Error creating warehouse:', error)
+    }
+  })
+
+  const handleNext = (data: Partial<IWarehouseFormData>) => {
+    setFormData((prev) => ({ ...prev, ...data }))
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1)
     }
@@ -27,14 +80,39 @@ export function PropertyEditorPage() {
     }
   }
 
+  const handleSubmit = async () => {
+    await createWarehouse({
+      variables: {
+        input: {
+          title: formData.title,
+          description: formData.description,
+          category: formData.category,
+          area: formData.area,
+          price: formData.price,
+          status: formData.status,
+          address: formData.address,
+          city: formData.city,
+          state: formData.state,
+          country: formData.country,
+          zip_code: formData.zip_code
+        }
+      }
+    })
+  }
+
   const renderStep = () => {
     switch (currentStep) {
       case 0:
-        return <BasicInfoStep onNext={handleNext} />
+        return <BasicInfoStep formData={formData} onNext={handleNext} />
       case 1:
-        return <MediaStep onNext={handleNext} onPrevious={handlePrevious} />
-      case 2:
-        return <ReviewStep onPrevious={handlePrevious} />
+        return (
+          <ReviewStep
+            formData={formData}
+            loading={loading}
+            onPrevious={handlePrevious}
+            onSubmit={handleSubmit}
+          />
+        )
     }
   }
 
@@ -43,11 +121,9 @@ export function PropertyEditorPage() {
       <header className='mb-10'>
         <h1 className='text-4xl font-extrabold text-neutral-600 flex items-center gap-3'>
           <span className='text-secondary-500'>{`//`}</span>
-          Create New Property
+          {t('title')}
         </h1>
-        <p className='text-neutral-600/50 font-medium mt-2'>
-          Fill in all required information to add a new property to the inventory.
-        </p>
+        <p className='text-neutral-600/50 font-medium mt-2'>{t('subtitle')}</p>
       </header>
 
       <FormStepper steps={steps} currentStep={currentStep} />

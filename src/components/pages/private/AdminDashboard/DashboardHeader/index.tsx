@@ -21,6 +21,7 @@ export function DashboardHeader({ title, subtitle, className }: DashboardHeaderP
           <span className='text-secondary-500'>{`//`}</span>
           {title}
         </h1>
+
         {subtitle && <p className='text-neutral-600/50 font-medium mt-2'>{subtitle}</p>}
       </div>
     </header>

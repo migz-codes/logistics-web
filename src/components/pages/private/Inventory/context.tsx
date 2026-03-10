@@ -1,12 +1,22 @@
 import { createContext, useContext } from 'react'
 import type { PaginationActions, PaginationState } from '@/hooks/usePagination'
-import type { IProperty } from '@/types/property.types'
+import type { IWarehouse } from '@/types/property.types'
+
+export interface IFilters {
+  search: string
+  region: string
+  category: string
+  status: string
+}
 
 export interface IPropertiesContext {
-  properties: IProperty[]
+  warehouses: IWarehouse[]
   loading?: boolean
   error?: string
   pagination: PaginationState & PaginationActions
+  filters: IFilters
+  setFilters: React.Dispatch<React.SetStateAction<IFilters>>
+  refetch: () => void
 }
 
 export const PropertiesContext = createContext({} as IPropertiesContext)

@@ -75,9 +75,9 @@ export function SecurityCard() {
           type='password'
           name='currentPassword'
           register={registerPassword}
+          showPassword={showCurrentPassword}
           label={t('security.currentPassword')}
           placeholder={tAuth('passwordPlaceholder')}
-          showPassword={showCurrentPassword}
           onTogglePassword={() => setShowCurrentPassword(!showCurrentPassword)}
           errorMessage={
             passwordErrors.currentPassword?.message
@@ -91,9 +91,9 @@ export function SecurityCard() {
           type='password'
           name='newPassword'
           register={registerPassword}
+          showPassword={showNewPassword}
           label={t('security.newPassword')}
           placeholder={tAuth('createPasswordPlaceholder')}
-          showPassword={showNewPassword}
           onTogglePassword={() => setShowNewPassword(!showNewPassword)}
           errorMessage={
             passwordErrors.newPassword?.message
@@ -108,8 +108,8 @@ export function SecurityCard() {
           name='confirmPassword'
           register={registerPassword}
           label={tAuth('confirmPassword')}
-          placeholder={tAuth('confirmPasswordPlaceholder')}
           showPassword={showConfirmPassword}
+          placeholder={tAuth('confirmPasswordPlaceholder')}
           onTogglePassword={() => setShowConfirmPassword(!showConfirmPassword)}
           errorMessage={
             passwordErrors.confirmPassword?.message
@@ -122,7 +122,7 @@ export function SecurityCard() {
           size='md'
           type='submit'
           variant='primary'
-          className='w-full mt-auto'
+          className='w-full mt-[24px]'
           disabled={isPasswordSubmitting}
         >
           {isPasswordSubmitting ? t('saving') : t('updatePassword')}

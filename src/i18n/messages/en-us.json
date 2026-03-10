@@ -129,7 +129,10 @@
     },
     "properties": {
       "featured": "Featured",
-      "ourExclusive": ["Our Exclusive", "Properties"],
+      "ourExclusive": [
+        "Our Exclusive",
+        "Properties"
+      ],
       "properties": "Properties",
       "viewAll": "View All",
       "beds": "Beds",
@@ -200,22 +203,60 @@
   },
   "inventory": {
     "title": "Inventory",
-    "searchPlaceholder": "Search properties...",
-    "globalTitle": "Global Property Inventory",
+    "searchPlaceholder": "Search warehouses...",
+    "globalTitle": "Global Warehouse Inventory",
     "globalSubtitle": "Manage and monitor all assets across all regions.",
+    "addWarehouse": "Add Warehouse",
+    "noResults": "No warehouses found",
+    "errorLoading": "Error loading warehouses",
+    "loading": "Loading warehouses...",
     "filters": {
-      "status": "Status",
-      "type": "Type",
-      "priceRange": "Price Range",
-      "location": "Location"
+      "allRegions": "All Regions",
+      "allCategories": "All Categories",
+      "allStatus": "All Status",
+      "southeast": "Southeast",
+      "south": "South",
+      "northeast": "Northeast",
+      "north": "North",
+      "midwest": "Midwest",
+      "warehouse": "Warehouse",
+      "coldStorage": "Cold Storage",
+      "crossDock": "Cross-Dock",
+      "distribution": "Distribution Center",
+      "available": "Available",
+      "leased": "Leased",
+      "underConstruction": "Under Construction",
+      "maintenance": "Maintenance"
     },
     "table": {
-      "name": "Name",
-      "type": "Type",
+      "warehouse": "Warehouse",
+      "region": "Region",
+      "category": "Category",
+      "area": "Area",
       "status": "Status",
       "price": "Price",
-      "location": "Location",
       "actions": "Actions"
+    },
+    "pagination": {
+      "showing": "Showing",
+      "of": "of",
+      "warehouses": "warehouses",
+      "page": "Page",
+      "first": "First",
+      "last": "Last",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "status": {
+      "available": "Available",
+      "leased": "Leased",
+      "underConstruction": "Under Construction",
+      "maintenance": "Maintenance"
+    },
+    "actions": {
+      "view": "View",
+      "edit": "Edit",
+      "delete": "Delete"
     }
   },
   "errors": {
@@ -223,6 +264,55 @@
     "serverError": "Server error",
     "unauthorized": "Unauthorized access",
     "networkError": "Network error"
+  },
+  "warehouseEditor": {
+    "title": "Create New Warehouse",
+    "subtitle": "Fill in all required information to add a new warehouse to the inventory.",
+    "basicInfo": {
+      "title": "Basic Information"
+    },
+    "form": {
+      "title": "Warehouse Name",
+      "titlePlaceholder": "e.g., Prologis Industrial Park - Section 4",
+      "description": "Description",
+      "descriptionPlaceholder": "Describe warehouse features, highlights, and unique selling points...",
+      "category": "Category",
+      "selectCategory": "Select Category",
+      "categories": {
+        "warehouse": "Class A Warehouse",
+        "coldStorage": "Cold Storage",
+        "crossDock": "Cross-Docking Hub",
+        "distribution": "Distribution Center"
+      },
+      "area": "Total Area (m²)",
+      "price": "Lease Price (R$/m²)",
+      "statusLabel": "Status",
+      "status": {
+        "available": "Available",
+        "leased": "Leased",
+        "underConstruction": "Under Construction",
+        "maintenance": "Maintenance"
+      },
+      "addressSection": "Address Information",
+      "zipCode": "ZIP Code",
+      "country": "Country",
+      "state": "State",
+      "city": "City",
+      "address": "Address",
+      "addressPlaceholder": "Full address including street and number",
+      "nextButton": "Next: Review",
+      "previousButton": "Previous"
+    },
+    "review": {
+      "title": "Review & Submit",
+      "basicInfo": "Basic Information",
+      "noTitle": "No title provided",
+      "noAddress": "No address provided",
+      "confirmTitle": "I confirm all information is accurate",
+      "confirmDescription": "By submitting, I agree that the warehouse details are correct and can be published on the platform.",
+      "submitButton": "Create Warehouse",
+      "submitting": "Creating..."
+    }
   },
   "property": {
     "name": {

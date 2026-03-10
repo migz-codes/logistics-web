@@ -1,116 +1,170 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+import { useState } from 'react'
 import { Badge } from '@/components/shared/ui/Badge'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
+import type { IWarehouseFormData } from '../index'
 
 interface ReviewStepProps {
+  formData: IWarehouseFormData
+  loading: boolean
   onPrevious: () => void
+  onSubmit: () => Promise<void>
 }
 
-export function ReviewStep({ onPrevious }: ReviewStepProps) {
+export function ReviewStep({ formData, loading, onPrevious, onSubmit }: ReviewStepProps) {
+  const t = useTranslations('warehouseEditor')
+  const [confirmed, setConfirmed] = useState(false)
+
+  const getCategoryLabel = (category: string) => {
+    const labels: Record<string, string> = {
+      warehouse: t('form.categories.warehouse'),
+      'cold-storage': t('form.categories.coldStorage'),
+      'cross-dock': t('form.categories.crossDock'),
+      distribution: t('form.categories.distribution')
+    }
+    return labels[category] || category
+  }
+
+  const getStatusLabel = (status: string) => {
+    const labels: Record<string, string> = {
+      available: t('form.status.available'),
+      leased: t('form.status.leased'),
+      'under-construction': t('form.status.underConstruction'),
+      maintenance: t('form.status.maintenance')
+    }
+    return labels[status] || status
+  }
+
+  const handleSubmit = async () => {
+    if (!confirmed) return
+    await onSubmit()
+  }
+
   return (
     <Card variant='elevated'>
       <h2 className='text-2xl font-bold text-neutral-600 mb-8 flex items-center gap-3'>
         <Icon name='check_circle' className='text-primary-500' />
-        Review & Submit
+        {t('review.title')}
       </h2>
 
       <div className='space-y-8'>
-        {/* Property Preview */}
+        {/* Warehouse Preview */}
         <div className='bg-surface-200 rounded-2xl p-6'>
           <div className='flex items-start gap-6'>
-            <div className='w-32 h-24 bg-slate-300 rounded-xl flex items-center justify-center'>
-              <Icon name='image' className='text-slate-400' size='xl' />
+            <div className='w-32 h-24 bg-primary-500/10 rounded-xl flex items-center justify-center'>
+              <Icon name='warehouse' className='text-primary-500' size='xl' />
             </div>
             <div className='flex-1'>
               <div className='flex items-center gap-2 mb-2'>
-                <Badge variant='primary'>Class A Warehouse</Badge>
-                <Badge variant='success'>Draft</Badge>
+                <Badge variant='primary'>{getCategoryLabel(formData.category)}</Badge>
+                <Badge variant='success'>{getStatusLabel(formData.status)}</Badge>
               </div>
-              <h3 className='text-xl font-bold text-neutral-600'>[Property Name]</h3>
+              <h3 className='text-xl font-bold text-neutral-600'>
+                {formData.title || t('review.noTitle')}
+              </h3>
               <p className='text-sm text-neutral-600/60 flex items-center gap-1 mt-1'>
                 <Icon name='location_on' size='sm' />
-                [Address will appear here]
+                {formData.address
+                  ? `${formData.address}, ${formData.city}, ${formData.state}`
+                  : t('review.noAddress')}
               </p>
             </div>
             <div className='text-right'>
-              <p className='text-2xl font-black text-neutral-600'>R$ --/m²</p>
-              <p className='text-sm text-neutral-600/50'>-- m² total</p>
+              <p className='text-2xl font-black text-neutral-600'>R$ {formData.price || '--'}/m²</p>
+              <p className='text-sm text-neutral-600/50'>{formData.area || '--'} m² total</p>
             </div>
           </div>
         </div>
 
         {/* Section Summaries */}
-        <div className='grid md:grid-cols-3 gap-6'>
+        <div className='grid md:grid-cols-2 gap-6'>
           {/* Basic Info */}
           <div className='bg-white rounded-2xl p-6 border border-primary-500/5'>
             <div className='flex items-center justify-between mb-4'>
               <h4 className='font-bold text-neutral-600 flex items-center gap-2'>
                 <Icon name='info' className='text-primary-500' size='sm' />
-                Basic Info
+                {t('review.basicInfo')}
               </h4>
-              <button type='button' className='text-primary-500 text-xs font-bold hover:underline'>
-                Edit
-              </button>
             </div>
-            <div className='space-y-2 text-xs text-neutral-600/60'>
-              <p>• Category: --</p>
-              <p>• Region: --</p>
-              <p>• Available from: --</p>
+            <div className='space-y-2 text-sm text-neutral-600/60'>
+              <p>
+                <span className='font-medium text-neutral-600'>{t('form.category')}:</span>{' '}
+                {getCategoryLabel(formData.category)}
+              </p>
+              <p>
+                <span className='font-medium text-neutral-600'>{t('form.status')}:</span>{' '}
+                {getStatusLabel(formData.status)}
+              </p>
+              <p>
+                <span className='font-medium text-neutral-600'>{t('form.area')}:</span>{' '}
+                {formData.area} m²
+              </p>
+              <p>
+                <span className='font-medium text-neutral-600'>{t('form.price')}:</span> R${' '}
+                {formData.price}/m²
+              </p>
             </div>
           </div>
 
-          {/* Technical Specs */}
+          {/* Address */}
           <div className='bg-white rounded-2xl p-6 border border-primary-500/5'>
             <div className='flex items-center justify-between mb-4'>
               <h4 className='font-bold text-neutral-600 flex items-center gap-2'>
-                <Icon name='analytics' className='text-primary-500' size='sm' />
-                Technical
+                <Icon name='location_on' className='text-primary-500' size='sm' />
+                {t('form.addressSection')}
               </h4>
-              <button type='button' className='text-primary-500 text-xs font-bold hover:underline'>
-                Edit
-              </button>
             </div>
-            <div className='space-y-2 text-xs text-neutral-600/60'>
-              <p>• Ceiling: -- m</p>
-              <p>• Docks: --</p>
-              <p>• Power: -- kVA</p>
+            <div className='space-y-2 text-sm text-neutral-600/60'>
+              <p>
+                <span className='font-medium text-neutral-600'>{t('form.address')}:</span>{' '}
+                {formData.address}
+              </p>
+              <p>
+                <span className='font-medium text-neutral-600'>{t('form.city')}:</span>{' '}
+                {formData.city}
+              </p>
+              <p>
+                <span className='font-medium text-neutral-600'>{t('form.state')}:</span>{' '}
+                {formData.state}
+              </p>
+              <p>
+                <span className='font-medium text-neutral-600'>{t('form.country')}:</span>{' '}
+                {formData.country}
+              </p>
+              {formData.zip_code && (
+                <p>
+                  <span className='font-medium text-neutral-600'>{t('form.zipCode')}:</span>{' '}
+                  {formData.zip_code}
+                </p>
+              )}
             </div>
           </div>
+        </div>
 
-          {/* Media */}
-          <div className='bg-white rounded-2xl p-6 border border-primary-500/5'>
-            <div className='flex items-center justify-between mb-4'>
-              <h4 className='font-bold text-neutral-600 flex items-center gap-2'>
-                <Icon name='image' className='text-primary-500' size='sm' />
-                Media
-              </h4>
-              <button type='button' className='text-primary-500 text-xs font-bold hover:underline'>
-                Edit
-              </button>
-            </div>
-            <div className='space-y-2 text-xs text-neutral-600/60'>
-              <p>• Photos: 0/20</p>
-              <p>• Floor plan: Not uploaded</p>
-              <p>• Video: Not linked</p>
-            </div>
-          </div>
+        {/* Description */}
+        <div className='bg-white rounded-2xl p-6 border border-primary-500/5'>
+          <h4 className='font-bold text-neutral-600 flex items-center gap-2 mb-4'>
+            <Icon name='description' className='text-primary-500' size='sm' />
+            {t('form.description')}
+          </h4>
+          <p className='text-sm text-neutral-600/60'>{formData.description}</p>
         </div>
 
         {/* Terms Checkbox */}
         <label className='flex items-start gap-4 p-6 bg-primary-500/5 rounded-2xl border border-primary-500/10 cursor-pointer'>
           <input
             type='checkbox'
+            checked={confirmed}
+            onChange={(e) => setConfirmed(e.target.checked)}
             className='w-5 h-5 rounded text-primary-500 focus:ring-primary-500 mt-0.5'
           />
           <div>
-            <p className='font-bold text-neutral-600 mb-1'>I confirm all information is accurate</p>
-            <p className='text-sm text-neutral-600/60'>
-              By submitting, I agree that the property details are correct and can be published on
-              the platform.
-            </p>
+            <p className='font-bold text-neutral-600 mb-1'>{t('review.confirmTitle')}</p>
+            <p className='text-sm text-neutral-600/60'>{t('review.confirmDescription')}</p>
           </div>
         </label>
 
@@ -121,17 +175,18 @@ export function ReviewStep({ onPrevious }: ReviewStepProps) {
             iconPosition='left'
             onClick={onPrevious}
             type='button'
+            disabled={loading}
           >
-            Previous
+            {t('form.previousButton')}
           </Button>
-          <div className='flex gap-4'>
-            <Button variant='outline' icon={<Icon name='save' />} iconPosition='left'>
-              Save as Draft
-            </Button>
-            <Button variant='primary' icon={<Icon name='publish' />} type='submit'>
-              Publish Property
-            </Button>
-          </div>
+          <Button
+            variant='primary'
+            icon={<Icon name='publish' />}
+            onClick={handleSubmit}
+            disabled={!confirmed || loading}
+          >
+            {loading ? t('review.submitting') : t('review.submitButton')}
+          </Button>
         </div>
       </div>
     </Card>

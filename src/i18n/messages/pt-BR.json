@@ -129,7 +129,10 @@
     },
     "properties": {
       "featured": "Destaques",
-      "ourExclusive": ["Nossos Imóveis", "Exclusivos"],
+      "ourExclusive": [
+        "Nossos Imóveis",
+        "Exclusivos"
+      ],
       "properties": "Imóveis",
       "viewAll": "Ver todos",
       "beds": "Quartos",
@@ -200,22 +203,60 @@
   },
   "inventory": {
     "title": "Estoque",
-    "searchPlaceholder": "Buscar imóveis...",
-    "globalTitle": "Estoque Global de Imóveis",
+    "searchPlaceholder": "Buscar armazéns...",
+    "globalTitle": "Estoque Global de Armazéns",
     "globalSubtitle": "Gerencie e monitore todos os ativos em todas as regiões.",
+    "addWarehouse": "Adicionar Armazém",
+    "noResults": "Nenhum armazém encontrado",
+    "errorLoading": "Erro ao carregar armazéns",
+    "loading": "Carregando armazéns...",
     "filters": {
-      "status": "Status",
-      "type": "Tipo",
-      "priceRange": "Faixa de Preço",
-      "location": "Localização"
+      "allRegions": "Todas as Regiões",
+      "allCategories": "Todas as Categorias",
+      "allStatus": "Todos os Status",
+      "southeast": "Sudeste",
+      "south": "Sul",
+      "northeast": "Nordeste",
+      "north": "Norte",
+      "midwest": "Centro-Oeste",
+      "warehouse": "Armazém",
+      "coldStorage": "Câmara Fria",
+      "crossDock": "Cross-Dock",
+      "distribution": "Centro de Distribuição",
+      "available": "Disponível",
+      "leased": "Alugado",
+      "underConstruction": "Em Construção",
+      "maintenance": "Manutenção"
     },
     "table": {
-      "name": "Nome",
-      "type": "Tipo",
+      "warehouse": "Armazém",
+      "region": "Região",
+      "category": "Categoria",
+      "area": "Área",
       "status": "Status",
       "price": "Preço",
-      "location": "Localização",
       "actions": "Ações"
+    },
+    "pagination": {
+      "showing": "Exibindo",
+      "of": "de",
+      "warehouses": "armazéns",
+      "page": "Página",
+      "first": "Primeira",
+      "last": "Última",
+      "previous": "Anterior",
+      "next": "Próxima"
+    },
+    "status": {
+      "available": "Disponível",
+      "leased": "Alugado",
+      "underConstruction": "Em Construção",
+      "maintenance": "Manutenção"
+    },
+    "actions": {
+      "view": "Visualizar",
+      "edit": "Editar",
+      "delete": "Excluir"
     }
   },
   "errors": {
@@ -223,6 +264,55 @@
     "serverError": "Erro no servidor",
     "unauthorized": "Acesso não autorizado",
     "networkError": "Erro de rede"
+  },
+  "warehouseEditor": {
+    "title": "Criar Novo Armazém",
+    "subtitle": "Preencha todas as informações necessárias para adicionar um novo armazém ao inventário.",
+    "basicInfo": {
+      "title": "Informações Básicas"
+    },
+    "form": {
+      "title": "Nome do Armazém",
+      "titlePlaceholder": "ex., Prologis Industrial Park - Seção 4",
+      "description": "Descrição",
+      "descriptionPlaceholder": "Descreva as características, destaques e diferenciais do armazém...",
+      "category": "Categoria",
+      "selectCategory": "Selecione a Categoria",
+      "categories": {
+        "warehouse": "Armazém Classe A",
+        "coldStorage": "Câmara Fria",
+        "crossDock": "Cross-Docking",
+        "distribution": "Centro de Distribuição"
+      },
+      "area": "Área Total (m²)",
+      "price": "Preço de Aluguel (R$/m²)",
+      "statusLabel": "Status",
+      "status": {
+        "available": "Disponível",
+        "leased": "Alugado",
+        "underConstruction": "Em Construção",
+        "maintenance": "Manutenção"
+      },
+      "addressSection": "Informações de Endereço",
+      "zipCode": "CEP",
+      "country": "País",
+      "state": "Estado",
+      "city": "Cidade",
+      "address": "Endereço",
+      "addressPlaceholder": "Endereço completo incluindo rua e número",
+      "nextButton": "Próximo: Revisão",
+      "previousButton": "Anterior"
+    },
+    "review": {
+      "title": "Revisar e Enviar",
+      "basicInfo": "Informações Básicas",
+      "noTitle": "Nenhum título fornecido",
+      "noAddress": "Nenhum endereço fornecido",
+      "confirmTitle": "Confirmo que todas as informações estão corretas",
+      "confirmDescription": "Ao enviar, concordo que os detalhes do armazém estão corretos e podem ser publicados na plataforma.",
+      "submitButton": "Criar Armazém",
+      "submitting": "Criando..."
+    }
   },
   "property": {
     "name": {
