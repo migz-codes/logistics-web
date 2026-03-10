@@ -62,7 +62,10 @@ export function Field<T extends FieldValues = FieldValues>({
     <div className={tw('flex flex-col', tws?.wrapper)}>
       <label
         htmlFor={id}
-        className={tw('block text-sm font-bold text-neutral-600 mb-2', tws?.label)}
+        className={tw(
+          'block text-xs font-black text-neutral-600/50 mb-2 uppercase tracking-widest',
+          tws?.label
+        )}
       >
         {label}
 
@@ -108,10 +111,8 @@ export function Field<T extends FieldValues = FieldValues>({
           placeholder={placeholder}
           {...(register ? register(name) : {})}
           className={tw(
-            'w-full py-3 rounded-xl bg-white border transition-all text-sm',
-            errorMessage
-              ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
-              : 'border-primary-500/10 focus:ring-2 focus:ring-primary-500 focus:border-primary-500',
+            'w-full py-3 rounded-xl bg-surface-200 border-none text-neutral-600 font-medium placeholder-neutral-600/40 h-[54px] transition-all text-sm',
+            errorMessage ? 'ring-2 ring-error-500' : 'focus:ring-2 focus:ring-primary-500',
             className,
             leftIcon || errorMessage ? 'pl-12' : 'pl-4',
             rightIcon ? 'pr-12' : 'pr-4',

@@ -7,21 +7,12 @@ import { useForm } from 'react-hook-form'
 import z from 'zod'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
-import { Field, type FieldProps } from '@/components/shared/ui/Field'
+import { Field } from '@/components/shared/ui/Field'
 import { FieldTextarea } from '@/components/shared/ui/FieldTextarea'
 import { Select } from '@/components/shared/ui/Form/Select'
 import { Icon } from '@/components/shared/ui/Icon'
 import { Label } from '@/components/shared/ui/Label'
-import { tw } from '@/utils/tailwind'
 import type { IWarehouseFormData } from '../index'
-
-const fieldTw: (hasError: boolean) => FieldProps['tws'] = (hasError) => ({
-  label: 'block text-xs font-black text-neutral-600/50 uppercase tracking-widest',
-  input: tw(
-    'w-full rounded-xl bg-surface-200 border-none text-neutral-600 font-medium placeholder-neutral-600/40 h-[54px]',
-    hasError ? 'ring-2 ring-error-500' : 'focus:ring-2 focus:ring-primary-500'
-  )
-})
 
 interface BasicInfoStepProps {
   formData: IWarehouseFormData
@@ -91,7 +82,6 @@ export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
             register={register}
             label={t('form.title')}
             errorMessage={errors.title?.message}
-            tws={fieldTw(!!errors.title?.message)}
           />
 
           <Select
@@ -117,7 +107,6 @@ export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
             register={register}
             label={t('form.area')}
             errorMessage={errors.area?.message}
-            tws={fieldTw(!!errors.area?.message)}
           />
 
           <Field
@@ -125,7 +114,6 @@ export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
             register={register}
             label={t('form.price')}
             errorMessage={errors.price?.message}
-            tws={fieldTw(!!errors.price?.message)}
           />
 
           <Label label={t('form.statusLabel')}>
