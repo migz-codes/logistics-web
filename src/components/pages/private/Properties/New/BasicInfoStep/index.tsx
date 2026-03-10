@@ -10,7 +10,6 @@ import { Card } from '@/components/shared/ui/Card'
 import { Field, type FieldProps } from '@/components/shared/ui/Field'
 import { Select } from '@/components/shared/ui/Form/Select'
 import { Icon } from '@/components/shared/ui/Icon'
-import { Input } from '@/components/shared/ui/Input'
 import { Label } from '@/components/shared/ui/Label'
 import { Textarea } from '@/components/shared/ui/Textarea'
 import { tw } from '@/utils/tailwind'
@@ -75,11 +74,7 @@ export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
   ]
 
   const onSubmit = (data: FormData) => {
-    onNext({
-      ...data,
-      category: categoryValue,
-      status: statusValue
-    })
+    onNext({ ...data, status: statusValue, category: categoryValue })
   }
 
   return (
@@ -118,13 +113,21 @@ export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
         </Label>
 
         <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-          <Label label={t('form.area')} error={errors.area?.message}>
-            <Input {...register('area')} placeholder='e.g., 5000' error={errors.area?.message} />
-          </Label>
+          <Field
+            name='area'
+            register={register}
+            label={t('form.area')}
+            errorMessage={errors.area?.message}
+            tws={fieldTw(!!errors.area?.message)}
+          />
 
-          <Label label={t('form.price')} error={errors.price?.message}>
-            <Input placeholder='e.g., 25.00' {...register('price')} error={errors.price?.message} />
-          </Label>
+          <Field
+            name='price'
+            register={register}
+            label={t('form.price')}
+            errorMessage={errors.price?.message}
+            tws={fieldTw(!!errors.price?.message)}
+          />
 
           <Label label={t('form.statusLabel')}>
             <Select

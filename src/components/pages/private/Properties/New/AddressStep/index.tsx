@@ -6,9 +6,8 @@ import { useForm } from 'react-hook-form'
 import z from 'zod'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
-import type { FieldProps } from '@/components/shared/ui/Field'
+import { Field, type FieldProps } from '@/components/shared/ui/Field'
 import { Icon } from '@/components/shared/ui/Icon'
-import { Input } from '@/components/shared/ui/Input'
 import { Label } from '@/components/shared/ui/Label'
 import { Textarea } from '@/components/shared/ui/Textarea'
 import { tw } from '@/utils/tailwind'
@@ -70,21 +69,21 @@ export function AddressStep({ formData, onNext, onBack }: AddressStepProps) {
 
       <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-          <Label label={t('form.zipCode')} error={errors.zip_code?.message}>
-            <Input
-              placeholder='e.g., 01310-100'
-              {...register('zip_code')}
-              error={errors.zip_code?.message}
-            />
-          </Label>
+          <Field
+            name='zip_code'
+            register={register}
+            label={t('form.zipCode')}
+            errorMessage={errors.zip_code?.message}
+            tws={fieldTw(!!errors.zip_code?.message)}
+          />
 
-          <Label label={t('form.city')} error={errors.city?.message}>
-            <Input
-              placeholder='e.g., São Paulo'
-              {...register('city')}
-              error={errors.city?.message}
-            />
-          </Label>
+          <Field
+            name='city'
+            register={register}
+            label={t('form.city')}
+            errorMessage={errors.city?.message}
+            tws={fieldTw(!!errors.city?.message)}
+          />
         </div>
 
         <Label label={t('form.address')} error={errors.address?.message}>
@@ -97,17 +96,21 @@ export function AddressStep({ formData, onNext, onBack }: AddressStepProps) {
         </Label>
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-          <Label label={t('form.state')} error={errors.state?.message}>
-            <Input placeholder='e.g., SP' {...register('state')} error={errors.state?.message} />
-          </Label>
+          <Field
+            name='state'
+            register={register}
+            label={t('form.state')}
+            errorMessage={errors.state?.message}
+            tws={fieldTw(!!errors.state?.message)}
+          />
 
-          <Label label={t('form.country')} error={errors.country?.message}>
-            <Input
-              placeholder='e.g., Brasil'
-              {...register('country')}
-              error={errors.country?.message}
-            />
-          </Label>
+          <Field
+            name='country'
+            register={register}
+            label={t('form.country')}
+            errorMessage={errors.country?.message}
+            tws={fieldTw(!!errors.country?.message)}
+          />
         </div>
 
         <div className='flex justify-between pt-6 border-t border-primary-500/5 mt-6'>
