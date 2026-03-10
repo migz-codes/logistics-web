@@ -1,3 +1,3 @@
-import { PropertyEditorPage } from '@/components/pages/private/PropertyEditor'
+import { NewProperty } from '@/components/pages/private/Properties/New'
 
-export default PropertyEditorPage
+export default NewProperty

@@ -1,3 +1,3 @@
-import { InventoryPage } from '@/components/pages/private/Inventory'
+import { Properties } from '@/components/pages/private/Properties'
 
-export default InventoryPage
+export default Properties

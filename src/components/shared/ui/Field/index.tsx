@@ -4,45 +4,49 @@ import type { ReactNode } from 'react'
 import type { FieldValues, Path, UseFormRegister } from 'react-hook-form'
 import { Icon } from '@/components/shared/ui/Icon'
 import { Tooltip } from '@/components/shared/ui/Tooltip'
+import { TInputProps } from '@/types/react.types'
 import { tw } from '@/utils/tailwind'
 
 interface FieldTws {
-  wrapper?: string
+  input?: string
   label?: string
+  wrapper?: string
   required?: string
-  inputWrapper?: string
-  leftIconWrapper?: string
   leftIcon?: string
   errorIcon?: string
-  input?: string
-  rightIconWrapper?: string
-  passwordToggle?: string
   passwordIcon?: string
+  inputWrapper?: string
+  passwordToggle?: string
+  leftIconWrapper?: string
+  rightIconWrapper?: string
+  errorIconWrapper?: string
 }
 
-interface FieldProps<T extends FieldValues = FieldValues> {
-  name: Path<T>
-  register?: UseFormRegister<T>
-  label: string
-  type?: 'text' | 'email' | 'password'
-  placeholder?: string
+export interface FieldProps<T extends FieldValues = FieldValues> {
   id?: string
+  name: Path<T>
+  label: string
+  tws?: FieldTws
   leftIcon?: string
-  rightIcon?: ReactNode
-  showPassword?: boolean
-  onTogglePassword?: () => void
-  className?: string
   disabled?: boolean
   required?: boolean
+  className?: string
+  placeholder?: string
+  rightIcon?: ReactNode
   errorMessage?: string
-  tws?: FieldTws
+  showPassword?: boolean
+  register?: UseFormRegister<T>
+  onTogglePassword?: () => void
+  onChange?: TInputProps['onChange']
+  type?: 'text' | 'email' | 'password'
 }
 
 export function Field<T extends FieldValues = FieldValues>({
   tws,
   name,
-  register,
   label,
+  register,
+  onChange,
   leftIcon,
   rightIcon,
   id = name,
@@ -64,11 +68,12 @@ export function Field<T extends FieldValues = FieldValues>({
         className={tw('block text-sm font-bold text-neutral-600 mb-2', tws?.label)}
       >
         {label}
+
         {required && <span className={tw('text-red-500 ml-1', tws?.required)}>*</span>}
       </label>
 
       <div className={tw('relative', tws?.inputWrapper)}>
-        {leftIcon && (
+        {(errorMessage || leftIcon) && (
           <div
             className={tw(
               'absolute inset-y-0 left-0 pl-4 flex items-center justify-center',
@@ -76,19 +81,24 @@ export function Field<T extends FieldValues = FieldValues>({
               tws?.leftIconWrapper
             )}
           >
-            {errorMessage ? (
+            {errorMessage && (
               <Tooltip content={errorMessage} side='top'>
-                <span
-                  className={tw('flex items-center justify-center cursor-pointer', tws?.errorIcon)}
+                <div
+                  className={tw(
+                    'flex items-center justify-center cursor-pointer',
+                    tws?.errorIconWrapper
+                  )}
                 >
-                  <Icon name='warning' className='text-red-500' size='sm' />
-                </span>
+                  <Icon name='warning' className={tw('text-red-500', tws?.errorIcon)} size='sm' />
+                </div>
               </Tooltip>
-            ) : (
+            )}
+
+            {!errorMessage && leftIcon && (
               <Icon
+                size='sm'
                 name={leftIcon}
                 className={tw('text-neutral-600/40', tws?.leftIcon)}
-                size='sm'
               />
             )}
           </div>
@@ -106,7 +116,7 @@ export function Field<T extends FieldValues = FieldValues>({
               ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
               : 'border-primary-500/10 focus:ring-2 focus:ring-primary-500 focus:border-primary-500',
             className,
-            leftIcon ? 'pl-12' : 'pl-4',
+            leftIcon || errorMessage ? 'pl-12' : 'pl-4',
             rightIcon ? 'pr-12' : 'pr-4',
             tws?.input
           )}

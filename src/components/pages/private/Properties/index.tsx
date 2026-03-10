@@ -8,8 +8,8 @@ import { usePagination } from '@/hooks/usePagination'
 import type { IWarehouse } from '@/types/property.types'
 import { DashboardHeader } from '../AdminDashboard/DashboardHeader'
 import { type IFilters, PropertiesProvider } from './context'
-import { InventoryFilters } from './InventoryFilters'
-import { InventoryTable } from './InventoryTable'
+import { InventoryFilters } from './Filters'
+import { InventoryTable } from './Table'
 
 const GET_WAREHOUSES = gql`
   query GetWarehouses($filters: WarehouseFiltersInput) {
@@ -48,7 +48,7 @@ interface WarehouseFiltersInput {
   take?: number
 }
 
-export function InventoryPage() {
+export function Properties() {
   const t = useTranslations('inventory')
   const itemsPerPage = 10
 

@@ -51,7 +51,7 @@ const steps = [
   { label: 'Review', icon: 'check_circle' }
 ]
 
-export function PropertyEditorPage() {
+export function NewProperty() {
   const t = useTranslations('warehouseEditor')
   const router = useRouter()
 
@@ -104,6 +104,7 @@ export function PropertyEditorPage() {
     switch (currentStep) {
       case 0:
         return <BasicInfoStep formData={formData} onNext={handleNext} />
+
       case 1:
         return (
           <ReviewStep
@@ -123,6 +124,7 @@ export function PropertyEditorPage() {
           <span className='text-secondary-500'>{`//`}</span>
           {t('title')}
         </h1>
+
         <p className='text-neutral-600/50 font-medium mt-2'>{t('subtitle')}</p>
       </header>
 
