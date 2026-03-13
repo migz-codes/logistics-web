@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 
-export type Role = 'ADMIN' | 'SUPERADMIN'
+export type Role = 'INVESTOR_ADMIN' | 'ADMIN'
 
 export const GET_ME_QUERY = gql`
   query GetMe {
@@ -9,6 +9,8 @@ export const GET_ME_QUERY = gql`
       name
       email
       role
+      created_at
+      updated_at
     }
   }
 `
@@ -19,6 +21,8 @@ export interface GetMeResponse {
     name: string
     email: string
     role: Role
+    created_at: string
+    updated_at: string
   }
 }
 

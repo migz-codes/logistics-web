@@ -17,14 +17,12 @@ export function AdminSidebar() {
   const t = useTranslations('navigation')
   const pathname = usePathname()
   const setUser = useSetAtom(userAtoms.user)
-  const isSuperAdmin = useAtomValue(userAtoms.isSuperAdmin)
+  const isAdmin = useAtomValue(userAtoms.isAdmin)
   const { data } = useQuery<GetMeResponse>(GET_ME_QUERY)
   const { isCollapsed, setIsCollapsed } = useSidebarContext()
 
   useEffect(() => {
-    if (data?.getMe) {
-      setUser(data.getMe)
-    }
+    if (data?.getMe) setUser(data.getMe)
   }, [data, setUser])
 
   const sidebarLinks = [
@@ -46,7 +44,7 @@ export function AdminSidebar() {
       href: '/admin/properties',
       active: pathname.includes('/admin/properties')
     },
-    ...(isSuperAdmin
+    ...(isAdmin
       ? [
           {
             icon: 'group',

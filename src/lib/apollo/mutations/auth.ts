@@ -9,6 +9,9 @@ export const LOGIN_MUTATION = gql`
         id
         name
         email
+        role
+        created_at
+        updated_at
       }
     }
   }
@@ -23,7 +26,14 @@ export interface LoginResponse {
   login: {
     accessToken: string
     refreshToken: string
-    user: { id: string; name: string; email: string }
+    user: {
+      id: string
+      name: string
+      email: string
+      role: string
+      created_at: string
+      updated_at: string
+    }
   }
 }
 

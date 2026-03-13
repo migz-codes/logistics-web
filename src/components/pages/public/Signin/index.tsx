@@ -49,7 +49,10 @@ export default function AdminSigninPage() {
         setUser({
           id: response.login.user.id,
           name: response.login.user.name,
-          email: response.login.user.email
+          email: response.login.user.email,
+          role: response.login.user.role as 'ADMIN' | 'INVESTOR_ADMIN',
+          created_at: response.login.user.created_at,
+          updated_at: response.login.user.updated_at
         })
 
         router.push('/admin/dashboard')
