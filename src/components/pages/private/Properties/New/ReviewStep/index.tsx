@@ -9,9 +9,9 @@ import { Icon } from '@/components/shared/ui/Icon'
 import type { IWarehouseFormData } from '../index'
 
 interface ReviewStepProps {
-  formData: IWarehouseFormData
   loading: boolean
   onPrevious: () => void
+  formData: IWarehouseFormData
   onSubmit: () => Promise<void>
 }
 
@@ -36,6 +36,7 @@ export function ReviewStep({ formData, loading, onPrevious, onSubmit }: ReviewSt
       'under-construction': t('form.status.underConstruction'),
       maintenance: t('form.status.maintenance')
     }
+
     return labels[status] || status
   }
 
@@ -45,32 +46,35 @@ export function ReviewStep({ formData, loading, onPrevious, onSubmit }: ReviewSt
   }
 
   return (
-    <Card variant='elevated'>
+    <Card variant='elevated' className='max-w-full overflow-hidden w-full'>
       <h2 className='text-2xl font-bold text-neutral-600 mb-8 flex items-center gap-3'>
         <Icon name='check_circle' className='text-primary-500' />
         {t('review.title')}
       </h2>
 
-      <div className='space-y-8'>
+      <div className='space-y-8 flex flex-col w-full overflow-hidden'>
         {/* Warehouse Preview */}
         <div className='bg-surface-200 rounded-2xl p-6'>
           <div className='flex items-start gap-6'>
             <div className='w-32 h-24 bg-primary-500/10 rounded-xl flex items-center justify-center'>
               <Icon name='warehouse' className='text-primary-500' size='xl' />
             </div>
-            <div className='flex-1'>
-              <div className='flex items-center gap-2 mb-2'>
+
+            <div className='flex-1 min-w-0'>
+              <div className='flex items-center gap-2 mb-2 flex-wrap'>
                 <Badge variant='primary'>{getCategoryLabel(formData.category)}</Badge>
                 <Badge variant='success'>{getStatusLabel(formData.status)}</Badge>
               </div>
-              <h3 className='text-xl font-bold text-neutral-600'>
+              <h3 className='text-xl font-bold text-neutral-600 truncate'>
                 {formData.title || t('review.noTitle')}
               </h3>
-              <p className='text-sm text-neutral-600/60 flex items-center gap-1 mt-1'>
-                <Icon name='location_on' size='sm' />
-                {formData.address
-                  ? `${formData.address}, ${formData.city}, ${formData.state}`
-                  : t('review.noAddress')}
+              <p className='text-sm text-neutral-600/60 flex items-center gap-1 mt-1 truncate'>
+                <Icon name='location_on' size='sm' className='flex-shrink-0' />
+                <span className='truncate'>
+                  {formData.address
+                    ? `${formData.address}, ${formData.city}, ${formData.state}`
+                    : t('review.noAddress')}
+                </span>
               </p>
             </div>
             <div className='text-right'>
@@ -96,7 +100,7 @@ export function ReviewStep({ formData, loading, onPrevious, onSubmit }: ReviewSt
                 {getCategoryLabel(formData.category)}
               </p>
               <p>
-                <span className='font-medium text-neutral-600'>{t('form.status')}:</span>{' '}
+                <span className='font-medium text-neutral-600'>{t('form.statusLabel')}:</span>{' '}
                 {getStatusLabel(formData.status)}
               </p>
               <p>
@@ -146,12 +150,15 @@ export function ReviewStep({ formData, loading, onPrevious, onSubmit }: ReviewSt
         </div>
 
         {/* Description */}
-        <div className='bg-white rounded-2xl p-6 border border-primary-500/5'>
+        <div className='bg-white rounded-2xl p-6 border border-primary-500/5 overflow-hidden w-full flex flex-col'>
           <h4 className='font-bold text-neutral-600 flex items-center gap-2 mb-4'>
             <Icon name='description' className='text-primary-500' size='sm' />
             {t('form.description')}
           </h4>
-          <p className='text-sm text-neutral-600/60'>{formData.description}</p>
+
+          <p className='text-sm text-neutral-600/60 break-words whitespace-pre-line break-all w-full'>
+            {formData.description}
+          </p>
         </div>
 
         {/* Terms Checkbox */}
@@ -179,6 +186,7 @@ export function ReviewStep({ formData, loading, onPrevious, onSubmit }: ReviewSt
           >
             {t('form.previousButton')}
           </Button>
+
           <Button
             variant='primary'
             icon={<Icon name='publish' />}

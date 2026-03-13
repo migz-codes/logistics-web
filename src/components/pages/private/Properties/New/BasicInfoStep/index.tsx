@@ -17,6 +17,7 @@ import type { IWarehouseFormData } from '../index'
 interface BasicInfoStepProps {
   formData: IWarehouseFormData
   onNext: (data: Partial<IWarehouseFormData>) => void
+  onBack?: () => void
 }
 
 const basicInfoSchema = z.object({
@@ -28,7 +29,7 @@ const basicInfoSchema = z.object({
 
 type FormData = z.infer<typeof basicInfoSchema>
 
-export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
+export function BasicInfoStep({ formData, onNext, onBack }: BasicInfoStepProps) {
   const t = useTranslations('warehouseEditor')
 
   const [categoryValue, setCategoryValue] = useState(formData.category || '')
@@ -85,11 +86,10 @@ export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
           />
 
           <Select
-            // errorMessage='true'
-            value={categoryValue}
             options={categoryOptions}
             label={t('form.category')}
-            onChange={(value) => setCategoryValue(value as string)}
+            value={categoryOptions.find((opt) => opt.value === categoryValue)}
+            onChange={(option: any) => setCategoryValue(option?.value || '')}
           />
         </div>
 
@@ -119,14 +119,23 @@ export function BasicInfoStep({ formData, onNext }: BasicInfoStepProps) {
           <Label label={t('form.statusLabel')}>
             <Select
               options={statusOptions}
-              value={statusValue}
-              onChange={(value) => setStatusValue(value as string)}
+              value={statusOptions.find((opt) => opt.value === statusValue)}
+              onChange={(option: any) => setStatusValue(option?.value || 'available')}
             />
           </Label>
         </div>
       </form>
 
-      <div className='flex justify-end pt-6 border-t border-primary-500/5 mt-6'>
+      <div className='flex justify-between pt-6 border-t border-primary-500/5 mt-6'>
+        {onBack ? (
+          <Button type='button' variant='secondary' onClick={onBack}>
+            <Icon name='arrow_back' size='sm' />
+            {t('form.backButton')}
+          </Button>
+        ) : (
+          <div />
+        )}
+
         <Button
           type='button'
           variant='primary'

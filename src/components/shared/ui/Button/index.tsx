@@ -8,11 +8,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode
   size?: 'sm' | 'md' | 'lg'
   iconPosition?: 'left' | 'right'
-  variant?: 'primary' | 'secondary' | 'outline' | 'neutral' | 'whatsapp' | 'ghost'
+  variant?: 'primary' | 'secondary' | 'outline' | 'neutral' | 'whatsapp' | 'ghost' | 'danger'
 }
 
 const variants = {
   ghost: 'text-neutral-600/70 hover:text-primary-500',
+  danger: 'bg-red-500 text-white hover:bg-red-600 shadow-lg shadow-red-500/20',
   whatsapp: 'bg-[#25D366] text-white hover:bg-[#1fb356] shadow-lg shadow-[#25D366]/20',
   primary: 'bg-primary-500 text-white hover:bg-sage-500 shadow-lg shadow-primary-500/10',
   neutral: 'bg-neutral-600 text-white hover:bg-neutral-dark shadow-lg shadow-neutral-600/10',

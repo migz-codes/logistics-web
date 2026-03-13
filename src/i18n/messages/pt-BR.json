@@ -277,9 +277,17 @@
     "title": "Criar Novo Armazém",
     "subtitle": "Preencha todas as informações necessárias para adicionar um novo armazém ao inventário.",
     "steps": {
+      "company": "Empresa",
       "basicInfo": "Informações\nBásicas",
       "address": "Endereço",
       "review": "Revisar"
+    },
+    "companySelect": {
+      "title": "Selecionar Empresa",
+      "subtitle": "Escolha a empresa que será proprietária deste armazém ou crie uma nova.",
+      "create": "Criar Nova",
+      "createFirst": "Crie sua primeira empresa",
+      "noCompanies": "Você ainda não tem nenhuma empresa."
     },
     "addressStep": {
       "description": "Informe a localização completa do armazém"
@@ -322,6 +330,7 @@
       "address": "Endereço",
       "addressPlaceholder": "Endereço completo incluindo rua e número",
       "nextButton": "Próximo",
+      "backButton": "Voltar",
       "previousButton": "Anterior"
     },
     "review": {
@@ -333,6 +342,10 @@
       "confirmDescription": "Ao enviar, concordo que os detalhes do armazém estão corretos e podem ser publicados na plataforma.",
       "submitButton": "Criar Armazém",
       "submitting": "Criando..."
+    },
+    "toast": {
+      "createSuccess": "Armazém criado com sucesso!",
+      "createError": "Falha ao criar armazém. Tente novamente."
     }
   },
   "property": {
@@ -410,7 +423,7 @@
     "updateError": "Falha ao atualizar empresa",
     "deleted": "Empresa excluída com sucesso",
     "deleteError": "Falha ao excluir empresa",
-    "deleteConfirm": "Tem certeza que deseja excluir {name}?",
+    "deleteConfirm": "Tem certeza que deseja excluir \"{name}\"? Esta ação não pode ser desfeita e todos os dados relacionados serão removidos permanentemente.",
     "deleteTitle": "Excluir Empresa",
     "delete": "Excluir",
     "deleting": "Excluindo...",
@@ -443,7 +456,7 @@
     "listSubtitle": "Visualize e gerencie todas as empresas de todos os usuários",
     "deleted": "Empresa excluída com sucesso",
     "deleteError": "Falha ao excluir empresa",
-    "deleteConfirm": "Tem certeza que deseja excluir {name}?",
+    "deleteConfirm": "Tem certeza que deseja excluir \"{name}\"? Esta ação não pode ser desfeita e todos os dados relacionados serão removidos permanentemente.",
     "deleteTitle": "Excluir Empresa",
     "delete": "Excluir",
     "deleting": "Excluindo...",

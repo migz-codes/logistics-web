@@ -87,20 +87,15 @@ export interface UpdateCompanyResponse {
   updateCompany: Company
 }
 
-export const DELETE_COMPANY_MUTATION = gql`
-  mutation DeleteCompany($id: String!) {
-    deleteCompany(id: $id) {
+export const REMOVE_COMPANY_MUTATION = gql`
+  mutation RemoveCompany($id: String!) {
+    removeCompany(id: $id) {
       id
       name
-      success
     }
   }
 `
 
-export interface DeleteCompanyResponse {
-  deleteCompany: {
-    id: string
-    name: string
-    success: boolean
-  }
+export interface RemoveCompanyResponse {
+  removeCompany: Company
 }

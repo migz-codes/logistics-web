@@ -277,9 +277,17 @@
     "title": "Create New Warehouse",
     "subtitle": "Fill in all required information to add a new warehouse to the inventory.",
     "steps": {
+      "company": "Company",
       "basicInfo": "Basic Info",
       "address": "Address",
       "review": "Review"
+    },
+    "companySelect": {
+      "title": "Select Company",
+      "subtitle": "Choose the company that will own this warehouse or create a new one.",
+      "create": "Create New",
+      "createFirst": "Create your first company",
+      "noCompanies": "You don't have any companies yet."
     },
     "addressStep": {
       "description": "Provide the complete location of the warehouse"
@@ -322,6 +330,7 @@
       "address": "Address",
       "addressPlaceholder": "Full address including street and number",
       "nextButton": "Next",
+      "backButton": "Back",
       "previousButton": "Previous"
     },
     "review": {
@@ -333,6 +342,10 @@
       "confirmDescription": "By submitting, I agree that the warehouse details are correct and can be published on the platform.",
       "submitButton": "Create Warehouse",
       "submitting": "Creating..."
+    },
+    "toast": {
+      "createSuccess": "Warehouse created successfully!",
+      "createError": "Failed to create warehouse. Please try again."
     }
   },
   "property": {
@@ -410,7 +423,7 @@
     "updateError": "Failed to update company",
     "deleted": "Company deleted successfully",
     "deleteError": "Failed to delete company",
-    "deleteConfirm": "Are you sure you want to delete {name}?",
+    "deleteConfirm": "Are you sure you want to delete \"{name}\"? This action cannot be undone and all related data will be permanently removed.",
     "deleteTitle": "Delete Company",
     "delete": "Delete",
     "deleting": "Deleting...",
@@ -443,7 +456,7 @@
     "listSubtitle": "View and manage all companies from all users",
     "deleted": "Company deleted successfully",
     "deleteError": "Failed to delete company",
-    "deleteConfirm": "Are you sure you want to delete {name}?",
+    "deleteConfirm": "Are you sure you want to delete \"{name}\"? This action cannot be undone and all related data will be permanently removed.",
     "deleteTitle": "Delete Company",
     "delete": "Delete",
     "deleting": "Deleting...",

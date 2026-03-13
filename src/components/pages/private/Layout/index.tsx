@@ -21,7 +21,10 @@ export function AdminLayout({ children }: AdminLayoutProps) {
         <AdminSidebar />
 
         <main
-          className={tw('flex-1 p-8 transition-all duration-300', isCollapsed ? 'ml-16' : 'ml-64')}
+          className={tw(
+            'flex-1 p-8 transition-all duration-300 w-full flex',
+            isCollapsed ? 'ml-16' : 'ml-64'
+          )}
         >
           <PageTransition pageKey={pathname}>{children}</PageTransition>
         </main>

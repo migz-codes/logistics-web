@@ -11,15 +11,15 @@ export type {
   Company,
   CreateCompanyInput,
   CreateCompanyResponse,
-  DeleteCompanyResponse,
   GetCompaniesResponse,
+  RemoveCompanyResponse,
   UpdateCompanyInput,
   UpdateCompanyResponse
 } from './mutations/company'
 export {
   CREATE_COMPANY_MUTATION,
-  DELETE_COMPANY_MUTATION,
   GET_COMPANIES_QUERY,
+  REMOVE_COMPANY_MUTATION,
   UPDATE_COMPANY_MUTATION
 } from './mutations/company'
 export type {

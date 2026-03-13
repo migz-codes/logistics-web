@@ -13,10 +13,10 @@ import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
 import {
   type Company,
-  DELETE_COMPANY_MUTATION,
-  type DeleteCompanyResponse,
   GET_ALL_COMPANIES_QUERY,
-  type GetAllCompaniesResponse
+  type GetAllCompaniesResponse,
+  REMOVE_COMPANY_MUTATION,
+  type RemoveCompanyResponse
 } from '@/lib/apollo/mutations/company'
 import { userAtoms } from '@/lib/store/user'
 import { toast } from '@/lib/toast'
@@ -32,8 +32,8 @@ export function AllCompaniesPage() {
     skip: !isAdmin
   })
 
-  const [deleteCompany, { loading: deleting }] =
-    useMutation<DeleteCompanyResponse>(DELETE_COMPANY_MUTATION)
+  const [removeCompany, { loading: deleting }] =
+    useMutation<RemoveCompanyResponse>(REMOVE_COMPANY_MUTATION)
 
   useEffect(() => {
     if (!isAdmin) {
@@ -45,7 +45,7 @@ export function AllCompaniesPage() {
     if (!deleteTarget) return
 
     try {
-      await deleteCompany({ variables: { id: deleteTarget.id } })
+      await removeCompany({ variables: { id: deleteTarget.id } })
       toast.success(t('deleted'))
       setDeleteTarget(null)
       refetch()
@@ -168,30 +168,28 @@ export function AllCompaniesPage() {
 
       <Dialog.Root open={!!deleteTarget} onOpenChange={(open) => !open && setDeleteTarget(null)}>
         <Dialog.Content maxWidth='400px'>
-          <div className='flex items-center gap-2 h-[48px] mb-6'>
+          <div className='flex items-center gap-3 mb-4'>
             <div className='w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center'>
               <Icon name='delete' className='text-red-500' size='md' />
             </div>
 
-            <div className='flex flex-col justify-center h-[48px]'>
-              <Dialog.Title className='text-sm font-bold text-neutral-600 h-[24px] flex !m-[0px] !p-[0px]'>
-                {t('deleteTitle')}
-              </Dialog.Title>
-
-              <Dialog.Description className='text-xs text-neutral-600/60 h-[24px] flex !m-[0px] !p-[0px]'>
-                {t('deleteConfirm', { name: deleteTarget?.name ?? '' })}
-              </Dialog.Description>
-            </div>
+            <Dialog.Title className='text-lg font-bold text-neutral-600 !m-0'>
+              {t('deleteTitle')}
+            </Dialog.Title>
           </div>
 
-          <div className='flex items-center justify-end gap-3 pt-4 border-t border-neutral-200'>
+          <Dialog.Description className='text-sm text-neutral-600/60 py-4'>
+            {t('deleteConfirm', { name: deleteTarget?.name ?? '' })}
+          </Dialog.Description>
+
+          <div className='flex items-center justify-end gap-3 pt-4'>
             <Dialog.Close>
               <Button type='button' variant='secondary'>
                 {t('cancel')}
               </Button>
             </Dialog.Close>
 
-            <Button variant='primary' onClick={handleDeleteCompany} disabled={deleting}>
+            <Button variant='danger' onClick={handleDeleteCompany} disabled={deleting}>
               {deleting ? (
                 <>
                   <Icon name='progress_activity' className='animate-spin' size='sm' />

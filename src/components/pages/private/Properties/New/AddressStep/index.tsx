@@ -8,8 +8,6 @@ import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Field, type FieldProps } from '@/components/shared/ui/Field'
 import { Icon } from '@/components/shared/ui/Icon'
-import { Label } from '@/components/shared/ui/Label'
-import { Textarea } from '@/components/shared/ui/Textarea'
 import { tw } from '@/utils/tailwind'
 import type { IWarehouseFormData } from '../index'
 
@@ -86,14 +84,14 @@ export function AddressStep({ formData, onNext, onBack }: AddressStepProps) {
           />
         </div>
 
-        <Label label={t('form.address')} error={errors.address?.message}>
-          <Textarea
-            rows={2}
-            placeholder='e.g., Avenida Paulista, 1000'
-            {...register('address')}
-            error={errors.address?.message}
-          />
-        </Label>
+        <Field
+          name='address'
+          register={register}
+          label={t('form.address')}
+          placeholder={t('form.addressPlaceholder')}
+          errorMessage={errors.address?.message}
+          tws={fieldTw(!!errors.address?.message)}
+        />
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
           <Field

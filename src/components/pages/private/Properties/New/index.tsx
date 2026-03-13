@@ -5,8 +5,10 @@ import { useMutation } from '@apollo/client/react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { toast } from '@/lib/toast'
 import { AddressStep } from './AddressStep'
 import { BasicInfoStep } from './BasicInfoStep'
+import { CompanySelectStep } from './CompanySelectStep'
 import { FormStepper } from './FormStepper'
 import { ReviewStep } from './ReviewStep'
 
@@ -20,6 +22,7 @@ const CREATE_WAREHOUSE = gql`
 `
 
 export interface IWarehouseFormData {
+  company_id: string
   title: string
   description: string
   category: string
@@ -34,6 +37,7 @@ export interface IWarehouseFormData {
 }
 
 const initialFormData: IWarehouseFormData = {
+  company_id: '',
   title: '',
   description: '',
   category: '',
@@ -52,6 +56,7 @@ export function NewProperty() {
   const router = useRouter()
 
   const steps = [
+    { label: t('steps.company'), icon: 'business' },
     { label: t('steps.basicInfo'), icon: 'info' },
     { label: t('steps.address'), icon: 'location_on' },
     { label: t('steps.review'), icon: 'check_circle' }
@@ -62,12 +67,19 @@ export function NewProperty() {
 
   const [createWarehouse, { loading }] = useMutation(CREATE_WAREHOUSE, {
     onCompleted: () => {
-      router.push('/admin/inventory')
+      toast.success(t('toast.createSuccess'))
+      router.push('/admin/properties')
     },
     onError: (error) => {
+      toast.error(t('toast.createError'))
       console.error('Error creating warehouse:', error)
     }
   })
+
+  const handleCompanySelect = (companyId: string) => {
+    setFormData((prev) => ({ ...prev, company_id: companyId }))
+    setCurrentStep(1)
+  }
 
   const handleNext = (data: Partial<IWarehouseFormData>) => {
     setFormData((prev) => ({ ...prev, ...data }))
@@ -86,6 +98,7 @@ export function NewProperty() {
     await createWarehouse({
       variables: {
         input: {
+          company_id: formData.company_id,
           title: formData.title,
           description: formData.description,
           category: formData.category,
@@ -105,12 +118,17 @@ export function NewProperty() {
   const renderStep = () => {
     switch (currentStep) {
       case 0:
-        return <BasicInfoStep formData={formData} onNext={handleNext} />
+        return (
+          <CompanySelectStep selectedCompanyId={formData.company_id} onNext={handleCompanySelect} />
+        )
 
       case 1:
-        return <AddressStep formData={formData} onNext={handleNext} onBack={handlePrevious} />
+        return <BasicInfoStep formData={formData} onNext={handleNext} onBack={handlePrevious} />
 
       case 2:
+        return <AddressStep formData={formData} onNext={handleNext} onBack={handlePrevious} />
+
+      case 3:
         return (
           <ReviewStep
             formData={formData}
@@ -123,7 +141,7 @@ export function NewProperty() {
   }
 
   return (
-    <main className='flex-1 p-8'>
+    <main className='flex-1 p-8 min-w-0 flex flex-col'>
       <header className='mb-10'>
         <h1 className='text-4xl font-extrabold text-neutral-600 flex items-center gap-3'>
           <span className='text-secondary-500'>{`//`}</span>
@@ -135,7 +153,7 @@ export function NewProperty() {
 
       <FormStepper steps={steps} currentStep={currentStep} />
 
-      <div className='mt-10'>{renderStep()}</div>
+      <div className='mt-10 max-w-full'>{renderStep()}</div>
     </main>
   )
 }
