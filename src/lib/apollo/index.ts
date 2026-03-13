@@ -8,6 +8,21 @@ export type {
 } from './mutations/auth'
 export { LOGIN_MUTATION, LOGOUT_MUTATION, REGISTER_MUTATION } from './mutations/auth'
 export type {
+  Company,
+  CreateCompanyInput,
+  CreateCompanyResponse,
+  DeleteCompanyResponse,
+  GetCompaniesResponse,
+  UpdateCompanyInput,
+  UpdateCompanyResponse
+} from './mutations/company'
+export {
+  CREATE_COMPANY_MUTATION,
+  DELETE_COMPANY_MUTATION,
+  GET_COMPANIES_QUERY,
+  UPDATE_COMPANY_MUTATION
+} from './mutations/company'
+export type {
   GetAllUsersResponse,
   GetCurrentUserResponse,
   GetMeResponse,

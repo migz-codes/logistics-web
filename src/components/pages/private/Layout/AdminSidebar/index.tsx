@@ -17,7 +17,7 @@ export function AdminSidebar() {
   const t = useTranslations('navigation')
   const pathname = usePathname()
   const setUser = useSetAtom(userAtoms.user)
-  const isAdmin = useAtomValue(userAtoms.isAdmin)
+  const userRole = useAtomValue(userAtoms.userRole)
   const { data } = useQuery<GetMeResponse>(GET_ME_QUERY)
   const { isCollapsed, setIsCollapsed } = useSidebarContext()
 
@@ -44,13 +44,25 @@ export function AdminSidebar() {
       href: '/admin/properties',
       active: pathname.includes('/admin/properties')
     },
-    ...(isAdmin
+    {
+      icon: 'business',
+      label: t('companies'),
+      href: '/admin/companies',
+      active: pathname.includes('/admin/companies')
+    },
+    ...(userRole === 'ADMIN'
       ? [
           {
             icon: 'group',
             label: t('allUsers'),
             href: '/admin/users',
             active: pathname.includes('/admin/users')
+          },
+          {
+            icon: 'domain',
+            label: t('allCompanies'),
+            href: '/admin/all-companies',
+            active: pathname.includes('/admin/all-companies')
           }
         ]
       : []),

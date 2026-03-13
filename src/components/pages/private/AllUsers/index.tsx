@@ -21,7 +21,8 @@ import { toast } from '@/lib/toast'
 export function AllUsersPage() {
   const t = useTranslations('users')
   const router = useRouter()
-  const isAdmin = useAtomValue(userAtoms.isAdmin)
+  const userRole = useAtomValue(userAtoms.userRole)
+  const isAdmin = userRole === 'ADMIN'
   const currentUserId = useAtomValue(userAtoms.user)?.id
 
   const { data, loading, error, refetch } = useQuery<GetAllUsersResponse>(GET_ALL_USERS_QUERY, {

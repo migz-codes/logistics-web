@@ -1,6 +1,8 @@
 /** biome-ignore-all lint/style/noHeadElement: main root */
 /** biome-ignore-all lint/suspicious/useGoogleFontDisplay: main root */
+import '@radix-ui/themes/styles.css'
 import '@/styles/globals.css'
+import { Theme } from '@radix-ui/themes'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import { ApolloProviderWrapper } from '@/lib/apollo'
 import { ToastProvider } from '@/lib/toast'
@@ -24,7 +26,9 @@ export const AppLayout = ({ children }: Readonly<IAppLayoutProps>) => (
 
     <body className={`${plusJakarta.className} antialiased bg-surface-200 text-neutral-600`}>
       <ApolloProviderWrapper>
-        <ToastProvider>{children}</ToastProvider>
+        <Theme>
+          <ToastProvider>{children}</ToastProvider>
+        </Theme>
       </ApolloProviderWrapper>
     </body>
   </html>

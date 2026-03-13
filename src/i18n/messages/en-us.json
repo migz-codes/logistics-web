@@ -29,6 +29,8 @@
     "settings": "Settings",
     "account": "Account",
     "allUsers": "All Users",
+    "companies": "Companies",
+    "allCompanies": "All Companies",
     "partnerHub": "Partner Hub",
     "logout": "Logout",
     "backToSite": "Back to Site",
@@ -393,6 +395,66 @@
     "roles": {
       "admin": "Admin",
       "investor_admin": "Investor Admin"
+    }
+  },
+  "companies": {
+    "title": "Companies",
+    "subtitle": "Manage your companies",
+    "listTitle": "Company List",
+    "listSubtitle": "View and manage your company information",
+    "create": "Create Company",
+    "createFirst": "Create your first company",
+    "created": "Company created successfully",
+    "createError": "Failed to create company",
+    "updated": "Company updated successfully",
+    "updateError": "Failed to update company",
+    "deleted": "Company deleted successfully",
+    "deleteError": "Failed to delete company",
+    "deleteConfirm": "Are you sure you want to delete {name}?",
+    "deleteTitle": "Delete Company",
+    "delete": "Delete",
+    "deleting": "Deleting...",
+    "noCompanies": "No companies found",
+    "editTitle": "Edit Company",
+    "editSubtitle": "Update company information",
+    "createTitle": "Create Company",
+    "createSubtitle": "Add a new company to your portfolio",
+    "table": {
+      "name": "Name",
+      "logo": "Logo",
+      "created": "Created",
+      "actions": "Actions"
+    },
+    "form": {
+      "name": "Company Name",
+      "namePlaceholder": "Enter company name",
+      "logo": "Logo URL",
+      "logoPlaceholder": "Enter logo URL (optional)",
+      "cancel": "Cancel",
+      "create": "Create",
+      "update": "Update",
+      "saving": "Saving..."
+    }
+  },
+  "allCompanies": {
+    "title": "All Companies",
+    "subtitle": "View all companies in the system",
+    "listTitle": "All Companies List",
+    "listSubtitle": "View and manage all companies from all users",
+    "deleted": "Company deleted successfully",
+    "deleteError": "Failed to delete company",
+    "deleteConfirm": "Are you sure you want to delete {name}?",
+    "deleteTitle": "Delete Company",
+    "delete": "Delete",
+    "deleting": "Deleting...",
+    "cancel": "Cancel",
+    "noCompanies": "No companies found",
+    "table": {
+      "name": "Name",
+      "logo": "Logo",
+      "owner": "Owner",
+      "created": "Created",
+      "actions": "Actions"
     }
   },
   "account": {
