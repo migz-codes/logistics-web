@@ -1,15 +1,14 @@
 'use client'
 
 import { useQuery } from '@apollo/client/react'
-import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
-import { CompanyForm } from '@/components/pages/private/Companies/CompanyForm'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
 import { GET_COMPANIES_QUERY, type GetCompaniesResponse } from '@/lib/apollo/mutations/company'
-import type { Company } from '@/types/api'
+import { Content } from './Content'
+import { CompanyStepProvider } from './context'
 
 interface CompanySelectStepProps {
   selectedCompanyId: string
@@ -23,6 +22,12 @@ export function CompanySelectStep({ selectedCompanyId, onNext }: CompanySelectSt
   const { data, loading, refetch } = useQuery<GetCompaniesResponse>(GET_COMPANIES_QUERY)
 
   const companies = data?.getMyCompanies || []
+
+  useEffect(() => {
+    if (!selectedCompanyId && companies.length > 0 && !loading) {
+      setSelected(companies[0].id)
+    }
+  }, [companies, loading, selectedCompanyId])
 
   const handleSelect = (companyId: string) => {
     setSelected(companyId)
@@ -47,88 +52,15 @@ export function CompanySelectStep({ selectedCompanyId, onNext }: CompanySelectSt
 
       <p className='text-neutral-600/60 mb-8'>{t('companySelect.subtitle')}</p>
 
-      {loading ? (
-        <div className='flex items-center justify-center py-12'>
-          <Icon name='progress_activity' className='text-primary-500 animate-spin' size='xl' />
-        </div>
-      ) : (
-        <div className='flex flex-row flex-wrap gap-4'>
-          {companies.map((company: Company) => (
-            <button
-              key={company.id}
-              type='button'
-              onClick={() => handleSelect(company.id)}
-              className={`
-                p-4 rounded-xl border-2 transition-all text-left w-[216px]
-                ${
-                  selected === company.id
-                    ? 'border-primary-500 bg-primary-500/5'
-                    : 'border-neutral-200 hover:border-primary-500/50 hover:bg-neutral-50'
-                }
-              `}
-            >
-              <div className='flex flex-col items-center gap-3'>
-                {company.logo ? (
-                  <div className='rounded-lg w-[180px] h-[180px] overflow-hidden border'>
-                    <Image
-                      src={company.logo}
-                      alt={company.name}
-                      width={180}
-                      height={180}
-                      className='object-cover w-[180px] h-[180px] overflow-hidden'
-                      unoptimized
-                    />
-                  </div>
-                ) : (
-                  <div className='w-[100px] h-[100px] bg-primary-500/10 rounded-lg flex items-center justify-center'>
-                    <Icon name='business' className='text-primary-500' size='xl' />
-                  </div>
-                )}
-
-                <div className='flex-1 min-w-0 text-center w-full'>
-                  <h3 className='font-semibold text-neutral-600 truncate'>{company.name}</h3>
-                  <p className='text-xs text-neutral-600/60'>
-                    {new Date(company.created_at).toLocaleDateString()}
-                  </p>
-                </div>
-
-                {selected === company.id && (
-                  <Icon name='check_circle' className='text-primary-500' size='md' />
-                )}
-              </div>
-            </button>
-          ))}
-
-          <CompanyForm
-            onSuccess={handleCompanyCreated}
-            trigger={
-              <button
-                type='button'
-                className='p-4 rounded-xl border-2 border-dashed border-neutral-300 hover:border-primary-500 hover:bg-primary-500/5 transition-all flex items-center justify-center gap-3 min-h-[80px] w-[216px]'
-              >
-                <Icon name='add' className='text-primary-500' size='md' />
-                <span className='font-medium text-neutral-600'>{t('companySelect.create')}</span>
-              </button>
-            }
-          />
-        </div>
-      )}
-
-      {companies.length === 0 && !loading && (
-        <div className='text-center py-8'>
-          <Icon name='business' className='text-neutral-400 mx-auto mb-3' size='xl' />
-          <p className='text-neutral-500 mb-4'>{t('companySelect.noCompanies')}</p>
-          <CompanyForm
-            onSuccess={handleCompanyCreated}
-            trigger={
-              <Button variant='primary'>
-                <Icon name='add' size='sm' />
-                {t('companySelect.createFirst')}
-              </Button>
-            }
-          />
-        </div>
-      )}
+      <CompanyStepProvider
+        loading={loading}
+        companies={companies}
+        selected={selected}
+        handleSelect={handleSelect}
+        handleCompanyCreated={handleCompanyCreated}
+      >
+        <Content />
+      </CompanyStepProvider>
 
       <div className='flex justify-end pt-6 border-t border-primary-500/5 mt-6'>
         <Button
