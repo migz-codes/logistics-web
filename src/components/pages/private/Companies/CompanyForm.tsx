@@ -120,7 +120,7 @@ export function CompanyForm({ company, onSuccess, trigger }: CompanyFormProps) {
     <Dialog.Root open={open} onOpenChange={handleOpenChange}>
       <Dialog.Trigger>{trigger}</Dialog.Trigger>
 
-      <Dialog.Content maxWidth='450px'>
+      <Dialog.Content maxWidth='500px'>
         <div className='flex items-center gap-2 h-[48px] mb-6'>
           <div className='w-12 h-12 bg-primary-500/10 rounded-lg flex items-center justify-center'>
             <Icon name='business' className='text-primary-500' size='md' />
@@ -138,35 +138,55 @@ export function CompanyForm({ company, onSuccess, trigger }: CompanyFormProps) {
         </div>
 
         <form onSubmit={handleSubmit(onFormSubmit)} className='space-y-6'>
-          <Field
-            name='name'
-            register={registerField}
-            label={t('form.name')}
-            placeholder={t('form.namePlaceholder')}
-            errorMessage={errors.name?.message}
-            required
-          />
-
           <div className='space-y-2'>
             <span className='block text-xs font-black text-neutral-600/50 uppercase tracking-widest'>
               {t('form.logo')}
             </span>
 
-            <div className='flex items-center gap-4'>
-              <div className='w-16 h-16 bg-surface-200 rounded-xl flex items-center justify-center overflow-hidden'>
-                {logoUrl ? (
+            <button
+              type='button'
+              className='relative w-full aspect-square max-w-[256px] bg-surface-200 rounded-xl flex items-center justify-center overflow-hidden group cursor-pointer mx-auto'
+              onClick={() => fileInputRef.current?.click()}
+              disabled={uploading}
+            >
+              {logoUrl ? (
+                <>
                   <Image
                     src={logoUrl}
                     alt='Logo'
-                    width={64}
-                    height={64}
-                    className='w-full h-full object-cover'
+                    width={256}
+                    height={256}
+                    className='w-[256px] h-full object-cover rounded-xl'
                     unoptimized
                   />
-                ) : (
-                  <Icon name='image' className='text-neutral-400' size='lg' />
-                )}
-              </div>
+                  <div className='absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center'>
+                    {uploading ? (
+                      <Icon
+                        name='progress_activity'
+                        className='animate-spin text-white'
+                        size='lg'
+                      />
+                    ) : (
+                      <Icon name='upload' className='text-white' size='lg' />
+                    )}
+                  </div>
+                </>
+              ) : (
+                <div className='flex flex-col items-center justify-center gap-2'>
+                  {uploading ? (
+                    <Icon
+                      name='progress_activity'
+                      className='animate-spin text-neutral-400'
+                      size='xl'
+                    />
+                  ) : (
+                    <Icon name='upload' className='text-neutral-400' size='xl' />
+                  )}
+                  <span className='text-xs text-neutral-400 font-medium'>
+                    {uploading ? t('form.uploading') : t('form.uploadLogo')}
+                  </span>
+                </div>
+              )}
 
               <input
                 ref={fileInputRef}
@@ -176,33 +196,28 @@ export function CompanyForm({ company, onSuccess, trigger }: CompanyFormProps) {
                 className='hidden'
               />
 
-              <Button
-                type='button'
-                variant='outline'
-                size='sm'
-                onClick={() => fileInputRef.current?.click()}
-                disabled={uploading}
-              >
-                {uploading ? (
-                  <>
-                    <Icon name='progress_activity' className='animate-spin' size='sm' />
-                    {t('form.uploading')}
-                  </>
-                ) : (
-                  <>
-                    <Icon name='upload' size='sm' />
-                    {t('form.uploadLogo')}
-                  </>
-                )}
-              </Button>
-
               {logoUrl && (
-                <Button type='button' variant='ghost' size='sm' onClick={() => setLogoUrl('')}>
+                <Button
+                  type='button'
+                  variant='ghost'
+                  size='sm'
+                  onClick={() => setLogoUrl('')}
+                  className='absolute top-2 right-2 bg-white/90 hover:bg-white rounded-full p-1'
+                >
                   <Icon name='close' size='sm' />
                 </Button>
               )}
-            </div>
+            </button>
           </div>
+
+          <Field
+            name='name'
+            register={registerField}
+            label={t('form.name')}
+            placeholder={t('form.namePlaceholder')}
+            errorMessage={errors.name?.message}
+            required
+          />
 
           <div className='flex items-center justify-end gap-3 pt-6 border-t border-neutral-200'>
             <Dialog.Close>
