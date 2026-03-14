@@ -100,8 +100,9 @@ export function AllUsersPage() {
                   </th>
                 </tr>
               </thead>
+
               <tbody>
-                {data && data.getAllUsers && data.getAllUsers.length > 0 ? (
+                {data?.getAllUsers && data.getAllUsers.length > 0 ? (
                   data.getAllUsers.map((user) => (
                     <tr key={user.id} className='border-b border-neutral-100 hover:bg-neutral-50'>
                       <td className='py-3 px-4'>
@@ -112,7 +113,9 @@ export function AllUsersPage() {
                           <span className='text-sm font-medium text-neutral-600'>{user.name}</span>
                         </div>
                       </td>
+
                       <td className='py-3 px-4 text-sm text-neutral-600/80'>{user.email}</td>
+
                       <td className='py-3 px-4'>
                         <span
                           className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
