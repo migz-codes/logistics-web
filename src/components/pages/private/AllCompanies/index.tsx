@@ -124,6 +124,7 @@ export function AllCompaniesPage() {
                             width={32}
                             height={32}
                             className='rounded object-cover'
+                            unoptimized
                           />
                         ) : (
                           <div className='w-8 h-8 bg-neutral-200 rounded flex items-center justify-center'>

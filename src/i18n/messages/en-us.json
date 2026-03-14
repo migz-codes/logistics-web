@@ -441,8 +441,11 @@
     "form": {
       "name": "Company Name",
       "namePlaceholder": "Enter company name",
-      "logo": "Logo URL",
+      "logo": "Logo",
       "logoPlaceholder": "Enter logo URL (optional)",
+      "uploadLogo": "Upload",
+      "uploading": "Uploading...",
+      "uploadError": "Failed to upload image",
       "cancel": "Cancel",
       "create": "Create",
       "update": "Update",

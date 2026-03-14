@@ -441,8 +441,11 @@
     "form": {
       "name": "Nome da Empresa",
       "namePlaceholder": "Digite o nome da empresa",
-      "logo": "URL do Logo",
+      "logo": "Logo",
       "logoPlaceholder": "Digite a URL do logo (opcional)",
+      "uploadLogo": "Enviar",
+      "uploading": "Enviando...",
+      "uploadError": "Falha ao enviar imagem",
       "cancel": "Cancelar",
       "create": "Criar",
       "update": "Atualizar",

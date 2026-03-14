@@ -3,8 +3,9 @@
 import { useMutation } from '@apollo/client/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Dialog } from '@radix-ui/themes'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { Button } from '@/components/shared/ui/Button'
@@ -35,6 +36,9 @@ interface CompanyFormProps {
 export function CompanyForm({ company, onSuccess, trigger }: CompanyFormProps) {
   const t = useTranslations('companies')
   const [open, setOpen] = useState(false)
+  const [logoUrl, setLogoUrl] = useState<string>(company?.logo || '')
+  const [uploading, setUploading] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
   const isEditing = !!company
 
   const [createCompany] = useMutation<CreateCompanyResponse>(CREATE_COMPANY_MUTATION)
@@ -54,11 +58,47 @@ export function CompanyForm({ company, onSuccess, trigger }: CompanyFormProps) {
     setOpen(isOpen)
     if (!isOpen) {
       reset(company ? { name: company.name, logo: company.logo || '' } : { name: '', logo: '' })
+      setLogoUrl(company?.logo || '')
+    }
+  }
+
+  const getAccessToken = () => {
+    return document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('accessToken='))
+      ?.split('=')[1]
+  }
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    setUploading(true)
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
+
+      const token = getAccessToken()
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
+      const response = await fetch(`${apiUrl}/upload`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData
+      })
+
+      if (!response.ok) throw new Error('Upload failed')
+
+      const data = await response.json()
+      setLogoUrl(data.url)
+    } catch {
+      toast.error(t('form.uploadError'))
+    } finally {
+      setUploading(false)
     }
   }
 
   const onFormSubmit = async (data: CompanyFormData) => {
-    const submitData = { name: data.name, logo: data.logo || undefined }
+    const submitData = { name: data.name, logo: logoUrl || undefined }
 
     try {
       if (isEditing && company) {
@@ -107,13 +147,62 @@ export function CompanyForm({ company, onSuccess, trigger }: CompanyFormProps) {
             required
           />
 
-          <Field
-            name='logo'
-            register={registerField}
-            label={t('form.logo')}
-            placeholder={t('form.logoPlaceholder')}
-            errorMessage={errors.logo?.message}
-          />
+          <div className='space-y-2'>
+            <span className='block text-xs font-black text-neutral-600/50 uppercase tracking-widest'>
+              {t('form.logo')}
+            </span>
+
+            <div className='flex items-center gap-4'>
+              <div className='w-16 h-16 bg-surface-200 rounded-xl flex items-center justify-center overflow-hidden'>
+                {logoUrl ? (
+                  <Image
+                    src={logoUrl}
+                    alt='Logo'
+                    width={64}
+                    height={64}
+                    className='w-full h-full object-cover'
+                    unoptimized
+                  />
+                ) : (
+                  <Icon name='image' className='text-neutral-400' size='lg' />
+                )}
+              </div>
+
+              <input
+                ref={fileInputRef}
+                type='file'
+                accept='image/*'
+                onChange={handleFileChange}
+                className='hidden'
+              />
+
+              <Button
+                type='button'
+                variant='outline'
+                size='sm'
+                onClick={() => fileInputRef.current?.click()}
+                disabled={uploading}
+              >
+                {uploading ? (
+                  <>
+                    <Icon name='progress_activity' className='animate-spin' size='sm' />
+                    {t('form.uploading')}
+                  </>
+                ) : (
+                  <>
+                    <Icon name='upload' size='sm' />
+                    {t('form.uploadLogo')}
+                  </>
+                )}
+              </Button>
+
+              {logoUrl && (
+                <Button type='button' variant='ghost' size='sm' onClick={() => setLogoUrl('')}>
+                  <Icon name='close' size='sm' />
+                </Button>
+              )}
+            </div>
+          </div>
 
           <div className='flex items-center justify-end gap-3 pt-6 border-t border-neutral-200'>
             <Dialog.Close>

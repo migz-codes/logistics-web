@@ -78,6 +78,7 @@ export function CompanySelectStep({ selectedCompanyId, onNext }: CompanySelectSt
                     width={48}
                     height={48}
                     className='rounded-lg object-cover'
+                    unoptimized
                   />
                 ) : (
                   <div className='w-12 h-12 bg-primary-500/10 rounded-lg flex items-center justify-center'>
