@@ -21,20 +21,10 @@ export function InventoryFilters() {
     { value: 'GO', label: t('filters.midwest') }
   ]
 
-  const categoryOptions = [
-    { value: '', label: t('filters.allCategories') },
-    { value: 'warehouse', label: t('filters.warehouse') },
-    { value: 'cold-storage', label: t('filters.coldStorage') },
-    { value: 'cross-dock', label: t('filters.crossDock') },
-    { value: 'distribution', label: t('filters.distribution') }
-  ]
-
   const statusOptions = [
     { value: '', label: t('filters.allStatus') },
-    { value: 'available', label: t('filters.available') },
-    { value: 'leased', label: t('filters.leased') },
-    { value: 'under-construction', label: t('filters.underConstruction') },
-    { value: 'maintenance', label: t('filters.maintenance') }
+    { value: 'AVAILABLE', label: t('filters.available') },
+    { value: 'UNAVAILABLE', label: t('filters.unavailable') }
   ]
 
   const handleAddClick = () => {
@@ -47,10 +37,6 @@ export function InventoryFilters() {
 
   const handleRegionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFilters((prev) => ({ ...prev, region: e.target.value }))
-  }
-
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setFilters((prev) => ({ ...prev, category: e.target.value }))
   }
 
   const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -79,12 +65,6 @@ export function InventoryFilters() {
           options={regionOptions}
           value={filters.region}
           onChange={handleRegionChange}
-          className='text-sm'
-        />
-        <Select
-          options={categoryOptions}
-          value={filters.category}
-          onChange={handleCategoryChange}
           className='text-sm'
         />
         <Select

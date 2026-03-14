@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client/react'
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 import { usePagination } from '@/hooks/usePagination'
-import type { IWarehouse } from '@/types/property.types'
+import { Warehouse } from '@/types/api'
 import { DashboardHeader } from '../AdminDashboard/DashboardHeader'
 import { type IFilters, PropertiesProvider } from './context'
 import { InventoryFilters } from './Filters'
@@ -16,15 +16,17 @@ const GET_WAREHOUSES = gql`
     warehouses(filters: $filters) {
       id
       accountable_id
+      company_id
       title
       description
       city
       state
-      category
-      area
+      area_total
+      images
       status
       price
       address
+      address_complement
       zip_code
       country
       created_at
@@ -35,14 +37,13 @@ const GET_WAREHOUSES = gql`
 `
 
 interface WarehousesQueryResult {
-  warehouses: IWarehouse[]
+  warehouses: Warehouse[]
   warehousesCount: number
 }
 
 interface WarehouseFiltersInput {
   search?: string
   region?: string
-  category?: string
   status?: string
   skip?: number
   take?: number
@@ -55,7 +56,6 @@ export function Properties() {
   const [filters, setFilters] = useState<IFilters>({
     search: '',
     region: '',
-    category: '',
     status: ''
   })
 
@@ -69,7 +69,6 @@ export function Properties() {
 
     if (filters.search) result.search = filters.search
     if (filters.region) result.region = filters.region
-    if (filters.category) result.category = filters.category
     if (filters.status) result.status = filters.status
 
     return result

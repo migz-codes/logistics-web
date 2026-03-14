@@ -137,7 +137,10 @@
     },
     "properties": {
       "featured": "Featured",
-      "ourExclusive": ["Our Exclusive", "Properties"],
+      "ourExclusive": [
+        "Our Exclusive",
+        "Properties"
+      ],
       "properties": "Properties",
       "viewAll": "View All",
       "beds": "Beds",
@@ -217,21 +220,14 @@
     "loading": "Loading warehouses...",
     "filters": {
       "allRegions": "All Regions",
-      "allCategories": "All Categories",
       "allStatus": "All Status",
       "southeast": "Southeast",
       "south": "South",
       "northeast": "Northeast",
       "north": "North",
       "midwest": "Midwest",
-      "warehouse": "Warehouse",
-      "coldStorage": "Cold Storage",
-      "crossDock": "Cross-Dock",
-      "distribution": "Distribution Center",
       "available": "Available",
-      "leased": "Leased",
-      "underConstruction": "Under Construction",
-      "maintenance": "Maintenance"
+      "unavailable": "Unavailable"
     },
     "table": {
       "warehouse": "Warehouse",
@@ -254,9 +250,7 @@
     },
     "status": {
       "available": "Available",
-      "leased": "Leased",
-      "underConstruction": "Under Construction",
-      "maintenance": "Maintenance"
+      "unavailable": "Unavailable"
     },
     "actions": {
       "view": "View",
@@ -277,6 +271,7 @@
       "company": "Company",
       "basicInfo": "Basic Info",
       "address": "Address",
+      "media": "Media",
       "review": "Review"
     },
     "companySelect": {
@@ -315,11 +310,11 @@
       "statusLabel": "Status",
       "status": {
         "available": "Available",
-        "leased": "Leased",
-        "underConstruction": "Under Construction",
-        "maintenance": "Maintenance"
+        "unavailable": "Unavailable"
       },
       "addressSection": "Address Information",
+      "addressComplement": "Address Complement",
+      "addressComplementPlaceholder": "Apt, Suite, Floor, etc.",
       "zipCode": "ZIP Code",
       "country": "Country",
       "state": "State",
@@ -328,7 +323,14 @@
       "addressPlaceholder": "Full address including street and number",
       "nextButton": "Next",
       "backButton": "Back",
-      "previousButton": "Previous"
+      "previousButton": "Previous",
+      "errors": {
+        "areaRequired": "Area is required",
+        "priceRequired": "Price is required",
+        "titleMin": "Title must be at least 3 characters",
+        "titleMax": "Title must be at most 100 characters",
+        "descriptionMax": "Description must be at most 500 characters"
+      }
     },
     "review": {
       "title": "Review & Submit",
@@ -342,7 +344,18 @@
     },
     "toast": {
       "createSuccess": "Warehouse created successfully!",
-      "createError": "Failed to create warehouse. Please try again."
+      "createError": "Failed to create warehouse. Please try again.",
+      "imageUploadError": "Failed to upload images. Please try again."
+    },
+    "media": {
+      "title": "Media & Gallery",
+      "uploadPhotos": "Upload Photos",
+      "dragDrop": "Drag & drop your photos here",
+      "fileTypes": "or click to browse files (JPG, PNG up to 10MB)",
+      "browseFiles": "Browse Files",
+      "uploadedPhotos": "Uploaded Photos",
+      "mainPhoto": "Main",
+      "firstPhotoMain": "The first photo will be used as the main image"
     }
   },
   "property": {

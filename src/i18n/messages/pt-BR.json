@@ -137,7 +137,10 @@
     },
     "properties": {
       "featured": "Destaques",
-      "ourExclusive": ["Nossos Imóveis", "Exclusivos"],
+      "ourExclusive": [
+        "Nossos Imóveis",
+        "Exclusivos"
+      ],
       "properties": "Imóveis",
       "viewAll": "Ver todos",
       "beds": "Quartos",
@@ -217,21 +220,14 @@
     "loading": "Carregando armazéns...",
     "filters": {
       "allRegions": "Todas as Regiões",
-      "allCategories": "Todas as Categorias",
       "allStatus": "Todos os Status",
       "southeast": "Sudeste",
       "south": "Sul",
       "northeast": "Nordeste",
       "north": "Norte",
       "midwest": "Centro-Oeste",
-      "warehouse": "Armazém",
-      "coldStorage": "Câmara Fria",
-      "crossDock": "Cross-Dock",
-      "distribution": "Centro de Distribuição",
       "available": "Disponível",
-      "leased": "Alugado",
-      "underConstruction": "Em Construção",
-      "maintenance": "Manutenção"
+      "unavailable": "Indisponível"
     },
     "table": {
       "warehouse": "Armazém",
@@ -254,9 +250,7 @@
     },
     "status": {
       "available": "Disponível",
-      "leased": "Alugado",
-      "underConstruction": "Em Construção",
-      "maintenance": "Manutenção"
+      "unavailable": "Indisponível"
     },
     "actions": {
       "view": "Visualizar",
@@ -277,6 +271,7 @@
       "company": "Empresa",
       "basicInfo": "Informações\nBásicas",
       "address": "Endereço",
+      "media": "Mídia",
       "review": "Revisar"
     },
     "companySelect": {
@@ -315,11 +310,11 @@
       "statusLabel": "Status",
       "status": {
         "available": "Disponível",
-        "leased": "Alugado",
-        "underConstruction": "Em Construção",
-        "maintenance": "Manutenção"
+        "unavailable": "Indisponível"
       },
       "addressSection": "Informações de Endereço",
+      "addressComplement": "Complemento",
+      "addressComplementPlaceholder": "Apto, Sala, Andar, etc.",
       "zipCode": "CEP",
       "country": "País",
       "state": "Estado",
@@ -328,7 +323,14 @@
       "addressPlaceholder": "Endereço completo incluindo rua e número",
       "nextButton": "Próximo",
       "backButton": "Voltar",
-      "previousButton": "Anterior"
+      "previousButton": "Anterior",
+      "errors": {
+        "areaRequired": "Área é obrigatória",
+        "priceRequired": "Preço é obrigatório",
+        "titleMin": "Título deve ter pelo menos 3 caracteres",
+        "titleMax": "Título deve ter no máximo 100 caracteres",
+        "descriptionMax": "Descrição deve ter no máximo 500 caracteres"
+      }
     },
     "review": {
       "title": "Revisar e Enviar",
@@ -342,7 +344,18 @@
     },
     "toast": {
       "createSuccess": "Armazém criado com sucesso!",
-      "createError": "Falha ao criar armazém. Tente novamente."
+      "createError": "Falha ao criar armazém. Tente novamente.",
+      "imageUploadError": "Falha ao enviar imagens. Tente novamente."
+    },
+    "media": {
+      "title": "Mídia e Galeria",
+      "uploadPhotos": "Enviar Fotos",
+      "dragDrop": "Arraste e solte suas fotos aqui",
+      "fileTypes": "ou clique para selecionar arquivos (JPG, PNG até 10MB)",
+      "browseFiles": "Selecionar Arquivos",
+      "uploadedPhotos": "Fotos Enviadas",
+      "mainPhoto": "Principal",
+      "firstPhotoMain": "A primeira foto será usada como imagem principal"
     }
   },
   "property": {

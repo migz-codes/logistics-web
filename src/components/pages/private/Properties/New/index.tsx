@@ -10,6 +10,7 @@ import { AddressStep } from './AddressStep'
 import { BasicInfoStep } from './BasicInfoStep'
 import { CompanySelectStep } from './CompanySelectStep'
 import { FormStepper } from './FormStepper'
+import { MediaStep } from './MediaStep'
 import { ReviewStep } from './ReviewStep'
 
 const CREATE_WAREHOUSE = gql`
@@ -21,34 +22,43 @@ const CREATE_WAREHOUSE = gql`
   }
 `
 
+interface CreateWarehouseResponse {
+  createWarehouse: {
+    id: string
+    title: string
+  } | null
+}
+
 export interface IWarehouseFormData {
   company_id: string
   title: string
   description: string
-  category: string
-  area: string
+  area_total: string
   price: string
-  status: string
+  status: 'AVAILABLE' | 'UNAVAILABLE'
   address: string
+  address_complement: string
   city: string
   state: string
   country: string
   zip_code: string
+  images: File[]
 }
 
 const initialFormData: IWarehouseFormData = {
   company_id: '',
   title: '',
   description: '',
-  category: '',
-  area: '',
+  area_total: '',
   price: '',
-  status: 'available',
+  status: 'AVAILABLE',
   address: '',
+  address_complement: '',
   city: '',
   state: '',
   country: '',
-  zip_code: ''
+  zip_code: '',
+  images: []
 }
 
 export function NewProperty() {
@@ -59,13 +69,14 @@ export function NewProperty() {
     { label: t('steps.company'), icon: 'business' },
     { label: t('steps.basicInfo'), icon: 'info' },
     { label: t('steps.address'), icon: 'location_on' },
+    { label: t('steps.media'), icon: 'image' },
     { label: t('steps.review'), icon: 'check_circle' }
   ]
 
   const [currentStep, setCurrentStep] = useState(0)
   const [formData, setFormData] = useState<IWarehouseFormData>(initialFormData)
 
-  const [createWarehouse, { loading }] = useMutation(CREATE_WAREHOUSE, {
+  const [createWarehouse, { loading }] = useMutation<CreateWarehouseResponse>(CREATE_WAREHOUSE, {
     onCompleted: () => {
       toast.success(t('toast.createSuccess'))
       router.push('/admin/properties')
@@ -94,18 +105,51 @@ export function NewProperty() {
     }
   }
 
+  const getAccessToken = () => {
+    if (typeof document === 'undefined') return undefined
+    return document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('accessToken='))
+      ?.split('=')[1]
+  }
+
+  const uploadImages = async (warehouseId: string, images: File[]) => {
+    if (images.length === 0) return
+
+    const formDataUpload = new FormData()
+    images.forEach((file) => {
+      formDataUpload.append('files', file)
+    })
+
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
+    const token = getAccessToken()
+    const response = await fetch(`${apiUrl}/warehouses/${warehouseId}/images`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      body: formDataUpload
+    })
+
+    if (!response.ok) {
+      throw new Error('Failed to upload images')
+    }
+
+    return response.json()
+  }
+
   const handleSubmit = async () => {
-    await createWarehouse({
+    const result = await createWarehouse({
       variables: {
         input: {
           company_id: formData.company_id,
           title: formData.title,
           description: formData.description,
-          category: formData.category,
-          area: formData.area,
+          area_total: parseFloat(formData.area_total) || 0,
           price: formData.price,
           status: formData.status,
           address: formData.address,
+          address_complement: formData.address_complement || null,
           city: formData.city,
           state: formData.state,
           country: formData.country,
@@ -113,6 +157,16 @@ export function NewProperty() {
         }
       }
     })
+
+    // Upload images after warehouse is created
+    if (result.data?.createWarehouse?.id && formData.images.length > 0) {
+      try {
+        await uploadImages(result.data.createWarehouse.id, formData.images)
+      } catch (error) {
+        console.error('Error uploading images:', error)
+        toast.error(t('toast.imageUploadError'))
+      }
+    }
   }
 
   const renderStep = () => {
@@ -129,6 +183,15 @@ export function NewProperty() {
         return <AddressStep formData={formData} onNext={handleNext} onBack={handlePrevious} />
 
       case 3:
+        return (
+          <MediaStep
+            images={formData.images}
+            onNext={(images) => handleNext({ images })}
+            onPrevious={handlePrevious}
+          />
+        )
+
+      case 4:
         return (
           <ReviewStep
             formData={formData}

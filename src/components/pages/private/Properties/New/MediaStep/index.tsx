@@ -1,101 +1,154 @@
 'use client'
 
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import { useCallback, useRef, useState } from 'react'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
 
 interface MediaStepProps {
-  onNext: () => void
+  images: File[]
+  onNext: (images: File[]) => void
   onPrevious: () => void
 }
 
-export function MediaStep({ onNext, onPrevious }: MediaStepProps) {
+export function MediaStep({ images: initialImages, onNext, onPrevious }: MediaStepProps) {
+  const t = useTranslations('warehouseEditor')
+  const [images, setImages] = useState<File[]>(initialImages)
+  const [previews, setPreviews] = useState<string[]>(() =>
+    initialImages.map((file) => URL.createObjectURL(file))
+  )
+  const [isDragging, setIsDragging] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleFiles = useCallback((files: FileList | null) => {
+    if (!files) return
+
+    const validFiles = Array.from(files).filter(
+      (file) => file.type.startsWith('image/') && file.size <= 10 * 1024 * 1024
+    )
+
+    if (validFiles.length === 0) return
+
+    const newPreviews = validFiles.map((file) => URL.createObjectURL(file))
+
+    setImages((prev) => [...prev, ...validFiles])
+    setPreviews((prev) => [...prev, ...newPreviews])
+  }, [])
+
+  const handleDrop = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault()
+      setIsDragging(false)
+      handleFiles(e.dataTransfer.files)
+    },
+    [handleFiles]
+  )
+
+  const handleDragOver = useCallback((e: React.DragEvent) => {
+    e.preventDefault()
+    setIsDragging(true)
+  }, [])
+
+  const handleDragLeave = useCallback((e: React.DragEvent) => {
+    e.preventDefault()
+    setIsDragging(false)
+  }, [])
+
+  const handleRemoveImage = (index: number) => {
+    URL.revokeObjectURL(previews[index])
+    setImages((prev) => prev.filter((_, i) => i !== index))
+    setPreviews((prev) => prev.filter((_, i) => i !== index))
+  }
+
+  const handleNext = () => {
+    onNext(images)
+  }
+
   return (
     <Card variant='elevated'>
       <h2 className='text-2xl font-bold text-neutral-600 mb-8 flex items-center gap-3'>
         <Icon name='image' className='text-primary-500' />
-        Media & Gallery
+        {t('media.title')}
       </h2>
 
       <div className='space-y-8'>
-        {/* Main Photo Upload */}
+        {/* Upload Area */}
         <div>
           <h3 className='text-sm font-bold text-primary-500 uppercase tracking-widest mb-4'>
-            Main Photo
+            {t('media.uploadPhotos')}
           </h3>
-          <div className='border-2 border-dashed border-primary-500/20 rounded-2xl p-12 text-center hover:border-primary-500/40 transition-colors cursor-pointer bg-surface-200'>
+          <div
+            role='button'
+            tabIndex={0}
+            onDrop={handleDrop}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            onClick={() => fileInputRef.current?.click()}
+            onKeyDown={(e) => e.key === 'Enter' && fileInputRef.current?.click()}
+            className={`border-2 border-dashed rounded-2xl p-12 text-center transition-colors cursor-pointer bg-surface-200 ${
+              isDragging
+                ? 'border-primary-500 bg-primary-500/5'
+                : 'border-primary-500/20 hover:border-primary-500/40'
+            }`}
+          >
+            <input
+              ref={fileInputRef}
+              type='file'
+              accept='image/*'
+              multiple
+              onChange={(e) => handleFiles(e.target.files)}
+              className='hidden'
+            />
             <div className='w-16 h-16 mx-auto bg-primary-500/10 rounded-2xl flex items-center justify-center mb-4'>
               <Icon name='cloud_upload' className='text-primary-500' size='xl' />
             </div>
-            <p className='font-bold text-neutral-600 mb-2'>Drag & drop your main photo here</p>
-            <p className='text-sm text-neutral-600/60 mb-4'>
-              or click to browse files (JPG, PNG up to 10MB)
-            </p>
-            <Button variant='outline' size='sm'>
-              Browse Files
+            <p className='font-bold text-neutral-600 mb-2'>{t('media.dragDrop')}</p>
+            <p className='text-sm text-neutral-600/60 mb-4'>{t('media.fileTypes')}</p>
+            <Button variant='outline' size='sm' type='button'>
+              {t('media.browseFiles')}
             </Button>
           </div>
         </div>
 
-        {/* Gallery Upload */}
-        <div>
-          <h3 className='text-sm font-bold text-primary-500 uppercase tracking-widest mb-4'>
-            Gallery Photos
-          </h3>
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
-            {[1, 2, 3, 4].map((index) => (
-              <div
-                key={index}
-                className='aspect-video border-2 border-dashed border-primary-500/20 rounded-xl flex items-center justify-center hover:border-primary-500/40 transition-colors cursor-pointer bg-surface-200'
-              >
-                <Icon name='add_photo_alternate' className='text-primary-500/40' size='xl' />
-              </div>
-            ))}
-          </div>
-          <p className='text-xs text-neutral-600/50 mt-3'>
-            Upload up to 20 gallery photos. Recommended: 1920×1080px
-          </p>
-        </div>
-
-        {/* Floor Plan Upload */}
-        <div>
-          <h3 className='text-sm font-bold text-primary-500 uppercase tracking-widest mb-4'>
-            Floor Plan
-          </h3>
-          <div className='border-2 border-dashed border-primary-500/20 rounded-2xl p-8 flex items-center gap-6 hover:border-primary-500/40 transition-colors cursor-pointer bg-surface-200'>
-            <div className='w-12 h-12 bg-primary-500/10 rounded-xl flex items-center justify-center'>
-              <Icon name='layers' className='text-primary-500' />
+        {/* Image Previews */}
+        {previews.length > 0 && (
+          <div>
+            <h3 className='text-sm font-bold text-primary-500 uppercase tracking-widest mb-4'>
+              {t('media.uploadedPhotos')} ({previews.length})
+            </h3>
+            <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
+              {previews.map((preview, index) => (
+                <div key={preview} className='relative group aspect-video'>
+                  <Image
+                    src={preview}
+                    alt={`Preview ${index + 1}`}
+                    fill
+                    className='object-cover rounded-xl'
+                    unoptimized
+                  />
+                  <button
+                    type='button'
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleRemoveImage(index)
+                    }}
+                    className='absolute top-2 right-2 w-8 h-8 bg-error-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity'
+                  >
+                    <Icon name='close' size='sm' />
+                  </button>
+                  {index === 0 && (
+                    <span className='absolute bottom-2 left-2 bg-primary-500 text-white text-xs px-2 py-1 rounded-lg'>
+                      {t('media.mainPhoto')}
+                    </span>
+                  )}
+                </div>
+              ))}
             </div>
-            <div className='flex-1'>
-              <p className='font-bold text-neutral-600'>Upload Floor Plan</p>
-              <p className='text-sm text-neutral-600/60'>PDF or high-resolution image</p>
-            </div>
-            <Button variant='outline' size='sm'>
-              Upload
-            </Button>
+            <p className='text-xs text-neutral-600/50 mt-3'>{t('media.firstPhotoMain')}</p>
           </div>
-        </div>
-
-        {/* Video/Virtual Tour */}
-        <div>
-          <h3 className='text-sm font-bold text-primary-500 uppercase tracking-widest mb-4'>
-            Virtual Tour / Video
-          </h3>
-          <div className='bg-surface-200 rounded-xl p-6'>
-            <div className='flex items-center gap-4'>
-              <div className='w-12 h-12 bg-primary-500/10 rounded-xl flex items-center justify-center'>
-                <Icon name='videocam' className='text-primary-500' />
-              </div>
-              <div className='flex-1'>
-                <input
-                  type='url'
-                  placeholder='Paste YouTube, Vimeo, or Matterport link...'
-                  className='w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-primary-500 text-sm'
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        )}
 
         <div className='flex justify-between pt-6 border-t border-primary-500/5'>
           <Button
@@ -105,15 +158,15 @@ export function MediaStep({ onNext, onPrevious }: MediaStepProps) {
             onClick={onPrevious}
             type='button'
           >
-            Previous
+            {t('form.previousButton')}
           </Button>
           <Button
             variant='primary'
             icon={<Icon name='arrow_forward' />}
-            onClick={onNext}
+            onClick={handleNext}
             type='button'
           >
-            Next: Review
+            {t('form.nextButton')}
           </Button>
         </div>
       </div>

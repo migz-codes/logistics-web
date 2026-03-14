@@ -57,15 +57,16 @@ export type CreateUserInput = {
 export type CreateWarehouseInput = {
   accountable_id?: InputMaybe<Scalars['String']['input']>
   address: Scalars['String']['input']
-  area: Scalars['String']['input']
-  category: Scalars['String']['input']
+  address_complement?: InputMaybe<Scalars['String']['input']>
+  area_total: Scalars['Float']['input']
   city: Scalars['String']['input']
   company_id: Scalars['String']['input']
   country: Scalars['String']['input']
   description: Scalars['String']['input']
+  images?: InputMaybe<Array<Scalars['String']['input']>>
   price: Scalars['String']['input']
   state: Scalars['String']['input']
-  status: Scalars['String']['input']
+  status: WarehouseStatus
   title: Scalars['String']['input']
   zip_code: Scalars['String']['input']
 }
@@ -254,27 +255,33 @@ export type Warehouse = {
   __typename?: 'Warehouse'
   accountable_id: Scalars['String']['output']
   address: Scalars['String']['output']
-  area: Scalars['String']['output']
-  category: Scalars['String']['output']
+  address_complement?: Maybe<Scalars['String']['output']>
+  area_total: Scalars['Float']['output']
   city: Scalars['String']['output']
+  company?: Maybe<Company>
   company_id: Scalars['String']['output']
   country: Scalars['String']['output']
   created_at: Scalars['DateTime']['output']
   description: Scalars['String']['output']
   id: Scalars['String']['output']
+  images: Array<Scalars['String']['output']>
   price: Scalars['String']['output']
   state: Scalars['String']['output']
-  status: Scalars['String']['output']
+  status: WarehouseStatus
   title: Scalars['String']['output']
   updated_at: Scalars['DateTime']['output']
   zip_code: Scalars['String']['output']
 }
 
+export enum WarehouseStatus {
+  Available = 'AVAILABLE',
+  Unavailable = 'UNAVAILABLE'
+}
+
 export type WarehouseFiltersInput = {
-  category?: InputMaybe<Scalars['String']['input']>
   region?: InputMaybe<Scalars['String']['input']>
   search?: InputMaybe<Scalars['String']['input']>
   skip?: InputMaybe<Scalars['Int']['input']>
-  status?: InputMaybe<Scalars['String']['input']>
+  status?: InputMaybe<WarehouseStatus>
   take?: InputMaybe<Scalars['Int']['input']>
 }

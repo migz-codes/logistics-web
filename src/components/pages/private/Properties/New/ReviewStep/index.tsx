@@ -19,22 +19,10 @@ export function ReviewStep({ formData, loading, onPrevious, onSubmit }: ReviewSt
   const t = useTranslations('warehouseEditor')
   const [confirmed, setConfirmed] = useState(false)
 
-  const getCategoryLabel = (category: string) => {
-    const labels: Record<string, string> = {
-      warehouse: t('form.categories.warehouse'),
-      'cold-storage': t('form.categories.coldStorage'),
-      'cross-dock': t('form.categories.crossDock'),
-      distribution: t('form.categories.distribution')
-    }
-    return labels[category] || category
-  }
-
   const getStatusLabel = (status: string) => {
     const labels: Record<string, string> = {
-      available: t('form.status.available'),
-      leased: t('form.status.leased'),
-      'under-construction': t('form.status.underConstruction'),
-      maintenance: t('form.status.maintenance')
+      AVAILABLE: t('form.status.available'),
+      UNAVAILABLE: t('form.status.unavailable')
     }
 
     return labels[status] || status
@@ -62,8 +50,9 @@ export function ReviewStep({ formData, loading, onPrevious, onSubmit }: ReviewSt
 
             <div className='flex-1 min-w-0'>
               <div className='flex items-center gap-2 mb-2 flex-wrap'>
-                <Badge variant='primary'>{getCategoryLabel(formData.category)}</Badge>
-                <Badge variant='success'>{getStatusLabel(formData.status)}</Badge>
+                <Badge variant={formData.status === 'AVAILABLE' ? 'success' : 'warning'}>
+                  {getStatusLabel(formData.status)}
+                </Badge>
               </div>
               <h3 className='text-xl font-bold text-neutral-600 truncate'>
                 {formData.title || t('review.noTitle')}
@@ -79,7 +68,7 @@ export function ReviewStep({ formData, loading, onPrevious, onSubmit }: ReviewSt
             </div>
             <div className='text-right'>
               <p className='text-2xl font-black text-neutral-600'>R$ {formData.price || '--'}/m²</p>
-              <p className='text-sm text-neutral-600/50'>{formData.area || '--'} m² total</p>
+              <p className='text-sm text-neutral-600/50'>{formData.area_total || '--'} m² total</p>
             </div>
           </div>
         </div>
@@ -96,16 +85,12 @@ export function ReviewStep({ formData, loading, onPrevious, onSubmit }: ReviewSt
             </div>
             <div className='space-y-2 text-sm text-neutral-600/60'>
               <p>
-                <span className='font-medium text-neutral-600'>{t('form.category')}:</span>{' '}
-                {getCategoryLabel(formData.category)}
-              </p>
-              <p>
                 <span className='font-medium text-neutral-600'>{t('form.statusLabel')}:</span>{' '}
                 {getStatusLabel(formData.status)}
               </p>
               <p>
                 <span className='font-medium text-neutral-600'>{t('form.area')}:</span>{' '}
-                {formData.area} m²
+                {formData.area_total} m²
               </p>
               <p>
                 <span className='font-medium text-neutral-600'>{t('form.price')}:</span> R${' '}
@@ -127,6 +112,14 @@ export function ReviewStep({ formData, loading, onPrevious, onSubmit }: ReviewSt
                 <span className='font-medium text-neutral-600'>{t('form.address')}:</span>{' '}
                 {formData.address}
               </p>
+              {formData.address_complement && (
+                <p>
+                  <span className='font-medium text-neutral-600'>
+                    {t('form.addressComplement')}:
+                  </span>{' '}
+                  {formData.address_complement}
+                </p>
+              )}
               <p>
                 <span className='font-medium text-neutral-600'>{t('form.city')}:</span>{' '}
                 {formData.city}

@@ -30,14 +30,10 @@ export const Properties = () => {
   }
 
   const getStatusStyle = (status: string) => {
-    switch (status.toLowerCase()) {
-      case 'available':
+    switch (status) {
+      case 'AVAILABLE':
         return 'bg-success-500/10 text-success-500'
-      case 'leased':
-        return 'bg-secondary-500/10 text-secondary-500'
-      case 'under-construction':
-        return 'bg-amber-500/10 text-amber-500'
-      case 'maintenance':
+      case 'UNAVAILABLE':
         return 'bg-error-500/10 text-error-500'
       default:
         return 'bg-neutral-500/10 text-neutral-500'
@@ -45,15 +41,11 @@ export const Properties = () => {
   }
 
   const getStatusLabel = (status: string) => {
-    switch (status.toLowerCase()) {
-      case 'available':
+    switch (status) {
+      case 'AVAILABLE':
         return t('status.available')
-      case 'leased':
-        return t('status.leased')
-      case 'under-construction':
-        return t('status.underConstruction')
-      case 'maintenance':
-        return t('status.maintenance')
+      case 'UNAVAILABLE':
+        return t('status.unavailable')
       default:
         return status
     }
@@ -63,7 +55,7 @@ export const Properties = () => {
     return (
       <tbody>
         <tr>
-          <td colSpan={7} className='p-8 text-center text-neutral-600/50'>
+          <td colSpan={6} className='p-8 text-center text-neutral-600/50'>
             {t('loading')}
           </td>
         </tr>
@@ -75,7 +67,7 @@ export const Properties = () => {
     return (
       <tbody>
         <tr>
-          <td colSpan={7} className='p-8 text-center text-error-500'>
+          <td colSpan={6} className='p-8 text-center text-error-500'>
             {t('errorLoading')}: {error}
           </td>
         </tr>
@@ -87,7 +79,7 @@ export const Properties = () => {
     return (
       <tbody>
         <tr>
-          <td colSpan={7} className='p-8 text-center text-neutral-600/50'>
+          <td colSpan={6} className='p-8 text-center text-neutral-600/50'>
             {t('noResults')}
           </td>
         </tr>
@@ -123,9 +115,7 @@ export const Properties = () => {
             {warehouse.state}, {warehouse.country}
           </td>
 
-          <td className='p-4 text-neutral-600/60'>{warehouse.category}</td>
-
-          <td className='p-4 text-right font-bold text-neutral-600'>{warehouse.area} m²</td>
+          <td className='p-4 text-right font-bold text-neutral-600'>{warehouse.area_total} m²</td>
 
           <td className='p-4 text-center'>
             <span

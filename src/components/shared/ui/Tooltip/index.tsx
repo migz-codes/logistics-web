@@ -19,7 +19,7 @@ export function Tooltip({ children, content, side = 'top', align = 'center' }: T
             side={side}
             align={align}
             sideOffset={5}
-            className='z-50 px-3 py-2 text-sm bg-red-500 text-white rounded-lg shadow-lg max-w-xs animate-in fade-in-0 zoom-in-95'
+            className='z-50 px-3 py-2 text-sm bg-red-500 text-white rounded-lg shadow-lg max-w-xs animate-in fade-in-0 zoom-in-95 font-[600]'
           >
             {content}
             <TooltipPrimitive.Arrow className='fill-red-500' />

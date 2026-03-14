@@ -38,7 +38,6 @@ export function InventoryTable() {
             <tr className='text-[10px] font-black uppercase tracking-widest text-neutral-600/40 border-b border-primary-500/5'>
               <th className='p-4 text-left'>{t('table.warehouse')}</th>
               <th className='p-4 text-left'>{t('table.region')}</th>
-              <th className='p-4 text-left'>{t('table.category')}</th>
               <th className='p-4 text-right'>{t('table.area')}</th>
               <th className='p-4 text-center'>{t('table.status')}</th>
               <th className='p-4 text-right'>{t('table.price')}</th>

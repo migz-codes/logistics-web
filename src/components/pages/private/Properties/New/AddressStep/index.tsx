@@ -21,6 +21,7 @@ const fieldTw: (hasError: boolean) => FieldProps['tws'] = (hasError) => ({
 
 const addressSchema = z.object({
   address: z.string().min(1, 'Address is required'),
+  address_complement: z.string().optional(),
   city: z.string().min(1, 'City is required'),
   state: z.string().min(1, 'State is required'),
   country: z.string().min(1, 'Country is required'),
@@ -49,6 +50,7 @@ export function AddressStep({ formData, onNext, onBack }: AddressStepProps) {
       city: formData.city,
       state: formData.state,
       address: formData.address,
+      address_complement: formData.address_complement,
       country: formData.country,
       zip_code: formData.zip_code
     }
@@ -91,6 +93,14 @@ export function AddressStep({ formData, onNext, onBack }: AddressStepProps) {
           placeholder={t('form.addressPlaceholder')}
           errorMessage={errors.address?.message}
           tws={fieldTw(!!errors.address?.message)}
+        />
+
+        <Field
+          name='address_complement'
+          register={register}
+          label={t('form.addressComplement')}
+          placeholder={t('form.addressComplementPlaceholder')}
+          tws={fieldTw(false)}
         />
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>

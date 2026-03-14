@@ -1,16 +1,15 @@
 import { createContext, useContext } from 'react'
 import type { PaginationActions, PaginationState } from '@/hooks/usePagination'
-import type { IWarehouse } from '@/types/property.types'
+import type { Warehouse } from '@/types/api'
 
 export interface IFilters {
   search: string
   region: string
-  category: string
   status: string
 }
 
 export interface IPropertiesContext {
-  warehouses: IWarehouse[]
+  warehouses: Warehouse[]
   loading?: boolean
   error?: string
   pagination: PaginationState & PaginationActions

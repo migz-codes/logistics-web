@@ -20,20 +20,21 @@ interface BasicInfoStepProps {
   onBack?: () => void
 }
 
-const basicInfoSchema = z.object({
-  area: z.string().min(1, 'Area is required'),
-  price: z.string().min(1, 'Price is required'),
-  title: z.string().min(3, 'Title must be at least 3 characters').max(100),
-  description: z.string().min(400, 'Description must be at least 400 characters').max(1000)
-})
-
-type FormData = z.infer<typeof basicInfoSchema>
-
 export function BasicInfoStep({ formData, onNext, onBack }: BasicInfoStepProps) {
   const t = useTranslations('warehouseEditor')
 
-  const [categoryValue, setCategoryValue] = useState(formData.category || '')
-  const [statusValue, setStatusValue] = useState(formData.status || 'available')
+  const basicInfoSchema = z.object({
+    area_total: z.string().min(1, t('form.errors.areaRequired')),
+    price: z.string().min(1, t('form.errors.priceRequired')),
+    title: z.string().min(3, t('form.errors.titleMin')).max(100, t('form.errors.titleMax')),
+    description: z.string().max(500, t('form.errors.descriptionMax')).optional()
+  })
+
+  type FormData = z.infer<typeof basicInfoSchema>
+
+  const [statusValue, setStatusValue] = useState<'AVAILABLE' | 'UNAVAILABLE'>(
+    formData.status || 'AVAILABLE'
+  )
 
   const {
     register,
@@ -43,30 +44,20 @@ export function BasicInfoStep({ formData, onNext, onBack }: BasicInfoStepProps) 
     mode: 'onChange',
     resolver: zodResolver(basicInfoSchema),
     defaultValues: {
-      area: formData.area,
+      area_total: formData.area_total,
       title: formData.title,
       price: formData.price,
       description: formData.description
     }
   })
 
-  const categoryOptions = [
-    { value: '', label: t('form.selectCategory') },
-    { value: 'warehouse', label: t('form.categories.warehouse') },
-    { value: 'cold-storage', label: t('form.categories.coldStorage') },
-    { value: 'cross-dock', label: t('form.categories.crossDock') },
-    { value: 'distribution', label: t('form.categories.distribution') }
-  ]
-
   const statusOptions = [
-    { value: 'available', label: t('form.status.available') },
-    { value: 'leased', label: t('form.status.leased') },
-    { value: 'under-construction', label: t('form.status.underConstruction') },
-    { value: 'maintenance', label: t('form.status.maintenance') }
+    { value: 'AVAILABLE', label: t('form.status.available') },
+    { value: 'UNAVAILABLE', label: t('form.status.unavailable') }
   ]
 
   const onSubmit = (data: FormData) => {
-    onNext({ ...data, status: statusValue, category: categoryValue })
+    onNext({ ...data, status: statusValue })
   }
 
   return (
@@ -77,21 +68,12 @@ export function BasicInfoStep({ formData, onNext, onBack }: BasicInfoStepProps) 
       </h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-          <Field
-            name='title'
-            register={register}
-            label={t('form.title')}
-            errorMessage={errors.title?.message}
-          />
-
-          <Select
-            options={categoryOptions}
-            label={t('form.category')}
-            value={categoryOptions.find((opt) => opt.value === categoryValue)}
-            onChange={(option: any) => setCategoryValue(option?.value || '')}
-          />
-        </div>
+        <Field
+          name='title'
+          register={register}
+          label={t('form.title')}
+          errorMessage={errors.title?.message}
+        />
 
         <FieldTextarea
           rows={3}
@@ -103,10 +85,10 @@ export function BasicInfoStep({ formData, onNext, onBack }: BasicInfoStepProps) 
 
         <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
           <Field
-            name='area'
+            name='area_total'
             register={register}
             label={t('form.area')}
-            errorMessage={errors.area?.message}
+            errorMessage={errors.area_total?.message}
           />
 
           <Field
@@ -120,7 +102,7 @@ export function BasicInfoStep({ formData, onNext, onBack }: BasicInfoStepProps) 
             <Select
               options={statusOptions}
               value={statusOptions.find((opt) => opt.value === statusValue)}
-              onChange={(option: any) => setStatusValue(option?.value || 'available')}
+              onChange={(option: any) => setStatusValue(option?.value || 'AVAILABLE')}
             />
           </Label>
         </div>
