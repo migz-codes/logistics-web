@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client'
+import type { AuthResponse, LogoutResponse } from '@/types/api'
 
 export const LOGIN_MUTATION = gql`
   mutation Login($input: LoginInput!) {
@@ -17,24 +18,8 @@ export const LOGIN_MUTATION = gql`
   }
 `
 
-export interface LoginInput {
-  email: string
-  password: string
-}
-
 export interface LoginResponse {
-  login: {
-    accessToken: string
-    refreshToken: string
-    user: {
-      id: string
-      name: string
-      email: string
-      role: string
-      created_at: string
-      updated_at: string
-    }
-  }
+  login: AuthResponse
 }
 
 export const LOGOUT_MUTATION = gql`
@@ -45,8 +30,8 @@ export const LOGOUT_MUTATION = gql`
   }
 `
 
-export interface LogoutResponse {
-  logout: { success: boolean }
+export interface LogoutResponseData {
+  logout: LogoutResponse
 }
 
 export const REGISTER_MUTATION = gql`
@@ -58,23 +43,16 @@ export const REGISTER_MUTATION = gql`
         id
         name
         email
+        role
+        created_at
+        updated_at
       }
     }
   }
 `
 
-export interface RegisterInput {
-  name: string
-  email: string
-  password: string
-}
-
 export interface RegisterResponse {
-  register: {
-    accessToken: string
-    refreshToken: string
-    user: { id: string; name: string; email: string }
-  }
+  register: AuthResponse
 }
 
 export const REFRESH_TOKEN_MUTATION = gql`
@@ -87,8 +65,5 @@ export const REFRESH_TOKEN_MUTATION = gql`
 `
 
 export interface RefreshTokenResponse {
-  refreshToken: {
-    accessToken: string
-    refreshToken: string
-  }
+  refreshToken: AuthResponse
 }

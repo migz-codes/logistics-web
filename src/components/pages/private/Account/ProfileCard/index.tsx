@@ -10,8 +10,12 @@ import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Field } from '@/components/shared/ui/Field'
 import { Icon } from '@/components/shared/ui/Icon'
-import type { GetMeResponse, UpdateProfileResponse } from '@/lib/apollo'
-import { GET_ME_QUERY, UPDATE_PROFILE_MUTATION } from '@/lib/apollo'
+import {
+  GET_ME_QUERY,
+  type GetMeResponse,
+  UPDATE_PROFILE_MUTATION,
+  type UpdateProfileResponse
+} from '@/lib/apollo/mutations/user'
 import { userAtoms } from '@/lib/store/user'
 import { toast } from '@/lib/toast'
 import { type ProfileFormData, profileSchema } from './schema'
@@ -43,6 +47,8 @@ export function ProfileCard() {
       if (response?.updateProfile && user)
         setUser({
           role: user.role,
+          updated_at: user.updated_at,
+          created_at: user.created_at,
           id: response.updateProfile.id,
           name: response.updateProfile.name,
           email: response.updateProfile.email
@@ -64,7 +70,9 @@ export function ProfileCard() {
       id: userData.getMe.id,
       role: userData.getMe.role,
       name: userData.getMe.name,
-      email: userData.getMe.email
+      email: userData.getMe.email,
+      created_at: userData.getMe.created_at,
+      updated_at: userData.getMe.updated_at
     })
   }, [userData, setValue, setUser])
 

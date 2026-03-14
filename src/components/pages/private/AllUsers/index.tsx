@@ -11,12 +11,12 @@ import { Icon } from '@/components/shared/ui/Icon'
 import {
   GET_ALL_USERS_QUERY,
   type GetAllUsersResponse,
-  type Role,
   UPDATE_USER_ROLE_MUTATION,
   type UpdateUserRoleResponse
-} from '@/lib/apollo'
+} from '@/lib/apollo/mutations/user'
 import { userAtoms } from '@/lib/store/user'
 import { toast } from '@/lib/toast'
+import type { Role } from '@/types/api'
 
 export function AllUsersPage() {
   const t = useTranslations('users')

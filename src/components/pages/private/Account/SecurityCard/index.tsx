@@ -14,7 +14,7 @@ import {
   type GetMeResponse,
   UPDATE_PASSWORD_MUTATION,
   type UpdatePasswordResponse
-} from '@/lib/apollo'
+} from '@/lib/apollo/mutations/user'
 import { toast } from '@/lib/toast'
 import { type PasswordFormData, passwordSchema } from '../ProfileCard/schema'
 

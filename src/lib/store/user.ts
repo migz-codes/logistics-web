@@ -1,15 +1,5 @@
 import { atom } from 'jotai'
-
-export type Role = 'INVESTOR_ADMIN' | 'ADMIN'
-
-export interface User {
-  id: string
-  name: string
-  email: string
-  role: Role
-  created_at: string
-  updated_at: string
-}
+import type { User } from '@/types/api'
 
 const userAtom = atom<User | null>(null)
 

@@ -12,19 +12,20 @@ import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Field } from '@/components/shared/ui/Field'
 import { Icon } from '@/components/shared/ui/Icon'
-import { REGISTER_MUTATION, type RegisterResponse } from '@/lib/apollo'
+import { REGISTER_MUTATION, type RegisterResponse } from '@/lib/apollo/mutations/auth'
 import { setAuthCookies } from '@/lib/auth'
 import { userAtoms } from '@/lib/store/user'
 import { toast } from '@/lib/toast'
+import type { Role } from '@/types/api'
 import { type SignupFormData, signupSchema } from './schema'
 
 export default function SignupPage() {
   const router = useRouter()
   const t = useTranslations('auth')
+  const setUser = useSetAtom(userAtoms.user)
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [registerMutation] = useMutation<RegisterResponse>(REGISTER_MUTATION)
-  const setUser = useSetAtom(userAtoms.user)
 
   const {
     register: registerField,
@@ -50,7 +51,10 @@ export default function SignupPage() {
         setUser({
           id: response.register.user.id,
           name: response.register.user.name,
-          email: response.register.user.email
+          email: response.register.user.email,
+          role: response.register.user.role as Role,
+          created_at: response.register.user.created_at,
+          updated_at: response.register.user.updated_at
         })
 
         router.push('/admin/dashboard')

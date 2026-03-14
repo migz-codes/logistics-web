@@ -1,6 +1,5 @@
 import { gql } from '@apollo/client'
-
-export type Role = 'INVESTOR_ADMIN' | 'ADMIN'
+import type { User } from '@/types/api'
 
 export const GET_ME_QUERY = gql`
   query GetMe {
@@ -16,14 +15,7 @@ export const GET_ME_QUERY = gql`
 `
 
 export interface GetMeResponse {
-  getMe: {
-    id: string
-    name: string
-    email: string
-    role: Role
-    created_at: string
-    updated_at: string
-  }
+  getMe: User
 }
 
 export const UPDATE_PROFILE_MUTATION = gql`
@@ -36,17 +28,8 @@ export const UPDATE_PROFILE_MUTATION = gql`
   }
 `
 
-export interface UpdateProfileInput {
-  name: string
-  email: string
-}
-
 export interface UpdateProfileResponse {
-  updateProfile: {
-    id: string
-    name: string
-    email: string
-  }
+  updateProfile: User
 }
 
 export const UPDATE_PASSWORD_MUTATION = gql`
@@ -57,15 +40,8 @@ export const UPDATE_PASSWORD_MUTATION = gql`
   }
 `
 
-export interface UpdatePasswordInput {
-  currentPassword: string
-  newPassword: string
-}
-
 export interface UpdatePasswordResponse {
-  updatePassword: {
-    id: string
-  }
+  updatePassword: User
 }
 
 export const GET_CURRENT_USER_QUERY = gql`
@@ -79,11 +55,7 @@ export const GET_CURRENT_USER_QUERY = gql`
 `
 
 export interface GetCurrentUserResponse {
-  getUserById: {
-    id: string
-    name: string
-    email: string
-  }
+  getUserById: User
 }
 
 export const GET_ALL_USERS_QUERY = gql`
@@ -97,15 +69,8 @@ export const GET_ALL_USERS_QUERY = gql`
   }
 `
 
-export interface UserWithRole {
-  id: string
-  name: string
-  email: string
-  role: Role
-}
-
 export interface GetAllUsersResponse {
-  getAllUsers: UserWithRole[]
+  getAllUsers: User[]
 }
 
 export const UPDATE_USER_ROLE_MUTATION = gql`
@@ -118,8 +83,5 @@ export const UPDATE_USER_ROLE_MUTATION = gql`
 `
 
 export interface UpdateUserRoleResponse {
-  updateUserRole: {
-    id: string
-    role: Role
-  }
+  updateUserRole: User
 }

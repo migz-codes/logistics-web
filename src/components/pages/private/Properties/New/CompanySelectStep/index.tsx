@@ -8,11 +8,8 @@ import { CompanyForm } from '@/components/pages/private/Companies/CompanyForm'
 import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
-import {
-  type Company,
-  GET_COMPANIES_QUERY,
-  type GetCompaniesResponse
-} from '@/lib/apollo/mutations/company'
+import { GET_COMPANIES_QUERY, type GetCompaniesResponse } from '@/lib/apollo/mutations/company'
+import type { Company } from '@/types/api'
 
 interface CompanySelectStepProps {
   selectedCompanyId: string

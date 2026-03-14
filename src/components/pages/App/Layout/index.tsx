@@ -4,7 +4,7 @@ import '@radix-ui/themes/styles.css'
 import '@/styles/globals.css'
 import { Theme } from '@radix-ui/themes'
 import { Plus_Jakarta_Sans } from 'next/font/google'
-import { ApolloProviderWrapper } from '@/lib/apollo'
+import { ApolloProviderWrapper } from '@/lib/apollo/provider'
 import { ToastProvider } from '@/lib/toast'
 import type { IAppLayoutProps } from './types'
 

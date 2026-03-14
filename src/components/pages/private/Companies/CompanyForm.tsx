@@ -12,13 +12,13 @@ import { Button } from '@/components/shared/ui/Button'
 import { Field } from '@/components/shared/ui/Field'
 import { Icon } from '@/components/shared/ui/Icon'
 import {
-  type Company,
   CREATE_COMPANY_MUTATION,
   type CreateCompanyResponse,
   UPDATE_COMPANY_MUTATION,
   type UpdateCompanyResponse
 } from '@/lib/apollo/mutations/company'
 import { toast } from '@/lib/toast'
+import type { Company } from '@/types/api'
 
 const companySchema = z.object({
   name: z.string().min(1, 'Company name is required'),

@@ -12,7 +12,7 @@ import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Field } from '@/components/shared/ui/Field'
 import { Icon } from '@/components/shared/ui/Icon'
-import { LOGIN_MUTATION, type LoginResponse } from '@/lib/apollo'
+import { LOGIN_MUTATION, type LoginResponse } from '@/lib/apollo/mutations/auth'
 import { setAuthCookies } from '@/lib/auth'
 import { userAtoms } from '@/lib/store/user'
 import { toast } from '@/lib/toast'
@@ -48,9 +48,9 @@ export default function AdminSigninPage() {
 
         setUser({
           id: response.login.user.id,
+          role: response.login.user.role,
           name: response.login.user.name,
           email: response.login.user.email,
-          role: response.login.user.role as 'ADMIN' | 'INVESTOR_ADMIN',
           created_at: response.login.user.created_at,
           updated_at: response.login.user.updated_at
         })

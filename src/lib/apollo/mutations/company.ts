@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client'
+import type { Company } from '@/types/api'
 
 export const GET_COMPANIES_QUERY = gql`
   query GetMyCompanies {
@@ -14,8 +15,8 @@ export const GET_COMPANIES_QUERY = gql`
 `
 
 export const GET_ALL_COMPANIES_QUERY = gql`
-  query GetAllCompanies {
-    companies {
+  query GetAllCompanies($filters: CompanyFiltersInput) {
+    companies(filters: $filters) {
       id
       name
       logo
@@ -25,15 +26,6 @@ export const GET_ALL_COMPANIES_QUERY = gql`
     }
   }
 `
-
-export interface Company {
-  id: string
-  name: string
-  logo?: string | null
-  owner_id: string
-  created_at: string
-  updated_at: string
-}
 
 export interface GetCompaniesResponse {
   getMyCompanies: Company[]
@@ -56,11 +48,6 @@ export const CREATE_COMPANY_MUTATION = gql`
   }
 `
 
-export interface CreateCompanyInput {
-  name: string
-  logo?: string
-}
-
 export interface CreateCompanyResponse {
   createCompany: Company
 }
@@ -77,11 +64,6 @@ export const UPDATE_COMPANY_MUTATION = gql`
     }
   }
 `
-
-export interface UpdateCompanyInput {
-  name?: string
-  logo?: string
-}
 
 export interface UpdateCompanyResponse {
   updateCompany: Company

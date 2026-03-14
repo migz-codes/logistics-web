@@ -12,7 +12,6 @@ import { Button } from '@/components/shared/ui/Button'
 import { Card } from '@/components/shared/ui/Card'
 import { Icon } from '@/components/shared/ui/Icon'
 import {
-  type Company,
   GET_COMPANIES_QUERY,
   type GetCompaniesResponse,
   REMOVE_COMPANY_MUTATION,
@@ -20,6 +19,7 @@ import {
 } from '@/lib/apollo/mutations/company'
 import { userAtoms } from '@/lib/store/user'
 import { toast } from '@/lib/toast'
+import type { Company } from '@/types/api'
 import { CompanyForm } from './CompanyForm'
 
 export function CompaniesPage() {

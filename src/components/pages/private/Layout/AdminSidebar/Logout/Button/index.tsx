@@ -3,9 +3,10 @@
 import { useMutation } from '@apollo/client/react'
 import { useSetAtom } from 'jotai'
 import { useRouter } from 'next/navigation'
-import { LOGOUT_MUTATION, type LogoutResponse } from '@/lib/apollo'
+import { LOGOUT_MUTATION } from '@/lib/apollo/mutations/auth'
 import { clearAuthCookies, getRefreshToken } from '@/lib/auth'
 import { userAtoms } from '@/lib/store/user'
+import type { LogoutResponse } from '@/types/api'
 import type { IChildrenProps } from '@/types/react.types'
 
 export const Button = ({ children }: IChildrenProps) => {
