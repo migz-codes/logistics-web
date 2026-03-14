@@ -143,12 +143,7 @@ export function CompanyForm({ company, onSuccess, trigger }: CompanyFormProps) {
               {t('form.logo')}
             </span>
 
-            <button
-              type='button'
-              className='relative w-full aspect-square max-w-[256px] bg-surface-200 rounded-xl flex items-center justify-center overflow-hidden group cursor-pointer mx-auto'
-              onClick={() => fileInputRef.current?.click()}
-              disabled={uploading}
-            >
+            <div className='relative w-full aspect-square max-w-[256px] bg-surface-200 rounded-xl flex items-center justify-center overflow-hidden group cursor-pointer mx-auto'>
               {logoUrl ? (
                 <>
                   <Image
@@ -193,7 +188,7 @@ export function CompanyForm({ company, onSuccess, trigger }: CompanyFormProps) {
                 type='file'
                 accept='image/*'
                 onChange={handleFileChange}
-                className='hidden'
+                className='absolute inset-0 w-full h-full opacity-0 cursor-pointer'
               />
 
               {logoUrl && (
@@ -207,7 +202,7 @@ export function CompanyForm({ company, onSuccess, trigger }: CompanyFormProps) {
                   <Icon name='close' size='sm' />
                 </Button>
               )}
-            </button>
+            </div>
           </div>
 
           <Field

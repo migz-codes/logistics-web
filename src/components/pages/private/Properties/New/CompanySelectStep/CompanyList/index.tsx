@@ -63,13 +63,10 @@ export function CompanyList() {
       <CompanyForm
         onSuccess={handleCompanyCreated}
         trigger={
-          <button
-            type='button'
-            className='p-4 rounded-xl border-2 border-dashed border-neutral-300 hover:border-primary-500 hover:bg-primary-500/5 transition-all flex items-center justify-center gap-3 min-h-[80px] w-[216px]'
-          >
+          <div className='p-4 rounded-xl border-2 border-dashed border-neutral-300 hover:border-primary-500 hover:bg-primary-500/5 transition-all flex items-center justify-center gap-3 min-h-[80px] w-[216px] cursor-pointer'>
             <Icon name='add' className='text-primary-500' size='md' />
             <span className='font-medium text-neutral-600'>{t('companySelect.create')}</span>
-          </button>
+          </div>
         }
       />
     </div>
