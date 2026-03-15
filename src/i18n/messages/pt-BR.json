@@ -31,6 +31,7 @@
     "allUsers": "Todos os Usuários",
     "companies": "Empresas",
     "allCompanies": "Todas as Empresas",
+    "allWarehouses": "Todos os Imóveis",
     "partnerHub": "Central de Parceiros",
     "logout": "Sair",
     "backToSite": "Voltar ao site",
@@ -137,7 +138,10 @@
     },
     "properties": {
       "featured": "Destaques",
-      "ourExclusive": ["Nossos Imóveis", "Exclusivos"],
+      "ourExclusive": [
+        "Nossos Imóveis",
+        "Exclusivos"
+      ],
       "properties": "Imóveis",
       "viewAll": "Ver todos",
       "beds": "Quartos",
@@ -253,6 +257,15 @@
       "view": "Visualizar",
       "edit": "Editar",
       "delete": "Excluir"
+    },
+    "deleteSuccess": "Armazém excluído com sucesso",
+    "deleteError": "Falha ao excluir armazém",
+    "deleteModal": {
+      "title": "Excluir Armazém",
+      "confirm": "Tem certeza que deseja excluir \"{name}\"? Esta ação não pode ser desfeita e todos os dados relacionados serão permanentemente removidos.",
+      "cancel": "Cancelar",
+      "delete": "Excluir",
+      "deleting": "Excluindo..."
     }
   },
   "errors": {
@@ -264,6 +277,9 @@
   "warehouseEditor": {
     "title": "Criar Novo Armazém",
     "subtitle": "Preencha todas as informações necessárias para adicionar um novo armazém ao inventário.",
+    "editTitle": "Editar Armazém",
+    "editSubtitle": "Atualize as informações do armazém abaixo.",
+    "loading": "Carregando dados do armazém...",
     "steps": {
       "company": "Empresa",
       "basicInfo": "Informações\nBásicas",
@@ -337,11 +353,17 @@
       "confirmTitle": "Confirmo que todas as informações estão corretas",
       "confirmDescription": "Ao enviar, concordo que os detalhes do armazém estão corretos e podem ser publicados na plataforma.",
       "submitButton": "Criar Armazém",
-      "submitting": "Criando..."
+      "submitting": "Criando...",
+      "confirmUpdateTitle": "Confirmo que todas as informações atualizadas estão corretas",
+      "confirmUpdateDescription": "Ao enviar, concordo que os detalhes atualizados do armazém estão corretos.",
+      "updateButton": "Salvar Alterações",
+      "updating": "Salvando..."
     },
     "toast": {
       "createSuccess": "Armazém criado com sucesso!",
       "createError": "Falha ao criar armazém. Tente novamente.",
+      "updateSuccess": "Armazém atualizado com sucesso!",
+      "updateError": "Falha ao atualizar armazém. Tente novamente.",
       "imageUploadError": "Falha ao enviar imagens. Tente novamente."
     },
     "media": {
@@ -457,6 +479,33 @@
       "create": "Criar",
       "update": "Atualizar",
       "saving": "Salvando..."
+    }
+  },
+  "allWarehouses": {
+    "title": "Todos os Imóveis",
+    "subtitle": "Visualize todos os imóveis do sistema",
+    "listTitle": "Lista de Todos os Imóveis",
+    "listSubtitle": "Visualize e gerencie todos os imóveis de todas as empresas",
+    "noWarehouses": "Nenhum imóvel encontrado",
+    "deleteSuccess": "Imóvel excluído com sucesso",
+    "deleteError": "Falha ao excluir imóvel",
+    "deleteTitle": "Excluir Imóvel",
+    "deleteConfirm": "Tem certeza que deseja excluir \"{name}\"? Esta ação não pode ser desfeita e todos os dados relacionados serão permanentemente removidos.",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "deleting": "Excluindo...",
+    "status": {
+      "available": "Disponível",
+      "unavailable": "Indisponível"
+    },
+    "table": {
+      "warehouse": "Armazém",
+      "company": "Empresa",
+      "region": "Região",
+      "area": "Área",
+      "status": "Status",
+      "price": "Preço",
+      "actions": "Ações"
     }
   },
   "allCompanies": {

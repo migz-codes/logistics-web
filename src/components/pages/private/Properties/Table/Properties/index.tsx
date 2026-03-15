@@ -2,9 +2,15 @@
 
 import { gql } from '@apollo/client'
 import { useMutation } from '@apollo/client/react'
+import { Dialog } from '@radix-ui/themes'
 import NextImage from 'next/image'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
+import { useState } from 'react'
+import { Button } from '@/components/shared/ui/Button'
 import { Icon } from '@/components/shared/ui/Icon'
+import { toast } from '@/lib/toast'
+import type { Warehouse } from '@/types/api'
 import { usePropertiesContext } from '../../context'
 
 const DELETE_WAREHOUSE = gql`
@@ -17,16 +23,23 @@ const DELETE_WAREHOUSE = gql`
 
 export const Properties = () => {
   const t = useTranslations('inventory')
+  const router = useRouter()
   const { loading, error, warehouses, refetch } = usePropertiesContext()
+  const [deleteTarget, setDeleteTarget] = useState<Warehouse | null>(null)
 
-  const [deleteWarehouse] = useMutation(DELETE_WAREHOUSE)
+  const [deleteWarehouse, { loading: deleting }] = useMutation(DELETE_WAREHOUSE)
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = async () => {
+    if (!deleteTarget) return
+
     try {
-      await deleteWarehouse({ variables: { id } })
+      await deleteWarehouse({ variables: { id: deleteTarget.id } })
+      toast.success(t('deleteSuccess'))
+      setDeleteTarget(null)
       refetch()
     } catch (err) {
       console.error('Error deleting warehouse:', err)
+      toast.error(t('deleteError'))
     }
   }
 
@@ -153,6 +166,7 @@ export const Properties = () => {
               <button
                 type='button'
                 title={t('actions.edit')}
+                onClick={() => router.push(`/admin/properties/${warehouse.id}/edit`)}
                 className='p-2 rounded-lg hover:bg-primary-500/10 text-neutral-600/40 hover:text-primary-500 transition-colors'
               >
                 <Icon name='edit' />
@@ -161,7 +175,7 @@ export const Properties = () => {
               <button
                 type='button'
                 title={t('actions.delete')}
-                onClick={() => handleDelete(warehouse.id)}
+                onClick={() => setDeleteTarget(warehouse)}
                 className='p-2 rounded-lg hover:bg-error-500/10 text-neutral-600/40 hover:text-error-500 transition-colors'
               >
                 <Icon name='delete' />
@@ -170,6 +184,46 @@ export const Properties = () => {
           </td>
         </tr>
       ))}
+
+      <Dialog.Root open={!!deleteTarget} onOpenChange={(open) => !open && setDeleteTarget(null)}>
+        <Dialog.Content maxWidth='400px'>
+          <div className='flex items-center gap-3 mb-4'>
+            <div className='w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center'>
+              <Icon name='delete' className='text-red-500' size='md' />
+            </div>
+
+            <Dialog.Title className='text-lg font-bold text-neutral-600 !m-0'>
+              {t('deleteModal.title')}
+            </Dialog.Title>
+          </div>
+
+          <Dialog.Description className='text-sm text-neutral-600/60 py-4'>
+            {t('deleteModal.confirm', { name: deleteTarget?.title ?? '' })}
+          </Dialog.Description>
+
+          <div className='flex items-center justify-end gap-3 pt-4'>
+            <Dialog.Close>
+              <Button type='button' variant='secondary'>
+                {t('deleteModal.cancel')}
+              </Button>
+            </Dialog.Close>
+
+            <Button variant='danger' onClick={handleDelete} disabled={deleting}>
+              {deleting ? (
+                <>
+                  <Icon name='progress_activity' className='animate-spin' size='sm' />
+                  {t('deleteModal.deleting')}
+                </>
+              ) : (
+                <>
+                  <Icon name='delete' size='sm' />
+                  {t('deleteModal.delete')}
+                </>
+              )}
+            </Button>
+          </div>
+        </Dialog.Content>
+      </Dialog.Root>
     </tbody>
   )
 }

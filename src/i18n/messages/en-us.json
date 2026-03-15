@@ -31,6 +31,7 @@
     "allUsers": "All Users",
     "companies": "Companies",
     "allCompanies": "All Companies",
+    "allWarehouses": "All Warehouses",
     "partnerHub": "Partner Hub",
     "logout": "Logout",
     "backToSite": "Back to Site",
@@ -137,7 +138,10 @@
     },
     "properties": {
       "featured": "Featured",
-      "ourExclusive": ["Our Exclusive", "Properties"],
+      "ourExclusive": [
+        "Our Exclusive",
+        "Properties"
+      ],
       "properties": "Properties",
       "viewAll": "View All",
       "beds": "Beds",
@@ -253,6 +257,15 @@
       "view": "View",
       "edit": "Edit",
       "delete": "Delete"
+    },
+    "deleteSuccess": "Warehouse deleted successfully",
+    "deleteError": "Failed to delete warehouse",
+    "deleteModal": {
+      "title": "Delete Warehouse",
+      "confirm": "Are you sure you want to delete \"{name}\"? This action cannot be undone and all related data will be permanently removed.",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "deleting": "Deleting..."
     }
   },
   "errors": {
@@ -264,6 +277,9 @@
   "warehouseEditor": {
     "title": "Create New Warehouse",
     "subtitle": "Fill in all required information to add a new warehouse to the inventory.",
+    "editTitle": "Edit Warehouse",
+    "editSubtitle": "Update the warehouse information below.",
+    "loading": "Loading warehouse data...",
     "steps": {
       "company": "Company",
       "basicInfo": "Basic Info",
@@ -337,11 +353,17 @@
       "confirmTitle": "I confirm all information is accurate",
       "confirmDescription": "By submitting, I agree that the warehouse details are correct and can be published on the platform.",
       "submitButton": "Create Warehouse",
-      "submitting": "Creating..."
+      "submitting": "Creating...",
+      "confirmUpdateTitle": "I confirm all updated information is accurate",
+      "confirmUpdateDescription": "By submitting, I agree that the updated warehouse details are correct.",
+      "updateButton": "Save Changes",
+      "updating": "Saving..."
     },
     "toast": {
       "createSuccess": "Warehouse created successfully!",
       "createError": "Failed to create warehouse. Please try again.",
+      "updateSuccess": "Warehouse updated successfully!",
+      "updateError": "Failed to update warehouse. Please try again.",
       "imageUploadError": "Failed to upload images. Please try again."
     },
     "media": {
@@ -457,6 +479,33 @@
       "create": "Create",
       "update": "Update",
       "saving": "Saving..."
+    }
+  },
+  "allWarehouses": {
+    "title": "All Warehouses",
+    "subtitle": "View all warehouses in the system",
+    "listTitle": "All Warehouses List",
+    "listSubtitle": "View and manage all warehouses from all companies",
+    "noWarehouses": "No warehouses found",
+    "deleteSuccess": "Warehouse deleted successfully",
+    "deleteError": "Failed to delete warehouse",
+    "deleteTitle": "Delete Warehouse",
+    "deleteConfirm": "Are you sure you want to delete \"{name}\"? This action cannot be undone and all related data will be permanently removed.",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleting": "Deleting...",
+    "status": {
+      "available": "Available",
+      "unavailable": "Unavailable"
+    },
+    "table": {
+      "warehouse": "Warehouse",
+      "company": "Company",
+      "region": "Region",
+      "area": "Area",
+      "status": "Status",
+      "price": "Price",
+      "actions": "Actions"
     }
   },
   "allCompanies": {

@@ -63,6 +63,12 @@ export function AdminSidebar() {
             label: t('allCompanies'),
             href: '/admin/all-companies',
             active: pathname.includes('/admin/all-companies')
+          },
+          {
+            icon: 'warehouse',
+            label: t('allWarehouses'),
+            href: '/admin/all-warehouses',
+            active: pathname.includes('/admin/all-warehouses')
           }
         ]
       : []),

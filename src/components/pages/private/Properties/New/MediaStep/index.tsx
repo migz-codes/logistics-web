@@ -80,28 +80,26 @@ export function MediaStep({ images: initialImages, onNext, onPrevious }: MediaSt
             {t('media.uploadPhotos')}
           </h3>
 
+          <input
+            ref={fileInputRef}
+            type='file'
+            accept='image/*'
+            multiple
+            onChange={(e) => handleFiles(e.target.files)}
+            className='sr-only'
+          />
           <button
             type='button'
             onDrop={handleDrop}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onClick={() => fileInputRef.current?.click()}
-            onKeyDown={(e) => e.key === 'Enter' && fileInputRef.current?.click()}
-            className={`border-2 border-dashed rounded-2xl p-12 text-center transition-colors cursor-pointer bg-surface-200 ${
+            className={`relative w-full border-2 border-dashed rounded-2xl p-12 text-center transition-colors cursor-pointer bg-surface-200 ${
               isDragging
                 ? 'border-primary-500 bg-primary-500/5'
                 : 'border-primary-500/20 hover:border-primary-500/40'
             }`}
           >
-            <input
-              ref={fileInputRef}
-              type='file'
-              accept='image/*'
-              multiple
-              onChange={(e) => handleFiles(e.target.files)}
-              className='hidden'
-            />
-
             <div className='w-16 h-16 mx-auto bg-primary-500/10 rounded-2xl flex items-center justify-center mb-4'>
               <Icon name='cloud_upload' className='text-primary-500' size='xl' />
             </div>
@@ -109,9 +107,9 @@ export function MediaStep({ images: initialImages, onNext, onPrevious }: MediaSt
             <p className='font-bold text-neutral-600 mb-2'>{t('media.dragDrop')}</p>
             <p className='text-sm text-neutral-600/60 mb-4'>{t('media.fileTypes')}</p>
 
-            <Button variant='outline' size='sm' type='button'>
+            <span className='inline-flex items-center justify-center px-4 py-2 text-sm font-medium border border-primary-500/20 rounded-lg text-primary-500 pointer-events-none'>
               {t('media.browseFiles')}
-            </Button>
+            </span>
           </button>
         </div>
 
@@ -163,6 +161,7 @@ export function MediaStep({ images: initialImages, onNext, onPrevious }: MediaSt
           >
             {t('form.previousButton')}
           </Button>
+
           <Button
             variant='primary'
             icon={<Icon name='arrow_forward' />}

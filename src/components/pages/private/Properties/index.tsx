@@ -11,9 +11,9 @@ import { type IFilters, PropertiesProvider } from './context'
 import { InventoryFilters } from './Filters'
 import { InventoryTable } from './Table'
 
-const GET_WAREHOUSES = gql`
-  query GetWarehouses($filters: WarehouseFiltersInput) {
-    warehouses(filters: $filters) {
+const GET_MY_WAREHOUSES = gql`
+  query GetMyWarehouses($filters: WarehouseFiltersInput) {
+    myWarehouses(filters: $filters) {
       id
       accountable_id
       company_id
@@ -32,13 +32,11 @@ const GET_WAREHOUSES = gql`
       updated_at
       address_complement
     }
-    warehousesCount(filters: $filters)
   }
 `
 
-interface WarehousesQueryResult {
-  warehouses: Warehouse[]
-  warehousesCount: number
+interface MyWarehousesQueryResult {
+  myWarehouses: Warehouse[]
 }
 
 interface WarehouseFiltersInput {
@@ -74,12 +72,12 @@ export function Properties() {
     return result
   }, [filters, currentPage])
 
-  const { data, loading, error, refetch } = useQuery<WarehousesQueryResult>(GET_WAREHOUSES, {
+  const { data, loading, error, refetch } = useQuery<MyWarehousesQueryResult>(GET_MY_WAREHOUSES, {
     variables: { filters: queryFilters }
   })
 
-  const warehouses = data?.warehouses || []
-  const totalCount = data?.warehousesCount || 0
+  const warehouses = data?.myWarehouses || []
+  const totalCount = warehouses.length
 
   const pagination = usePagination(totalCount, itemsPerPage)
 
