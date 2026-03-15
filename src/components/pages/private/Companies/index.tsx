@@ -3,7 +3,6 @@
 import { useMutation, useQuery } from '@apollo/client/react'
 import { Dialog } from '@radix-ui/themes'
 import { useAtomValue } from 'jotai'
-import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
@@ -20,6 +19,7 @@ import {
 import { userAtoms } from '@/lib/store/user'
 import { toast } from '@/lib/toast'
 import type { Company } from '@/types/api'
+import { CompaniesTable } from './CompaniesTable'
 import { CompanyForm } from './CompanyForm'
 
 export function CompaniesPage() {
@@ -62,6 +62,7 @@ export function CompaniesPage() {
   return (
     <>
       <PageHeader title={t('title')} description={t('subtitle')} />
+
       <div className='mb-6 flex justify-end'>
         <CompanyForm
           onSuccess={refetch}
@@ -90,104 +91,7 @@ export function CompaniesPage() {
             <Icon name='progress_activity' className='text-primary-500 animate-spin' size='xl' />
           </div>
         ) : (
-          <div className='overflow-x-auto'>
-            <table className='w-full'>
-              <thead>
-                <tr className='border-b border-neutral-200'>
-                  <th className='text-left py-3 px-4 text-sm font-semibold text-neutral-600'>
-                    {t('table.name')}
-                  </th>
-                  <th className='text-left py-3 px-4 text-sm font-semibold text-neutral-600'>
-                    {t('table.logo')}
-                  </th>
-                  <th className='text-left py-3 px-4 text-sm font-semibold text-neutral-600'>
-                    {t('table.created')}
-                  </th>
-                  <th className='text-left py-3 px-4 text-sm font-semibold text-neutral-600'>
-                    {t('table.actions')}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {data?.getMyCompanies && data.getMyCompanies.length > 0 ? (
-                  data.getMyCompanies.map((company) => (
-                    <tr
-                      key={company.id}
-                      className='border-b border-neutral-100 hover:bg-neutral-50'
-                    >
-                      <td className='py-3 px-4'>
-                        <div className='flex items-center gap-3'>
-                          <div className='w-8 h-8 bg-primary-500/10 rounded-lg flex items-center justify-center'>
-                            <Icon name='business' className='text-primary-500' size='sm' />
-                          </div>
-                          <span className='text-sm font-medium text-neutral-600'>
-                            {company.name}
-                          </span>
-                        </div>
-                      </td>
-                      <td className='py-3 px-4'>
-                        {company.logo ? (
-                          <Image
-                            src={company.logo}
-                            alt={company.name}
-                            width={32}
-                            height={32}
-                            className='rounded object-cover'
-                            unoptimized
-                          />
-                        ) : (
-                          <div className='w-8 h-8 bg-neutral-200 rounded flex items-center justify-center'>
-                            <Icon name='image' className='text-neutral-400' size='sm' />
-                          </div>
-                        )}
-                      </td>
-                      <td className='py-3 px-4 text-sm text-neutral-600/80'>
-                        {new Date(company.created_at).toLocaleDateString()}
-                      </td>
-                      <td className='py-3 px-4'>
-                        <div className='flex items-center gap-2'>
-                          <CompanyForm
-                            company={company}
-                            onSuccess={refetch}
-                            trigger={
-                              <Button size='sm' variant='secondary'>
-                                <Icon name='edit' size='sm' />
-                              </Button>
-                            }
-                          />
-                          <Button
-                            size='sm'
-                            variant='secondary'
-                            onClick={() => setDeleteTarget(company)}
-                          >
-                            <Icon name='delete' size='sm' />
-                          </Button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan={4} className='py-12 text-center'>
-                      <div className='flex flex-col items-center gap-3'>
-                        <Icon name='business' className='text-neutral-400' size='xl' />
-                        <p className='text-sm text-neutral-500'>{t('noCompanies')}</p>
-                        <CompanyForm
-                          onSuccess={refetch}
-                          trigger={
-                            <Button variant='primary' size='sm'>
-                              <Icon name='add' size='sm' />
-                              {t('createFirst')}
-                            </Button>
-                          }
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
+          <CompaniesTable companies={data?.getMyCompanies || []} onRefetch={refetch} />
         )}
       </Card>
 

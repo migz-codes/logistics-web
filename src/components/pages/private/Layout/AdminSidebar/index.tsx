@@ -26,18 +26,18 @@ export function AdminSidebar() {
   }, [data, setUser])
 
   const sidebarLinks = [
-    {
-      icon: 'analytics',
-      label: t('dashboard'),
-      href: '/admin/dashboard',
-      active: pathname.includes('/admin/dashboard')
-    },
-    {
-      icon: 'handshake',
-      label: t('partnerHub'),
-      href: '/admin/partner-hub',
-      active: pathname.includes('/admin/partner-hub')
-    },
+    // {
+    //   icon: 'analytics',
+    //   label: t('dashboard'),
+    //   href: '/admin/dashboard',
+    //   active: pathname.includes('/admin/dashboard')
+    // },
+    // {
+    //   icon: 'handshake',
+    //   label: t('partnerHub'),
+    //   href: '/admin/partner-hub',
+    //   active: pathname.includes('/admin/partner-hub')
+    // },
     {
       icon: 'warehouse',
       label: t('properties'),
@@ -50,13 +50,19 @@ export function AdminSidebar() {
       href: '/admin/companies',
       active: pathname.includes('/admin/companies')
     },
+    {
+      icon: 'person',
+      label: t('account'),
+      href: '/admin/account',
+      active: pathname.includes('/admin/account')
+    },
     ...(userRole === 'ADMIN'
       ? [
           {
-            icon: 'group',
-            label: t('allUsers'),
-            href: '/admin/users',
-            active: pathname.includes('/admin/users')
+            icon: 'warehouse',
+            label: t('allWarehouses'),
+            href: '/admin/all-warehouses',
+            active: pathname.includes('/admin/all-warehouses')
           },
           {
             icon: 'domain',
@@ -65,19 +71,13 @@ export function AdminSidebar() {
             active: pathname.includes('/admin/all-companies')
           },
           {
-            icon: 'warehouse',
-            label: t('allWarehouses'),
-            href: '/admin/all-warehouses',
-            active: pathname.includes('/admin/all-warehouses')
+            icon: 'group',
+            label: t('allUsers'),
+            href: '/admin/users',
+            active: pathname.includes('/admin/users')
           }
         ]
-      : []),
-    {
-      icon: 'person',
-      label: t('account'),
-      href: '/admin/account',
-      active: pathname.includes('/admin/account')
-    }
+      : [])
   ]
 
   return (
