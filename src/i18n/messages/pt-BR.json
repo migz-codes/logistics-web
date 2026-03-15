@@ -12,7 +12,10 @@
     "next": "Próximo",
     "previous": "Anterior",
     "submit": "Enviar",
-    "close": "Fechar"
+    "close": "Fechar",
+    "pagination": {
+      "showing": "Mostrando {from} a {to} de {total} resultados"
+    }
   },
   "components": {
     "select": {

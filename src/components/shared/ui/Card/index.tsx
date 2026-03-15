@@ -21,7 +21,7 @@ export function Card({ children, className, variant = 'default', padding = 'lg' 
     none: '',
     sm: 'p-4',
     md: 'p-6',
-    lg: 'p-8 md:p-10'
+    lg: 'p-8'
   }
 
   return (

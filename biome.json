@@ -40,6 +40,9 @@
       },
       "style": {
         "noNonNullAssertion": "off"
+      },
+      "complexity": {
+        "noUselessFragments": "off"
       }
     },
     "domains": {

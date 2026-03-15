@@ -10,7 +10,7 @@ interface CompanyNameProps {
 
 export const CompanyName = ({ company }: CompanyNameProps) => (
   <div className='flex items-center gap-3'>
-    <div className='bg-primary-500/10 rounded-lg flex items-center justify-center'>
+    <div className='bg-primary-500/10 rounded-lg flex items-center justify-center w-[48px] h-[48px]'>
       {company.logo ? (
         <Image
           width={48}
@@ -18,10 +18,10 @@ export const CompanyName = ({ company }: CompanyNameProps) => (
           unoptimized
           src={company.logo}
           alt={company.name}
-          className='rounded object-cover w-[64px] h-[64px]'
+          className='rounded object-cover w-full h-full'
         />
       ) : (
-        <Icon name='business' className='text-primary-500' size='sm' />
+        <Icon name='business' className='text-primary-500' />
       )}
     </div>
 
