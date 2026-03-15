@@ -79,9 +79,9 @@ export function MediaStep({ images: initialImages, onNext, onPrevious }: MediaSt
           <h3 className='text-sm font-bold text-primary-500 uppercase tracking-widest mb-4'>
             {t('media.uploadPhotos')}
           </h3>
-          <div
-            role='button'
-            tabIndex={0}
+
+          <button
+            type='button'
             onDrop={handleDrop}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
@@ -101,15 +101,18 @@ export function MediaStep({ images: initialImages, onNext, onPrevious }: MediaSt
               onChange={(e) => handleFiles(e.target.files)}
               className='hidden'
             />
+
             <div className='w-16 h-16 mx-auto bg-primary-500/10 rounded-2xl flex items-center justify-center mb-4'>
               <Icon name='cloud_upload' className='text-primary-500' size='xl' />
             </div>
+
             <p className='font-bold text-neutral-600 mb-2'>{t('media.dragDrop')}</p>
             <p className='text-sm text-neutral-600/60 mb-4'>{t('media.fileTypes')}</p>
+
             <Button variant='outline' size='sm' type='button'>
               {t('media.browseFiles')}
             </Button>
-          </div>
+          </button>
         </div>
 
         {/* Image Previews */}

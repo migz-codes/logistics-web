@@ -2,6 +2,7 @@
 
 import { gql } from '@apollo/client'
 import { useMutation } from '@apollo/client/react'
+import NextImage from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Icon } from '@/components/shared/ui/Icon'
 import { usePropertiesContext } from '../../context'
@@ -96,9 +97,21 @@ export const Properties = () => {
         >
           <td className='p-4'>
             <div className='flex items-center gap-3'>
-              <div className='w-16 h-12 bg-primary-500/10 rounded-lg flex items-center justify-center'>
-                <Icon name='warehouse' className='text-primary-500' />
-              </div>
+              {warehouse.images && warehouse.images.length > 0 ? (
+                <div className='w-16 h-12 rounded-lg overflow-hidden relative'>
+                  <NextImage
+                    fill
+                    src={warehouse.images[0]}
+                    alt={warehouse.title}
+                    className='object-cover'
+                    unoptimized
+                  />
+                </div>
+              ) : (
+                <div className='w-16 h-12 bg-primary-500/10 rounded-lg flex items-center justify-center'>
+                  <Icon name='warehouse' className='text-primary-500' />
+                </div>
+              )}
 
               <div>
                 <p className='font-bold text-neutral-600 text-sm'>{warehouse.title}</p>

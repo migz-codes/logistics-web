@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client/react'
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 import { usePagination } from '@/hooks/usePagination'
-import { Warehouse } from '@/types/api'
+import type { Warehouse } from '@/types/api'
 import { DashboardHeader } from '../AdminDashboard/DashboardHeader'
 import { type IFilters, PropertiesProvider } from './context'
 import { InventoryFilters } from './Filters'
@@ -21,16 +21,16 @@ const GET_WAREHOUSES = gql`
       description
       city
       state
-      area_total
       images
+      area_total
       status
       price
       address
-      address_complement
-      zip_code
       country
+      zip_code
       created_at
       updated_at
+      address_complement
     }
     warehousesCount(filters: $filters)
   }
