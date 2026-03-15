@@ -527,6 +527,9 @@
       "owner": "Owner",
       "created": "Created",
       "actions": "Actions"
+    },
+    "pagination": {
+      "showing": "Showing {from} to {to} of {total} companies"
     }
   },
   "account": {
