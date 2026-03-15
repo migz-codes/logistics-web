@@ -26,7 +26,7 @@ export function CompaniesPage() {
     <>
       <PageHeader title={t('title')} description={t('subtitle')} />
 
-      <Card variant='elevated' className='pb-4 border-red-500'>
+      <Card variant='elevated' className='pb-4'>
         <CompaniesHeader />
         <CompaniesTable />
       </Card>

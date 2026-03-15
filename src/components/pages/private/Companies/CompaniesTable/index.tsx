@@ -82,12 +82,7 @@ export function CompaniesTable() {
 
       {totalPages >= 1 && (
         <TablePagination
-          pagination={{
-            currentPage,
-            totalPages,
-            totalCount,
-            itemsPerPage
-          }}
+          pagination={{ currentPage, totalPages, totalCount, itemsPerPage }}
           onPageChange={(page) => {
             setCurrentPage(page)
           }}
