@@ -2,7 +2,7 @@
 
 import { useQuery } from '@apollo/client/react'
 import { useTranslations } from 'next-intl'
-import { useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Icon } from '@/components/shared/ui/Icon'
 import {
   Table,
@@ -27,28 +27,29 @@ export function CompaniesTable() {
 
   const [currentPage, setCurrentPage] = useState(1)
 
-  const { data, loading, refetch } = useQuery<GetCompaniesResponse>(GET_COMPANIES_QUERY, {})
+  const { data, loading, refetch } = useQuery<GetCompaniesResponse>(GET_COMPANIES_QUERY, {
+    variables: { pagination: { page: currentPage, take: itemsPerPage } }
+  })
 
-  const allCompanies = data?.getMyCompanies || []
-  const totalCount = allCompanies.length
-  const totalPages = Math.ceil(totalCount / itemsPerPage)
+  const paginationInfo = data?.getMyCompanies?.info
 
-  const paginatedCompanies = useMemo(() => {
-    const start = (currentPage - 1) * itemsPerPage
-    return allCompanies.slice(start, start + itemsPerPage)
-  }, [allCompanies, currentPage])
+  const totalCount = paginationInfo?.total || 0
+  const totalPages = paginationInfo?.total_pages || 0
+  const companies = data?.getMyCompanies?.companies || []
 
-  if (loading) {
+  useEffect(() => {
+    if (!loading && companies.length === 0 && currentPage > 1) setCurrentPage(1)
+  }, [companies, currentPage, loading])
+
+  if (loading)
     return (
       <div className='flex items-center justify-center py-12'>
         <Icon name='progress_activity' className='text-primary-500 animate-spin' size='xl' />
       </div>
     )
-  }
 
-  if (!allCompanies || allCompanies.length === 0) {
+  if (!companies || companies.length === 0)
     return <EmptyState onRefetch={refetch} createText={t('createFirst')} />
-  }
 
   return (
     <TableWrapper>
@@ -62,7 +63,7 @@ export function CompaniesTable() {
         </TableHeader>
 
         <TableBody>
-          {paginatedCompanies.map((company) => (
+          {companies.map((company) => (
             <TableRow key={company.id}>
               <TableCell>
                 <CompanyName company={company} />

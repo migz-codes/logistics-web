@@ -1,22 +1,14 @@
 'use client'
 
-import { useQuery } from '@apollo/client/react'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/shared/ui/Button'
 import { Icon } from '@/components/shared/ui/Icon'
-import { GET_COMPANIES_QUERY, type GetCompaniesResponse } from '@/lib/apollo/mutations/company'
+import { useRefetchCompanies } from '@/hooks/useRefetchCompanies'
 import { CompanyForm } from './CompanyForm'
 
 export function CompaniesHeader() {
   const t = useTranslations('companies')
-
-  const { refetch: headerRefetch } = useQuery<GetCompaniesResponse>(GET_COMPANIES_QUERY, {
-    skip: true
-  })
-
-  const handleSuccess = () => {
-    headerRefetch()
-  }
+  const refetchCompanies = useRefetchCompanies()
 
   return (
     <div className='flex items-center gap-4 mb-6'>
@@ -31,7 +23,7 @@ export function CompaniesHeader() {
 
       <div className='mb-6 flex justify-end ml-auto'>
         <CompanyForm
-          onSuccess={handleSuccess}
+          onSuccess={refetchCompanies}
           trigger={
             <Button variant='primary'>
               <Icon name='add' size='sm' />

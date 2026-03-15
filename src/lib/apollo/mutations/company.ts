@@ -2,14 +2,22 @@ import { gql } from '@apollo/client'
 import type { Company } from '@/types/api'
 
 export const GET_COMPANIES_QUERY = gql`
-  query GetMyCompanies {
-    getMyCompanies {
-      id
-      name
-      logo
-      owner_id
-      created_at
-      updated_at
+  query GetMyCompanies($pagination: PaginationInput) {
+    getMyCompanies(pagination: $pagination) {
+      companies {
+        id
+        name
+        logo
+        owner_id
+        created_at
+        updated_at
+      }
+      info {
+        total
+        page
+        take
+        total_pages
+      }
     }
   }
 `
@@ -27,8 +35,20 @@ export const GET_ALL_COMPANIES_QUERY = gql`
   }
 `
 
+export interface PaginationInfo {
+  total: number
+  page: number
+  take: number
+  total_pages: number
+}
+
+export interface PaginatedCompaniesResponse {
+  companies: Company[]
+  info: PaginationInfo
+}
+
 export interface GetCompaniesResponse {
-  getMyCompanies: Company[]
+  getMyCompanies: PaginatedCompaniesResponse
 }
 
 export interface GetAllCompaniesResponse {

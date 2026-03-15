@@ -48,13 +48,13 @@ export function TablePagination({ pagination, onPageChange }: TablePaginationPro
         })}
       </p>
 
-      <div className={tw('flex items-center gap-2')}>
+      <div className={tw('flex items-center gap-2 h-[32px]')}>
         <button
           type='button'
           disabled={currentPage === 1}
           onClick={() => onPageChange(Math.max(1, currentPage - 1))}
           className={tw(
-            'p-2 rounded-lg hover:bg-primary-500/10 text-neutral-600/40 hover:text-primary-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
+            'h-[32px] w-[32px] flex items-center justify-center rounded-lg hover:bg-primary-500/10 text-neutral-600/40 hover:text-primary-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
           )}
         >
           <Icon name='chevron_left' size='sm' />
@@ -81,7 +81,7 @@ export function TablePagination({ pagination, onPageChange }: TablePaginationPro
           disabled={currentPage === totalPages}
           onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
           className={tw(
-            'p-2 rounded-lg hover:bg-primary-500/10 text-neutral-600/40 hover:text-primary-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
+            'h-[32px] w-[32px] flex items-center justify-center rounded-lg hover:bg-primary-500/10 text-neutral-600/40 hover:text-primary-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
           )}
         >
           <Icon name='chevron_right' size='sm' />

@@ -1,16 +1,13 @@
 'use client'
 
-import { useMutation, useQuery } from '@apollo/client/react'
+import { useMutation } from '@apollo/client/react'
 import { Dialog } from '@radix-ui/themes'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/shared/ui/Button'
 import { Icon } from '@/components/shared/ui/Icon'
-import {
-  GET_COMPANIES_QUERY,
-  REMOVE_COMPANY_MUTATION,
-  type RemoveCompanyResponse
-} from '@/lib/apollo/mutations/company'
+import { useRefetchCompanies } from '@/hooks/useRefetchCompanies'
+import { REMOVE_COMPANY_MUTATION, type RemoveCompanyResponse } from '@/lib/apollo/mutations/company'
 import { toast } from '@/lib/toast'
 import type { Company } from '@/types/api'
 import { CompanyForm } from '../CompanyForm'
@@ -21,20 +18,22 @@ interface CompanyActionsProps {
 
 export const CompanyActions = ({ company }: CompanyActionsProps) => {
   const t = useTranslations('companies')
-
-  const { refetch } = useQuery(GET_COMPANIES_QUERY, { skip: true })
   const [deleteTarget, setDeleteTarget] = useState<Company | null>(null)
 
   const [removeCompany, { loading: deleting }] =
     useMutation<RemoveCompanyResponse>(REMOVE_COMPANY_MUTATION)
 
+  const refetchCompanies = useRefetchCompanies()
+
   const handleDelete = async () => {
     try {
       await removeCompany({ variables: { id: company.id } })
       toast.success(t('deleteSuccess'))
-      refetch()
+      await refetchCompanies()
+      setDeleteTarget(null)
     } catch {
       toast.error(t('deleteError'))
+      setDeleteTarget(null)
     }
   }
 
@@ -43,7 +42,7 @@ export const CompanyActions = ({ company }: CompanyActionsProps) => {
       <div className='flex items-center gap-2'>
         <CompanyForm
           company={company}
-          onSuccess={() => refetch()}
+          onSuccess={refetchCompanies}
           trigger={
             <Button size='sm' variant='secondary'>
               <Icon name='edit' size='sm' />
